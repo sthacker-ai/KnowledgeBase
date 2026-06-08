@@ -1,0 +1,13 @@
+[ALEX]: Stop scrolling. If you want to master General AI, you need to stop consuming content and start evaluating it. I’m talking about moving past the noise and figuring out what actually moves the needle.
+[SAM]: That sounds like the ultimate filter. Why is this evaluation process so critical right now, especially when every headline promises a breakthrough in AI?
+[ALEX]: Because the AI space is an attention economy. Information is scarce, and creators use hype and sensationalism—virality—to capture our limited focus. We need a framework to distinguish genuine insight from mere hype.
+[SAM]: So we’re talking about content quality assessment. What exactly are the dimensions we should be scoring beyond just whether the facts are correct?
+[ALEX]: We look at four main dimensions: accuracy, depth, originality, and relevance. For instance, a high-quality piece on AI scaling laws won't just state a fact; it will present rigorous empirical studies and reproducible code, demonstrating incredible depth.
+[SAM]: That makes sense. But how do you measure originality when so much foundational AI knowledge is already published? How do we separate new knowledge from recycled narratives?
+[ALEX]: Originality is about perspective. It’s not just repeating data; it's synthesizing existing information in a novel way, or presenting a data set that challenges the existing consensus. It’s about adding a new layer of insight.
+[SAM]: And what about timeliness? Since AI evolves daily, how do we judge if something is still valuable today, or if it's just outdated theory?
+[ALEX]: Timeliness requires checking the source and the evidence. A great theory is worthless if the underlying models or datasets are obsolete. Always check the publication date against the cutting edge of research, and look for cited, recent primary sources.
+[SAM]: So, the critical step is adopting a skeptical stance. We have to actively cross-check claims against primary sources rather than just accepting the headline.
+[ALEX]: Exactly. We move from gut reaction to objective judgment. When you apply this system, you learn to cut through the noise and avoid misinformation.
+[SAM]: So ultimately, the goal of evaluating this way isn't just to find the "best" post, but to surface high-value insights that genuinely advance understanding.
+[ALEX]: Precisely. Master this evaluation framework, and you stop being a passive consumer of AI content, and start becoming an active, discerning contributor to knowledge.

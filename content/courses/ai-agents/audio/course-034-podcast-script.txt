@@ -1,0 +1,29 @@
+[ALEX]: Imagine you’re asking an AI to write a complex research paper. A normal prompt works fine for a single paragraph, but when you need a multi-step process—profiling data, running tests, patching errors—you quickly run into a wall. That's where we introduce the concept of "Goals" in Codex: moving from simple requests to building persistent, self-correcting AI agents capable of complex, multi-step workflows.
+
+[SAM]: So, if a normal prompt is like giving a chef a single recipe, what exactly is a Goal? Is it just a bigger instruction, or does it change how the AI thinks entirely?
+
+[ALEX]: It changes the entire mental model. A Goal isn't just a bigger prompt; it’s a compact contract defining the entire operating space for the AI. It functions by giving the AI a durable target—a completion condition, specific verification criteria, and constraints that must remain intact throughout the entire process. It allows the AI to maintain focus and, crucially, inspect accumulated evidence and decide the next useful action autonomously.
+
+[SAM]: That sounds incredibly powerful. So, the main limitation of a standard prompt is that we have to constantly restate the objective after every intermediate result, right? It’s a passive request-response cycle.
+
+[ALEX]: Exactly. A standard prompt follows the pattern: ask, work, result, wait. A Goal introduces an active, iterative pattern: work, check, continue, or complete. This shift allows the AI to inspect its current evidence against the accumulated data and decide autonomously if the objective is satisfied or if it needs to pivot to the next step. It turns the AI into a collaborator, not just a responder.
+
+[SAM]: So, if we think about the operational loop, it’s not just about giving instructions, but about establishing a feedback mechanism. How do we actually structure one of these powerful Goals so the AI can execute it effectively?
+
+[ALEX]: A robust Goal is much more than a simple instruction. The strongest Goals are those that are explicitly structured into six essential components. We need to define the complete operational boundary upfront.
+
+[SAM]: What are those essential components? Are they just outcomes and constraints?
+
+[ALEX]: Not just those. The structure defines the entire operating space. The first is the **Outcome**: what must be precisely true when the work is done. The second is the **Verification Surface**: the specific artifact—a test, a document, or a benchmark—that serves as the final checkpoint.
+
+[SAM]: And the rest? How do we ensure the AI knows how to manage the process between those two points?
+
+[ALEX]: We define the remaining components to ensure persistence and actionable progress. This includes specifying the necessary constraints—what must remain fixed—and defining the evaluation mechanism, which tells the AI exactly how to check its progress against the evidence it has gathered.
+
+[SAM]: That makes sense. So, we're not just telling the AI *what* to do, but telling it *how* to think, *what* evidence to look for, and *how* to judge its own progress. It shifts the focus from command to system design.
+
+[ALEX]: Precisely. By defining the Outcome, specifying the Verification Surface, and detailing the evaluation mechanism, you stop relying on reactive prompting and start building a self-correcting system. This is how we transition from asking a single question to building an entire, persistent objective framework for complex AI agents.
+
+[SAM]: Wow. The difference between a simple prompt and a true Goal is the difference between handing someone a single map and giving them a fully instrumented navigation system. It’s about persistence and accountability.
+
+[ALEX]: That’s the key takeaway. Mastery in AI workflows isn't about getting the right answer in one shot; it’s about designing the durable objective that forces the AI to manage complexity, evaluate evidence, and intelligently iterate toward a solution, making it a truly effective agent.

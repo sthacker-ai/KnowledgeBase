@@ -1,0 +1,29 @@
+[ALEX]: Stop treating Claude like a polite assistant and start treating it like a strategic weapon. We spend so much time asking the AI to be "helpful," but that just gives us generic agreement. The real power is forcing Claude out of its default mode and into specialized modes, turning it from a friendly parrot into a ruthless debater or a sharp-eyed investor.
+
+[SAM]: That sounds frustrating. It’s like asking a brilliant consultant to just give you a general summary instead of diving into the specifics. How do we actually move beyond that surface-level helpfulness?
+
+[ALEX]: We introduce the concept of slash commands—reusable prompt structures that turn Claude into a specialized sub-agent. Instead of giving a ten-paragraph instruction every time, you define an expert persona once—say, a "Skeptic Mode"—and then you summon that expertise with a single word, like `/skeptic`.
+
+[SAM]: A sub-agent… so, instead of writing a whole new prompt for every critical review, you’re essentially installing a fixed set of rules that Claude follows automatically? That feels like a massive time-saver.
+
+[ALEX]: Exactly. Think of it like software development. Instead of writing the code for a complex function repeatedly, you define the function once, and then you call it by name. That’s what we're doing with slash commands. We separate the *instruction* (the command) from the *context* (the setup).
+
+[SAM]: So, if I want to stress-test an investment idea, I don't just ask Claude to "review this idea," I can call a specific sub-agent to act as a ruthless critic? What kind of behaviors are we actually installing with these commands?
+
+[ALEX]: We're installing specialized behaviors. Commands like `/steelman` force Claude to build the absolute strongest possible argument for your position, anticipating and reinforcing your claims. Then you can use `/holefind` to make it hunt specifically for weaknesses, flaws, and potential counter-arguments.
+
+[SAM]: So, one moment you're building the case, and the next, you’re tearing it down. It's a full strategic workflow built into the interaction. That changes the dynamic completely.
+
+[ALEX]: It does. We’re taking the general capability of Claude and layering on expert-level reasoning. We move from asking, "What do you know?" to commanding, "Act as a specific expert and perform this exact strategic task."
+
+[SAM]: And what about prioritization? I often struggle with figuring out which details matter most when I have a massive amount of data. Can a sub-agent help me distill the signal from the noise?
+
+[ALEX]: Absolutely. We have commands designed for exactly that, like `/8020`, which forces Claude to distill complex information down to the top 20% of leverage. It handles the heavy lifting of extraction, letting you focus only on the most critical strategic points.
+
+[SAM]: That’s incredible. It shifts the AI from being a passive information retriever to an active prioritization engine. It’s not just summarizing; it's strategically assessing.
+
+[ALEX]: Precisely. These aren't just clever prompts; they are functional frameworks. They allow you to encapsulate complex reasoning patterns—like rigorous skepticism or meticulous argument construction—into a single, callable unit that persists across sessions.
+
+[SAM]: So, the takeaway is that mastering these slash commands isn't about writing better prompts, but about architecting repeatable, expert-level workflows within Claude.
+
+[ALEX]: That’s the core. Stop relying on polite agreement. Start demanding specialized expertise. Master the sub-agents, and you stop interacting with an agreement machine and start collaborating with a strategic thought partner.

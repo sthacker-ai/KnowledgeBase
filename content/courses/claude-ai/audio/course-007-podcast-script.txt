@@ -1,0 +1,15 @@
+[ALEX]: Stop asking Claude vague questions. If you want a reliable, high-confidence answer, you need to treat prompt engineering not as a suggestion, but as a disciplined science.
+[SAM]: It sounds like these powerful models are just guessing, which is what the workshop focused on?
+[ALEX]: Exactly. Think of Claude as an incredibly powerful pattern matcher, not a domain expert. Without explicit instructions, it fills in the blanks, which is why a simple prompt can turn an insurance form into a skiing accident report.
+[SAM]: So, the gap between the pattern matching and the actual required knowledge is where the failure happens?
+[ALEX]: Precisely. The core shift is moving the model from guessing to performing an auditable task. We fix that by providing specific context, defining roles, and setting concrete constraints.
+[SAM]: How do we practically inject that missing knowledge without overwhelming the model?
+[ALEX]: We use structure. We introduce techniques like using static background information and clear delimiters—like triple quotes or XML tags—to separate the instructions from the data. This helps the model parse the input cleanly.
+[SAM]: Delimiters make sense, like putting the core data inside specific boxes. What about teaching the model *how* to think?
+[ALEX]: Then you add step-by-step instructions. Instead of asking for a final answer, you guide the model through the reasoning process. This forces it to walk through the steps necessary to arrive at the correct conclusion.
+[SAM]: That sounds like forcing it to show its work. Are there other ways to give it examples?
+[ALEX]: Yes, few-shot examples. Giving the model a few perfectly executed examples of the desired output drastically improves the quality of the result because it shows the model the exact pattern you want it to replicate.
+[SAM]: So, it’s an iterative process—hypothesize, test, observe failure, and then enrich the prompt with those specific pieces.
+[ALEX]: Exactly. Prompt engineering is empirical. You start with a hypothesis, test the model’s output, see where it went wrong, and then iteratively adjust the prompt until you achieve that single-shot, high-confidence response.
+[SAM]: So, ultimately, the secret isn't complex vocabulary; it’s structure, context, and clarity.
+[ALEX]: Absolutely. The goal is to minimize guesswork and leverage Claude’s immense capability by communicating your intent with absolute precision. Master the structure, and you master the AI.

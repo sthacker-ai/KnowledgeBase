@@ -1,0 +1,33 @@
+[ALEX]: Imagine you're a sculptor, but instead of chiseling marble, you're shaping code with Claude AI. The key? You're not just building—you're shipping, reviewing, and iterating in real-time. That's the Anthropic engineer's playbook.
+
+[SAM]: Wait, so you're saying I should treat coding like a live TV show? No rehearsals, just constant updates?
+
+[ALEX]: Exactly! Continuous shipping means deploying small, functional pieces often—like releasing a single feature instead of waiting for the "perfect" app. It’s about momentum, not perfection.
+
+[SAM]: But what if my "single feature" is buggy? Won’t users hate me?
+
+[ALEX]: That’s where "review over inspection" comes in. Instead of obsessing over *how* the code was built, you focus on *what* it does. Did it ship? Does it work? Then refine it based on feedback, not guesswork.
+
+[SAM]: So it’s like a chef tasting a dish mid-cooking instead of waiting until the end to see if it’s edible?
+
+[ALEX]: Precisely! And the live coding part? That’s you cooking *on camera*—demonstrating your process, getting real-time input, and adjusting as you go. It’s transparency as a superpower.
+
+[SAM]: But isn’t live coding risky? What if I make a mistake in front of everyone?
+
+[ALEX]: Mistakes are part of the process. The goal isn’t flawless execution—it’s progress. Think of it like a musician improvising. The audience sees the creativity, not just the notes.
+
+[SAM]: Okay, but how do I even start? Do I need a fancy setup?
+
+[ALEX]: Start small. Set up Claude AI, pick a tiny task—like automating a repetitive email—and ship it. Then review: Did it save time? If not, tweak it. No grand stage needed, just action.
+
+[SAM]: What if my project is huge, like building an entire AI system?
+
+[ALEX]: Break it down. Ship the data pipeline first, then the model, then the UI. Each piece is a milestone. You’re not building a cathedral; you’re stacking bricks.
+
+[SAM]: But won’t users get confused if I keep changing things?
+
+[ALEX]: That’s why you communicate. Release notes, changelogs—treat users like collaborators. They’ll appreciate the evolution, not just the end product.
+
+[SAM]: So the key is to keep moving, even if it’s messy?
+
+[ALEX]: Exactly. The Anthropic engineer’s mantra: *Ship, review, improve, repeat.* Perfection is the enemy of progress. Your takeaway? Done is better than perfect. Now go build something—live.

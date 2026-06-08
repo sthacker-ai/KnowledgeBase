@@ -1,0 +1,314 @@
+Claude code best practices in this talk
+I'm going to talk about kind of what Claude code is at a high level
+Then we'll peer under the hood a little bit to kind of understand how Claude code works
+And then knowing that because it's useful to kind of know how your tools work
+We're gonna talk about good use cases for Claude code and also best practices. We've figured out both internally
+And from our users for getting the most out of this tool
+But before I get started I'd like to introduce myself real quick and talk about how I ended up on the stage
+So my name is Cal and I joined anthropic about a year and a half ago
+To help start up a team we call applied AI and it's the applied AI's kind of mission
+Our team's mission is to help our customers and partners build great products and features on top of Claude
+So what that really means is I spend a lot of my day
+Prompting Claude to get the absolute best outputs out of these models
+That said I also love to code and I'm definitely one of those coders that like starts a lot of projects
+Has some crazy idea and that just never finishes them
+So I have this graveyard of just like code that I started never really finished
+But I'm always spinning new things up and late last year
+I was in Slack and I was hearing about this new tool that a few people are using they're saying it was really cool
+And so on a Friday night I downloaded the tool that would become Claude code
+And I threw it at this kind of new note-taking app that I wanted to build and
+Like that whole weekend just kind of totally changed the way that I code and think about software engineering
+I was carrying around my laptop with me all weekend
+I was super addicted to just watching Claude code work and I would press enter and I'd switch over to my browser
+And refresh and I watched this huge powerful application come together in front of my eyes
+And I got way farther into this thing that I ever would have on my own and it just blew my mind and
+While I was doing this I was a little worried. I was like, you know, I you know
+I kind of know how these things works. I'm like, man, I'm using a lot of tokens
+I hope I don't get in trouble or anyone like notices. I'm not really contributing to an anthropic code
+But what I didn't know is that the Claude code team had built this internal like leaderboard
+Tracking how much all the anthropic employees were using this and over the weekend. I'd shot to the top
+And so through that I got to meet Boris and Kat and some of the early Claude code team
+And I was able to start talking to them and say, hey, I love this tool
+I also know a lot about prompting. Can I help you all out?
+And so through that I got involved and now I'm one of the core contributors on the team
+And I do a lot of I work a lot on the prompting the system prompts
+How the tools work the tool descriptions and tool results as well as I work on how we evaluate this tool
+So when we think about changing the prompts, how do we make how do we know we made things better or the same?
+And we didn't totally room Claude code. So with that said, let's kind of dive in
+So here's my current mental model of Claude code and how I describe it to people when people ask me
+Claude code is like that coworker that does everything on the terminal. It's the sort of person that just never touches the gooey
+They're a whiz I think of when I was a junior engineer
+I had this mentor and I would walk over his desk and I would say hey, Tony
+Can you help me with this bug and he would whip it over his terminal
+And he'd be like doing all these crazy bash commands and changing things around at Vim and I'd always walk away thinking wow
+That was crazy. I should learn how to do that. I never did
+But having Claude code on your computer is kind of like having Tony next to you all the time
+So how does Claude code to kind of work under the hood?
+Anthropic we try to always do what we call the simple thing that works
+And what that means for Claude code is it's what we would consider a very pure agent and
+Anthropic when we talk about agents what we really mean is
+Some instructions some powerful tools and you let the model just run in a loop until it decides it's done
+And that's really what Claude code is
+So it's tools
+Powerful tools and the tools that you know someone that was really good at a terminal would be able to use tools to create and edit
+Files to use the terminal and then you can also do things like pull in other things with MCP
+Now on top of that
+There's how Claude
+understands the code base and if you're gonna build a coding agent or a coding tool a year ago
+You'd probably have ideas like well, okay
+I'm gonna get this user message
+About something about this code base and I'll need to figure out which files are relevant
+So maybe I'll like index the whole code base and embed it and do this fancy like kind of reg retrieval thing
+That is not how Claude code works. We don't do any sort of indexing instead Claude
+Kind of explores and understands the code base how you if you were new to a team and new to a code base
+Would explore code base and that is through a gentek search
+As the same sort of search tools you or I would use things like glob and grep and find and it can work its way through a code base and
+Understand what's going on and when we talk about a gentek search that really means the model can go do some searches
+And then it can look at the results and you say hmm
+Maybe I need to figure out a few more things. I'm gonna go do some more soaching and then come back and
+Then on top of these primitives on top of this agent
+We have a few things we have a very nice light UI layer where you get a watch Claude code work
+You see all the text fly by and we have this nice permission system
+that allows the agent to work and allows and kind of forces the human to butt in when the agent is doing something dangerous and
+Then on top of that we also care a lot about security in this tool
+And so because Claude code is just such a lightweight kind of
+Layer on top of the model and the fact that our model is available not just behind
+Anthropic APIs, but also with our cloud providers AWS and GCP
+It's very easy and native to point Claude code at one of these other services
+If you feel more comfortable consuming Claude that way
+Now a lot of people ask me hey Cal what can I use Claude code for like what is it good at?
+Where is it interesting and
+The reality is it's kind of great at everything
+So let's start with discovery
+Oftentimes in your career you will be dropped into a new code base whether that means you're switching teams you're switching
+Companies I don't know you're starting to work on some sort of open source project and probably when you're first getting started
+And getting familiar not very productive because you're just trying to figure out where things are in the code base
+What patterns kind of the team is using things like that and Claude code can kind of help suit
+Supercharge that onboarding process you can ask Claude. Hey, where is this feature implemented or since it's great at the terminal?
+You can say hey look at this file and look at the git history and just kind of tell me a story about how this code has changed over
+The past couple weeks
+One thing you can use Claude code for and I think this is underrated is instead of just diving in and starting to work
+You can use Claude code as a thought partner
+So oftentimes when I'm working with Claude and I want to implement a feature or we're going to change something up
+I'll open up Claude and I'll say hey Claude, you know, I'm thinking about implementing this feature
+Can you just kind of like search around and kind of figure out how we would do it and maybe report back with like two or three different options
+Don't start working don't start writing any files writing any files yet
+And Claude will go off and use those agent took search capabilities and come back with a few ideas
+And then I could work with Claude to kind of validate things and then we can jump into the project
+Of course Claude code is great at building and writing code
+And I would say this in on two different fronts one it can do the zero to one sort of stuff
+You drop it in an empty directory and you say hey build me an app build me a game that demos were very well
+It's very fun to do it's very gratifying of course in reality
+What really matters is is Claude code good working in existing code bases and this is primarily what we focus on
+It and the Claude code team we have in our code base abnormally high
+I would say unit test coverage and that's because Claude code makes it so easy and
+Just straightforward to add unit tests
+So we have great code coverage and then the other thing we have in Claude code in our own code base
+Is we have great commits and PR messages because when we finish working we'll just say hey Claude write the commit for me
+write the PR message for me
+We also see great opportunities to use Claude code in kind of the deployment like
+Deployments and in other parts of the life cycle and this is a few other people have talked about this
+But this is using the Claude code
+SDK so using it headlessly using it
+Programmatically being able to sprinkle in a coding agent agent
+Anywhere and so that's things like sprinkling it into CI CD to use it in github for instance to help people
+Programmatically and then finally it's great kind of with support and scale it can help you debug airs faster
+One thing that we saw when we started giving Claude code to customers and talking them about it
+We didn't totally predict this was a lot of customers or potential customers said hey
+We've been meet we've been kind of putting off this like large code base migration people that are on old versions of Java
+Trying to get it to a new one or a team that's on PHP and they're trying to get to reactor angler
+We've talked to multiple teams like this and having a tool like Claude code makes projects like that a little more
+Digestible when you go to your team and you say hey, we're going to spend a month
+You know refactoring or rewriting large parts of the code base
+And
+Then on top of that and this kind of matters across all these is once again
+Remember Claude is great at the terminal and that means it's going to be great at all those different
+CLI tools things like git docker big query things like that
+I never have to worry about oh, I'm going to get myself
+How do I get myself out of this sticky rebase?
+I'll just fire up Claude code and tell it the situation and be like hey, can you fix this for me? It's incredible
+Now let's talk about best practices and
+The first one is not going to be a surprise, but the first one is use clawed MD files
+So remember that Claude code like I said is an agent and it has some tools
+It has some lightweight instructions in the prompt
+but it doesn't really have memory and so the main way we share state across kind of
+Sessions or across our team when we fire up Claude code and the same code base over and over again is this Claude MD file
+So when we start Claude what happens is if there's this Claude MD file in the working directory
+It's just plopped into context. It's plopped into the prompt and basically what it says is hey Claude
+By the way, these are important instructions the developer left for you be sure to pay close attention to this
+And there's various places you can put the Claude MD file
+You can put in a project and check it in so all your teammates share it
+You could put one in your home directory if there's things you just want Claude to always know about regardless of what you're working on
+And the things you put in here are things like hey by the way
+Maybe this is how you run the unit tests or just so you know to make kind of your searching and life easier
+Here's like just like an overview of kind of how this project is laid out where the tests live
+What different modules are things like that or here's our style guide all sorts of things like that to just make Claude's life
+A bit easier and you can build these things up over time
+The other thing you can do which is important is permission management when you're running Claude code
+There's all sorts of different kind of permission things flying by kind of out of the box
+What happens when you start our tool is for read actions if Claude is searching or reading
+We just let it go
+But once it starts writing or running bash commands are doing things that could change
+Change stuff on your machine potentially. That's when we kick in this UI and it says something like yes
+Yes, always allow this or no
+I want to do something else and
+Using that permission management and being smart about it can help you work faster
+So there's something called auto accept mode or if you're working with Claude code and you press shift tab
+Claude will just start working
+There's things you can do like you can configure Claude in the settings where specific commands like on bash like if you just are like tired of
+Saying yes run npm run test you can just always approve that so fiddling with your permission management is a great way
+To kind of speed up your workflow
+Integration setup so one thing that is going to help you get the most of Claude code is remember that it's great at the terminal
+And if there's applications that you use
+Which have kind of a way to access them through CLI and github is a great example of that
+They have a powerful tool called gh you can basically give more work to Claude code
+And you can do that either by just installing more CLI tools or you can attach more mcp servers
+I would say just through experience that if you're using something like a
+CLI tool that's well known and well documented and you're trying to choose between the CLI tool and just installing it on your machine and
+Grabbing an mcp server. I would recommend using the CLI tool
+And then also if you internally have your own tools at anthropic
+We have something called coup that does a whole bunch of stuff for us
+You can also tell Claude about that and you probably that's the sort of thing you'd put in Claude and MD
+And then context management so remember that Claude is an agent and when it's innate what it does
+It's calls these tools and the context builds up and up over time
+And at least for anthropic our models have a context window of 200,000 tokens and you can max this thing out
+So you kind of have two options when you're in a long session with Claude and you're working and you're going back and forth
+You'll see in the bottom right you'll start to get this little warning
+They'll say hey, you're sort of filled the context window and kind of depending on what's going on
+You have two options you can run slash clear and just start over and that clears everything out
+except for for instance Claude MD or you can run slash compact and what will happen is basically
+It's like a user message message is inserted and it just says something like hey
+I need to go summarize everything we've been up to I'm gonna give this to another developer and they're gonna pick up
+Where I left off and then that summary is what kind of seeds the next session you can go from there
+We spend a lot of time tuning this kind of compact functionality
+So that as you max out the context window and then run compact you can start back over and keep going
+Efficient workflows, what can you do with Claude code and how do you get the most out it?
+So using planning and to do is I talked a little bit about this before
+But one of the best things you can do is when you open up Claude code instead of saying hey
+I need you to fix this bug you can say hey
+I have this bug can you search around figure out what's causing it and just like tell me a plan
+How we're gonna fix it and this can save you a lot of time because you can verify you can read Claude's plan
+And you can verify what it's going to do and then the other thing that we have is we have this to-do list feature
+So often when Claude's working out a big task
+it'll create a to-do list and if you're kind of paying attention you can kind of watch this to-do list and if
+You see anything kind of weirder in there or something that doesn't make sense
+That's when you can press escape and say hey Claude. Let's change the to-do list. I think you're on the wrong path
+Smart vibe coding so it's very tempting and it's very powerful to just let Claude work and press enter and see what happens at
+The end I think there's a few things that can help make this better
+And there's I think a talk later today about just this for 30 minutes
+But doing things like having test-driven development having Claude make small changes run the tests make sure they pass
+Always having Claude do things like check the typescript and the linting and then commit regularly
+So that if it's kind of going off the rails you can always fall back and try again
+You can use screenshots to guide and debug so Claude is built on top of our models
+Which are multimodal you can always just grab a screenshot paste it in or if you have a file somewhere
+That's an image. You can just say hey Claude look at this mocked up PNG and then build the website for me or whatever
+And then advanced techniques so as you're getting used to using Claude
+What are some things you can think about?
+to kind of push things to the next level and one of the things we see both internally and with
+Customers is when you've started to use this tool for a while
+It's going to be very tempting to use multiple Claude's at once
+And so I know people at Anthropic and a few customers that run for Claude's at the same time
+There's various ways to do this you can have it in T mocks or just different tabs all sorts of crazy things
+So I would challenge you to try getting multiple Claude's running at once and kind of be orchestrating all these things
+It's quite fun. I can only do two but I know people that do four
+Use escape so escape is your best friend while Claude is working
+You can kind of keep an eye on what it's up to and you can press escape to stop it and interject and say
+Hey, I think you're going on the wrong path or I want you to do something else
+Knowing when the right time to press escape is versus just letting Claude figure it out is key to getting the most out of the tool
+And there's a hidden feature not too many people know about it
+But if you press escape twice you actually jump back in your conversation you can go back and you can kind of reset
+Tool expansion and MCP so this is taking it to the next level if you feel like
+With bash and with the tools that Claude has that it still can't do something. This is when you should start looking at MCP servers
+And then headless automation. I think this is a thing we're most excited about
+But also we are still trying to wrap our heads around internally, which is how can we use Claude
+Programmatically we have that in GitHub actions. We want to figure out other creative places
+We can start using it. I would challenge you all to do the same
+So with that said I'm gonna jump over to my computer because there's one other best practice
+Which is it's always good to stay on top of everything that's new so we're shipping super fast
+I'm gonna throw. I'm just gonna go over a few things that are new as of today
+One thing is when you're in Claude now and you fire it up you can do slash model
+You can see what model you're running on. I'm on default which happens to be sonnet
+We can jump over to opus. You can do the same thing in slash config switch it here
+So that's new make sure you're running the model that works for you
+There's another thing that's new about these models, which is you can say something like
+Can you figure out what's in this project and for a long time for a while
+We've had this like think hard or extended thinking now
+This is great
+But with our past models that we won't let our model think between tool calls and that's probably when the thinking matters most
+So starting with Claude for they can now our models now think between tool calls and we can watch this happen
+So we have Claude in this project. There's a few different files in here
+I'm just going to tell it to think hard and figure out what's in this project and we can watch Claude start to work
+And so the way you know you triggered thinking is you'll see kind of this lighter gray text
+And then it'll call some file it'll call some tools it'll read some stuff and then we see some more thinking and
+This is awesome. So I encourage you when you're working on tasks and solving bugs throw a think hard in there
+and
+Then the other thing and you know what?
+We'll just throw it up real quick is I have this in VS code
+But of course this is in JetBrains as well, but we have these new great integrations with VS code and JetBrains
+We can do things like Claude's gonna know what file I'm in what file am I in
+That is not what I meant to say about Claude's gonna figure it out and you can do things like this
+So
+These are the sort of things I would encourage you to stay on top of we have a public
+Kind of github project called Claude code under anthropic you can post issues there
+But we also post our changelog there and so I check this once a week and make sure that I'm on top of all the new
+Stuff for shipping because even I can't keep up with it
+So with that said we have like four minutes left I'm happy to answer questions about anything Claude code related
+We have it here. I can live demo some stuff if you're interested
+Let's do a few
+Thanks real quick this might be obvious, but multiple Claude MD files in a project
+I presume that's possible and it just figures it out or no
+So there's a few options of course like in the same directory you couldn't
+But you could have one here and
+One in a subdirectory and I think we changed this so that all the subdirectory ones aren't read in because like anthropic
+We have a mono repo and people would open it at the top and blow up their context with all the Claude MDs
+So we encourage Claude when it's searching around and it discovers Claude MD files in
+Child directories that are relevant to be sure to read them
+But by default it just reads the Claude MD file in the current working directory when you fire it up
+And then also you can set one in like your home directory
+There are things you can do though. We have this new thing like in your Claude MD. You can start referencing other files
+So you could for instance
+Do something like this with an at sign
+If you have other Claude MD files that you just kind of know you always want to read in
+to do something like that
+Hi, okay, I
+Have not had luck getting Claude to respect my Claude MD like there's one thing particular
+Yes, where I'll ask it to refactor something and then it will leave in line comments explaining the what like the what
+Yes, and it's like something that's extremely obvious
+And so I'll tell it like go and remove any inline comments that describe the what of what's happening
+And then it will remove it and then immediately do it again in like the same past
+So do you have any strategies for dealing with that? So there's kind of two things that fix that so that was actually kind of a model problem
+There's nothing in the prompt
+We have actually a lot in the prompts for three seven that said whoa do not leave comments and despite that the model
+Just loves to leave comments
+So it doesn't surprise me that your Claude MD didn't help much either we already did a lot
+I did a lot of work to try to tamp it down from what happens out of the box
+So we mostly fix that in Claude 4
+Now there might be some new weird behavior quirks
+But the other thing we made better in Claude 4 is it's just better at following instructions
+And we've gotten a lot of feedback from early testers that all of a sudden whoa my Claude MD is being followed way more closely
+And it might be a good chance to go look in your Claude MD and decide do I still need this stuff?
+Maybe I can take some of it out. Maybe I need to add a few new things
+So moving over to the new miles might be a good time to take another look at what's in there and see what you need
+And what maybe can go
+For the record, I'm trying to think of something that you might not have thought of yes doing multi agent execution and
+Parallelization can you make it so that for four agents say agents two and three use the context from agent one
+Maybe agent four uses the context from agent two at a certain point. Yeah
+Yeah, it's that's right. That's interesting. We're trying to so
+Kind of like I said at the beginning. We're trying to do the simple thing that works was just one agent
+That's great at coding and does everything
+I think we want to figure that out probably what's going to happen is if you wanted to do that
+You would ask all your agents to probably like write to a shared markdown file or something like that so they can all kind of like
+Check in and communicate
+Sometimes like I'll be working with Claude MD or Claude and I'll just say like hey
+I need you to write some stuff and like ticket that MD for another developer and then I'll fire up another Claude code
+I'll be like hey read ticket that MD like another developer left this note for you
+Like this is what you're gonna work on
+So and think about trying to write that state to a file and then just kind of like count on the model's ability
+Just like read files and make sense them
+It's probably the best you can do today
+And maybe we'll figure out clever ways to expose that in the product is something more native
+Cool
+All right
+And with that said I have some rare Claude code stickers that found in my backpack
+So come find me I'll be hanging out over there something
+Happy to share them. Thank you

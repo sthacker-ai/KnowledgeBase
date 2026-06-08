@@ -1,0 +1,33 @@
+[ALEX]: Imagine a world where you could build an entire AI team—63 agents working in perfect harmony—without writing a single line of code. That’s the power of Claude code. Today, we’re diving into how Affaan Mustafa turned this sci-fi dream into reality, winning a hackathon in just eight hours. Ready to meet your new AI workforce?
+
+[SAM]: Wait, 63 agents? That’s a full office of AI workers! How does one person even manage that many? Isn’t that like herding cats?
+
+[ALEX]: Think of it less like herding cats and more like conducting an orchestra. Each agent has a specialized role—some handle data, others manage workflows, a few even debug themselves. The magic is in the Claude code, which lets you define their behavior in plain language. No coding required.
+
+[SAM]: Plain language? So I could tell an agent, "Go fetch me the latest sales data from last quarter," and it just... does it?
+
+[ALEX]: Exactly. You describe the task, and the agent figures out the steps. Affaan’s GitHub repo automates the rest—spinning up agents, assigning roles, even letting them collaborate. It’s like giving your team a playbook and letting them execute it autonomously.
+
+[SAM]: But what if two agents disagree on how to handle a task? Do they argue like my coworkers do?
+
+[ALEX]: Great point. The system includes conflict resolution protocols. Agents negotiate based on predefined rules—like prioritizing deadlines or data accuracy. If they hit a deadlock, a "manager" agent steps in to mediate. It’s all baked into the Claude code.
+
+[SAM]: So, who’s the boss here? Is Affaan the puppet master pulling strings, or does the system run itself?
+
+[ALEX]: Affaan built the framework, but once it’s live, the agents self-organize. That’s why he won the hackathon—he shipped a full product without coding a single line. The agents handled everything from data processing to user interactions.
+
+[SAM]: That sounds too good to be true. What’s the catch? Does this only work for simple tasks?
+
+[ALEX]: It’s not magic—it’s engineering. The agents excel at structured workflows, like analyzing datasets or automating customer support. For open-ended creativity, you’d still need human oversight. But for 80% of repetitive business tasks? This is a game-changer.
+
+[SAM]: So, if I wanted to build my own AI team, where do I start? Do I need a PhD in AI?
+
+[ALEX]: Not at all. Affaan’s GitHub repo is open-source and beginner-friendly. You define your agents’ roles in plain text, and the system handles the rest. It’s like assembling IKEA furniture, but the instructions are written in English, not Swedish.
+
+[SAM]: And what if my agents start going rogue? Like in those sci-fi movies where AI takes over the world?
+
+[ALEX]: Fear not. The agents are sandboxed—they can’t access anything outside their predefined scope. It’s more like a highly efficient virtual assistant than Skynet. The real risk is underestimating how much they can do.
+
+[SAM]: So, bottom line: Claude code lets me build an AI army without coding, and Affaan’s repo makes it easy. What’s the takeaway for listeners?
+
+[ALEX]: The future of AI isn’t about replacing humans—it’s about amplifying what we can do. With tools like Claude code, anyone can build a team of AI agents to handle the grunt work, freeing us to focus on creativity and strategy. The question isn’t *if* you’ll use AI agents, but *how soon*.

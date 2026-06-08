@@ -1,0 +1,22 @@
+{
+  "_comment": "Regex patterns for tweet relevance filtering. Each entry is a case-insensitive regex source string. Tweets must match at least one pattern to be imported. Edit via Admin > Topic Relevance Filters.",
+  "patterns": [
+    "\\b(ai|llm|gpt|chatgpt|claude|gemini|llama|mistral|openai|anthropic|perplexity|deepseek)\\b",
+    "\\b(artificial intelligence|machine learning|deep learning|neural network|large language model)\\b",
+    "\\b(transformer|embedding|vector|rag|fine.?tun|prompt engineer|ai agent|agentic|copilot)\\b",
+    "\\b(agent|agents|multi.?agent|autonomous agent|ai system|intelligence system)\\b",
+    "\\b(obsidian|notion|roam|logseq|second brain|knowledge graph|pkm|personal knowledge|note.?taking)\\b",
+    "\\b(hermes|mcp|model context protocol|tool use|function call|tool call|orchestrat)\\b",
+    "\\b(software|developer|coding|programming|engineer|api|github|open.?source|devops)\\b",
+    "\\b(startup|saas|product.{0,10}manage|cloud|cybersecurity|data science|mlops|platform)\\b",
+    "\\b(automation|workflow|no.?code|low.?code|framework|library|database|tool)\\b",
+    "\\b(productiv|mindset|habit|disciplin|leadership|self.?improv|self improv)\\b",
+    "\\b(career|skill.{0,8}build|growth|mentorship|coaching|personal develop|motivation tip)\\b",
+    "\\b(philosoph|stoic|wisdom|mindful|meditation|zen|consciousness|spiritua)\\b",
+    "\\b(buddhis|vedic|hinduism|bhagavad gita|ancient wisdom|life lesson|epictetus|marcus aurelius)\\b",
+    "\\b(invest|stock market|trading|portfolio|equity|nifty|sensex|nasdaq|dow jones)\\b",
+    "\\b(options trading|futures|technical analysis|candlestick|etf|mutual fund|sip|compound)\\b",
+    "\\b(crypto|bitcoin|defi|fintech|wealth build|passive income|dividend|market analysis)\\b",
+    "\\b(research paper|study shows|scientific|breakthrough|discover|innovat)\\b"
+  ]
+}

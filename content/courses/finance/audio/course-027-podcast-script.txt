@@ -1,0 +1,23 @@
+[ALEX]: Imagine you're an artist, but instead of painting on a canvas, you're working with the stock market. Your canvas is a chart displaying a stock's price movements, and your paintbrush is your trading strategy. One such strategy is finding stocks in a tight range, which can offer low-risk, high-reward opportunities.
+
+[SAM]: Wait, when you say "tight range," what exactly does that mean? Are we talking about stocks that don't move much?
+
+[ALEX]: Exactly! A tight range refers to a stock's price moving within a narrow band, typically between 5-10% of its price. It's like a coiled spring, just waiting to release energy.
+
+[SAM]: Okay, so how does that translate into low risk and high reward? It seems counterintuitive.
+
+[ALEX]: When a stock is in a tight range, you can set a stop loss, an order to sell when the price falls to a certain level, at a relatively low price. This reduces potential losses. At the same time, the narrow range suggests the stock is poised for a potential breakout, leading to substantial gains.
+
+[SAM]: Ah, I see! But how do we identify these stocks in the first place?
+
+[ALEX]: Start by looking for stocks moving in a narrow range on a chart. Then, analyze the chart for potential support and resistance levels. Set a stop loss to limit potential losses, monitor the price movement, and consider entering a trade when the stock breaks out.
+
+[SAM]: Can you give me a real-world example of this strategy in action?
+
+[ALEX]: Sure! Suppose an investor identifies a stock that has been moving between $50 and $55 for a month. They set a stop loss at $48 and wait for the stock to break out above $55. If it does, they can sell at a profit, having limited potential losses.
+
+[SAM]: That's pretty cool! So, finding stocks in a tight range is like finding a coiled spring in the market, ready to unleash potential energy.
+
+[ALEX]: Absolutely! By understanding this strategy, you're one step closer to mastering the art of trading and achieving financial success.
+
+Key Takeaway: Finding stocks in a tight range can offer low-risk, high-reward opportunities by setting a small stop loss and waiting for a potential breakout. By identifying these stocks and analyzing their charts, you can make informed trading decisions and enhance your overall trading strategy.

@@ -190,6 +190,20 @@ function simpleParseFrontmatter(raw: string): Record<string, string> {
   return result;
 }
 
+/** Truncate at the end of the last complete sentence within maxLen chars.
+ *  Falls back to last word boundary, then hard truncate. */
+function smartTruncate(text: string, maxLen = 160): string {
+  if (!text || text.length <= maxLen) return text;
+  const sub = text.slice(0, maxLen + 1);
+  // Try sentence boundary (.  !  ?)
+  const sentEnd = Math.max(sub.lastIndexOf(". "), sub.lastIndexOf("! "), sub.lastIndexOf("? "));
+  if (sentEnd > maxLen * 0.4) return text.slice(0, sentEnd + 1).trim();
+  // Fall back to word boundary
+  const wordEnd = sub.lastIndexOf(" ");
+  if (wordEnd > 0) return text.slice(0, wordEnd).trim() + "…";
+  return text.slice(0, maxLen).trim() + "…";
+}
+
 function extractionTypeToLabel(t: string): string {
   if (t === "x_article")  return "Article";
   if (t === "x_video")    return "Video";
@@ -242,7 +256,7 @@ export function getKbSources(limit = 10): { sources: KbSource[]; total: number }
 
     return {
       id: tweetId,
-      title: title.slice(0, 80),
+      title: smartTruncate(title),
       author,
       type: extractionTypeToLabel(extractionType),
       status,
@@ -370,7 +384,7 @@ export function getKbPipeline(stats: KbStats): KbPipelineStep[] {
     },
     {
       step:   "Generate courses",
-      meta:   `${course_generated} / ${total} courses generated`,
+      meta:   `${course_generated} / ${total} sources processed → ${totalCourses} courses`,
       status: course_generated >= total ? "done" : course_generated > 0 ? "next" : classifiedTotal > 0 ? "next" : "queued",
       n:      "4",
     },

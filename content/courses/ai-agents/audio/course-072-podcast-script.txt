@@ -1,0 +1,41 @@
+[ALEX]: Most people treat LLMs as fancy autocomplete tools, but the real shift is that we've moved from Software 1.0, where we wrote explicit logic, to Software 3.0, where the prompt itself is the program.
+
+[SAM]: If the prompt is the program, does that mean the "code" is just English? That seems too imprecise to be considered actual programming compared to something like C++ or Python.
+
+[ALEX]: It is imprecise, which is exactly why we have to understand the transition. In Software 1.0, you wrote every if/else statement manually. If you wanted a sentiment analyzer, you’d search for keywords like "excellent" or "terrible." It's predictable, but it breaks the moment a user uses sarcasm or a word you didn't anticipate.
+
+[SAM]: So Software 1.0 is brittle. But we had Machine Learning before LLMs. Where does that fit in?
+
+[ALEX]: That’s Software 2.0. In that paradigm, we stopped writing the rules and started optimizing weights. Instead of telling a computer "look for pointy ears to find a cat," you fed a neural network ten thousand cat photos and let an optimizer adjust the parameters until the model recognized the pattern. The "code" became a massive matrix of numbers—weights—rather than a list of instructions.
+
+[SAM]: If Software 2.0 is just weights and Software 3.0 is prompts, what’s the actual functional difference when you're building an application?
+
+[ALEX]: The difference is the barrier to entry and the speed of iteration. In 2.0, you needed a massive dataset and huge compute power to train a model from scratch. In 3.0, the model is already trained; you are orchestrating its existing knowledge using natural language. You aren't training a new brain; you're giving a pre-existing brain a set of instructions on how to behave.
+
+[SAM]: That sounds like we've just traded technical debt for "prompt debt." If the model updates or the provider changes the weights, your "program" might suddenly stop working because the prompt that worked yesterday doesn't work today.
+
+[ALEX]: That's the volatility Andrej Karpathy talks about. We're in a period where AI advice becomes obsolete every six months because the underlying "operating system"—the LLM—is evolving so fast. This is why we're moving toward AI Agents. An agent isn't just a prompt; it's a system that can use tools, browse the web, and execute code to verify its own work.
+
+[SAM]: How does an agent actually "use a tool" if it's just a text predictor? It can't physically click a button or open a database.
+
+[ALEX]: It uses a loop. The LLM generates a specific string of text—say, a JSON command like `{"action": "search_database", "query": "Q3 revenue"}`. A separate piece of Software 1.0 code sees that string, executes the actual database query, and feeds the result back into the LLM's context window. The LLM then reads that data and decides the next step.
+
+[SAM]: So the agent is actually a hybrid. It's a Software 3.0 brain directing a Software 1.0 body to do the heavy lifting.
+
+[ALEX]: Exactly. The LLM acts as the reasoning engine or the "CPU," while the external tools are the peripherals. The real challenge now is the "LLM Operating System" layer—how we manage memory, handle long-term state, and ensure the agent doesn't get stuck in an infinite loop of hallucinating its own tool calls.
+
+[SAM]: If we are treating the LLM as an OS, what happens to the traditional developer? Do we stop writing Python and just become "prompt engineers"?
+
+[ALEX]: Not at all. The role shifts toward architecture. You still need Software 1.0 to build the guardrails and the API integrations. The skill is knowing which paradigm to use for which task. You wouldn't use an LLM to calculate a complex mathematical formula because it's probabilistic; you'd have the LLM write a Python script to do the math and then execute that script.
+
+[SAM]: That sounds like a tradeoff between reliability and flexibility. You use 1.0 for the "must-be-right" logic and 3.0 for the "needs-to-be-flexible" reasoning.
+
+[ALEX]: Precisely. The danger is trying to force an LLM to be a deterministic calculator. When you try to make Software 3.0 act like Software 1.0, you get hallucinations. The goal is to use the LLM to orchestrate the deterministic tools.
+
+[SAM]: What about the "GitHub of Software 2.0" mentioned in the course? If the code is just weights, how do you even version control that?
+
+[ALEX]: That's where platforms like Hugging Face come in. Instead of versioning lines of code, they version model weights and configurations. You aren't tracking a change in a function; you're tracking a change in the model's behavior after a specific fine-tuning session.
+
+[SAM]: It feels like we're moving away from "programming" as a precise science and toward "steering" as a behavioral science.
+
+[ALEX]: That's the most accurate way to put it. We've moved from writing the recipe to managing the chef. The "code" is now the set of constraints and goals you give the model, and the "execution" is the model's ability to reason through the steps to reach that goal.

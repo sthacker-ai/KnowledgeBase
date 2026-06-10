@@ -39,6 +39,7 @@ export default function GraphPage() {
         <p className="nav-section-label">Menu</p>
         <Link href="/"           className="kb-nav-link"><span className="kb-nav-icon" />Overview</Link>
         <Link href="/sources"    className="kb-nav-link"><span className="kb-nav-icon" />Source Inbox</Link>
+        <Link href="/filtered"   className="kb-nav-link"><span className="kb-nav-icon" />Filtered Tweets</Link>
         <Link href="/courseware" className="kb-nav-link"><span className="kb-nav-icon" />Courseware</Link>
         <Link href="/wiki"       className="kb-nav-link"><span className="kb-nav-icon" />Wiki Notes</Link>
         <Link href="/graph"      className="kb-nav-link active" aria-current="page"><span className="kb-nav-icon" />Knowledge Graph</Link>

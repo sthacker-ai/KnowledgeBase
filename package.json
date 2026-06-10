@@ -23,6 +23,7 @@
     "pipeline:run:from": "node scripts/run-pipeline.js --from",
     "transcripts:extract": "node scripts/extract-transcripts.js",
     "transcripts:extract:limit": "node scripts/extract-transcripts.js --limit",
+    "transcripts:backfill": "node scripts/backfill-transcripts.js",
     "import:youtube": "node scripts/import-youtube.js --url",
     "transcripts:reprocess": "node scripts/extract-transcripts.js --reprocess",
     "setup:transcribe": "pip install yt-dlp faster-whisper",

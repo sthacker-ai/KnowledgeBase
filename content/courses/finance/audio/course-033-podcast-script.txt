@@ -1,0 +1,37 @@
+[ALEX]: Most traders waste hours scrolling through charts manually, but the real edge comes from automating the discovery process using Pine Script to filter for "strong stocks" before they even hit the mainstream radar.
+
+[SAM]: When you say "strong stocks," that sounds subjective. Are we talking about a company with a great balance sheet, or just a stock price that happens to be moving up right now?
+
+[ALEX]: It has to be both. A truly robust scan combines fundamental health—like consistent revenue and earnings growth—with technical confirmation, such as the stock trading above specific moving averages or showing high relative strength compared to the broader index.
+
+[SAM]: If we're mixing fundamentals and technicals, how does that actually work in TradingView? I thought Pine Script was mostly for drawing lines and indicators on a chart, not for analyzing earnings reports.
+
+[ALEX]: That's a common misconception. Pine Script allows you to call financial metrics directly into your code. You can write a script that says "only show me stocks where the quarterly revenue growth is positive AND the price is currently above the 200-day moving average." It turns the platform from a charting tool into a systematic filter.
+
+[SAM]: So the first step is just writing the code, or is there a prerequisite? You can't just scan every single company in existence without the system crashing.
+
+[ALEX]: Exactly. You have to define your "universe" first. If you scan every single ticker globally, you'll get too much noise. You narrow it down to a specific sector, a broad index like the S&P 500, or a custom watchlist of 200 high-quality names. This ensures the scan is efficient and the results are relevant.
+
+[SAM]: Once the universe is set and the script is written, how do you know if the criteria are actually effective? A scan that returns 500 stocks is useless, but one that returns zero is also a failure.
+
+[ALEX]: That's where backtesting comes in. You apply your scan to historical data to see if the stocks it flagged in the past actually went on to perform well. If the scan identifies "strong" stocks that immediately crashed, your criteria are likely too loose or lagging.
+
+[SAM]: That sounds like a recipe for overfitting. If you keep tweaking the parameters until the historical data looks perfect, aren't you just gaming the past rather than predicting the future?
+
+[ALEX]: That is the biggest pitfall in scanning. If you make your criteria too specific—say, requiring exactly 12.5% growth and a very specific RSI level—you're just curve-fitting. The goal is to find a general profile of strength that repeats across different market cycles, not a perfect formula for one specific month in 2022.
+
+[SAM]: Let's talk about the practical side. Once the scan is running and it flags a stock, do I have to keep the screen open all day to catch the move?
+
+[ALEX]: No, and that's the most powerful part of the workflow. You set up alerts based on the script. Instead of staring at a monitor, you get a notification the moment a stock in your universe crosses the threshold of your "strength" criteria.
+
+[SAM]: What happens when the market regime changes? A scan that works in a bull market where everything is rising might just flag every single stock as "strong" during a rally.
+
+[ALEX]: That's why you have to regularly update your parameters. In a bear market, your definition of "strong" might shift from "aggressive growth" to "relative strength," meaning the stock is simply holding its value while everything else is dropping.
+
+[SAM]: So the workflow is: define the universe, code the fundamental and technical filters in Pine Script, backtest to avoid overfitting, and then automate the output via alerts.
+
+[ALEX]: Precisely. It transforms the process from an emotional search for "good-looking charts" into a disciplined, repeatable system for identifying high-probability setups.
+
+[SAM]: I'm still skeptical about the "false positives." How do you distinguish between a stock that is truly strong and one that's just experiencing a temporary spike due to a one-time news event?
+
+[ALEX]: That's why the scan is a filter, not a buy signal. The scan identifies the candidates, but the final decision still requires a manual chart review to check for things like volume patterns or overhead resistance that a script might miss. The scan does the heavy lifting of narrowing 5,000 stocks down to ten.

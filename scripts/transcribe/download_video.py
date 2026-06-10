@@ -32,11 +32,19 @@ def main():
     # Ensure output directory exists
     os.makedirs(os.path.dirname(output_base) or ".", exist_ok=True)
 
-    # yt-dlp command: prefer audio-only (smaller, faster), fallback to best
+    # yt-dlp command: download best audio and convert to mp3 at 32kbps
+    # 32kbps keeps files small: a 104-min video ≈ 24 MB — safely under Groq's 25 MB limit
+    # --socket-timeout 30  : fail fast on stalled HLS segments instead of hanging
+    # --retries 3          : retry stalled segments before giving up
     cmd = [
         "yt-dlp",
         "--no-playlist",
         "--format", "bestaudio/best",
+        "--extract-audio",
+        "--audio-format", "mp3",
+        "--audio-quality", "32K",
+        "--socket-timeout", "30",
+        "--retries", "3",
         "--output", f"{output_base}.%(ext)s",
         "--quiet",
         "--print", "after_move:filepath",  # prints final path after download
@@ -44,9 +52,9 @@ def main():
     ]
 
     try:
-        result = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
+        result = subprocess.run(cmd, capture_output=True, text=True, timeout=900)  # 15 min
     except subprocess.TimeoutExpired:
-        print(f"[download] ERROR: yt-dlp timed out after 5 min", file=sys.stderr)
+        print(f"[download] ERROR: yt-dlp timed out after 15 min", file=sys.stderr)
         sys.exit(1)
     except FileNotFoundError:
         print("[download] ERROR: yt-dlp not found. Install with: pip install yt-dlp", file=sys.stderr)

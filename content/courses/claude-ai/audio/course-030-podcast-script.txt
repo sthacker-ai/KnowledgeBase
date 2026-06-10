@@ -1,0 +1,41 @@
+[ALEX]: Most people are treating Claude like a fancy search engine by sticking to the Chat interface, but that's actually the least efficient way to use the tool for product management.
+
+[SAM]: If Chat is just for simple questions and drafting emails, what's the actual tipping point where you move to a different interface?
+
+[ALEX]: The moment you need to manipulate real files on your desktop or run a multi-step workflow, you move to Co-Work. Unlike Chat, Co-Work runs in a virtual machine, meaning it can reorganize your folders, build HTML infographics, and spawn sub-agents to handle parallel tasks.
+
+[SAM]: Spawning sub-agents sounds like a lot of overhead. How does that actually look in a product manager's day-to-day?
+
+[ALEX]: Imagine you're planning a quarterly roadmap. Instead of you manually summarizing five different documents and then drafting a plan, Co-Work can spawn one agent to analyze the user feedback, another to check the technical constraints, and a third to synthesize those into a roadmap—all while updating a knowledge database in the background.
+
+[SAM]: That handles the organization, but what about the technical side? There's a "Code" interface mentioned that seems even more aggressive than Co-Work.
+
+[ALEX]: Code is for when you need to execute system commands directly on your laptop. While Co-Work is for knowledge work and file organization, Code is for interacting with your actual codebase, debugging, or designing front-end elements. It’s the difference between organizing a project and actually building the prototype.
+
+[SAM]: So we have three different interfaces, but how does the AI actually know how to perform these specialized tasks? It can't just "know" how to interact with every single piece of software.
+
+[ALEX]: That’s where Skills and MCP Connectors come in. Skills are pre-built capabilities for specific tasks, and MCP Connectors act as the bridge to external systems and services. If you need Claude to pull data from a specific CRM or a proprietary database, you use a Connector to give it that access.
+
+[SAM]: Where do these connectors come from? Do I have to write the integration code myself?
+
+[ALEX]: No, you get them from the Skills Marketplace. It's essentially a library where you can find and install the specific capabilities you need, then call them directly from whichever interface you're using.
+
+[SAM]: This sounds like a powerful toolkit, but for a PM, the hardest part isn't the tool—it's the strategy. How does this setup help with the actual planning process?
+
+[ALEX]: That's the purpose of the Strategy Canvas. It’s not just a static document; it’s a visualization tool designed to create a self-improving system. Every time you execute a task through the canvas, the system learns from the outcome, meaning the process gets more refined and efficient the more you use it.
+
+[SAM]: A "self-improving system" sounds a bit vague. Give me a concrete example of how a Strategy Canvas improves over time.
+
+[ALEX]: If you use the canvas to map out a feature launch, the first time it might just be a basic checklist. But as you feed it the results of the launch—what failed, what the users said, what the bottlenecks were—the canvas updates the logic. The next time you plan a launch, it automatically incorporates those lessons into the workflow.
+
+[SAM]: So the tradeoff is basically between speed and power. Chat is fast for quick answers, Co-Work is for complex knowledge management, and Code is for technical execution.
+
+[ALEX]: Exactly. The mistake is trying to force a complex workflow into a Chat window. You end up spending more time copying and pasting text back and forth than actually doing the work.
+
+[SAM]: If I'm starting from scratch, should I be focusing on the Marketplace first to see what's possible, or should I start with the Strategy Canvas to define the workflow?
+
+[ALEX]: Start with the Strategy Canvas to define the "what" and the "why." Once you have the strategy mapped out, you'll realize exactly which Skills and MCP Connectors you need to install from the Marketplace to automate the "how."
+
+[SAM]: It sounds like the real value isn't the AI's ability to write text, but its ability to act as an orchestrator across different environments.
+
+[ALEX]: That's the shift. You stop being the person doing the manual labor and start being the architect who manages the agents and connectors to execute the strategy.

@@ -1,0 +1,37 @@
+[ALEX]: A developer recently pushed a local AI setup to its absolute limit by spinning up 64 agents in parallel, and the system ran for eight hours straight without once asking for permission.
+
+[SAM]: Sixty-four agents is a massive amount of overhead. Was this running on a server farm, or is this something a standard developer machine can actually handle?
+
+[ALEX]: It was local. The key is that they weren't using a cloud API where you'd be bankrupt in an hour; they used a combination of Llama.cpp and quantized GGUF models. By using quantization, you compress the model's weights, which reduces the memory footprint enough to allow multiple instances or parallel requests to run on local hardware without crashing the system.
+
+[SAM]: If it's all local, how do you manage the actual work? If 64 agents are all editing the same files at once, you'd end up with a corrupted codebase and a thousand merge conflicts.
+
+[ALEX]: That's where git worktrees come in. Instead of one working directory, the system creates 64 separate worktrees. Each agent gets its own isolated environment to experiment, refactor, or bug-fix. They work in parallel on different branches or tasks, and the developer only integrates the successful results. It turns the AI from a single chat interface into a distributed workforce.
+
+[SAM]: You mentioned Llama.cpp. Why go through the trouble of building that from source instead of just using a polished app like LM Studio or Ollama?
+
+[ALEX]: Because the "user-friendly" interfaces often lag behind the raw library. Llama.cpp is the engine that powers those apps, but building it from source gives you direct control over the server parameters. You can fine-tune GPU offloading, context size, and specifically the number of parallel requests. If you want to push for 64 agents, you need that granular control over batch sizes and attention settings that a GUI usually hides from you.
+
+[SAM]: I'm curious about the model choice. You mentioned Qwen 3.6 worked, but Gemma 4 refused the task. Why would one model just start working while another refuses a direct command?
+
+[ALEX]: It comes down to the system prompts and the safety alignment of the model. Some models have strict guardrails that trigger when they perceive a request as "too complex" or potentially risky, like executing mass shell commands. Qwen 3.6 was more compliant with the agentic nature of the task, whereas Gemma 4's alignment likely flagged the request as an anomaly or a violation of its operational boundaries.
+
+[SAM]: So the model is the brain, but it still needs a way to actually touch the files. How does the AI actually execute the code if it's just a language model?
+
+[ALEX]: That's where a tool like Claude Code comes in. It acts as the agentic command-line interface. Instead of you copying and pasting code from a chat window, Claude Code is pointed at localhost. It sends the natural language command to the local Llama.cpp server, receives the reasoning, and then executes the resulting shell commands directly on the machine.
+
+[SAM]: That sounds like a security nightmare. If you give an AI agent direct access to your terminal and shell, what stops it from running `rm -rf /` or deleting the entire project?
+
+[ALEX]: That is the primary tradeoff of agentic coding. You are trading total control for extreme velocity. To mitigate this, the use of git worktrees is critical because the AI is operating in a disposable environment. If an agent destroys its worktree, you just delete that directory and restart the agent. You aren't risking your primary source of truth.
+
+[SAM]: Let's talk about the hardware requirements. Even with quantization, 64 agents sounds like it would choke any GPU. Are they all sharing one VRAM pool, or is there some other trick?
+
+[ALEX]: They share the VRAM, but they aren't all "thinking" at the exact same millisecond. Llama.cpp handles the parallel requests by batching them. The GPU processes the tokens in batches, and the server manages the queue. The "parallelism" is more about the agents' ability to maintain 64 different states of reasoning and worktrees simultaneously, rather than 64 separate GPUs running in tandem.
+
+[SAM]: If I wanted to set this up, what's the actual sequence? I assume it's more than just downloading a model.
+
+[ALEX]: First, you pull the model—like Qwen 3.6—from Hugging Face in GGUF format. Then you build Llama.cpp from source to ensure you have the latest optimizations. You launch the server with specific parameters for GPU offloading and parallel request limits. Finally, you configure your agentic CLI, like Claude Code, to point its API calls to your local server's port instead of a remote cloud endpoint.
+
+[SAM]: So the end result is that you can describe a massive refactor in natural language, and instead of doing it yourself, you have 64 "employees" tackling different files simultaneously?
+
+[ALEX]: Exactly. You move from being a coder to being a project manager. You provide the high-level objective, the agents execute the labor in isolated worktrees, and you spend your time reviewing the diffs and merging the winners. It shifts the bottleneck from "how fast can I write this" to "how well can I verify this."

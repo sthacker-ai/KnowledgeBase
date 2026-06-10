@@ -15,22 +15,26 @@ interface TokenEntry {
   prompt_tokens:     number;
   completion_tokens: number;
   total_tokens:      number;
+  audio_seconds?:    number;
+  word_count?:       number;
 }
 
 function buildResponse(entries: TokenEntry[]) {
   const byModel: Record<string, {
     model: string; provider: string; calls: number;
     prompt_tokens: number; completion_tokens: number; total_tokens: number;
+    audio_seconds: number;
   }> = {};
 
   for (const e of entries) {
     if (!byModel[e.model]) {
-      byModel[e.model] = { model: e.model, provider: e.provider, calls: 0, prompt_tokens: 0, completion_tokens: 0, total_tokens: 0 };
+      byModel[e.model] = { model: e.model, provider: e.provider, calls: 0, prompt_tokens: 0, completion_tokens: 0, total_tokens: 0, audio_seconds: 0 };
     }
     byModel[e.model].calls++;
     byModel[e.model].prompt_tokens     += e.prompt_tokens     || 0;
     byModel[e.model].completion_tokens += e.completion_tokens || 0;
     byModel[e.model].total_tokens      += e.total_tokens      || 0;
+    byModel[e.model].audio_seconds     += e.audio_seconds     || 0;
   }
 
   const totals = {
@@ -38,10 +42,11 @@ function buildResponse(entries: TokenEntry[]) {
     prompt_tokens:     entries.reduce((s, e) => s + (e.prompt_tokens || 0), 0),
     completion_tokens: entries.reduce((s, e) => s + (e.completion_tokens || 0), 0),
     total_tokens:      entries.reduce((s, e) => s + (e.total_tokens || 0), 0),
+    audio_seconds:     entries.reduce((s, e) => s + (e.audio_seconds  || 0), 0),
   };
 
   return {
-    byModel:       Object.values(byModel).sort((a, b) => b.total_tokens - a.total_tokens),
+    byModel:       Object.values(byModel).sort((a, b) => (b.total_tokens + b.audio_seconds) - (a.total_tokens + a.audio_seconds)),
     totals,
     recentEntries: entries.slice(0, 30),
   };

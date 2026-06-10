@@ -33,17 +33,20 @@ export default async function TopicPage({ params }: Props) {
     const raw = fs.readFileSync(path.join(dir, f), "utf8");
     let title = f;
     let readingTimeMin = 5;
+    let generatedAt: string | undefined;
     try {
       const parsed = matter(raw);
       title = (parsed.data.title as string) || title;
       const words = parsed.content.trim().split(/\s+/).length;
       readingTimeMin = Math.max(1, Math.round(words / 200));
+      generatedAt = (parsed.data.generated_at as string) || undefined;
     } catch { /* ignore */ }
     return {
       slug: f.replace(".md", ""),
       title,
       num: f.replace("course-", "").replace(".md", ""),
       readingTimeMin,
+      generatedAt,
     };
   });
 
@@ -87,6 +90,7 @@ export default async function TopicPage({ params }: Props) {
         <p className="nav-section-label">Menu</p>
         <Link href="/"            className="kb-nav-link"><span className="kb-nav-icon" />Overview</Link>
         <Link href="/sources"     className="kb-nav-link"><span className="kb-nav-icon" />Source Inbox</Link>
+        <Link href="/filtered"    className="kb-nav-link"><span className="kb-nav-icon" />Filtered Tweets</Link>
         <Link href="/courseware"  className="kb-nav-link active" aria-current="page"><span className="kb-nav-icon" />Courseware</Link>
         <Link href="/wiki"        className="kb-nav-link"><span className="kb-nav-icon" />Wiki Notes</Link>
         <Link href="/graph"       className="kb-nav-link"><span className="kb-nav-icon" />Knowledge Graph</Link>

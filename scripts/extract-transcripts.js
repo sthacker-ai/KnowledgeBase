@@ -68,10 +68,14 @@ const CLI_REPROCESS = process.argv.includes("--reprocess");
 function sleep(ms) { return new Promise((r) => setTimeout(r, ms)); }
 
 function runPython(scriptPath, args, label) {
+  // Pass full env so GROQ_API_KEY (loaded from .env) reaches the Python child
+  const childEnv = { ...process.env };
+
   const result = spawnSync(PYTHON, [scriptPath, ...args], {
     encoding: "utf8",
     maxBuffer: 10 * 1024 * 1024,
     timeout:   30 * 60 * 1000, // 30 min max per video
+    env:       childEnv,
   });
 
   // Always echo stdout/stderr for visibility

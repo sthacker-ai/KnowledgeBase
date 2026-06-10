@@ -8,6 +8,7 @@ interface TokenRow {
   prompt_tokens:     number;
   completion_tokens: number;
   total_tokens:      number;
+  audio_seconds?:    number;
 }
 
 interface RecentEntry {
@@ -18,6 +19,8 @@ interface RecentEntry {
   prompt_tokens:     number;
   completion_tokens: number;
   total_tokens:      number;
+  audio_seconds?:    number;
+  word_count?:       number;
 }
 
 type ModelSortKey  = "model" | "provider" | "calls" | "prompt_tokens" | "completion_tokens" | "total_tokens";
@@ -136,9 +139,15 @@ export default function TokensClient({
                   <td style={{ padding: "10px 16px", fontFamily: "ui-monospace, monospace", fontSize: "0.78rem" }}>{row.model}</td>
                   <td style={{ padding: "10px 12px", color: "var(--muted)" }}>{row.provider}</td>
                   <td style={{ padding: "10px 12px", textAlign: "right" }}>{row.calls}</td>
-                  <td style={{ padding: "10px 12px", textAlign: "right", color: "var(--muted)" }}>{fmtNum(row.prompt_tokens)}</td>
-                  <td style={{ padding: "10px 12px", textAlign: "right", color: "var(--muted)" }}>{fmtNum(row.completion_tokens)}</td>
-                  <td style={{ padding: "10px 12px", textAlign: "right", fontWeight: 600 }}>{fmtNum(row.total_tokens)}</td>
+                  <td style={{ padding: "10px 12px", textAlign: "right", color: "var(--muted)" }}>
+                    {row.provider === "Groq" ? `${Math.round((row.audio_seconds || 0) / 60)}m audio` : fmtNum(row.prompt_tokens)}
+                  </td>
+                  <td style={{ padding: "10px 12px", textAlign: "right", color: "var(--muted)" }}>
+                    {row.provider === "Groq" ? "—" : fmtNum(row.completion_tokens)}
+                  </td>
+                  <td style={{ padding: "10px 12px", textAlign: "right", fontWeight: 600 }}>
+                    {row.provider === "Groq" ? `${Math.round((row.audio_seconds || 0) / 60)}m` : fmtNum(row.total_tokens)}
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -169,9 +178,15 @@ export default function TokensClient({
                   <td style={{ padding: "5px 16px", fontSize: "0.72rem", color: "var(--muted)", whiteSpace: "nowrap" }}>{fmtDate(e.ts)}</td>
                   <td style={{ padding: "5px 12px", fontFamily: "ui-monospace, monospace", color: "var(--muted)", maxWidth: "180px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{e.label}</td>
                   <td style={{ padding: "5px 12px", fontFamily: "ui-monospace, monospace", fontSize: "0.72rem" }}>{e.model.split("/").pop()}</td>
-                  <td style={{ padding: "5px 12px", textAlign: "right", color: "var(--muted)" }}>{fmtNum(e.prompt_tokens)}</td>
-                  <td style={{ padding: "5px 12px", textAlign: "right", color: "var(--muted)" }}>{fmtNum(e.completion_tokens)}</td>
-                  <td style={{ padding: "5px 12px", textAlign: "right" }}>{fmtNum(e.total_tokens)}</td>
+                  <td style={{ padding: "5px 12px", textAlign: "right", color: "var(--muted)" }}>
+                    {e.provider === "Groq" ? `${Math.round((e.audio_seconds || 0))}s` : fmtNum(e.prompt_tokens)}
+                  </td>
+                  <td style={{ padding: "5px 12px", textAlign: "right", color: "var(--muted)" }}>
+                    {e.provider === "Groq" ? `${e.word_count || 0}w` : fmtNum(e.completion_tokens)}
+                  </td>
+                  <td style={{ padding: "5px 12px", textAlign: "right" }}>
+                    {e.provider === "Groq" ? `${Math.round((e.audio_seconds || 0))}s` : fmtNum(e.total_tokens)}
+                  </td>
                 </tr>
               ))}
             </tbody>

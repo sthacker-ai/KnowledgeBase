@@ -20,7 +20,18 @@ interface Run {
   steps:        RunStep[];
 }
 
-const STEP_ORDER = ["Import X Likes", "Extract Sources", "Classify Topics", "Compile Courses", "Summarize Topics", "Build Graph"];
+const STEP_LABEL_SHORTEN: Record<string, string> = {
+  "Import X Likes":    "Import",
+  "Source extraction": "Extract",
+  "Video transcripts": "Transcripts",
+  "AI classification": "Classify",
+  "Course generation": "Courses",
+  "Topic summaries":   "Summaries",
+  "Graph build":       "Graph",
+  "Hero images":       "Images",
+  "Podcasts":          "Podcasts",
+  "Obsidian vault export": "Obsidian",
+};
 
 function fmtDuration(secs: number | null) {
   if (!secs) return "—";
@@ -51,7 +62,7 @@ function StepChip({ step }: { step: RunStep }) {
   const bg      = ok ? "#dcfce7" : failed ? "#fee2e2" : "#f3f4f6";
   const color   = ok ? "#15803d" : failed ? "#dc2626" : "#6b7280";
   const prefix  = ok ? "✓" : failed ? "✗" : "—";
-  const short   = step.name.split(" ")[0]; // "Import", "Extract", etc.
+  const short   = STEP_LABEL_SHORTEN[step.name] || step.name.split(" ")[0];
   return (
     <span
       title={step.error ? `${step.name}: ${step.error}` : step.name}
@@ -133,31 +144,18 @@ export default function RunsClient({ initialRuns }: { initialRuns: Run[] }) {
                         </tr>
                       </thead>
                       <tbody>
-                        {STEP_ORDER.map((name) => {
-                          const step = run.steps.find((s) => s.name === name);
-                          if (!step) {
-                            return (
-                              <tr key={name}>
-                                <td style={{ padding: "4px 10px", color: "var(--muted)" }}>{name}</td>
-                                <td style={{ padding: "4px 10px" }}><StatusBadge status="unknown" /></td>
-                                <td style={{ padding: "4px 10px", color: "var(--muted)" }}>—</td>
-                                <td style={{ padding: "4px 10px" }}></td>
-                              </tr>
-                            );
-                          }
-                          return (
-                            <tr key={name} style={{ borderTop: "1px solid var(--border, #f3f4f6)" }}>
-                              <td style={{ padding: "4px 10px" }}>{name}</td>
-                              <td style={{ padding: "4px 10px" }}><StatusBadge status={step.status} /></td>
-                              <td style={{ padding: "4px 10px", fontFamily: "ui-monospace, monospace", color: "var(--muted)" }}>
-                                {fmtDuration(step.duration_secs)}
-                              </td>
-                              <td style={{ padding: "4px 10px", color: "#dc2626", fontSize: "0.75rem" }}>
-                                {step.error || ""}
-                              </td>
-                            </tr>
-                          );
-                        })}
+                        {run.steps.map((step) => (
+                          <tr key={step.name} style={{ borderTop: "1px solid var(--border, #f3f4f6)" }}>
+                            <td style={{ padding: "4px 10px" }}>{step.name}</td>
+                            <td style={{ padding: "4px 10px" }}><StatusBadge status={step.status} /></td>
+                            <td style={{ padding: "4px 10px", fontFamily: "ui-monospace, monospace", color: "var(--muted)" }}>
+                              {fmtDuration(step.duration_secs)}
+                            </td>
+                            <td style={{ padding: "4px 10px", color: "#dc2626", fontSize: "0.75rem" }}>
+                              {step.error || ""}
+                            </td>
+                          </tr>
+                        ))}
                       </tbody>
                     </table>
                   </td>

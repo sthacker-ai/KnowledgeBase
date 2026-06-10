@@ -87,11 +87,15 @@ export default function KnowledgeGraph({ data, width = 900, height = 600 }: Prop
 
     // Deep clone nodes/links so D3 can mutate them safely
     const nodes: GraphNode[] = data.nodes.map((n) => ({ ...n }));
-    const links: GraphLink[] = data.links.map((l) => ({
-      source: typeof l.source === "string" ? l.source : (l.source as GraphNode).id,
-      target: typeof l.target === "string" ? l.target : (l.target as GraphNode).id,
-      type: l.type,
-    }));
+    const nodeIds = new Set(nodes.map((n) => n.id));
+    const links: GraphLink[] = data.links
+      .map((l) => ({
+        source: typeof l.source === "string" ? l.source : (l.source as GraphNode).id,
+        target: typeof l.target === "string" ? l.target : (l.target as GraphNode).id,
+        type: l.type,
+      }))
+      // Filter out edges whose endpoints don't exist in the node list
+      .filter((l) => nodeIds.has(l.source as string) && nodeIds.has(l.target as string));
 
     const svg = d3.select(svgRef.current);
     svg.selectAll("*").remove();

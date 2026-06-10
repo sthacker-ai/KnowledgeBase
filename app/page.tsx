@@ -10,8 +10,9 @@ import LearningPanel from "./components/LearningPanel";
 
 const navItems = [
   { label: "Overview",       href: "/",       active: true  },
-  { label: "Source Inbox",  href: "/sources",    active: false },
-  { label: "Courseware",    href: "/courseware", active: false },
+  { label: "Source Inbox",    href: "/sources",   active: false },
+  { label: "Filtered Tweets", href: "/filtered",  active: false },
+  { label: "Courseware",      href: "/courseware", active: false },
   { label: "Wiki Notes",    href: "/wiki",       active: false },
   { label: "Knowledge Graph", href: "/graph",   active: false },
   { label: "Run History",   href: "/runs",       active: false },
@@ -20,7 +21,6 @@ const navItems = [
 
 const bottomNavItems = [
   { label: "Admin",    href: "/admin",   active: false },
-  { label: "Help",     href: "#", active: false },
 ];
 
 function statusSub(breakdown: Record<string, number>): string {
@@ -147,7 +147,7 @@ export default function Home() {
             <span>Source</span>
             <span>Type</span>
             <span>Status</span>
-            <span>Author</span>
+            <span>Imported</span>
           </div>
           {sources.map((s) => (
             <a
@@ -167,7 +167,7 @@ export default function Home() {
                 <span className={`kb-badge ${s.status}`}>{s.status}</span>
               </div>
               <div className="kb-source-author" style={{ fontFamily: "ui-monospace, monospace", fontSize: "0.72rem" }}>
-                {s.author}
+                {s.importedAt ? new Date(s.importedAt).toLocaleDateString("en-GB", { day:"2-digit", month:"short", year:"2-digit" }) : "—"}
               </div>
             </a>
           ))}

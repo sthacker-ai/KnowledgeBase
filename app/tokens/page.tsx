@@ -24,7 +24,7 @@ interface RecentEntry {
 
 interface TokenData {
   byModel:       TokenRow[];
-  totals:        { calls: number; prompt_tokens: number; completion_tokens: number; total_tokens: number };
+  totals:        { calls: number; prompt_tokens: number; completion_tokens: number; total_tokens: number; audio_seconds: number };
   recentEntries: RecentEntry[];
 }
 
@@ -32,10 +32,10 @@ async function getTokenData(): Promise<TokenData> {
   try {
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3005";
     const res = await fetch(`${baseUrl}/api/tokens`, { cache: "no-store" });
-    if (!res.ok) return { byModel: [], totals: { calls: 0, prompt_tokens: 0, completion_tokens: 0, total_tokens: 0 }, recentEntries: [] };
+    if (!res.ok) return { byModel: [], totals: { calls: 0, prompt_tokens: 0, completion_tokens: 0, total_tokens: 0, audio_seconds: 0 }, recentEntries: [] };
     return res.json();
   } catch {
-    return { byModel: [], totals: { calls: 0, prompt_tokens: 0, completion_tokens: 0, total_tokens: 0 }, recentEntries: [] };
+    return { byModel: [], totals: { calls: 0, prompt_tokens: 0, completion_tokens: 0, total_tokens: 0, audio_seconds: 0 }, recentEntries: [] };
   }
 }
 
@@ -62,6 +62,7 @@ export default async function TokensPage() {
         <p className="nav-section-label">Menu</p>
         <Link href="/"           className="kb-nav-link"><span className="kb-nav-icon" />Overview</Link>
         <Link href="/sources"    className="kb-nav-link"><span className="kb-nav-icon" />Source Inbox</Link>
+        <Link href="/filtered"   className="kb-nav-link"><span className="kb-nav-icon" />Filtered Tweets</Link>
         <Link href="/courseware" className="kb-nav-link"><span className="kb-nav-icon" />Courseware</Link>
         <Link href="/wiki"       className="kb-nav-link"><span className="kb-nav-icon" />Wiki Notes</Link>
         <Link href="/graph"      className="kb-nav-link"><span className="kb-nav-icon" />Knowledge Graph</Link>
@@ -84,10 +85,11 @@ export default async function TokensPage() {
         {/* Summary cards */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))", gap: "12px" }}>
           {[
-            { label: "Total Calls",   value: String(totals.calls) },
-            { label: "Input Tokens",  value: fmtNum(totals.prompt_tokens) },
-            { label: "Output Tokens", value: fmtNum(totals.completion_tokens) },
-            { label: "Total Tokens",  value: fmtNum(totals.total_tokens) },
+            { label: "Total Calls",    value: String(totals.calls) },
+            { label: "Input Tokens",   value: fmtNum(totals.prompt_tokens) },
+            { label: "Output Tokens",  value: fmtNum(totals.completion_tokens) },
+            { label: "Total Tokens",   value: fmtNum(totals.total_tokens) },
+            { label: "Audio Transcribed", value: totals.audio_seconds > 0 ? `${Math.round(totals.audio_seconds / 60)}m` : "0m" },
           ].map((s) => (
             <div key={s.label} className="kb-stat-card blue" style={{ padding: "14px 16px" }}>
               <div className="kb-stat-value" style={{ fontSize: "1.4rem" }}>{s.value}</div>
@@ -106,11 +108,14 @@ export default async function TokensPage() {
           <p className="kb-right-sub" style={{ lineHeight: 1.5 }}>
             Token counts are captured from OpenRouter API responses. Ollama (local) usage shows 0 tokens — Ollama does not report token counts.
           </p>
+          <p className="kb-right-sub" style={{ lineHeight: 1.5, marginTop: "10px" }}>
+            Audio transcription via Groq (Whisper) is tracked separately as <strong>audio minutes</strong>. Groq rows in the tables show audio time instead of token counts.
+          </p>
         </div>
         <div style={{ marginTop: "20px" }}>
           <h2 className="kb-right-title">Free Tier Note</h2>
           <p className="kb-right-sub" style={{ lineHeight: 1.5 }}>
-            All models used are on the OpenRouter free tier ($0 cost). Token counts are tracked for rate limit awareness and future planning.
+            All LLM models are on the OpenRouter free tier. Groq Whisper usage is within the free audio transcription allowance. Counts are tracked for rate-limit awareness.
           </p>
         </div>
       </aside>

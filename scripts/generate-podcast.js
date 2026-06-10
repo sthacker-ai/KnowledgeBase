@@ -46,6 +46,14 @@ const SCRIPT_ONLY = argv.includes("--script-only");
 // ── Helpers ──────────────────────────────────────────────────────────────────
 function sleep(ms) { return new Promise((r) => setTimeout(r, ms)); }
 
+// Load prompts from data/prompts.json (editable via Admin UI)
+function loadPrompts() {
+  const promptsPath = path.join(ROOT, "data", "prompts.json");
+  try {
+    return JSON.parse(fs.readFileSync(promptsPath, "utf8"));
+  } catch { return {}; }
+}
+
 function parseFrontmatter(raw) {
   const out = {};
   const lines = raw.split("\n");
@@ -90,7 +98,8 @@ function extractDialogue(raw) {
 }
 
 async function generateScript(title, topicLabel, content) {
-  const system = `You are a scriptwriter for "KnowledgeBase Daily", an educational podcast.
+  const prompts = loadPrompts();
+  const system = prompts.podcast_system || `You are a scriptwriter for "KnowledgeBase Daily", an educational podcast.
 Create a sharp, useful 2-host study dialogue between ALEX (the explainer) and SAM (the curious questioner).
 
 Format — alternate lines, always starting with [ALEX]:

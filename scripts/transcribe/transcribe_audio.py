@@ -31,10 +31,54 @@ Install dependencies:
 
 import sys
 import os
+import json
+import datetime
+
+
+def log_groq_usage(audio_path: str, word_count: int) -> None:
+    """Append a Groq transcription usage entry to data/token-usage.json."""
+    try:
+        # Estimate audio duration from file size @ 32kbps mp3
+        size_bytes = os.path.getsize(audio_path)
+        audio_secs = round(size_bytes / (32 * 1024 / 8), 1)  # 32kbps = 4000 bytes/sec
+
+        # Find data/ relative to this script (scripts/transcribe/ -> ../../data/)
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        usage_path = os.path.join(script_dir, "..", "..", "data", "token-usage.json")
+        usage_path = os.path.normpath(usage_path)
+
+        entry = {
+            "ts":               datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.000Z"),
+            "label":            f"transcribe-{os.path.splitext(os.path.basename(audio_path))[0]}",
+            "model":            "whisper-large-v3-turbo",
+            "provider":         "Groq",
+            "audio_seconds":    audio_secs,
+            "word_count":       word_count,
+            "prompt_tokens":    0,
+            "completion_tokens": 0,
+            "total_tokens":     0,
+        }
+
+        existing = []
+        if os.path.exists(usage_path):
+            with open(usage_path, "r", encoding="utf-8") as f:
+                try:
+                    existing = json.load(f)
+                except Exception:
+                    existing = []
+
+        existing.append(entry)
+        with open(usage_path, "w", encoding="utf-8") as f:
+            json.dump(existing, f, indent=2)
+    except Exception as e:
+        print(f"[transcribe] Warning: could not log Groq usage: {e}", flush=True)
 
 
 def transcribe_with_groq(audio_path: str) -> str:
-    """Transcribe using Groq API. Returns transcript text or raises on failure."""
+    """Transcribe using Groq API. Returns transcript text or raises on failure.
+    If the file exceeds Groq's 25 MB limit, splits into 20-min chunks with ffmpeg
+    and transcribes each chunk, then concatenates the results.
+    """
     try:
         from groq import Groq
     except ImportError:
@@ -45,22 +89,79 @@ def transcribe_with_groq(audio_path: str) -> str:
         raise RuntimeError("GROQ_API_KEY not set")
 
     client = Groq(api_key=api_key)
-    print(f"[transcribe] Using Groq API (whisper-large-v3-turbo)…", flush=True)
 
-    # Groq has a 25 MB file size limit; check before uploading
     size_mb = os.path.getsize(audio_path) / (1024 * 1024)
-    if size_mb > 25:
-        raise RuntimeError(f"File too large for Groq API ({size_mb:.1f} MB > 25 MB limit); falling back to local")
 
-    with open(audio_path, "rb") as f:
-        response = client.audio.transcriptions.create(
-            model="whisper-large-v3-turbo",
-            file=f,
-            response_format="text",
-        )
+    if size_mb <= 24:
+        # Fast path: single upload
+        print(f"[transcribe] Using Groq API (whisper-large-v3-turbo) [{size_mb:.1f} MB]…", flush=True)
+        with open(audio_path, "rb") as f:
+            response = client.audio.transcriptions.create(
+                model="whisper-large-v3-turbo",
+                file=f,
+                response_format="text",
+            )
+        return str(response).strip()
 
-    # response is a plain string when response_format="text"
-    return str(response).strip()
+    # File is too large — split into chunks and transcribe each one
+    print(f"[transcribe] File is {size_mb:.1f} MB — splitting into 20-min chunks for Groq…", flush=True)
+
+    import subprocess
+    import tempfile
+
+    # Check ffmpeg is available
+    try:
+        subprocess.run(["ffmpeg", "-version"], capture_output=True, check=True)
+    except (FileNotFoundError, subprocess.CalledProcessError):
+        raise RuntimeError("ffmpeg not found in PATH — required for chunked transcription")
+
+    chunk_dir = tempfile.mkdtemp(prefix="groq_chunks_")
+    chunk_pattern = os.path.join(chunk_dir, "chunk_%03d.mp3")
+    # Split at 20-minute boundaries (-c copy = no re-encode, fast)
+    split_cmd = [
+        "ffmpeg", "-i", audio_path,
+        "-f", "segment", "-segment_time", "1200",  # 1200 seconds = 20 min
+        "-c", "copy",
+        chunk_pattern,
+        "-y",
+    ]
+    result = subprocess.run(split_cmd, capture_output=True, text=True)
+    if result.returncode != 0:
+        # Clean up on ffmpeg error
+        import shutil
+        shutil.rmtree(chunk_dir, ignore_errors=True)
+        raise RuntimeError(f"ffmpeg split failed: {result.stderr[:300]}")
+
+    chunk_files = sorted([
+        os.path.join(chunk_dir, f)
+        for f in os.listdir(chunk_dir)
+        if f.startswith("chunk_") and f.endswith(".mp3")
+    ])
+
+    if not chunk_files:
+        import shutil
+        shutil.rmtree(chunk_dir, ignore_errors=True)
+        raise RuntimeError("ffmpeg produced no chunk files")
+
+    print(f"[transcribe] Split into {len(chunk_files)} chunks — transcribing with Groq…", flush=True)
+
+    parts = []
+    try:
+        for i, chunk_path in enumerate(chunk_files, 1):
+            chunk_mb = os.path.getsize(chunk_path) / (1024 * 1024)
+            print(f"[transcribe] Chunk {i}/{len(chunk_files)} ({chunk_mb:.1f} MB)…", flush=True)
+            with open(chunk_path, "rb") as f:
+                response = client.audio.transcriptions.create(
+                    model="whisper-large-v3-turbo",
+                    file=f,
+                    response_format="text",
+                )
+            parts.append(str(response).strip())
+    finally:
+        import shutil
+        shutil.rmtree(chunk_dir, ignore_errors=True)
+
+    return "\n".join(parts)
 
 
 def transcribe_with_whisper(audio_path: str, model_size: str) -> tuple[str, object]:
@@ -122,6 +223,7 @@ def main():
         try:
             transcript = transcribe_with_groq(audio_path)
             word_count = len(transcript.split())
+            log_groq_usage(audio_path, word_count)
             print(f"[transcribe] Groq done. {word_count} words => {output_path}", flush=True)
         except Exception as e:
             print(f"[transcribe] Groq failed ({e}), falling back to local faster-whisper…", flush=True)

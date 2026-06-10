@@ -12,6 +12,7 @@ const PROMPT_KEYS = [
   "summarize_topic_instructions",
   "classify_source_system",
   "classify_source_instructions",
+  "podcast_system",
 ];
 
 export async function GET() {

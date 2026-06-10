@@ -1,0 +1,41 @@
+[ALEX]: Most people use AI like a search engine—you ask a question, it scans your PDFs, and it gives you an answer, but the moment the session ends, that synthesis is gone. Andrej Karpathy suggests a fundamental shift: instead of using Retrieval Augmented Generation for one-off queries, we should use the LLM to build a permanent, interlinked markdown wiki that grows and evolves as you add more data.
+
+[SAM]: If I'm understanding this, the difference is that instead of the AI searching through a pile of documents every time, it's actually writing a structured encyclopedia for me. But why is that better than just having a really good search tool?
+
+[ALEX]: Because standard RAG is stateless. If you ask a question today and then ask a related one tomorrow, the AI starts from scratch both times. With an LLM wiki, the AI reads a document once and extracts the core concepts into a persistent file. If a new document contradicts or expands on an old one, the AI updates the existing wiki page. You're building a compounding asset where the AI’s understanding of your data deepens over time.
+
+[SAM]: That sounds like it requires a lot of manual organization. How does the AI know where to put things or how to link them without me spending hours managing folders?
+
+[ALEX]: You handle that through a schema file, which is essentially a set of operating instructions for the AI. You create a file—like a `Claude.md`—that defines the purpose of the knowledge base, the folder structure, and the exact ingest workflow. It tells the AI: "When I drop a file in the 'raw' folder, read it, extract the key ideas, update the existing wiki pages, and log the changes." The AI manages the architecture; you just provide the rules.
+
+[SAM]: Let's talk about that folder structure. You mentioned a 'raw' folder and a 'wiki' folder. If the AI is just moving information from one to the other, aren't we just duplicating the data?
+
+[ALEX]: It's not duplication; it's synthesis. The raw folder is your archive of messy PDFs, meeting notes, and articles. The wiki folder is the refined output. The raw files are the evidence, but the wiki pages are the conclusions. This allows you to use a tool like Obsidian to visualize the connections via a graph view, seeing how a concept from a meeting in January links to a research paper you added in June.
+
+[SAM]: I'm curious about the "updating" part. If the AI finds a new piece of information that contradicts something already in the wiki, does it just overwrite the old page, or does it handle the conflict?
+
+[ALEX]: That depends on how you define your schema. In a well-designed ingest workflow, you instruct the AI to identify contradictions. Instead of overwriting, it can add a "conflicting views" section or a "revision" note. This turns the wiki into a living document of your learning process rather than just a static summary.
+
+[SAM]: This sounds powerful for research, but how does it actually work in practice? Walk me through the moment I drop a new PDF into that raw folder.
+
+[ALEX]: You trigger the AI to process the new file. The AI reads the PDF, identifies the key entities and claims, and then checks the wiki folder to see if those entities already have pages. If "Quantum Computing" already has a page, the AI appends the new findings to that page and creates links to any new concepts mentioned. Finally, it updates a central index and logs exactly what was changed so you can audit the AI's work.
+
+[SAM]: What happens if the AI hallucinates a connection or misinterprets a document? Since this is a permanent knowledge base, a mistake becomes a permanent part of the record.
+
+[ALEX]: That's why the schema must mandate citations. You instruct the AI that every claim in the wiki must be linked back to the specific source in the raw folder. If you see a claim that looks wrong, you click the link, go to the original PDF, and verify it. You aren't trusting the AI's memory; you're using the AI to index your own evidence.
+
+[SAM]: If I'm using this for something complex, like planning a long-term project, does the AI just keep adding pages until the wiki becomes a cluttered mess of thousands of files?
+
+[ALEX]: That's the tradeoff. Without a strict schema, you get "wiki bloat." To prevent this, you have to define page formatting rules. You might tell the AI to keep summaries concise, use a specific header structure, and merge similar concepts into a single page rather than creating five different pages for the same topic. The quality of the knowledge base is directly proportional to the precision of your instructions in that schema file.
+
+[SAM]: So, for someone starting this, the most critical step isn't the AI model itself, but the `Claude.md` or schema file. If that file is vague, the wiki is useless?
+
+[ALEX]: Exactly. The LLM is just the engine; the schema is the steering wheel. If you tell it to "summarize these files," you get a list of summaries. If you tell it to "integrate these concepts into a structured knowledge graph with cross-references and source citations," you get a personal brain.
+
+[SAM]: This seems like it would be incredibly useful for something like a technical project where you're tracking evolving specifications. But does it work for non-linear data, like a collection of random thoughts and brainstorming notes?
+
+[ALEX]: Actually, that's where it shines. Brainstorming notes are usually fragmented. The LLM wiki acts as the connective tissue. It can spot a theme in your random notes that you didn't notice yourself and create a "Synthesis" page that links those disparate thoughts together. It transforms a pile of notes into a structured body of knowledge.
+
+[SAM]: It sounds like we're moving from "Chatting with my docs" to "Building a second brain that writes itself."
+
+[ALEX]: That's the core shift. You stop treating the AI as a consultant you visit for a quick answer and start treating it as a librarian who is constantly organizing your library in the background.

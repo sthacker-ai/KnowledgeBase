@@ -17,7 +17,7 @@ require("dotenv").config({ quiet: true });
 
 const fs   = require("fs");
 const path = require("path");
-const { spawnSync } = require("child_process");
+const { spawnSync, spawn } = require("child_process");
 const { getSteps } = require("./pipeline-steps");
 
 const ROOT     = process.cwd();
@@ -157,6 +157,82 @@ function run(label, cmd) {
   return true;
 }
 
+// ── Prod Build + Restart ──────────────────────────────────────────────────────
+// Called automatically at the end of a successful pipeline run.
+function runProdBuild() {
+  logLine("");
+  log("============================================================");
+  log("Prod Build & Deploy");
+  log("============================================================");
+  logLine("");
+
+  // Kill any existing Next.js server on port 3006
+  log("Checking for existing server on port 3006...");
+  try {
+    const netstat = spawnSync("netstat", ["-ano"], { encoding: "utf8", cwd: ROOT });
+    const lines   = (netstat.stdout || "").split("\n");
+    const pids    = [...new Set(
+      lines
+        .filter((l) => l.includes(":3006") && l.includes("LISTENING"))
+        .map((l) => l.trim().split(/\s+/).pop())
+        .filter(Boolean),
+    )];
+    if (pids.length) {
+      pids.forEach((pid) => {
+        spawnSync("taskkill", ["/PID", pid, "/F"], { encoding: "utf8" });
+        log(`  Killed PID ${pid} (was on port 3006)`);
+      });
+      // Brief pause for port release
+      spawnSync("timeout", ["/t", "3", "/nobreak"], { cwd: ROOT, encoding: "utf8", shell: true });
+    } else {
+      log("  No existing process on port 3006.");
+    }
+  } catch (e) {
+    log(`  Warning: could not check port 3006: ${e.message}`);
+  }
+
+  // npm run build
+  log("Running npm run build...");
+  logLine("");
+  const buildStart  = Date.now();
+  const buildResult = spawnSync("cmd", ["/c", "npm run build"], {
+    cwd:       ROOT,
+    encoding:  "utf8",
+    maxBuffer: 100 * 1024 * 1024,
+    env:       process.env,
+  });
+  const buildElapsed = ((Date.now() - buildStart) / 1000).toFixed(1);
+  const buildOutput  = ((buildResult.stdout || "") + (buildResult.stderr || "")).trim();
+  if (buildOutput) buildOutput.split("\n").forEach((l) => log(l));
+  logLine("");
+
+  if (buildResult.status !== 0 || buildResult.error) {
+    const errMsg = buildResult.error ? buildResult.error.message : `exit code ${buildResult.status}`;
+    log(`ERROR: npm run build failed after ${buildElapsed}s — ${errMsg}`);
+    runManifest.steps.push({ name: "Prod build", status: "failed", duration_secs: parseFloat(buildElapsed), error: errMsg.slice(0, 200) });
+    return;
+  }
+
+  log(`npm run build completed in ${buildElapsed}s`);
+  runManifest.steps.push({ name: "Prod build", status: "ok", duration_secs: parseFloat(buildElapsed) });
+
+  // Start prod server in a detached window (keeps running after this script exits)
+  try {
+    const child = spawn("cmd", ["/k", `cd /d "${ROOT}" && npm start`], {
+      cwd:         ROOT,
+      detached:    true,
+      stdio:       "ignore",
+      windowsHide: false,
+    });
+    child.unref();
+    runManifest.steps.push({ name: "Prod server restart", status: "ok", duration_secs: 0 });
+    log("Prod server started on port 3006 → http://localhost:3006");
+  } catch (e) {
+    log(`WARNING: Could not start prod server: ${e.message}`);
+    runManifest.steps.push({ name: "Prod server restart", status: "failed", duration_secs: 0, error: e.message });
+  }
+}
+
 async function main() {
   runStartMs              = Date.now();
   runManifest.started_at_ist = istNow();
@@ -183,6 +259,10 @@ async function main() {
   log("============================================================");
   log("Daily scheduled run complete. All steps succeeded.");
   log("============================================================");
+
+  // Build + restart prod server now that pipeline is done
+  runProdBuild();
+
   saveManifest("ok");
 }
 

@@ -1,0 +1,37 @@
+[ALEX]: Most product managers are treating Claude like a fancy search engine or a drafting tool, but that's a fundamental misunderstanding of the tool's current trajectory. If you're just using the web chat interface, you're essentially using Photoshop just to crop photos; you're ignoring the engine that allows you to actually build and execute.
+
+[SAM]: That sounds like a critique of the interface, but why does the specific environment matter if the underlying model is the same? Whether I'm in a chat window or a specialized tool, isn't the intelligence providing the answer identical?
+
+[ALEX]: The intelligence is the same, but the agency is different. In a standard chat, the AI is a consultant—it tells you how to do something. In environments like Claude Code or Cowork, the AI becomes an operator. The difference is the shift from "tell me how to write this script" to "execute this script on my local machine and tell me why it failed." For a PM, this means moving from managing a backlog to actually prototyping the solution.
+
+[SAM]: Moving from managing to prototyping sounds like a recipe for scope creep. If a PM starts executing scripts and manipulating files, aren't they just doing the engineer's job? Where does the boundary lie between a "Super PM" and a developer?
+
+[ALEX]: The boundary shifts from "who does the work" to "who defines the outcome." The Super PM isn't replacing the engineer; they are reducing the friction of the feedback loop. Instead of writing a 10-page PRD and waiting two weeks for a prototype, the Super PM uses Claude Code to build a functional front-end mockup based on the existing design system. They aren't taking over the codebase; they are removing the communication overhead that usually slows down shipping velocity.
+
+[SAM]: You mentioned shipping velocity. The course mentions Anthropic shipping 74 releases in 52 days. That's an insane pace. How does a human PM even keep up with that without becoming a bottleneck?
+
+[ALEX]: You keep up by redesigning your entire professional process around AI capabilities rather than trying to fit AI into an old process. The traditional waterfall of "Research -> PRD -> Design -> Engineering -> QA" is too slow. The Super PM collapses those steps. They use Claude Cowork to organize knowledge projects, synthesize customer interviews into actionable files, and then immediately transition to Claude Code to test a hypothesis. The process becomes a continuous loop of execution and refinement.
+
+[SAM]: Let's dig into the difference between Cowork and Code, because the distinction seems subtle. If Cowork handles "knowledge work" and Code handles "technical execution," where does a task like creating a data-driven infographic fit?
+
+[ALEX]: That's a Cowork task. Cowork operates within a virtual machine, which means it can create, organize, and manipulate files in a sandbox. It can take a CSV of customer data, analyze it, and then generate an HTML infographic. It's for complex, multi-step workflows that require a persistent workspace. Claude Code, on the other hand, is for when you need to touch the "bare metal"—running system commands on your actual laptop or debugging a live codebase.
+
+[SAM]: So, if I'm a PM who isn't traditionally technical, the "bare metal" part sounds intimidating. Does this mean the "Super PM" paradigm is only for people who already know how to use a terminal?
+
+[ALEX]: Not necessarily, but it requires a willingness to move toward the terminal. The goal isn't to become a senior engineer, but to become "technically proficient." If you can navigate a file directory and run a command, the AI handles the syntax. The value for the PM is the ability to verify a technical constraint themselves rather than asking an engineer "is this possible?" and waiting for a meeting.
+
+[SAM]: But there's a risk there. If a PM starts running scripts on their local machine via Claude Code, they could potentially break things or introduce security risks. How do you balance that autonomy with the need for stability?
+
+[ALEX]: That's where the distinction between the virtual machine in Cowork and the local execution in Code becomes critical. You use Cowork for the high-risk experimentation and file reorganization where the sandbox protects you. You move to Code when you have a specific, targeted technical task. The tradeoff is speed versus safety, and the Super PM knows which environment to use based on the risk profile of the task.
+
+[SAM]: Let's talk about the business side. You mentioned that the Super PM understands how a feature translates directly into revenue. How does using these AI tools actually help with that strategic link, or is that just a separate skill set?
+
+[ALEX]: It's linked because the speed of execution allows for faster revenue validation. In the old model, you'd guess a feature would drive revenue, build it over a month, and then find out you were wrong. A Super PM can build a functional prototype in an afternoon, test it with a small user group, and see the revenue impact in real-time. The tools don't provide the strategy, but they eliminate the lag between the strategy and the evidence.
+
+[SAM]: It sounds like the role is becoming more of a "Generalist-in-Chief." If the AI handles the prototyping and the documentation, what is the actual primary value a PM provides in this ecosystem?
+
+[ALEX]: The value shifts to curation, orchestration, and high-level problem definition. When the cost of execution drops to near zero, the most valuable skill is knowing exactly what to build and why. The Super PM spends less time on "coordination" and more time on "direction." They aren't the bridge between business and tech anymore; they are the point where business and tech merge.
+
+[SAM]: If I want to start this transition tomorrow, what's the first step? Do I stop using the web chat immediately?
+
+[ALEX]: Start by identifying a multi-step workflow that currently requires three different tools and a lot of copy-pasting. Move that into a Claude Cowork project. Instead of asking for a summary of a document, ask it to reorganize your project files and create a set of deliverables. Once you feel the limitation of the sandbox, that's when you move toward Claude Code to start interacting with your actual environment.

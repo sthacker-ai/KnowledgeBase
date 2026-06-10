@@ -32,6 +32,7 @@ export default async function RunsPage() {
         <p className="nav-section-label">Menu</p>
         <Link href="/"           className="kb-nav-link"><span className="kb-nav-icon" />Overview</Link>
         <Link href="/sources"    className="kb-nav-link"><span className="kb-nav-icon" />Source Inbox</Link>
+        <Link href="/filtered"   className="kb-nav-link"><span className="kb-nav-icon" />Filtered Tweets</Link>
         <Link href="/courseware" className="kb-nav-link"><span className="kb-nav-icon" />Courseware</Link>
         <Link href="/wiki"       className="kb-nav-link"><span className="kb-nav-icon" />Wiki Notes</Link>
         <Link href="/graph"      className="kb-nav-link"><span className="kb-nav-icon" />Knowledge Graph</Link>
@@ -63,12 +64,16 @@ export default async function RunsPage() {
           <p className="kb-right-sub">Execution order</p>
           <div className="kb-widget" style={{ marginTop: "12px" }}>
             {[
-              { n: "1", step: "Import X Likes",   desc: "Fetch new liked tweets" },
-              { n: "2", step: "Extract Sources",  desc: "Parse tweet content" },
-              { n: "3", step: "Classify Topics",  desc: "AI topic assignment" },
-              { n: "4", step: "Compile Courses",  desc: "Generate courseware" },
-              { n: "5", step: "Summarize Topics", desc: "Build wiki summaries" },
-              { n: "6", step: "Build Graph",      desc: "Update knowledge graph" },
+              { n: "1", step: "Import X Likes",        desc: "Fetch & filter new liked tweets" },
+              { n: "2", step: "Source extraction",     desc: "Parse tweet content & links" },
+              { n: "3", step: "Video transcripts",     desc: "Download & transcribe video audio" },
+              { n: "4", step: "AI classification",     desc: "AI topic assignment" },
+              { n: "5", step: "Course generation",     desc: "Generate courseware markdown" },
+              { n: "6", step: "Topic summaries",       desc: "Build wiki summaries" },
+              { n: "7", step: "Graph build",           desc: "Update knowledge graph" },
+              { n: "8", step: "Hero images",           desc: "AI images for courses" },
+              { n: "9", step: "Podcasts",              desc: "2-speaker podcast audio" },
+              { n: "10", step: "Obsidian vault export", desc: "Sync to Obsidian vault" },
             ].map((s) => (
               <div key={s.n} style={{ display: "flex", gap: "10px", marginBottom: "10px", alignItems: "flex-start" }}>
                 <span style={{ background: "var(--accent, #6366f1)", color: "#fff", borderRadius: "50%", width: "20px", height: "20px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "0.7rem", fontWeight: 700, flexShrink: 0 }}>{s.n}</span>

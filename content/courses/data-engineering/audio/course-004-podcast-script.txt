@@ -1,0 +1,41 @@
+[ALEX]: Most traders fail at earnings because they treat the initial gap up as the entry signal, but the real money is actually made by ignoring the first spike and waiting for the "Delayed EP" setup.
+
+[SAM]: If you're ignoring the initial move, aren't you risking the possibility that the stock just keeps running without ever giving you a pullback?
+
+[ALEX]: That's the trade-off. You might miss a few "moonshots," but you eliminate the risk of buying the absolute top of a volatility spike. The goal is to identify a strong Earnings Post reaction—usually a jump of 8% or more—and then treat that move as a signal that the stock is now "interesting," not a signal to buy immediately.
+
+[SAM]: Why the 8% threshold specifically? Is that a hard rule or just a general guideline for momentum?
+
+[ALEX]: It's a benchmark for sentiment. An 8% move indicates that the market has fundamentally re-priced the stock based on the new information. But there's a catch: the stock must have been "neglected" before that move. If a stock was already trending upward for three months and then gaps up on earnings, that's just a continuation. We want the stocks that were stagnant or sideways, because a sudden spike from a neglected state signals a genuine shift in institutional sentiment.
+
+[SAM]: So you're looking for a "sleeping giant" that suddenly wakes up. Once you find that neglected stock that spikes 8%, what exactly are you waiting for before you actually put money on the line?
+
+[ALEX]: You're waiting for range contraction. After the initial explosion, the price needs to settle into a base or a flag. This is where the volatility dies down and the price moves sideways in a tight range. It proves that the market is absorbing the news and that the buyers are holding their positions rather than just flipping for a quick profit.
+
+[SAM]: How do you distinguish between a healthy "base" and a stock that is simply starting to crash back to its pre-earnings price?
+
+[ALEX]: The difference is in the tightness. A healthy base stays in a narrow range; it doesn't give back a huge percentage of the earnings gain. If a stock gaps up 10% and then drifts back 7%, the catalyst is failing. If it gaps up 10% and then drifts back 2% or 3% while moving sideways, that's range contraction. That's the "Delayed" part of the setup.
+
+[SAM]: This sounds like it requires a lot of patience and a lot of monitoring. How do you keep track of all these different stocks without getting overwhelmed by a hundred different charts?
+
+[ALEX]: You don't scan for entries daily; you build a database. Instead of looking for a trade today, you use your scanner to find every stock that had a strong EP reaction and dump them into a dedicated "Earnings Watchlist." You're essentially building a curated pool of candidates that have already proven they have a catalyst.
+
+[SAM]: So the database is basically a waiting room. You've filtered for the catalyst, and now you're just waiting for the price action to align. Does this mean you're holding these names on a list for days or even weeks?
+
+[ALEX]: Exactly. Some stocks base for three days, others for two weeks. By having a database, you aren't hunting for new ideas every morning; you're simply checking your list to see which of your "interesting" stocks has finally entered that tight range contraction phase.
+
+[SAM]: Let's walk through the actual scanning process. If I'm in the Earnings Tab of a scanner, am I looking for the best fundamentals, or am I ignoring the balance sheet entirely?
+
+[ALEX]: You ignore the fundamentals for the initial scan. This setup isn't about whether the company beat earnings by a penny or if their guidance was slightly higher. It's purely about the market's reaction. If the price jumps 8% on high volume, the market has already told you the news is positive. The price action is the only filter that matters.
+
+[SAM]: If I have a list of twenty stocks that all gapped up, and five of them are starting to form flags, how do you decide which one to prioritize?
+
+[ALEX]: You look for the tightest contraction. The smaller the range of the base, the more explosive the eventual breakout tends to be. You want the stock that looks like a coiled spring. If one stock is swinging wildly between 5% and 10% and another is hugging a tight 2% range, the tighter one is the higher-probability trade.
+
+[SAM]: What happens if a stock in your database starts to break down and drops below the pre-earnings price?
+
+[ALEX]: It gets deleted from the database immediately. The moment the stock loses its pre-earnings support, the catalyst is dead. The "Delayed EP" logic only works if the market continues to value the stock higher than it did before the announcement.
+
+[SAM]: So the workflow is: scan for the 8% jump, ensure it was previously neglected, add it to the database, and then wait for the volatility to shrink into a tight base before entering.
+
+[ALEX]: That's the core of it. You move from being a "chaser" who buys the spike to a "collector" who builds a database of catalysts and enters only when the risk is minimized by range contraction.

@@ -26,6 +26,15 @@ interface Stats {
   sources_pending_course?: number;
 }
 
+interface XSession {
+  exists: boolean;
+  status: "ok" | "warning" | "expired" | "missing" | "unreadable";
+  ageDays: number | null;
+  expiresAt: string | null;
+  daysUntilExpiry: number | null;
+  message: string;
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
 // Admin Console
 // ─────────────────────────────────────────────────────────────────────────────
@@ -33,6 +42,7 @@ interface Stats {
 export default function AdminPage() {
   const [recentTasks, setRecentTasks]     = useState<Task[]>([]);
   const [stats, setStats]                 = useState<Stats | null>(null);
+  const [xSession, setXSession]           = useState<XSession | null>(null);
   const [prompts, setPrompts]             = useState<Record<string, string>>({});
   const [promptsSaving, setPromptsSaving] = useState(false);
   const [promptsSaved, setPromptsSaved]   = useState(false);
@@ -47,6 +57,10 @@ export default function AdminPage() {
     try {
       const res = await fetch("/api/admin/stats");
       if (res.ok) setStats(await res.json());
+    } catch { /* ignore */ }
+    try {
+      const res = await fetch("/api/admin/session");
+      if (res.ok) setXSession(await res.json());
     } catch { /* ignore */ }
   }, []);
 
@@ -175,6 +189,33 @@ export default function AdminPage() {
           </p>
         </div>
 
+        {/* ── X Login Session Health ────────────────────────────────────────── */}
+        {xSession && xSession.status !== "ok" && (() => {
+          const isError = xSession.status === "expired" || xSession.status === "missing" || xSession.status === "unreadable";
+          const accent  = isError ? "var(--red)" : "var(--amber)";
+          const dim     = isError ? "var(--red-dim)" : "var(--amber-dim)";
+          return (
+            <div
+              role="alert"
+              className="kb-source-panel"
+              style={{ borderLeft: `4px solid ${accent}`, background: dim, display: "flex", alignItems: "center", gap: "12px" }}
+            >
+              <span style={{ width: "10px", height: "10px", borderRadius: "50%", background: accent, flexShrink: 0 }} />
+              <div style={{ flex: 1 }}>
+                <p style={{ fontWeight: 700, fontSize: "0.9rem", color: accent }}>
+                  {isError ? "X login session needs attention" : "X login session expiring soon"}
+                </p>
+                <p style={{ fontSize: "0.82rem", color: "var(--text-sub)", marginTop: "2px" }}>
+                  {xSession.message}
+                </p>
+                <p style={{ fontSize: "0.75rem", color: "var(--muted)", marginTop: "4px" }}>
+                  Run <code style={{ fontFamily: "'Consolas', monospace" }}>npm run import:x-login</code> in the project folder, log into X, then press Enter.
+                </p>
+              </div>
+            </div>
+          );
+        })()}
+
         {/* ── Topic Relevance Filters ───────────────────────────────────────── */}
         <div className="kb-source-panel">
           <div className="section-header">
@@ -218,7 +259,7 @@ export default function AdminPage() {
             <button
               onClick={addFilter}
               disabled={filtersSaving}
-              style={{ background: "var(--brand)", color: "#fff", border: "none", borderRadius: "8px", padding: "8px 16px", fontWeight: 700, fontSize: "0.82rem", cursor: "pointer", whiteSpace: "nowrap" }}
+              style={{ background: "var(--accent-gradient)", color: "#1a1206", border: "none", borderRadius: "8px", padding: "8px 16px", fontWeight: 700, fontSize: "0.82rem", cursor: "pointer", whiteSpace: "nowrap" }}
             >
               {filtersSaving ? "Saving…" : filtersSaved ? "Saved!" : "Add"}
             </button>
@@ -268,8 +309,8 @@ export default function AdminPage() {
             onClick={savePrompts}
             disabled={promptsSaving}
             style={{
-              background: promptsSaved ? "#22c55e" : "var(--brand)",
-              color: "#fff", border: "none", borderRadius: "8px",
+              background: promptsSaved ? "var(--green)" : "var(--accent-gradient)",
+              color: promptsSaved ? "#04140c" : "#1a1206", border: "none", borderRadius: "8px",
               padding: "9px 22px", fontWeight: 700, fontSize: "0.85rem",
               cursor: promptsSaving ? "not-allowed" : "pointer",
               transition: "background 0.2s",
@@ -333,6 +374,28 @@ export default function AdminPage() {
         <div>
           <h2 className="kb-right-title">System Status</h2>
           <p className="kb-right-sub">Knowledge base health</p>
+          {xSession && (
+            <div className="kb-widget" style={{ marginTop: "12px" }}>
+              <div className="vault-row" style={{ alignItems: "center" }}>
+                <span style={{ display: "flex", alignItems: "center", gap: "7px" }}>
+                  <span style={{
+                    width: "8px", height: "8px", borderRadius: "50%", flexShrink: 0,
+                    background: xSession.status === "ok" ? "var(--green)"
+                      : xSession.status === "warning" ? "var(--amber)" : "var(--red)",
+                  }} />
+                  X session
+                </span>
+                <strong style={{
+                  color: xSession.status === "ok" ? "var(--green)"
+                    : xSession.status === "warning" ? "var(--amber)" : "var(--red)",
+                }}>
+                  {xSession.status === "ok" || xSession.status === "warning"
+                    ? `${xSession.daysUntilExpiry}d left`
+                    : xSession.status === "expired" ? "Expired" : "Missing"}
+                </strong>
+              </div>
+            </div>
+          )}
           {stats ? (
             <div className="kb-widget" style={{ marginTop: "12px" }}>
               <div className="vault-row"><span>Sources</span><strong>{stats.sources_total ?? "—"}</strong></div>

@@ -19,6 +19,7 @@ const fs   = require("fs");
 const path = require("path");
 const { spawnSync, spawn } = require("child_process");
 const { getSteps } = require("./pipeline-steps");
+const { getXSessionStatus } = require("./lib/x-session");
 
 const ROOT     = process.cwd();
 const RUNS_DIR = path.join(ROOT, "data", "runs");
@@ -114,12 +115,8 @@ function logSep() {
   logLine("------------------------------------------------------------");
 }
 
-function run(label, cmd) {
-  logSep();
-  log(`  Step: ${label}`);
-  logSep();
-  log(`CMD: ${cmd}`);
-  logLine("");
+// Run a single command once. Returns { ok, elapsed, errMsg }.
+function runOnce(cmd) {
   const startMs = Date.now();
 
   // Split cmd into program + args for spawnSync
@@ -141,20 +138,61 @@ function run(label, cmd) {
   if (childOutput) {
     childOutput.split("\n").forEach((line) => log(line));
   }
-
   logLine("");
 
   if (result.status !== 0 || result.error) {
     const errMsg = result.error ? result.error.message : `exit code ${result.status}`;
-    log(`ERROR: Step "${label}" failed after ${elapsed}s — ${errMsg}`);
-    runManifest.steps.push({ name: label, status: "failed", duration_secs: parseFloat(elapsed), error: errMsg.slice(0, 200) });
-    return false;
+    return { ok: false, elapsed, errMsg };
+  }
+  return { ok: true, elapsed };
+}
+
+// Run a step, with optional retries + backoff for transient failures.
+// Returns true on success, false on failure (after exhausting retries).
+function run(label, cmd, retries = 0) {
+  logSep();
+  log(`  Step: ${label}`);
+  logSep();
+  log(`CMD: ${cmd}`);
+  logLine("");
+
+  const attempts = retries + 1;
+  let last;
+  for (let attempt = 1; attempt <= attempts; attempt++) {
+    if (attempt > 1) {
+      const backoff = 5 * (attempt - 1); // 5s, 10s, ...
+      log(`Retry ${attempt - 1}/${retries} for "${label}" in ${backoff}s...`);
+      spawnSync("timeout", ["/t", String(backoff), "/nobreak"], { cwd: ROOT, encoding: "utf8", shell: true });
+    }
+    last = runOnce(cmd);
+    if (last.ok) {
+      const note = attempt > 1 ? ` (attempt ${attempt})` : "";
+      log(`Step "${label}" completed in ${last.elapsed}s${note}`);
+      logLine("");
+      runManifest.steps.push({ name: label, status: "ok", duration_secs: parseFloat(last.elapsed) });
+      return true;
+    }
   }
 
-  log(`Step "${label}" completed in ${elapsed}s`);
-  logLine("");
-  runManifest.steps.push({ name: label, status: "ok", duration_secs: parseFloat(elapsed) });
-  return true;
+  log(`ERROR: Step "${label}" failed after ${last.elapsed}s — ${last.errMsg}`);
+  runManifest.steps.push({ name: label, status: "failed", duration_secs: parseFloat(last.elapsed), error: last.errMsg.slice(0, 200) });
+  return false;
+}
+
+// Pre-flight: warn (but never block) when the saved X session is expiring/dead.
+// A dead session only degrades the import step now — the rest of the pipeline
+// still runs — but surfacing it here makes the cause obvious in the log.
+function preflightXSession() {
+  try {
+    const s = getXSessionStatus({ root: ROOT });
+    runManifest.x_session = { status: s.status, expiresAt: s.expiresAt, daysUntilExpiry: s.daysUntilExpiry };
+    const prefix = s.status === "ok" ? "OK" : "WARNING";
+    log(`[preflight] X session: ${prefix} — ${s.message}`);
+    logLine("");
+  } catch (err) {
+    log(`[preflight] X session check skipped: ${err.message}`);
+    logLine("");
+  }
 }
 
 // ── Prod Build + Restart ──────────────────────────────────────────────────────
@@ -242,28 +280,49 @@ async function main() {
   log("============================================================");
   logLine("");
 
+  // Warn early if the X login session is expiring/dead (informational).
+  preflightXSession();
+
   // Steps come from pipeline-steps.js — the single source of truth.
   // To add/remove/rename a step, edit pipeline-steps.js only.
   const likeLimit = process.env.SCHEDULE_LIKES_LIMIT || "25";
   const steps = getSteps(likeLimit);
 
+  // Continue-on-error: every step is idempotent and processes whatever work is
+  // available, so a failed step (e.g. import with an expired X session) must
+  // not stop the rest of the pipeline. Only a step flagged `critical` aborts.
+  const failed = [];
+  let aborted  = false;
   for (const step of steps) {
-    if (!run(step.label, step.cmd)) {
-      log(`ABORT: Step "${step.label}" failed. Stopping pipeline.`);
-      log("      Next scheduled run will retry automatically.");
-      saveManifest("aborted"); return;
+    if (!run(step.label, step.cmd, step.retries || 0)) {
+      failed.push(step.label);
+      if (step.critical) {
+        log(`ABORT: Critical step "${step.label}" failed. Stopping pipeline.`);
+        log("      Next scheduled run will retry automatically.");
+        aborted = true;
+        break;
+      }
+      log(`Step "${step.label}" failed — continuing with remaining steps.`);
+      logLine("");
     }
   }
 
   logLine("");
   log("============================================================");
-  log("Daily scheduled run complete. All steps succeeded.");
+  if (aborted) {
+    log(`Daily scheduled run ABORTED. Failed: ${failed.join(", ")}`);
+  } else if (failed.length) {
+    log(`Daily scheduled run completed with ${failed.length} failed step(s): ${failed.join(", ")}`);
+  } else {
+    log("Daily scheduled run complete. All steps succeeded.");
+  }
   log("============================================================");
 
-  // Build + restart prod server now that pipeline is done
-  runProdBuild();
+  // Rebuild the site unless the run aborted on a critical step — we still want
+  // whatever new content the surviving steps produced to go live.
+  if (!aborted) runProdBuild();
 
-  saveManifest("ok");
+  saveManifest(aborted ? "aborted" : failed.length ? "completed_with_errors" : "ok");
 }
 
 main().catch((err) => {

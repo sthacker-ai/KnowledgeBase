@@ -48,18 +48,33 @@ interface Props {
 // Helpers
 // ─────────────────────────────────────────────────────────────────────────────
 
-const NODE_COLOR: Record<string, string> = {
-  topic:  "#8b5cf6",
-  source: "#1d9bf0",
-  course: "#f59e0b",
-};
+// Palette is read from the live Nocturne CSS tokens (see buildPalette) so the
+// graph re-skins with the theme instead of using fixed hexes.
+function readVar(css: CSSStyleDeclaration, name: string, fallback: string): string {
+  return css.getPropertyValue(name).trim() || fallback;
+}
 
-const LINK_COLOR: Record<string, string> = {
-  belongs_to: "#4b5563",
-  tagged:     "#374151",
-  wiki_link:  "#8b5cf6",
-  cites:      "#22c55e",
-};
+function buildPalette() {
+  const css = getComputedStyle(document.documentElement);
+  return {
+    node: {
+      topic:  readVar(css, "--rose", "#f2789f"),
+      source: readVar(css, "--blue", "#6ea8ff"),
+      course: readVar(css, "--gold", "#f3c14b"),
+    } as Record<string, string>,
+    nodeFallback: readVar(css, "--muted", "#8990ad"),
+    link: {
+      belongs_to: readVar(css, "--border-strong", "#38405c"),
+      tagged:     readVar(css, "--border", "#262c40"),
+      wiki_link:  readVar(css, "--rose", "#f2789f"),
+      cites:      readVar(css, "--green", "#56d6a0"),
+    } as Record<string, string>,
+    linkFallback: readVar(css, "--border-strong", "#38405c"),
+    stroke: readVar(css, "--bg", "#0a0c14"),
+    labelFill: readVar(css, "--text", "#eceefb"),
+    labelHalo: readVar(css, "--bg", "#0a0c14"),
+  };
+}
 
 function nodeRadius(node: GraphNode): number {
   if (node.type === "topic") return 10 + Math.min((node.source_count ?? 0) * 1.5, 18);
@@ -84,6 +99,8 @@ export default function KnowledgeGraph({ data, width = 900, height = 600 }: Prop
 
   useEffect(() => {
     if (!svgRef.current || !data?.nodes?.length) return;
+
+    const palette = buildPalette();
 
     // Deep clone nodes/links so D3 can mutate them safely
     const nodes: GraphNode[] = data.nodes.map((n) => ({ ...n }));
@@ -128,7 +145,7 @@ export default function KnowledgeGraph({ data, width = 900, height = 600 }: Prop
       .selectAll("line")
       .data(links)
       .join("line")
-      .attr("stroke", (d) => LINK_COLOR[d.type] ?? "#4b5563")
+      .attr("stroke", (d) => palette.link[d.type] ?? palette.linkFallback)
       .attr("stroke-width", (d) => d.type === "wiki_link" ? 1.5 : 1);
 
     // ── Nodes ─────────────────────────────────────────────────────────────
@@ -137,8 +154,8 @@ export default function KnowledgeGraph({ data, width = 900, height = 600 }: Prop
       .data(nodes)
       .join("circle")
       .attr("r", nodeRadius)
-      .attr("fill", (d) => NODE_COLOR[d.type] ?? "#6b7280")
-      .attr("stroke", "#fff")
+      .attr("fill", (d) => palette.node[d.type] ?? palette.nodeFallback)
+      .attr("stroke", palette.stroke)
       .attr("stroke-width", 1.5)
       .attr("cursor", (d) => d.type === "topic" || d.tweet_url ? "pointer" : "default")
       .call(
@@ -162,8 +179,8 @@ export default function KnowledgeGraph({ data, width = 900, height = 600 }: Prop
       .join("text")
       .text((d) => d.label ?? d.slug ?? d.id)
       .attr("font-size", "11px")
-      .attr("fill", "#f8fafc")
-      .attr("stroke", "#0d1117")
+      .attr("fill", palette.labelFill)
+      .attr("stroke", palette.labelHalo)
       .attr("stroke-width", "2.5")
       .attr("paint-order", "stroke")
       .attr("pointer-events", "none")

@@ -176,11 +176,11 @@ export default async function CoursePage({ params }: Props) {
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
-                  background: isVideo ? "#f59e0b" : "var(--brand)",
-                  color: "#fff",
+                  background: "var(--accent-gradient)",
+                  color: "#1a1206",
                   padding: "7px 16px",
                   borderRadius: "8px",
-                  fontWeight: 600,
+                  fontWeight: 700,
                   fontSize: "0.85rem",
                   textDecoration: "none",
                   whiteSpace: "nowrap" as const,
@@ -224,13 +224,13 @@ export default async function CoursePage({ params }: Props) {
 
           {isVideo && !hasTranscript && (
             <div style={{
-              background: "#fffbeb",
-              border: "1px solid #f59e0b44",
+              background: "var(--amber-dim)",
+              border: "1px solid var(--amber-dim)",
               borderRadius: "8px",
               padding: "10px 16px",
               marginBottom: "16px",
               fontSize: "0.82rem",
-              color: "#92400e",
+              color: "var(--amber)",
             }}>
               <strong>Note:</strong> This course was generated from the tweet text and description &mdash; not from a full video transcript. To watch the actual video, use the button above.
             </div>

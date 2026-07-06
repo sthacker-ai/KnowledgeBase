@@ -47,6 +47,15 @@ export interface KbPipelineStep {
   n: string;
 }
 
+export interface KbXSession {
+  exists: boolean;
+  status: "ok" | "warning" | "expired" | "missing" | "unreadable";
+  ageDays: number | null;
+  expiresAt: string | null;
+  daysUntilExpiry: number | null;
+  message: string;
+}
+
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
@@ -407,4 +416,68 @@ export function getKbPipeline(stats: KbStats): KbPipelineStep[] {
       n:      "7",
     },
   ];
+}
+
+// ---------------------------------------------------------------------------
+// X (Twitter) login session health
+//
+// Mirrors scripts/lib/x-session.js. Kept as a small TS port rather than
+// importing the CommonJS module across the app/scripts boundary. If the logic
+// here changes, update scripts/lib/x-session.js too.
+// ---------------------------------------------------------------------------
+
+const DAY_MS = 24 * 60 * 60 * 1000;
+const X_SESSION_WARN_WITHIN_DAYS = 5;
+
+export function getXSessionStatus(now: number = Date.now()): KbXSession {
+  const configured = process.env.X_STORAGE_STATE_PATH || "./data/private/x-storage-state.json";
+  const p = path.resolve(ROOT, configured);
+
+  if (!fs.existsSync(p)) {
+    return {
+      exists: false, status: "missing",
+      ageDays: null, expiresAt: null, daysUntilExpiry: null,
+      message: 'No saved X session. Run "npm run import:x-login" to create one.',
+    };
+  }
+
+  let stat: fs.Stats;
+  let raw: { cookies?: Array<{ name?: string; expires?: number }> };
+  try {
+    stat = fs.statSync(p);
+    raw  = JSON.parse(fs.readFileSync(p, "utf8"));
+  } catch (err) {
+    return {
+      exists: true, status: "unreadable",
+      ageDays: null, expiresAt: null, daysUntilExpiry: null,
+      message: `X session file could not be read: ${err instanceof Error ? err.message : "error"}`,
+    };
+  }
+
+  const ageDays = Math.floor((now - stat.mtimeMs) / DAY_MS);
+  const cookies = Array.isArray(raw.cookies) ? raw.cookies : [];
+  const authToken = cookies.find((c) => c && c.name === "auth_token");
+  const expiresMs = authToken && typeof authToken.expires === "number" && authToken.expires > 0
+    ? authToken.expires * 1000
+    : stat.mtimeMs + 30 * DAY_MS;
+
+  const daysUntilExpiry = Math.floor((expiresMs - now) / DAY_MS);
+  const expiresAt = new Date(expiresMs).toISOString();
+
+  if (daysUntilExpiry < 0) {
+    return {
+      exists: true, status: "expired", ageDays, expiresAt, daysUntilExpiry,
+      message: `X session expired ${Math.abs(daysUntilExpiry)} day(s) ago. Run "npm run import:x-login" to renew.`,
+    };
+  }
+  if (daysUntilExpiry <= X_SESSION_WARN_WITHIN_DAYS) {
+    return {
+      exists: true, status: "warning", ageDays, expiresAt, daysUntilExpiry,
+      message: `X session expires in ${daysUntilExpiry} day(s). Renew soon with "npm run import:x-login".`,
+    };
+  }
+  return {
+    exists: true, status: "ok", ageDays, expiresAt, daysUntilExpiry,
+    message: `X session healthy — expires in ${daysUntilExpiry} day(s).`,
+  };
 }

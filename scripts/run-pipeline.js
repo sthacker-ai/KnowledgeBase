@@ -61,17 +61,29 @@ function runStep(step) {
   banner(`[pipeline] Step: ${step.label}`);
   console.log(`[pipeline] cmd: ${step.cmd}\n`);
 
-  const startedAt = Date.now();
-  try {
-    execSync(step.cmd, { stdio: "inherit", cwd: ROOT });
-    const elapsed = ((Date.now() - startedAt) / 1000).toFixed(1);
-    console.log(`\n[pipeline] Step "${step.label}" completed in ${elapsed}s`);
-    return { status: "ok", elapsed };
-  } catch (err) {
-    const elapsed = ((Date.now() - startedAt) / 1000).toFixed(1);
-    console.error(`\n[pipeline] Step "${step.label}" FAILED after ${elapsed}s`);
-    return { status: "error", elapsed, error: err.message };
+  const retries  = step.retries || 0;
+  const attempts = retries + 1;
+  let lastErr;
+  for (let attempt = 1; attempt <= attempts; attempt++) {
+    if (attempt > 1) {
+      const backoff = 5 * (attempt - 1); // 5s, 10s, ...
+      console.log(`[pipeline] Retry ${attempt - 1}/${retries} for "${step.label}" in ${backoff}s...`);
+      try { execSync(`timeout /t ${backoff} /nobreak`, { stdio: "ignore", cwd: ROOT, shell: true }); } catch { /* ignore */ }
+    }
+    const startedAt = Date.now();
+    try {
+      execSync(step.cmd, { stdio: "inherit", cwd: ROOT });
+      const elapsed = ((Date.now() - startedAt) / 1000).toFixed(1);
+      const note = attempt > 1 ? ` (attempt ${attempt})` : "";
+      console.log(`\n[pipeline] Step "${step.label}" completed in ${elapsed}s${note}`);
+      return { status: "ok", elapsed };
+    } catch (err) {
+      const elapsed = ((Date.now() - startedAt) / 1000).toFixed(1);
+      lastErr = { elapsed, error: err.message };
+      console.error(`\n[pipeline] Step "${step.label}" FAILED after ${elapsed}s`);
+    }
   }
+  return { status: "error", elapsed: lastErr.elapsed, error: lastErr.error };
 }
 
 // ---------------------------------------------------------------------------
@@ -114,8 +126,11 @@ function main() {
     const result = runStep(step);
     runLog.steps.push({ id: step.id, label: step.label, ...result });
     if (result.status === "error") {
-      console.error(`[pipeline] Aborting pipeline at step "${step.label}" due to error.`);
-      break;
+      if (step.critical) {
+        console.error(`[pipeline] Aborting pipeline at critical step "${step.label}" due to error.`);
+        break;
+      }
+      console.error(`[pipeline] Step "${step.label}" failed — continuing with remaining steps.`);
     }
   }
 

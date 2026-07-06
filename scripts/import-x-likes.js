@@ -227,7 +227,12 @@ function saveCookieSession(storagePath) {
   }
 
   const now = Math.floor(Date.now() / 1000);
-  const expires = now + 60 * 60 * 24 * 30; // 30 days
+  // The auth_token / ct0 values copied from DevTools stay valid at X's end far
+  // longer than 30 days. Stamping a short expiry here made Playwright DROP the
+  // still-valid cookie once it passed, producing a false "not logged in". Use a
+  // long default (overridable) so we stop self-expiring a working session.
+  const ttlDays = asNumber(process.env.X_SESSION_TTL_DAYS, 365);
+  const expires = now + 60 * 60 * 24 * ttlDays;
 
   const storageState = {
     cookies: [

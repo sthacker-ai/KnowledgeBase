@@ -42,15 +42,16 @@ function fmtDuration(secs: number | null) {
 
 function StatusBadge({ status }: { status: string }) {
   const cfg: Record<string, { bg: string; color: string; label: string }> = {
-    ok:      { bg: "#dcfce7", color: "#15803d", label: "OK" },
-    failed:  { bg: "#fee2e2", color: "#dc2626", label: "Failed" },
-    aborted: { bg: "#fef3c7", color: "#b45309", label: "Aborted" },
-    running: { bg: "#dbeafe", color: "#1d4ed8", label: "Running" },
-    unknown: { bg: "#f3f4f6", color: "#6b7280", label: "?" },
+    ok:                     { bg: "var(--green-dim)",  color: "var(--green)",  label: "OK" },
+    completed_with_errors:  { bg: "var(--amber-dim)",  color: "var(--amber)",  label: "Partial" },
+    failed:                 { bg: "var(--red-dim)",    color: "var(--red)",    label: "Failed" },
+    aborted:                { bg: "var(--amber-dim)",  color: "var(--amber)",  label: "Aborted" },
+    running:                { bg: "var(--blue-dim)",   color: "var(--blue)",   label: "Running" },
+    unknown:                { bg: "var(--surface-alt)", color: "var(--muted)", label: "?" },
   };
   const c = cfg[status] || cfg.unknown;
   return (
-    <span style={{ background: c.bg, color: c.color, borderRadius: "4px", padding: "2px 8px", fontSize: "0.75rem", fontWeight: 600 }}>
+    <span style={{ background: c.bg, color: c.color, borderRadius: "999px", padding: "2px 10px", fontSize: "0.72rem", fontWeight: 700 }}>
       {c.label}
     </span>
   );
@@ -59,8 +60,8 @@ function StatusBadge({ status }: { status: string }) {
 function StepChip({ step }: { step: RunStep }) {
   const ok      = step.status === "ok";
   const failed  = step.status === "failed";
-  const bg      = ok ? "#dcfce7" : failed ? "#fee2e2" : "#f3f4f6";
-  const color   = ok ? "#15803d" : failed ? "#dc2626" : "#6b7280";
+  const bg      = ok ? "var(--green-dim)" : failed ? "var(--red-dim)" : "var(--surface-alt)";
+  const color   = ok ? "var(--green)" : failed ? "var(--red)" : "var(--muted)";
   const prefix  = ok ? "✓" : failed ? "✗" : "—";
   const short   = STEP_LABEL_SHORTEN[step.name] || step.name.split(" ")[0];
   return (
@@ -132,7 +133,7 @@ export default function RunsClient({ initialRuns }: { initialRuns: Run[] }) {
                 </td>
               </tr>
               {expanded.has(run.id) && (
-                <tr key={`${run.id}-detail`} style={{ background: "var(--surface2, #f9fafb)" }}>
+                <tr key={`${run.id}-detail`} style={{ background: "var(--surface-alt)" }}>
                   <td colSpan={6} style={{ padding: "12px 16px" }}>
                     <table style={{ width: "100%", fontSize: "0.8rem", borderCollapse: "collapse" }}>
                       <thead>
@@ -151,7 +152,7 @@ export default function RunsClient({ initialRuns }: { initialRuns: Run[] }) {
                             <td style={{ padding: "4px 10px", fontFamily: "ui-monospace, monospace", color: "var(--muted)" }}>
                               {fmtDuration(step.duration_secs)}
                             </td>
-                            <td style={{ padding: "4px 10px", color: "#dc2626", fontSize: "0.75rem" }}>
+                            <td style={{ padding: "4px 10px", color: "var(--red)", fontSize: "0.75rem" }}>
                               {step.error || ""}
                             </td>
                           </tr>

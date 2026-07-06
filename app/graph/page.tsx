@@ -70,9 +70,9 @@ export default function GraphPage() {
           <p className="kb-right-sub">Node types & connections</p>
           <div className="kb-widget" style={{ marginTop: "12px" }}>
             {[
-              { color: "#8b5cf6", label: "Topic", desc: "Wiki topic — click to open" },
-              { color: "#1d9bf0", label: "Source", desc: "Raw tweet / article" },
-              { color: "#f59e0b", label: "Course", desc: "Generated course" },
+              { color: "var(--rose)", label: "Topic", desc: "Wiki topic — click to open" },
+              { color: "var(--blue)", label: "Source", desc: "Raw tweet / article" },
+              { color: "var(--gold)", label: "Course", desc: "Generated course" },
             ].map((item) => (
               <div key={item.label} className="vault-row">
                 <span style={{ display: "flex", alignItems: "center", gap: "6px" }}>
@@ -89,9 +89,9 @@ export default function GraphPage() {
           <p className="kb-widget-title">Edge Types</p>
           <div className="kb-widget">
             {[
-              { color: "#4b5563", label: "belongs_to", desc: "Source → Topic" },
-              { color: "#8b5cf6", label: "wiki_link",  desc: "Topic ↔ Topic (cross-ref)" },
-              { color: "#374151", label: "tagged",     desc: "Source → Tag topic" },
+              { color: "var(--border-strong)", label: "belongs_to", desc: "Source → Topic" },
+              { color: "var(--rose)",          label: "wiki_link",  desc: "Topic ↔ Topic (cross-ref)" },
+              { color: "var(--border)",        label: "tagged",     desc: "Source → Tag topic" },
             ].map((item) => (
               <div key={item.label} className="vault-row">
                 <span style={{ display: "flex", alignItems: "center", gap: "6px" }}>

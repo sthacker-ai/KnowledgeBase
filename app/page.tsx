@@ -7,6 +7,7 @@ import {
   getKbPipeline,
 } from "./lib/kb-data";
 import LearningPanel from "./components/LearningPanel";
+import CountUp from "./components/CountUp";
 
 const navItems = [
   { label: "Overview",       href: "/",       active: true  },
@@ -126,10 +127,14 @@ export default function Home() {
         {/* Stats */}
         <section aria-label="Knowledge base metrics">
           <div className="kb-stats">
-            {stats.map((s) => (
-              <div key={s.label} className={`kb-stat-card ${s.color}`}>
+            {stats.map((s, i) => (
+              <div
+                key={s.label}
+                className={`kb-stat-card kb-animate-in ${s.color}`}
+                style={{ "--stagger": i } as React.CSSProperties}
+              >
                 <div className="kb-stat-icon" aria-hidden="true" />
-                <div className="kb-stat-value">{s.value}</div>
+                <div className="kb-stat-value"><CountUp value={s.value} /></div>
                 <div className="kb-stat-label">{s.label}</div>
                 <div className="kb-stat-sub">{s.sub}</div>
               </div>
@@ -138,7 +143,7 @@ export default function Home() {
         </section>
 
         {/* Source inbox table */}
-        <section className="kb-source-panel" id="inbox" aria-label="Source inbox">
+        <section className="kb-source-panel kb-animate-in" id="inbox" aria-label="Source inbox" style={{ "--stagger": 5 } as React.CSSProperties}>
           <div className="section-header">
             <h2 className="section-title">Sources You&apos;ve Imported</h2>
             <Link href="/sources" className="see-all">See All {totalSources} &rarr;</Link>
@@ -174,7 +179,7 @@ export default function Home() {
         </section>
 
         {/* Pipeline */}
-        <section className="kb-pipeline" aria-label="Processing pipeline">
+        <section className="kb-pipeline kb-animate-in" aria-label="Processing pipeline" style={{ "--stagger": 6 } as React.CSSProperties}>
           <div className="section-header">
             <h2 className="section-title">Processing Pipeline</h2>
           </div>

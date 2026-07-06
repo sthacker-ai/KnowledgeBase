@@ -1,40 +1,104 @@
-﻿:root {
-  /* Brand */
-  --brand: #5b4cf5;
-  --brand-light: #7b6ff8;
-  --brand-dim: rgb(91 76 245 / 10%);
+﻿/* ═══════════════════════════════════════════════════════════════════════════
+   NOCTURNE — premium dark identity. Deep indigo ground, gold + rose accents,
+   glass surfaces, ambient glow. Dark is the DEFAULT (:root); light is a
+   tasteful secondary via [data-theme="light"]. Every surface reads these
+   tokens, so the whole app re-skins from here. --brand maps to gold so all
+   existing var(--brand) usages become the accent automatically.
+   ═══════════════════════════════════════════════════════════════════════════ */
+:root {
+  /* Accent — gold + rose */
+  --brand: #f3c14b;
+  --brand-light: #f7d072;
+  --brand-dim: rgb(243 193 75 / 14%);
+  --gold: #f3c14b;
+  --rose: #f2789f;
+  --accent-gradient: linear-gradient(118deg, #f3c14b 0%, #f2789f 100%);
 
-  /* Backgrounds */
-  --bg: #f4f5fb;
-  --surface: #ffffff;
-  --surface-alt: #f0f2f9;
-  --sidebar-bg: #ffffff;
+  /* Backgrounds — deep indigo-black + glass */
+  --bg: #0a0c14;
+  --body-bg:
+    radial-gradient(680px 360px at 84% -8%, rgb(242 120 159 / 14%), transparent 58%),
+    radial-gradient(620px 340px at 6% 4%, rgb(243 193 75 / 10%), transparent 55%),
+    #0a0c14;
+  --surface: #141826;
+  --surface-glass: rgb(255 255 255 / 4%);
+  --surface-alt: #1b2032;
+  --sidebar-bg: rgb(10 12 20 / 72%);
 
   /* Borders */
-  --border: #e4e7f0;
-  --border-strong: #d0d5e8;
+  --border: #262c40;
+  --border-strong: #38405c;
 
   /* Text */
-  --text: #0d1120;
-  --text-sub: #5a6275;
-  --muted: #95a0b5;
+  --text: #eceefb;
+  --text-sub: #b6bcd6;
+  --muted: #8990ad;
 
-  /* Status accent palette */
-  --amber: #f59e0b;
-  --amber-dim: rgb(245 158 11 / 12%);
-  --green: #22c55e;
-  --green-dim: rgb(34 197 94 / 12%);
-  --blue: #3b82f6;
-  --blue-dim: rgb(59 130 246 / 12%);
-  --purple: #8b5cf6;
-  --purple-dim: rgb(139 92 246 / 12%);
-  --red: #ef4444;
-  --red-dim: rgb(239 68 68 / 12%);
+  /* Status — tuned for dark */
+  --amber: #f3c14b;  --amber-dim: rgb(243 193 75 / 15%);
+  --green: #56d6a0;  --green-dim: rgb(86 214 160 / 15%);
+  --blue: #6ea8ff;   --blue-dim: rgb(110 168 255 / 15%);
+  --purple: #b79bff; --purple-dim: rgb(183 155 255 / 15%);
+  --red: #ff6b7a;    --red-dim: rgb(255 107 122 / 15%);
 
-  /* Shadows */
+  /* Shadows + glow */
+  --shadow-sm: 0 1px 3px rgb(0 0 0 / 40%);
+  --shadow: 0 8px 30px rgb(0 0 0 / 50%);
+  --shadow-lg: 0 20px 60px rgb(0 0 0 / 60%);
+  --glow: 0 0 40px rgb(243 193 75 / 22%);
+
+  --font-body: var(--font-display), "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  color-scheme: dark;
+}
+
+/* ── Light variant (secondary) — paper with the same gold/rose accents ─────── */
+:root[data-theme="light"] {
+  --brand: #b9860f;
+  --brand-light: #a2760d;
+  --brand-dim: rgb(185 134 15 / 12%);
+  --gold: #b9860f;
+  --rose: #d65b86;
+  --accent-gradient: linear-gradient(118deg, #b9860f 0%, #d65b86 100%);
+
+  --bg: #f6f5f2;
+  --body-bg: #f6f5f2;
+  --surface: #ffffff;
+  --surface-glass: #ffffff;
+  --surface-alt: #efece5;
+  --sidebar-bg: #ffffff;
+
+  --border: #e6e2d8;
+  --border-strong: #d2cdbf;
+
+  --text: #191a1f;
+  --text-sub: #54586a;
+  --muted: #8a8e9d;
+
+  --amber: #b9860f;  --amber-dim: rgb(185 134 15 / 14%);
+  --green: #1a9d6a;  --green-dim: rgb(26 157 106 / 12%);
+  --blue: #2f6fe0;   --blue-dim: rgb(47 111 224 / 12%);
+  --purple: #7c53e0; --purple-dim: rgb(124 83 224 / 12%);
+  --red: #e0384a;    --red-dim: rgb(224 56 74 / 12%);
+
   --shadow-sm: 0 1px 3px rgb(0 0 0 / 8%), 0 1px 2px rgb(0 0 0 / 4%);
-  --shadow: 0 4px 16px rgb(0 0 0 / 8%), 0 2px 8px rgb(0 0 0 / 4%);
-  --shadow-lg: 0 8px 32px rgb(0 0 0 / 10%);
+  --shadow: 0 6px 22px rgb(0 0 0 / 10%);
+  --shadow-lg: 0 12px 40px rgb(0 0 0 / 12%);
+  --glow: 0 0 30px rgb(185 134 15 / 14%);
+
+  color-scheme: light;
+}
+
+/* Smoothly cross-fade colors when the theme flips (not on every hover). */
+body,
+.kb-sidebar,
+.kb-workspace,
+.kb-right,
+.kb-stat-card,
+.kb-source-panel,
+.kb-widget,
+.kb-nav-link {
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
 }
 
 * {
@@ -45,15 +109,19 @@ html,
 body {
   margin: 0;
   min-height: 100%;
-  background: var(--bg);
+  background: var(--body-bg);
+  background-attachment: fixed;
   color: var(--text);
-  font-family:
-    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
+  font-family: var(--font-body);
 }
 
 body {
   min-height: 100vh;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display), "Segoe UI", system-ui, sans-serif;
+  letter-spacing: -0.01em;
 }
 
 a {
@@ -159,12 +227,13 @@ p {
   color: var(--text-sub);
   font-size: 0.88rem;
   font-weight: 600;
-  transition: background 0.12s, color 0.12s;
+  transition: background 0.14s ease, color 0.14s ease, transform 0.14s ease;
 }
 
 .kb-nav-link:hover {
   background: var(--surface-alt);
   color: var(--text);
+  transform: translateX(3px);
 }
 
 .kb-nav-link.active {
@@ -211,9 +280,11 @@ p {
 /* â”€â”€ Hero banner â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 .kb-hero {
-  border-radius: 14px;
-  padding: 28px 32px;
-  background: linear-gradient(135deg, #0d0f1c 0%, #1a1040 55%, #1c1860 100%);
+  border-radius: 18px;
+  padding: 30px 34px;
+  background: linear-gradient(125deg, #161a2b 0%, #11141f 60%, #0d0f18 100%);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow), inset 0 1px 0 rgb(255 255 255 / 5%);
   position: relative;
   overflow: hidden;
 }
@@ -221,24 +292,25 @@ p {
 .kb-hero::before {
   content: "";
   position: absolute;
-  top: -60px;
-  right: -30px;
-  width: 300px;
-  height: 300px;
+  top: -80px;
+  right: -40px;
+  width: 340px;
+  height: 340px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgb(91 76 245 / 28%), transparent 70%);
+  background: radial-gradient(circle, rgb(242 120 159 / 30%), transparent 68%);
   pointer-events: none;
+  animation: kb-hero-glow 8s ease-in-out infinite;
 }
 
 .kb-hero::after {
   content: "";
   position: absolute;
-  bottom: -60px;
-  left: -20px;
-  width: 220px;
-  height: 220px;
+  bottom: -70px;
+  left: -30px;
+  width: 260px;
+  height: 260px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgb(245 158 11 / 12%), transparent 70%);
+  background: radial-gradient(circle, rgb(243 193 75 / 22%), transparent 68%);
   pointer-events: none;
 }
 
@@ -252,12 +324,28 @@ p {
 }
 
 .kb-hero h1 {
-  font-size: clamp(1.45rem, 2.8vw, 2rem);
-  font-weight: 800;
-  color: #ffffff;
-  line-height: 1.25;
-  max-width: 520px;
+  font-family: var(--font-display), "Segoe UI", system-ui, sans-serif;
+  font-size: clamp(1.6rem, 3vw, 2.3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  max-width: 540px;
   margin: 0;
+  position: relative;
+  /* Gradient text: white → gold → rose */
+  background: linear-gradient(104deg, #ffffff 0%, #f6d99f 52%, #f2789f 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #ffffff; /* fallback */
+}
+
+.kb-hero-label {
+  position: relative;
+}
+
+.kb-hero-sub {
+  position: relative;
 }
 
 .kb-hero-sub {
@@ -283,6 +371,18 @@ p {
   border: none;
   cursor: pointer;
   letter-spacing: 0.01em;
+  transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
+}
+
+.btn-primary {
+  background: var(--accent-gradient);
+  color: #1a1206;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgb(242 120 159 / 40%);
+  filter: brightness(1.06);
 }
 
 .btn-outline {
@@ -294,6 +394,13 @@ p {
   font-weight: 700;
   border: 1px solid rgb(255 255 255 / 18%);
   cursor: pointer;
+  transition: transform 0.16s ease, background 0.16s ease, border-color 0.16s ease;
+}
+
+.btn-outline:hover {
+  transform: translateY(-2px);
+  background: rgb(255 255 255 / 14%);
+  border-color: rgb(255 255 255 / 32%);
 }
 
 /* â”€â”€ Stat cards â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
@@ -305,13 +412,16 @@ p {
 }
 
 .kb-stat-card {
-  background: var(--surface);
-  border-radius: 12px;
+  background:
+    linear-gradient(180deg, var(--surface-glass), transparent),
+    var(--surface);
+  border-radius: 14px;
   padding: 18px 20px;
   border: 1px solid var(--border);
   box-shadow: var(--shadow-sm);
   position: relative;
   overflow: hidden;
+  backdrop-filter: blur(6px);
 }
 
 .kb-stat-card::after {
@@ -329,10 +439,11 @@ p {
 .kb-stat-card.purple::after { background: var(--purple); }
 
 .kb-stat-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
   margin-bottom: 14px;
+  border: 1px solid var(--border);
 }
 
 .amber .kb-stat-icon { background: var(--amber-dim); }
@@ -341,18 +452,27 @@ p {
 .purple .kb-stat-icon { background: var(--purple-dim); }
 
 .kb-stat-value {
-  font-size: 2.1rem;
-  font-weight: 800;
-  color: var(--text);
+  font-size: 2.3rem;
+  font-weight: 700;
   line-height: 1;
-  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-family: var(--font-mono), ui-monospace, Consolas, monospace;
+  font-variant-numeric: tabular-nums;
+  /* Gold → rose gradient numerals */
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--text); /* fallback */
 }
 
 .kb-stat-label {
-  margin-top: 5px;
-  font-size: 0.8rem;
+  margin-top: 7px;
+  font-size: 0.72rem;
   color: var(--text-sub);
   font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: var(--font-mono), ui-monospace, Consolas, monospace;
 }
 
 .kb-stat-sub {
@@ -362,9 +482,9 @@ p {
 }
 
 .amber .kb-stat-sub { color: var(--amber); }
-.green .kb-stat-sub { color: #15803d; }
-.blue .kb-stat-sub { color: #1d4ed8; }
-.purple .kb-stat-sub { color: #6d28d9; }
+.green .kb-stat-sub { color: var(--green); }
+.blue .kb-stat-sub { color: var(--blue); }
+.purple .kb-stat-sub { color: var(--purple); }
 
 /* â”€â”€ Section headers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
@@ -395,11 +515,14 @@ p {
 /* â”€â”€ Source table â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 .kb-source-panel {
-  background: var(--surface);
-  border-radius: 12px;
+  background:
+    linear-gradient(180deg, var(--surface-glass), transparent),
+    var(--surface);
+  border-radius: 14px;
   padding: 20px 22px;
   border: 1px solid var(--border);
   box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(6px);
 }
 
 .kb-table-header {
@@ -476,27 +599,27 @@ p {
 
 .kb-badge.imported {
   background: var(--amber-dim);
-  color: #b45309;
+  color: var(--amber);
 }
 
 .kb-badge.extracted {
   background: var(--blue-dim);
-  color: #1d4ed8;
+  color: var(--blue);
 }
 
 .kb-badge.classified {
   background: var(--purple-dim);
-  color: #6d28d9;
+  color: var(--purple);
 }
 
 .kb-badge.course_generated {
   background: var(--green-dim);
-  color: #15803d;
+  color: var(--green);
 }
 
 .kb-badge.done {
   background: var(--green-dim);
-  color: #15803d;
+  color: var(--green);
 }
 
 /* Pipeline */
@@ -597,10 +720,11 @@ p {
 }
 
 .kb-widget {
-  background: var(--bg);
-  border-radius: 10px;
+  background: var(--surface-glass);
+  border-radius: 12px;
   padding: 14px 16px;
   border: 1px solid var(--border);
+  backdrop-filter: blur(6px);
 }
 
 .kb-widget-title {
@@ -659,7 +783,7 @@ p {
   font-weight: 600;
   background: var(--brand-dim);
   color: var(--brand);
-  border: 1px solid rgb(91 76 245 / 18%);
+  border: 1px solid var(--brand-dim);
 }
 
 .run-item {
@@ -767,5 +891,136 @@ p {
   .kb-source-row > *:nth-child(5) {
     display: none;
   }
+}
+
+/* ── Motion ───────────────────────────────────────────────────────────────────
+   Lightweight, dependency-free animations. Entrance animations use .kb-animate-in
+   (opt-in per element) with a staggered delay via --stagger. Everything is
+   disabled under prefers-reduced-motion below. */
+
+@keyframes kb-fade-in-up {
+  from { opacity: 0; transform: translateY(16px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes kb-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Page transition — opacity-only so it never breaks the sticky sidebar */
+@keyframes kb-page-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes kb-hero-glow {
+  0%, 100% { opacity: 0.6; transform: translate(0, 0) scale(1); }
+  50%      { opacity: 1;   transform: translate(12px, 8px) scale(1.08); }
+}
+
+@keyframes kb-shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+@keyframes kb-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Entrance — add class="kb-animate-in" and optionally style={{"--stagger": i}} */
+.kb-animate-in {
+  opacity: 0;
+  animation: kb-fade-in-up 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(var(--stagger, 0) * 80ms);
+}
+
+/* App-wide page transition (template.tsx wraps every route in this) */
+.kb-page-transition {
+  animation: kb-page-in 0.4s ease forwards;
+}
+
+/* Cards lift on hover for tactile feedback */
+.kb-stat-card,
+.kb-source-panel {
+  transition:
+    background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease,
+    transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.kb-stat-card:hover,
+.kb-source-panel:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+/* Skeleton loader — apply .kb-skeleton to a sized block while loading */
+.kb-skeleton {
+  border-radius: 8px;
+  background: linear-gradient(
+    90deg,
+    var(--surface-alt) 25%,
+    var(--border) 37%,
+    var(--surface-alt) 63%
+  );
+  background-size: 800px 100%;
+  animation: kb-shimmer 1.4s linear infinite;
+}
+
+/* Theme toggle — fixed floating labeled pill, present on every page via layout */
+.kb-theme-toggle {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  height: 46px;
+  padding: 0 18px 0 15px;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.85rem;
+  font-weight: 700;
+  box-shadow: var(--shadow-lg);
+  cursor: pointer;
+  transition: transform 0.18s ease, color 0.18s ease, background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.18s ease;
+}
+
+.kb-theme-toggle:hover {
+  transform: translateY(-2px) scale(1.03);
+  color: var(--brand);
+  border-color: var(--brand);
+  box-shadow: 0 10px 28px rgb(91 76 245 / 35%);
+}
+
+.kb-theme-toggle:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.kb-theme-toggle svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Respect users who prefer reduced motion — kill all of the above */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .kb-animate-in { opacity: 1; }
+
+  .kb-stat-card:hover,
+  .kb-source-panel:hover,
+  .kb-theme-toggle:hover,
+  .kb-theme-toggle:active { transform: none; }
 }
 

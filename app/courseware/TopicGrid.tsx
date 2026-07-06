@@ -52,7 +52,7 @@ export default function TopicGrid({ topics }: { topics: TopicCardData[] }) {
               style={{ padding: "18px 20px", cursor: "pointer", height: "100%", boxSizing: "border-box" }}
             >
               <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "8px", marginBottom: "8px" }}>
-                <h3 style={{ fontSize: "0.95rem", fontWeight: 700, margin: 0, color: "var(--fg)", lineHeight: 1.3 }}>{t.label}</h3>
+                <h3 style={{ fontSize: "0.95rem", fontWeight: 700, margin: 0, color: "var(--text)", lineHeight: 1.3 }}>{t.label}</h3>
                 {t.hasSummary && (
                   <span className="kb-badge classified" style={{ flexShrink: 0, marginTop: "2px" }}>wiki</span>
                 )}

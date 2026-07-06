@@ -106,7 +106,7 @@ export default async function TopicPage({ params }: Props) {
         <div style={{ padding: "14px 0 8px", fontSize: "0.8rem", color: "var(--muted)" }}>
           <Link href="/courseware" style={{ color: "var(--brand)", textDecoration: "none" }}>Courseware</Link>
           {" / "}
-          <span style={{ color: "var(--fg)" }}>{topicLabel}</span>
+          <span style={{ color: "var(--text)" }}>{topicLabel}</span>
         </div>
 
         <div className="kb-hero" style={{ paddingBottom: "20px" }}>

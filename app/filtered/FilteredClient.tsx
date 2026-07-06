@@ -138,7 +138,7 @@ export default function FilteredClient({ initialTweets }: Props) {
               <span style={{ fontSize: "0.72rem", color: "var(--muted)" }}>{formatDate(t.filtered_at)}</span>
               <span style={{
                 fontSize: "0.7rem", fontWeight: 600, padding: "1px 7px", borderRadius: "99px",
-                background: "#fef3c7", color: "#92400e",
+                background: "var(--amber-dim)", color: "var(--amber)",
               }}>
                 {reasonLabel(t.reason)}
               </span>
@@ -156,9 +156,9 @@ export default function FilteredClient({ initialTweets }: Props) {
             onClick={() => handleUnfilter(t.tweet_id)}
             disabled={unfiltering === t.tweet_id}
             style={{
-              background: unfiltering === t.tweet_id ? "var(--border)" : "var(--brand)",
-              color: "#fff", border: "none", borderRadius: "6px",
-              padding: "5px 12px", fontSize: "0.78rem", fontWeight: 600,
+              background: unfiltering === t.tweet_id ? "var(--surface-alt)" : "var(--accent-gradient)",
+              color: unfiltering === t.tweet_id ? "var(--muted)" : "#1a1206", border: "none", borderRadius: "6px",
+              padding: "5px 12px", fontSize: "0.78rem", fontWeight: 700,
               cursor: unfiltering === t.tweet_id ? "not-allowed" : "pointer",
               whiteSpace: "nowrap", flexShrink: 0,
             }}

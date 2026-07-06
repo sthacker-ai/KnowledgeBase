@@ -40,8 +40,8 @@ export default function CompletionButton({ courseId, topicSlug }: Props) {
     return (
       <div style={{
         display: "inline-flex", alignItems: "center", gap: "6px",
-        background: "#dcfce7", color: "#15803d",
-        border: "1px solid #bbf7d0",
+        background: "var(--green-dim)", color: "var(--green)",
+        border: "1px solid var(--green-dim)",
         borderRadius: "8px", padding: "7px 14px",
         fontSize: "0.85rem", fontWeight: 600,
       }}>
@@ -55,9 +55,9 @@ export default function CompletionButton({ courseId, topicSlug }: Props) {
       onClick={markCompleted}
       disabled={saving}
       style={{
-        background: saving ? "var(--border)" : "var(--brand)",
-        color: "#fff", border: "none", borderRadius: "8px",
-        padding: "7px 16px", fontWeight: 600, fontSize: "0.85rem",
+        background: saving ? "var(--surface-alt)" : "var(--accent-gradient)",
+        color: saving ? "var(--muted)" : "#1a1206", border: "none", borderRadius: "8px",
+        padding: "7px 16px", fontWeight: 700, fontSize: "0.85rem",
         cursor: saving ? "not-allowed" : "pointer",
         transition: "background 0.15s",
       }}

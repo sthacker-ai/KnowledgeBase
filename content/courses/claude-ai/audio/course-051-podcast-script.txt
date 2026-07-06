@@ -1,0 +1,49 @@
+[ALEX]: Claude Fable’s pricing—$10 per million input tokens and $50 per million output tokens—means a single heavy workflow can eat through your budget fast if you don’t throttle output length.
+
+[SAM]: So if I’m generating reports that are 500k tokens each, that’s $25 per call just for output? How do I estimate input vs output in real use?
+
+[ALEX]: Input tokens are what you send—prompts, data, context—so a 200k‑token prompt costs $2, while the model’s reply might be 300k tokens costing $15. You need to log both sides; otherwise you’ll underestimate cost by a factor of five.
+
+[SAM]: Got it. What about the two‑week trial? Does it give us enough tokens to stress‑test a $5M/year business process, or should we limit scope?
+
+[ALEX]: The trial provides a fixed credit pool—roughly equivalent to $200 of usage—enough to run a few end‑to‑end cycles of a moderate workflow, but not a full‑scale simulation of a $5M operation. You’ll want to pilot a single subprocess, like invoice data extraction, to gauge token consumption before scaling.
+
+[SAM]: Speaking of subprocesses, what’s a concrete example of where Fable’s enhanced cyber guardrails actually stop a risky output that Mythos might have allowed?
+
+[ALEX]: With Mythos, a prompt asking for a summary of confidential financials could inadvertently leak a snippet of a tax ID in the response; Fable’s guardrails detect and redact patterns matching PII or proprietary formats before the token is emitted, returning a safe‑completion instead.
+
+[SAM]: That sounds useful, but does the guardrail add latency or restrict legitimate outputs, like when we need to generate synthetic test data that mimics real formats?
+
+[ALEX]: Yes, the guardrail adds roughly 30‑50 ms per call and will block any output that matches its regex‑based risk patterns; for synthetic data you must either whitelist those patterns via the API’s safety‑override flag or post‑process the blocked output yourself.
+
+[SAM]: Let’s talk integration. The course says we need to plan data migration, API development, and user training. What’s the first concrete step after we decide Fable fits a use case?
+
+[ALEX]: Export a sample of your current input payloads—say, the JSON you send to your existing LLM endpoint—and run them through Fable’s tokenizer to get exact token counts; that tells you whether your existing prompt size will blow the budget or needs trimming.
+
+[SAM]: After token sizing, we move to API development. Any gotchas when swapping the endpoint URL for Fable in our existing orchestration layer?
+
+[ALEX]: Fable requires an additional header, `X‑Client‑Version: 2.0`, and expects the `max_output_tokens` field to be explicitly set; omitting it defaults to the model’s hard cap, which can cause unexpected overruns and extra cost.
+
+[SAM]: Monitoring and optimization—what metrics should we watch in the first month to know if we’re getting value?
+
+[ALEX]: Track cost per successful task (total tokens × price), latency (time from request to completed response), and guardrail‑trigger rate (percentage of calls blocked); a rising block rate usually means your prompts are leaking sensitive info and need tightening.
+
+[SAM]: Finally, what’s a common pitfall teams hit when they move from trial to paid usage, and how do we avoid it?
+
+[ALEX]: They forget to switch from the trial’s fixed‑credit pool to the usage‑credit model that launches June 22nd, so they keep consuming tokens past the trial limit and get hit with surprise invoices; set up a billing alert at 80 % of your projected monthly credit and automate a switch to the paid plan before the deadline.
+
+Now we need to count words. Let's approximate.
+
+We need 950-1150 words total. Let's count roughly.
+
+I'll count each exchange's words.
+
+Exchange 1:
+[ALEX]: Claude Fable’s pricing—$10 per million input tokens and $50 per million output tokens—means a single heavy workflow can eat through your budget fast if you don’t throttle output length.
+Count words: Claude(1) Fable’s2 pricing—$103 per4 million5 input6 tokens7 and8 $509 per10 million11 output12 tokens—means13 a14 single15 heavy16 workflow17 can18 eat19 through20 your21 budget22 fast23 if24 you25 don’t26 throttle27 output28 length29. => 29 words.
+
+[SAM]: So if I’m generating reports that are 500k tokens each, that’s $25 per call just for output? How do I estimate input vs output in real use?
+Count: So1 if2 I’m3 generating4 reports5 that6 are7 500k8 tokens9 each,10 that’s11 $2512 per13 call14 just15 for16 output?17 How18 do19 I20 estimate21 input22 vs23 output24 in25 real26 use?27 => 27.
+
+[ALEX]: Input tokens are what you send—prompts, data, context—so a 200k‑token prompt costs $2, while the model’s reply might be 300k tokens costing $15. You need to log both sides; otherwise you’ll underestimate cost by a factor of five.
+Count: Input1 tokens2 are3 what4 you5 send—prompts,6 data,7 context—so8 a9 200k‑token10 prompt11 costs12 $2,13 while14 the15 model’s16 reply17 might18 be19 300k20 tokens21 costing22 $

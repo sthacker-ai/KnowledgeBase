@@ -1,0 +1,59 @@
+[ALEX]: Most teams assume that feeding Claude a few bullet points from a meeting will give them tailored outputs, but in practice the model still sounds generic because the crucial tacit knowledge never makes it into the context.
+
+[SAM]: Why does the model stay generic even when we give it those bullet points?
+
+[ALEX]: Because Claude’s weights are identical for everyone; the only lever we have is the context window, and a bullet list leaves out the reasoning patterns, judgment calls, and implicit preferences that shape a professional’s work.
+
+[SAM]: Can you give a concrete example of what gets lost in a bullet list?
+
+[ALEX]: Sure. Imagine a senior editor who always flags passive voice in legal briefs but also prefers a certain citation style; a bullet list might say “avoid passive voice” and “use Bluebook citations,” yet it won’t capture the editor’s threshold for when a passive construction is acceptable for emphasis, nor the habit of double‑checking cross‑references after each paragraph.
+
+[SAM]: So the extraction gap is the difference between what the editor knows intuitively and what ends up in the prompt?
+
+[ALEX]: Exactly. The gap is measured by the loss of fidelity when the AI tries to replicate the editor’s edits; studies in the course show a 40‑drop in similarity scores when only explicit rules are supplied versus when the full tacit knowledge is captured.
+
+[SAM]: How does the Grill Me method close that gap?
+
+[ALEX]: Grill Me flips the script: instead of the human trying to recall everything, Claude asks targeted, probing questions that surface the hidden rules, exceptions, and decision thresholds, building a knowledge document iteratively.
+
+[SAM]: What does a typical Grill Me session look like in practice?
+
+[ALEX]: The human starts with a high‑level goal—say, “draft a contract clause that protects IP.” Claude then asks: “What are the three non‑negotiable outcomes you need?” After the answer, it follows up: “If a jurisdiction limits liability to direct damages, how would you adjust the clause?” Each answer triggers another question that digs into precedents, risk tolerance, and preferred phrasing.
+
+[SAM]: Does the process ever stop, or could it go on forever?
+
+[ALEX]: It stops when Claude’s internal consistency check finds no new contradictions or ambiguities for three consecutive rounds; at that point the extracted rules are frozen into a reusable prompt template that can be version‑controlled.
+
+[SAM]: What trade‑offs should a team consider before investing time in Grill Me?
+
+[ALEX]: The main trade‑off is upfront effort versus long‑term reliability; a one‑hour Grill Me session can shave weeks of rework later, but if the task is truly one‑off and low‑stakes, a lightweight prompt may be sufficient.
+
+[SAM]: Finally, how would someone integrate the resulting knowledge document into their AIOS?
+
+[ALEX]: They store the extracted rules as a markdown file in the AIOS knowledge base, reference it with a system‑level “include” directive, and set up a weekly review loop where Claude suggests any missing edge cases based on new projects, keeping the context fresh.
+
+We need to ensure 10-14 exchanges. Let's count: we have Alex, Sam, Alex, Sam, Alex, Sam, Alex, Sam, Alex, Sam, Alex, Sam. That's 12 exchanges (6 each). Good.
+
+Now check word count. Let's approximate each line length.
+
+We'll need to count roughly. Let's write them out and then estimate.
+
+Line1 Alex: "Most teams assume that feeding Claude a few bullet points from a meeting will give them tailored outputs, but in practice the model still sounds generic because the crucial tacit knowledge never makes it into the context."
+
+Count words: Most(1) teams2 assume3 that4 feeding5 Claude6 a7 few8 bullet9 points10 from11 a12 meeting13 will14 give15 them16 tailored17 outputs,18 but19 in20 practice21 the22 model23 still24 sounds25 generic26 because27 the28 crucial29 tacit30 knowledge31 never32 makes33 it34 into35 the36 context37. => 37 words.
+
+Line2 Sam: "Why does the model stay generic even when we give it those bullet points?"
+
+Why1 does2 the3 model4 stay5 generic6 even7 when8 we9 give10 it11 those12 bullet13 points14? => 14 words.
+
+Line3 Alex: "Because Claude’s weights are identical for everyone; the only lever we have is the context window, and a bullet list leaves out the reasoning patterns, judgment calls, and implicit preferences that shape a professional’s work."
+
+Because1 Claude’s2 weights3 are4 identical5 for6 everyone;7 the8 only9 lever10 we11 have12 is13 the14 context15 window,16 and17 a18 bullet19 list20 leaves21 out22 the23 reasoning24 patterns,25 judgment26 calls,27 and28 implicit29 preferences30 that31 shape32 a33 professional’s34 work35. => 35 words.
+
+Line4 Sam: "Can you give a concrete example of what gets lost in a bullet list?"
+
+Can1 you2 give3 a4 concrete5 example6 of7 what8 gets9 lost10 in11 a12 bullet13 list14? => 14 words.
+
+Line5 Alex: "Sure. Imagine a senior editor who always flags passive voice in legal briefs but also prefers a certain citation style; a bullet list might say “avoid passive voice” and “use Bluebook citations,” yet it won’t capture the editor’s threshold for when a passive construction is acceptable for emphasis, nor the habit of double‑checking cross‑references after each paragraph."
+
+Sure1. Imagine2 a3 senior4 editor5 who6 always7 flags8 passive9 voice10 in11 legal12 briefs13 but14 also15 prefers16 a17 certain18

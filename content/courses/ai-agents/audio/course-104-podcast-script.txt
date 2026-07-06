@@ -1,0 +1,41 @@
+[ALEX]: Most developers treat AI coding agents like a fancy chat interface where you manually prompt, wait for a response, and then fix the mistakes. Loop engineering flips that by treating the agent as a component in a recursive system where the system prompts the agent until a goal is met, rather than a human guiding every single step.
+
+[SAM]: If the system is prompting the agent, who is actually defining the goal? Is this just a complex script, or is there a layer of intelligence deciding when the task is actually "done"?
+
+[ALEX]: It's a recursive goal. You define the purpose—for example, "find and fix all linting errors in the auth module"—and the loop iterates. The "intelligence" comes from the combination of five building blocks: automations, worktrees, skills, plugins, and sub-agents. The loop doesn't just run once; it discovers, triages, executes, and verifies, looping back if the verification fails.
+
+[SAM]: That sounds like it could quickly spiral into a token-burning nightmare if the agent gets stuck in a loop. How do you prevent it from just rewriting the same broken function ten times while costing you a hundred dollars?
+
+[ALEX]: That's where the "Skills" and "Memory" components come in. Instead of the agent guessing the project context or repeating mistakes, you use a SKILL.md file. This is a dedicated folder containing instructions, metadata, and reference scripts. It acts as a permanent knowledge base so the agent doesn't have to rediscover how your API works every time the loop restarts. Memory, which could be a simple markdown file or a Linear board, tracks what has already been attempted and what is next, preventing that repetitive cycle.
+
+[SAM]: I get the memory part, but how do you handle the actual file system? If you have an automated loop making changes, it seems like it would constantly conflict with the developer's active work or break the main branch.
+
+[ALEX]: You use worktrees. Instead of everyone working on one branch, worktrees create separate working directories on their own branches that share the same repo history. This allows multiple agents—and humans—to work on the same codebase simultaneously without stepping on each other's toes. One agent can be hunting bugs in a worktree while another is writing tests in another, and they only merge back once the loop confirms the goal is met.
+
+[SAM]: You mentioned sub-agents. Why bother splitting the work into different agents instead of just giving one powerful agent a very long list of instructions?
+
+[ALEX]: Long prompts lead to "lost in the middle" syndrome where the AI ignores the middle instructions. By using sub-agents, you assign specific roles. One sub-agent acts as the "Architect" to generate an idea, and another acts as the "Reviewer" to challenge that idea. This creates a check-and-balance system that catches hallucinations before the code ever hits the worktree.
+
+[SAM]: Let's get practical. If I wanted to automate something like daily issue triage in a massive codebase, how do these blocks actually fit together in a sequence?
+
+[ALEX]: First, an Automation triggers on a schedule to scan your issue tracker via a Connector. The Automation uses a Skill to understand how to categorize bugs based on your project's specific standards. It then spins up a Sub-agent to analyze the bug, which creates a Worktree to attempt a fix. The progress is logged in Memory so that if the process crashes or pauses, it knows exactly where it left off.
+
+[SAM]: So the "Connector" is the bridge to the outside world. Does that mean the agent can actually interact with things like Jira or GitHub Actions, or is it just reading text?
+
+[ALEX]: It's full interaction. Plugins and connectors allow the agent to trigger CI pipelines, read failure logs, and write commit briefings. Instead of a human reading a CI failure and then prompting the AI to fix it, the loop sees the failure, triggers the sub-agent to analyze the log, and pushes a fix to a worktree automatically.
+
+[SAM]: This feels like it shifts the developer's job from "writing code" to "engineering the loop." If the AI is doing the triage and the fixing, what is the human actually doing?
+
+[ALEX]: You move from being the operator to being the orchestrator. Your job becomes defining the Skills—the high-level constraints and project knowledge—and auditing the Memory. You aren't typing "fix this bug"; you're designing the system that ensures bugs are found, triaged, and fixed according to your standards.
+
+[SAM]: What happens when the project evolves? If the codebase changes, do you have to manually update every SKILL.md file, or does the loop handle its own documentation?
+
+[ALEX]: That's a tradeoff. If you don't update the Skills, the agent starts guessing, and quality drops. However, you can actually build a loop specifically for documentation. You can have a sub-agent that monitors changes in the worktrees and automatically updates the SKILL.md files to reflect the new architecture.
+
+[SAM]: It sounds powerful, but I'm worried about the "black box" effect. If a loop is running in the background across multiple worktrees, how do you maintain visibility without spending your whole day reading logs?
+
+[ALEX]: That's why the Memory block is critical. By using a tool like a Linear board or a dedicated markdown log, the agent provides a trail of breadcrumbs. You don't watch the agent work in real-time; you check the Memory to see the "Done" and "Next" lists. If the loop is stuck, you step in, adjust the Skill, and restart the loop from the last known good state.
+
+[SAM]: Are there specific tools that already implement this, or is this something I have to build from scratch using an LLM API?
+
+[ALEX]: Tools like Codex and Claude Code are already incorporating these five building blocks. They aren't just chat bots; they are designed to handle the file system, execute commands, and maintain state. The shift is moving away from "prompt engineering" and toward "loop engineering."

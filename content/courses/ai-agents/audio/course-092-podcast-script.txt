@@ -1,0 +1,29 @@
+[ALEX]: The Constitution, or governance layer, is a set of rules that guide an AI agent's behavior and decision-making process. It serves as a formal rule book, often stored as a Markdown file, defining the boundaries of what the agent can and cannot do.
+
+[SAM]: Wait, so it's like the agent's set of commandments, right? It has to follow these rules no matter what?
+
+[ALEX]: Exactly, Sam. This ensures that the agent's actions are aligned with company policy and legal requirements. For instance, in an invoice processing example, the constitution contains specific rules regarding what makes an invoice valid.
+
+[SAM]: But how does it handle simple checks and complex interpretations? I imagine it can't be all black and white.
+
+[ALEX]: That's a great point. The constitution uses a hybrid approach. Some rules are deterministic, using binary, yes/no logic that doesn't require a large language model (LLM). Others are executed by an LLM to handle nuance and reasoning, ensuring high precision for simple checks and flexibility for complex interpretations.
+
+[SAM]: Alright, so we have the Constitution. What's next in this AI agent architecture?
+
+[ALEX]: The Acting Agent, or execution layer, is the primary worker responsible for the "heavy lifting" of the workflow. Its role is to receive the input, like a PDF invoice, and execute a multi-step process: classifying the document, extracting the relevant data, validating that data against the constitution, and reasoning through the findings to reach a conclusion.
+
+[SAM]: So, it's like the agent's main engine, doing all the work?
+
+[ALEX]: Yes, but it's important to note that the Acting Agent doesn't operate in a vacuum. It's the first stage of a pipeline, and its output is not treated as the final answer. Instead, it's a proposal that must be verified.
+
+[SAM]: Wait, so there's another agent checking the Acting Agent's work?
+
+[ALEX]: That's right, Sam. The Critic Agent implements a critical design pattern: the "Validator" or "Critic" pattern. In this architecture, the system does not trust the Acting Agent's output implicitly. The Critic Agent's sole purpose is to review the work of the Acting Agent and verify that it followed the rules laid out in the Constitution.
+
+[SAM]: That seems like a crucial step to prevent mistakes and maintain accuracy. Is this pattern applicable in various domains?
+
+[ALEX]: Absolutely. This pattern is widely applicable across various domains. For example, in software engineering, one agent might implement a piece of code, and another agent would review and validate it. This separation of concerns prevents the "hallucinations" common in single-agent systems by ensuring the agent's work is subject to a secondary review process.
+
+[SAM]: Wow, I didn't realize there were so many layers to AI agents. It's fascinating how complex these systems can be!
+
+[ALEX]: Indeed, Sam. And this is just the tip of the iceberg when it comes to advanced AI agent workflows. By understanding these core concepts and patterns, you'll be better equipped to build authentic, production-ready applications that utilize multi-agent patterns and adaptive learning.

@@ -1,0 +1,29 @@
+[ALEX]: The Minimax M3 model offers superior performance at a lower cost compared to other popular AI models, making it a game-changer in the field of AI.
+
+[SAM]: Wait, how does Minimax M3 manage to outperform other models while being more cost-effective?
+
+[ALEX]: Minimax M3's unique architecture, called MSA (Minimax Sparse Attention), allows it to check which parts of the context matter and only read those parts, significantly reducing compute requirements.
+
+[SAM]: So, instead of reading every single token in context like traditional transformers, MSA checks and then only reads the relevant parts?
+
+[ALEX]: Exactly. This approach results in a full 1 million context window at 1/20th of the compute, offering a significant cost advantage.
+
+[SAM]: That sounds impressive. Now, let's talk about Hermes Agent. What is it, and how does it benefit from Minimax M3?
+
+[ALEX]: Hermes Agent is a powerful, open-source AI agent designed for various applications. It has a user-friendly Terminal User Interface (TUI) and can be easily integrated with different AI models, including Minimax M3.
+
+[SAM]: How do I set up and configure Hermes Agent with Minimax M3?
+
+[ALEX]: First, install Hermes Agent on your local machine. Next, select the Minimax token plan, obtain an API key from the Minimax platform, and configure Hermes Agent with Minimax M3 by pasting the API key and setting the base URL and model.
+
+[SAM]: Once I've configured Hermes Agent, how can I verify that everything is set up correctly?
+
+[ALEX]: Run a command in the Hermes Agent terminal to check the current configuration. This will ensure that you've correctly set up Hermes Agent with Minimax M3.
+
+[SAM]: What are some real-world examples of how I can use this combination for my work or projects?
+
+[ALEX]: You can use Hermes Agent and Minimax M3 for deep research on specific topics or optimize your coding workflow by building applications, AI startups, or demos with Minimax M3 inside OpenCode.
+
+[SAM]: Are there any key insights or takeaways I should remember when using Hermes Agent with Minimax M3?
+
+[ALEX]: Remember that Minimax M3 offers superior performance at a lower cost and that its MSA architecture significantly reduces compute requirements while maintaining high performance. Additionally, Hermes Agent is a versatile, open-source AI agent that can be easily integrated with Minimax M3.

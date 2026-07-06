@@ -1,0 +1,1 @@
+All right, so we've got Hermes on the Mac Mini over here, and then I've got LM Studio with Gemma 426B, and then we're talking to it through Telegram right here. Yep.

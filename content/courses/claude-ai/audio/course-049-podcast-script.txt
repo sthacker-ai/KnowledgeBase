@@ -1,0 +1,37 @@
+[ALEX]: Claude Fable consumes AI sessions roughly 30% faster than Opus, so a $5M/year business that relies on continuous AI assistance must allocate extra session capacity or risk throttling during peak operational hours.
+[SAM]: Why does Claude Fable use sessions more quickly, and what specific operational tasks drive that higher consumption compared to Opus?
+
+Exchange 2:
+[ALEX]: The extra usage stems from its deeper reasoning models and real‑time data pulling for employee schedules, financial ledgers, and performance dashboards, which Opus handles with lighter, less frequent queries.
+[SAM]: When integrating Claude Fable into an existing AI OS, what are the concrete steps and what resources—like API keys, compute quotas, or staff time—should be prepared beforehand?
+
+Exchange 3:
+[ALEX]: First, provision a dedicated service account in your AI OS, generate a Claude Fable API key, set session limits based on projected daily query volume, then install the connector plugin and run a sync test with a sample employee dataset.
+[SAM]: Can you walk through a realistic example of how Claude Fable improves employee management, say, for a retail store with 50 part‑time workers?
+
+Exchange 4:
+[ALEX]: Imagine the store manager inputs shift preferences; Claude Fable parses the constraints, generates an optimized schedule that minimizes overtime, flags conflicts, and automatically pushes the roster to the payroll system for wage calculation.
+[SAM]: What advantages does this give over using Opus for the same scheduling task, especially in terms of accuracy and time saved?
+
+Exchange 5:
+[ALEX]: With Opus, the manager would need to run separate scripts for constraint checking and overtime calculation, often requiring manual adjustments; Claude Fable does it in a single reasoned pass, cutting scheduling time from two hours to under twenty minutes and reducing errors by roughly 40%.
+[SAM]: Besides scheduling, how does Claude Fable’s advanced analytics help with financial tracking, and what trade‑offs should a business expect when moving from Opus?
+
+Exchange 6:
+[ALEX]: For financial tracking, Claude Fable can ingest daily sales CSV, reconcile with bank feeds, produce real‑time cash‑flow forecasts, and highlight variance drivers—tasks Opus can only perform via batch reports that run nightly.
+[SAM]: Are there any pitfalls to watch for when relying on Claude Fable for these real‑time financial insights, particularly around session usage or data privacy?
+
+Exchange 7:
+[ALEX]: The main pitfall is under‑estimating session draw; if you let the model run continuous queries without limits, you can exhaust your monthly session quota mid‑month, causing delayed reports, so you need alerts and auto‑scaling policies.
+[SAM]: When transitioning from Opus to Claude Fable, what practical steps can a business take to smooth the learning curve for finance and ops teams?
+
+Exchange 8:
+[ALEX]: Start with a parallel run: keep Opus handling low‑priority reports while Claude Fable tackles high‑frequency tasks, provide targeted training sessions on prompt engineering and session monitoring, and gather feedback after two weeks to adjust quotas.
+[SAM]: Once the system is live, how should a business measure the return on investment from using Claude Fable instead of Opus?
+
+Exchange 9:
+[ALEX]: Track three metrics: session consumption cost per month, average time to complete key operations (schedule, payroll, forecast), and error rate in outputs; compare baseline Opus numbers to Claude Fable numbers after a month to quantify savings.
+[SAM]: If a company wants to scale beyond a $5M/year operation, say to $20M/year, what adjustments in session management or architecture are necessary to keep performance stable?
+
+Exchange 10:
+[ALEX]: At higher volume, you’d shift from on‑demand sessions to reserved capacity pools, implement request batching for non‑critical analytics, and use

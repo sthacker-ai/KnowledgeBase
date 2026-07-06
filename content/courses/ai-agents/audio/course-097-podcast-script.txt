@@ -1,0 +1,17 @@
+[ALEX]: In the era of AI, software is evolving from traditional programming, or Software 1.0, to neural networks, or Software 2.0, and now to large language models, or Software 3.0.
+[SAM]: Wait, so Software 3.0 is different from Software 2.0? I thought neural networks were already a part of AI.
+[ALEX]: Yes, you're right. Neural networks are a part of AI, but Software 3.0 takes it a step further by using large language models as programmable computers.
+[SAM]: How does that work? Are these language models smart enough to understand complex programming tasks?
+[ALEX]: Yes, they are. Large language models, or LLMs, can understand and generate human-like text based on the input they receive. They can be programmed using English prompts, which can be as simple or complex as needed for a given task.
+[SAM]: That sounds amazing! But, what kind of trade-offs come with using LLMs?
+[ALEX]: Well, LLMs have properties of both utilities, like low latency and high uptime, and fabs, like large capital expenditures for building and maintaining the models. So, while they offer a lot of potential, there are costs and challenges associated with their use.
+[SAM]: I see. So, how would I go about using a large language model to solve a problem or complete a task?
+[ALEX]: First, you'd identify the problem or task to be solved. Then, you'd choose the appropriate software paradigm based on the problem's complexity, required resources, and your expertise.
+[SAM]: And what would that look like for Software 3.0?
+[ALEX]: For Software 3.0, you'd write English prompts to program the large language model, specifying the desired input and output.
+[SAM]: Can you give me an example of how this might be used in the real world?
+[ALEX]: Sure! Autonomous vehicles are a great example. AI agents can be used to process inputs from multiple sensors, make decisions about steering and acceleration, and adapt to changing road conditions.
+[SAM]: That's fascinating! What about other applications, like content generation or customer support?
+[ALEX]: Absolutely! LLMs can be used to generate text, images, or other media based on user prompts, enabling a wide range of applications from writing assistance to art creation. In customer support, AI agents can handle common inquiries, freeing up human agents to focus on more complex issues.
+[SAM]: This is all so exciting! I can't wait to learn more about the evolution of software and AI.
+[ALEX]: I'm glad to hear that! We'll be diving deeper into these concepts and more in the course, so stay tuned!

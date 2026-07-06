@@ -1,0 +1,37 @@
+[ALEX]: Most people think AI is just a faster way to write functions, but we're actually seeing a paradigm shift from Software 2.0, where we optimized neural network weights, to Software 3.0, where the LLM itself is the computer and the prompt is the program.
+
+[SAM]: If the prompt is the program, does that mean we've just replaced C++ with English? That sounds like a simplification, because English is ambiguous and C++ is deterministic.
+
+[ALEX]: That ambiguity is exactly why we have "vibe coding." Vibe coding is when you provide high-level intent and the AI produces a working result with such high accuracy that you stop meticulously checking every line. You're essentially operating on a "vibe" of success—it works, so you move on. It's incredible for rapid prototyping and side projects because the friction between an idea and a working app has almost vanished.
+
+[SAM]: But "vibe coding" sounds dangerous for professional software. If I'm building a banking system or a medical device, I can't just hope the "vibe" is correct. How do you move from that intuitive flow to something that actually meets a professional quality bar?
+
+[ALEX]: That’s the transition to agentic engineering. Instead of just chatting with an AI to get a snippet of code, you use the AI to design highly detailed specifications first. You create the "docs" and the architectural constraints, and then you direct agents to execute that implementation. The human shifts from being the writer to being the overseer who manages quality control and top-level categories.
+
+[SAM]: So the human is now a project manager for a fleet of AI agents. But if the agents are doing the "under the hood" work, how do we actually verify that the output is correct without spending more time reviewing the code than it would have taken to write it in the first place?
+
+[ALEX]: The key is verifiability. In Software 1.0, we wrote explicit rules—if X happens, do Y. In Software 2.0, we provided data and the model learned the weights. In Software 3.0, we use the agentic workflow to create a feedback loop. The agent doesn't just write code; it writes the tests, runs the code, catches the error, and iterates until the output matches the specification. The verification is automated through the agent's own ability to reason about the failure.
+
+[SAM]: Let's break down that evolution. If Software 1.0 is explicit rules and Software 2.0 is learned weights, what is the actual "unit of work" in Software 3.0?
+
+[ALEX]: The unit of work is the context window. In Software 3.0, the context window is your primary memory and workspace. Programming becomes the art of managing what information is present in that window, how it's structured, and how the LLM interprets those instructions to execute a task. You aren't managing memory addresses or training hyperparameters; you're managing the flow of information and the precision of the prompt.
+
+[SAM]: That sounds like it shifts the bottleneck. We used to be bottlenecked by how fast we could type or how well we understood a library's API. Now, are we bottlenecked by how well we can describe a problem?
+
+[ALEX]: Exactly. The skill set shifts from syntax to specification. If you can't define the requirements precisely, the agent will build the wrong thing very quickly. The danger of vibe coding is that you might get a result that looks right on the surface but has hidden architectural flaws because you didn't specify the constraints. Agentic engineering solves this by forcing the "specification phase" to be a formal part of the workflow.
+
+[SAM]: Give me a concrete example of the difference between a "vibe coder" and an "agentic engineer" tackling the same task, like building a weather app.
+
+[ALEX]: A vibe coder says, "Make me a weather app that shows the temperature in London," and they iterate through a few prompts until the screen looks right. An agentic engineer tells the agent, "Design a technical specification for a weather app including API endpoints, error handling for timeout scenarios, and a modular UI structure. Once I approve the spec, implement the backend, then the frontend, and write a test suite to verify the API integration."
+
+[SAM]: So the agentic engineer is essentially treating the AI as a workforce rather than a calculator. But does this mean the traditional role of a software engineer is dead, or just evolving?
+
+[ALEX]: It's evolving into a role of system architecture and verification. You no longer need to be an expert in the specific syntax of a niche framework, but you must be an expert in how systems connect. You're moving from the "how" to the "what." The "how" is now handled by the agentic workflow.
+
+[SAM]: If the AI is handling the implementation, does that mean we're losing the deep understanding of how the software actually works? If the "overseer" doesn't know the "under the hood" details, who fixes the problem when the agent hits a wall it can't reason its way out of?
+
+[ALEX]: That's the primary tradeoff. There is a risk of "abstraction leakage," where the human becomes too detached from the implementation. However, the goal of agentic engineering is to use the AI to explain its own reasoning. A professional engineer uses the agent to document the logic as it builds, so the human can still audit the system without needing to manually trace every line of code.
+
+[SAM]: It sounds like we're moving toward a world where the "code" is just a temporary artifact, and the "prompt" and "specification" are the actual source of truth.
+
+[ALEX]: That's the core of the Software 3.0 paradigm. The executable code becomes a compiled output of the specification. The real intellectual property isn't the Python script; it's the agentic workflow and the precise set of instructions that can reliably produce that script.

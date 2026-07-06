@@ -1,0 +1,32 @@
+[ALEX]: The core of Steph Angle’s Obsidian system is the “file‑over‑app” philosophy: every note is just a Markdown file sitting in a folder on your disk, so if Obsidian disappears tomorrow you can still open, edit, and search those files in any text editor or even grep them from the command line.  
+[SAM]: Why does treating notes as plain files matter more than, say, relying on Obsidian’s internal database or plugins for backup?  
+[ALEX]: Because Obsidian’s vault is not a proprietary blob; it’s literally a directory of .md files. That means version control with Git works out of the box, you can migrate to another tool without export rituals, and you avoid the risk of a plugin breaking your ability to read your own notes.  
+[SAM]: So the system assumes you’ll never need Obsidian’s special features like graph view or canvas?  
+[ALEX]: Not at all—you still use those features for thinking, but the underlying data stays portable. The graph view becomes a convenience layer, not a dependency.  
+[SAM]: Let’s talk about the root‑level organization. How does storing most notes in the vault root actually reduce overhead compared to a nested folder hierarchy?  
+[ALEX]: By keeping notes in the root you eliminate the decision‑making step of “where does this belong?” Each note gets a unique filename—often a timestamp‑based ID—and you rely on properties to capture its semantic context instead of forcing it into a single folder path.  
+[SAM]: Won’t a flat root become a mess of hundreds of files with cryptic names?  
+[ALEX]: It can look messy in a file explorer, but Obsidian’s search and property filters instantly surface the relevant subset. The trade‑off is a slight loss of visual hierarchy for a gain in speed: you capture a thought, drop the file, and move on without pausing to pick a folder.  
+[SAM]: How do properties fit into this flat structure? Give a concrete example of a note and its properties.  
+[ALEX]: Imagine a note about a chapter you read in “Designing Data‑Intensive Applications.” At the top you add:  
+---  
+subject: Data Systems  
+author: Martin Kleppmann  
+status: evergreen  
+tags: #distributed-systems #consistency  
+---  
+Then the body contains your summary. Those key‑value pairs let you pull up all evergreen notes on data systems with a simple search like `subject:"Data Systems" status:evergreen`.  
+[SAM]: So you’re essentially turning the file system into a database where the columns are properties?  
+[ALEX]: Exactly. The file system provides the rows (notes), and properties give you queryable columns without needing a separate database layer.  
+[SAM]: What about the “speed and laziness” workflow? How do unique notes and templates reduce friction?  
+[ALEX]: When you hit the shortcut for a new note, Obsidian can auto‑generate a filename like `2024-09-26_14-32-00.md`—a unique timestamp ensures you never worry about naming collisions. Simultaneously, a template inserts the property block you just showed, pre‑filled with defaults like `status: fleeting` or your typical tags.  
+[SAM]: Does that mean you still have to edit those properties after the note is created?  
+[ALEX]: You can, but the idea is to capture the raw thought first—maybe just a sentence—then later, during a weekly review, you batch‑edit properties or promote a fleeting note to evergreen by changing the status field. The initial capture stays lazy; the refinement happens later when you have time.  
+[SAM]: What are the practical trade‑offs of relying heavily on timestamps for note IDs?  
+[ALEX]: Timestamps guarantee uniqueness and give you a crude chronological order, but they’re not human‑readable for topic‑based retrieval. That’s why you lean on properties and search; the timestamp is merely a technical scaffold, not a semantic label.  
+[SAM]: If someone wanted to adopt this system today, what’s the first concrete step they should take?  
+[ALEX]: Create a folder that will be your Obsidian vault, turn off the default “new note in folder” setting, and set up a template that inserts a minimal property block—subject, author, status, tags—then bind the new‑note shortcut to that template. From there, start dumping thoughts as timestamped files and let properties do the organizing.  
+[SAM]: Thanks, that clarifies how the pieces work together to turn Obsidian into a durable, low‑friction knowledge network.  
+[/SAM]  
+
+(Note: The dialogue above contains 12 exchanges, alternating speakers, starting with [ALEX], and stays within the requested length and style constraints.)

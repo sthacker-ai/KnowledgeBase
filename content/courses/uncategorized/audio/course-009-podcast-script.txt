@@ -1,0 +1,33 @@
+[ALEX]: In this course, you'll learn how to turn Hermes, a chat app, into a personal assistant by using six hacks to automate tasks, manage workflows, and gain insights.
+
+[SAM]: Wait, so you're saying I can use Hermes as a personal assistant? How does that work?
+
+[ALEX]: Absolutely. The first hack is Mission Control, a dashboard that provides an overview of your entire system, including content, agents, ideas, performance, and more. By integrating Hermes into your mission control, you can see what's happening, what's waiting for you, what's being blocked, and what needs approval.
+
+[SAM]: Interesting. So Hermes becomes part of my operating layer, not just another chat app. But what about automating tasks?
+
+[ALEX]: That's where Web Hook Triggers come in. They allow you to automate tasks by setting up triggers that initiate specific workflows. For instance, when you move a video idea to your "to film" list in Notion, Hermes can automatically create a filming brief for you.
+
+[SAM]: That sounds useful. Can you give me a concrete example?
+
+[ALEX]: Sure. Let's say you're using Notion for project management. You can create a Web Hook Trigger that automatically sends a message to Hermes when you move a task to a specific column, like "In Progress" or "Done." This way, you can ensure that your agents follow you around where you already live and work, without any manual intervention.
+
+[SAM]: Got it. What's the next hack?
+
+[ALEX]: The Hermes Kanban Board. It's a visual representation of your workflows, which can be integrated directly into your mission control dashboard. By using a Kanban board, you can see the tasks that Hermes is working on, instead of digging through chat history.
+
+[SAM]: I see. So it helps Hermes become part of my operating layer, rather than just a chat app. What about scheduling tasks?
+
+[ALEX]: That's where Cron Jobs come in. Cron jobs are time-based tasks that Hermes can perform automatically. By setting up cron jobs, you can have Hermes wake up at specific times and perform tasks, such as sending you an AI story worth reacting to, scanning websites for fresh posts, checking for outlier videos, auditing content boards, and summarizing content ideas.
+
+[SAM]: I like the idea of automating tasks. What's the next hack?
+
+[ALEX]: Sub-Agents. Sub-agents are specialized agents that can be used to perform specific tasks. For instance, you can have Hermes run three sub-agents for video research: one for vidIQ and keyword signals, one for YouTube outliers and transcripts, and one for your channel performance and Nova memory. By using sub-agents, you can have multiple threads of work, which can be separated and managed more effectively.
+
+[SAM]: That sounds powerful. Finally, what's the last hack?
+
+[ALEX]: Slash Goals. Slash goals are objectives that you can set for Hermes, rather than just asking for a single response. By using slash goals, you can provide Hermes with an outcome, sources, constraints, and deliverables, which will help it work towards a specific goal. For instance, you can ask Hermes to decide the strongest Hermes agent video that you should film this week, using vidIQ YouTube outliers, competitor transcripts, your posted videos, and Nova memory, while avoiding repeated angles and generic AI guru framing.
+
+[SAM]: That's a lot of information to take in. Can you summarize the main ideas?
+
+[ALEX]: Sure. In this course, you'll learn how to set up and use Hermes as a personal assistant by using six hacks: Mission Control, Web Hook Triggers, Hermes Kanban Board, Cron Jobs, Sub-Agents, and Slash Goals. These hacks will help you automate tasks, manage workflows, and gain insights, turning Hermes into an essential tool for your personal knowledge base.

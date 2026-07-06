@@ -1,0 +1,37 @@
+[ALEX]: Let’s say you’re scanning for stocks to swing trade—how do you avoid wasting time on weak performers when there are thousands of tickers to choose from?
+
+[SAM]: By using a scanner, but how do you define what makes a stock "strong" in the first place? Is it just price going up?
+
+[ALEX]: No, it’s about relative strength—how a stock performs compared to the broader market. For example, if the S&P 500 drops 5% but a stock only dips 1%, it’s holding up better. That’s a signal of institutional support.
+
+[SAM]: So, you’re looking for stocks that resist market downturns. But how do you quantify that? What metrics do you use?
+
+[ALEX]: You’d use a screener like TradingView to filter for stocks above their 200-day moving average, with a positive rate of change over the last 3 months, and a relative strength index (RSI) above 50. These are basic signals of momentum.
+
+[SAM]: That makes sense, but what if the market is in a downturn? Wouldn’t most stocks be below their 200-day moving average?
+
+[ALEX]: That’s where relative strength comes in. Even in a bear market, some stocks will outperform. You’d adjust your scan to look for stocks that are only slightly below their highs or holding above key support levels while the index is crashing.
+
+[SAM]: Got it. So, you’re not just looking for stocks that are going up—you’re looking for ones that are stronger than the market. But how do you avoid false positives? A stock might look strong one day and crash the next.
+
+[ALEX]: That’s why you combine multiple filters. For example, you’d also check for increasing volume on up days and decreasing volume on down days. A stock with strong momentum should have confirmation from volume.
+
+[SAM]: That’s a good point. What about sector rotation? If a sector is out of favor, even the strongest stock in that sector might underperform.
+
+[ALEX]: You’d filter by sector strength as well. If tech is leading, you’d focus on tech stocks. If healthcare is lagging, you’d avoid it. TradingView lets you sort by sector performance, so you can see which industries are driving the market.
+
+[SAM]: So, you’re scanning for stocks, but you’re also scanning for sectors. That’s a lot of data to process. How do you keep it manageable?
+
+[ALEX]: You start with a broad scan, then narrow it down. First, filter for stocks with strong relative strength. Then, filter by sector. Finally, apply technical criteria like moving averages and RSI. By the end, you should have a shortlist of 5-10 stocks.
+
+[SAM]: That’s a solid process. But what if you’re a beginner? How do you know what filters to use?
+
+[ALEX]: Start with the basics: price above the 200-day moving average, RSI above 50, and volume increasing. As you gain experience, you can add more complex filters, like Bollinger Bands or MACD crossovers.
+
+[SAM]: And how often should you run this scan?
+
+[ALEX]: Daily, before the market opens. Markets change fast, and a stock that was strong yesterday might not be today. The goal is to stay ahead of the trend.
+
+[SAM]: That’s a lot of work. Is it worth it?
+
+[ALEX]: Absolutely. By focusing on strong stocks, you’re stacking the odds in your favor. It’s not about predicting the market—it’s about positioning yourself in the best-performing assets. Over time, that’s how you build consistent returns.

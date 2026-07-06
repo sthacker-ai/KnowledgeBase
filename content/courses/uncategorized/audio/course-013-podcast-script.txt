@@ -1,0 +1,20 @@
+[ALEX]: Claude Fable 5 can produce a complete, responsive website with scroll‑triggered mask reveal effects from a single prompt that describes both the layout and the paired images needed for the effect.  
+[SAM]: What does “single prompt” actually contain? Are we talking about a natural‑language description of the page sections, or does it also include the exact image prompts for the base and reveal layers?  
+[ALEX]: The prompt mixes two parts: a structural description—header, hero, scroll sections, breakpoints—and image‑generation instructions that specify a base image (e.g., a silhouette) and a reveal image (the full‑color version) with matching perspective and lighting.  
+[SAM]: How does Fable 5 ensure the two images line up perfectly when the mask effect runs? Does it generate them simultaneously, or do we have to adjust them afterward?  
+[ALEX]: It generates them as a paired set using the same seed and camera parameters you specify, so the geometry matches out of the box; if there’s a slight drift, you can rerun the image generator with a refined seed or tweak the CSS offset by a few pixels.  
+[SAM]: Speaking of tweaks, what kind of manual adjustments are still needed after the AI outputs the code?  
+[ALEX]: You’ll usually need to fine‑tune the mask’s clip‑path values, adjust scroll‑speed via CSS custom properties, and add fallback alt text for accessibility—nothing that requires rewriting the core layout.  
+[SAM]: Accessibility is a good point. How does Fable 5 handle keyboard navigation and screen‑reader compatibility for these reveal effects?  
+[ALEX]: The generated markup uses semantic HTML (section, figure, img) and the mask is purely visual; keyboard focus follows the natural tab order, and you can add aria‑label attributes to the reveal containers if you want descriptive text for non‑visual users.  
+[SAM]: Let’s talk about the asset generation pipeline. You mentioned using Pinterest for inspiration—what’s the practical workflow from a pin to a usable image pair?  
+[ALEX]: First, you collect a pin that shows the desired mood, then you use an image generator (like GPT‑2‑based or Hicksfield) with a prompt that extracts the base concept—e.g., “a dark mountain silhouette against a twilight sky”—and a second prompt that adds the reveal details—“the same mountain in full color with sun‑lit peaks.”  
+[SAM]: How do you keep the style consistent between the two generated images so the mask doesn’t look like a cut‑and‑paste job?  
+[ALEX]: By locking the same random seed, aspect ratio, lighting direction, and camera angle in both prompts, and by adding a style reference—such as “cinematic, 8 k, ultra‑realistic”—to each call, the AI outputs images that share tone, contrast, and grain.  
+[SAM]: Once you have the images and the Fable 5‑generated code, what’s the next step before deployment?  
+[ALEX]: You run a local dev server, test the scroll reveal on multiple viewport widths, check performance with Lighthouse (aiming for < 2 s First Contentful Paint), and then export the optimized assets—compressing the images with WebP and minifying the CSS/JS that Fable 5 spits out.  
+[SAM]: Are there any tradeoffs when relying on Fable 5 for the responsive breakpoints instead of writing media queries manually?  
+[ALEX]: Fable 5 auto‑generates fluid breakpoints based on the container widths you describe, which speeds up iteration, but if you need a very specific breakpoint—say, a 480 px menu collapse—you may need to add a custom media query after the fact.  
+[SAM]: Finally, how does this approach help designers create viral‑ready portfolios on platforms like X?  
+[ALEX]: Because the site looks like custom‑coded agency work—smooth mask reveals, polished responsiveness—you can showcase a single interactive case study that loads quickly, encourages scrolling, and is easy to share as a link or embedded video, driving engagement and client inquiries.  
+[SAM]: One last question: what’s the biggest pitfall to watch out for when first trying this workflow?

@@ -1,0 +1,49 @@
+[ALEX]: The Hermes AI agent is hosted on a Virtual Private Server, or VPS, which offers a dedicated environment in the cloud with root access, allowing for more control and customization than shared hosting options.
+
+[SAM]: Wait, so why not just use shared hosting? What's the advantage of having a VPS for an AI agent?
+
+[ALEX]: A VPS gives you more control over the operating system, software installations, and resource allocation, which are essential for deploying and managing AI agents effectively.
+
+---
+
+[ALEX]: The Hermes agent operates autonomously, meaning it can execute tasks without human intervention.
+
+[SAM]: How does it determine when to perform tasks? Are they all scheduled in advance?
+
+[ALEX]: The agent uses a feature called 'cron jobs' to schedule tasks at specific intervals. This allows the agent to wake up and perform actions—like checking an email inbox or scraping a website—without human intervention.
+
+---
+
+[ALEX]: The Hermes agent performs tool calling, which is the mechanism that allows it to interact with the external world.
+
+[SAM]: Could you give me an example of what you mean by 'tool calling'?
+
+[ALEX]: Sure! Tool calling can involve using APIs, database queries, or pieces of code to complete tasks. For instance, the Hermes agent may use a tool to send a message, manage data, or retrieve information from an external source.
+
+---
+
+[ALEX]: The Human-to-Agent Interaction Ratio is a metric that measures the efficiency of an agent's autonomy by comparing the number of autonomous sessions to the number of times a human had to intervene.
+
+[SAM]: In the Hermes case study, the agent had 2,904 sessions but only required 18 human interventions via Telegram. That's impressive!
+
+[ALEX]: Yes, it demonstrates that once a workflow is properly tested and instructions are set, the human role shifts from 'operator' to 'supervisor.'
+
+---
+
+[ALEX]: The Hermes agent follows a specific architectural flow to ensure persistence and autonomy.
+
+[SAM]: What are the steps involved in this process?
+
+[ALEX]: The first step is Infrastructure Setup, where the agent is hosted on a Virtual Private Server.
+
+[SAM]: And what comes next?
+
+[ALEX]: After setting up the infrastructure, the agent requires Configuration and Scripting, where you define the tasks and actions the agent should perform.
+
+[SAM]: I see. And how does the agent start operating autonomously?
+
+[ALEX]: Once the configuration and scripting are complete, the agent can start executing tasks through Autonomous Background Operation.
+
+[SAM]: And how do we monitor and manage the agent after deployment?
+
+[ALEX]: The final step is Monitoring and Maintenance, where you can track the agent's performance, address any issues, and update its instructions as needed.

@@ -1,75 +1,71 @@
 ---
 title: "Machine Learning"
 topic_slug: machine-learning
-course_count: 11
-generated_at: "2026-06-09T10:51:03.753Z"
+course_count: 12
+generated_at: "2026-07-06T06:54:18.483Z"
 type: topic-summary
 ---
 # Machine Learning
 
 ## Overview
-Machine Learning (ML) is the scientific study of algorithms and statistical models that enable computers to perform tasks without explicit instructions, relying instead on patterns and inference. This reference page covers a broad spectrum of ML, ranging from the mathematical foundations of sequential decision-making via Markov Decision Processes to the cutting-edge architecture and economics of Large Language Models (LLMs). Readers will find detailed explorations of tokenization, the mechanics of Retrieval-Augmented Generation (RAG), the shift toward self-hosted local inference, and the scaling laws governing modern intelligence. This page serves as a definitive guide for understanding how ML is applied in high-stakes environments like [[finance]] and how it can be leveraged to build persistent, self-improving knowledge systems.
+
+Machine Learning (ML) is a subset of artificial intelligence that enables computer systems to automatically improve their performance on a specific task through experience. It has revolutionized various industries, from finance and healthcare to entertainment and transportation, by providing powerful predictive models and decision-making capabilities. This reference page compiles key concepts, techniques, and insights from various courses on the topic, serving as a comprehensive guide to understanding and applying machine learning.
 
 ## Key Concepts
 
 ### Markov Decision Processes (MDPs)
-MDPs provide a mathematical framework for modeling decision-making in stochastic environments where outcomes are partly random and partly under the control of a decision-maker. They are the cornerstone of reinforcement learning, allowing agents to determine an optimal sequence of actions to maximize cumulative rewards over time.
 
-### The Markov Property
-A fundamental assumption in MDPs stating that the future state of a system depends solely on the current state and the action taken, regardless of the system's past history. This simplification allows for the rigorous analysis of complex systems without needing to track every previous state transition.
+MDPs are a mathematical framework for modeling decision-making in situations where outcomes are partly random and partly under the control of a decision-maker. They consist of a set of states, actions, and rewards, and are governed by the Markov property, which assumes that the future state depends only on the current state and action, not on the past history. MDPs are widely used in reinforcement learning, which focuses on building agents that can learn to make good decisions through trial and error.
 
 ### Tokens and Tokenization
-Tokens are the atomic units of text processed by LLMs, acting as the bridge between raw human language and the numerical vectors required by neural networks. Tokenization is the process of breaking text into these sub-word sequences, and it fundamentally dictates how a model perceives meaning and efficiency.
 
-### Scaling Laws
-The principle that increasing training tokens, parameter counts, and compute power leads to a predictable decrease in loss and an increase in general intelligence. However, as the industry hits a "data wall," the focus is shifting toward "token efficiency"—extracting more intelligence from existing data rather than simply increasing volume.
+Tokens are the fundamental, discrete units of text that Large Language Models (LLMs) process. They are not strictly defined as words, characters, or sentences, but rather specific sub-word sequences derived from the original text. Tokenization is the process of converting raw input (text) into a numerical format (tokens) that LLMs can understand and process. Mastering tokenization is essential for debugging and understanding the emergent "weirdness" observed in LLMs.
 
-### Retrieval-Augmented Generation (RAG)
-A method where an LLM retrieves relevant document snippets from an external data source to ground its response in specific facts. While effective for search, standard RAG is often stateless, meaning it does not "learn" or build upon previous queries over time.
+### Retrieval Augmented Generation (RAG)
 
-### LLM Wiki (Persistent Knowledge Base)
-An evolution of RAG where the AI does not just retrieve information but actively builds and updates a structured, permanent knowledge base. This approach transforms a static folder of documents into a living expert system that compounds its understanding through incremental indexing and feedback loops.
+RAG is a method for AI-based document search where the AI searches through your documents, pulls out relevant pieces, and generates an answer to your question. However, it lacks the ability to build upon previous searches, resulting in inefficiencies and limited knowledge retention.
 
-### Local Inference and Self-Hosting
-The practice of running LLMs on personal hardware rather than via cloud APIs. This shift democratizes access to ML infrastructure, eliminates recurring API costs, and ensures total data privacy by removing the reliance on centralized providers.
+### LLM Wiki
+
+The LLM wiki is an alternative to RAG that addresses its limitations by having the AI build a persistent knowledge base that compounds its understanding over time. The LLM wiki stores the search results and associated metadata, allowing the AI to reference and build upon previous searches, improving its knowledge retention and efficiency.
 
 ## Techniques & Methods
 
-### Sequential Decision Optimization
-Used primarily in systematic trading, this method applies MDPs to move beyond simple heuristics. By modeling market data as "states" and trades (buy/sell/hold) as "actions," practitioners can mathematically derive the optimal policy for maximizing long-term returns under uncertainty.
-
-### Token Efficiency and Second-Order Optimization
-Advanced architectural optimizations, such as those seen in the Kimi K2 model, involve moving from traditional optimizers to second-order methods. These techniques aim to push the upper bounds of intelligence (especially in specialized tasks like coding) without requiring exponentially larger compute budgets.
-
-### Vector Embeddings and Incremental Indexing
-The process of converting text into high-dimensional vectors to enable semantic search. In the context of a permanent knowledge base, incremental indexing allows the system to add new information without retraining the entire model, creating a self-improving loop of knowledge.
-
-### Local Model Deployment via Ollama
-A workflow for deploying open-weight models (like OpenAI Codex equivalents) locally. This involves using tools like Ollama to manage model weights and inference, allowing developers to bypass rate limits and integrate ML directly into their [[software-engineering]] pipelines.
+- **Markov Decision Processes (MDPs)**: Utilize MDPs to model decision-making in uncertain environments, enabling intelligent systems to make optimal decisions.
+- **Retrieval Augmented Generation (RAG)**: Implement RAG to search through documents and generate answers to user questions.
+- **LLM Wiki**: Develop an LLM wiki to create a persistent knowledge base that grows smarter over time, improving the AI's efficiency and knowledge retention.
 
 ## Insights & Lessons Learned
 
-* **Intelligence is as much about economics as it is about algorithms.** I've learned that the development of frontier models is a massive capital undertaking; the ability to allocate resources and optimize training costs is just as critical as the underlying mathematical ingenuity.
-* **The "Atom" of the system is the token.** I realized that many of the "weird" behaviors or hallucinations in LLMs can be traced back to how the tokenizer handles specific strings; mastering tokenization is the first step in effectively debugging any LLM.
-* **Statelessness is the primary bottleneck of current AI.** Most LLM interactions are ephemeral. By shifting from a "prompt-and-response" model to a "permanent wiki" model, I can move from using AI as a search engine to using it as a compounding intellectual asset.
-* **The "Data Wall" is forcing a paradigm shift.** Because high-quality training data is finite, the next leap in AI won't come from more data, but from better token efficiency and more sophisticated agent orchestration.
-* **Privacy and cost are the primary drivers for local hosting.** Moving models from the cloud to local hardware isn't just a technical preference; it is a strategic move to ensure data sovereignty and eliminate the financial volatility of API pricing.
-* **Mathematical rigor beats heuristics in volatile environments.** In fields like systematic trading, relying on "rules of thumb" is inferior to the rigorous framework of MDPs, which provide a provable path toward optimal decision-making.
+1. Understanding the fundamentals of MDPs is crucial for building intelligent systems that can make optimal decisions in uncertain environments.
+2. Tokenization is a critical concept in LLMs, as it dictates how the model perceives and processes meaning.
+3. RAG, while functional, has limitations in terms of knowledge retention and efficiency.
+4. The LLM wiki addresses the limitations of RAG by creating a persistent knowledge base that compounds its understanding over time.
+5. Large Language Models (LLMs) rely on the ability of computers to process and understand human language, and tokenization is a vital preprocessing step for LLMs to convert raw input (text) into a numerical format (tokens).
+6. Running LLMs locally on personal hardware democratizes access to cutting-edge ML infrastructure, addressing concerns regarding data privacy, latency, and cost.
+7. The development of LLMs is a massive economic undertaking, driven by the necessity to train models with exponentially increasing parameters and vast amounts of data.
+8. The open-source movement plays a crucial role in driving the shift from centralized, cloud-based AI models to local, self-hosted computation.
 
 ## Cross-References
-* [[openai-codex]] — The specific model architecture often used for coding tasks and a primary target for local self-hosting.
-* [[ai-agents]] — The orchestration layer that allows LLMs to use tools and interact with the "LLM Wiki" to update knowledge bases.
-* [[finance]] — The primary application area for MDPs in systematic trading and quantitative decision-making.
-* [[data-engineering]] — The underlying infrastructure required to implement vector embeddings and incremental indexing for RAG systems.
-* [[software-engineering]] — The discipline required to integrate local LLM inference into production-ready applications.
+
+- [[Claude-AI]]: Claude-AI is a cutting-edge language model developed by Anthropic, focusing on providing detailed, accurate, and thoughtful responses.
+- [[AI-Agents]]: AI-Agents is a topic that covers the development and application of artificial intelligence agents, including their design, implementation, and optimization.
+- [[Software-Engineering]]: Software engineering is a discipline focused on the application of engineering principles to the creation, development, maintenance, and testing of software.
+- [[Finance]]: Finance is a field concerned with the management, creation, and study of money, banking, credit, investments, assets, and liabilities.
+- [[Startup]]: A startup is a young company founded by one or more entrepreneurs to develop a unique product or service and bring it to market.
+- [[Health-Wellness]]: Health and wellness encompass the overall physical, mental, and social well-being of individuals and communities.
+- [[Uncategorized]]: The uncategorized topic is a catch-all category for concepts, ideas, and resources that do not fit into any other specific topic.
+- [[Negotiation]]: Negotiation is the process of discussing and agreeing on the terms of a transaction or agreement between two or more parties.
+- [[Data-Engineering]]: Data engineering is a discipline focused on the design, construction, deployment, and maintenance of data management systems.
+- [[OpenAI-Codex]]: OpenAI Codex is a model developed by OpenAI that translates natural language into code, enabling users to write code by describing what they want to accomplish in plain English.
 
 ## Course Index
 
-1. **Markov Decision Processes (MDPs) for Systematic Trading Decisions** (by @RohOnChain) — Explores the mathematical foundation of MDPs to move systematic trading from simple heuristics to optimal sequential decision-making.
-2. **The Economics and Competitive Landscape of Large Language Models** (by @EvanLuthra) — Analyzes the massive financial investments required for SOTA models and the competitive dynamics between models like GPT, Claude, and Kimi.
-3. **Building a Permanent AI‑Powered Knowledge Base with Karpathy’s LLM Wiki Approach** (by @polydao) — Teaches how to use RAG and vector embeddings to create a self-improving, persistent knowledge base that grows smarter over time.
-4. **The Atom of LLMs: Understanding Tokens and Tokenization** (by @rohit4verse) — A deep dive into how text is converted into numerical tokens and how this process influences model behavior and efficiency.
-5. **Self-Hosting Large Language Models: Running OpenAI Codex Locally with Ollama** (by @intheworldofai) — A practical guide to deploying powerful models locally to ensure privacy and eliminate API costs.
-6. **Machine Learning: Deep Dive into Markov Decision Processes** (by @RohOnChain) — A theoretical exploration of the Markov Property and the formal modeling of states, actions, and rewards in uncertain environments.
-7. **Scaling Intelligence: The Architecture and Optimization of Kimi K2** (by @EvanLuthra) — Examines token efficiency and second-order optimization methods to achieve frontier-level intelligence without massive compute.
-8. **This beginner guide to Karpathy's LLM Wiki** (by @polydao) — A practical implementation guide on transforming a folder of documents into a structured, AI-driven wiki that avoids the redundancies of standard RAG.
+1. **Markov Decision Processes (MDPs) for Systematic Trading Decisions** (by @RohOnChain) — Explores how MDPs provide the mathematical foundation for making optimal sequential decisions in complex, stochastic environments, focusing on their application in systematic trading strategies.
+2. **The Economics and Competitive Landscape of Large Language Models** (by @EvanLuthra) — Examines the high-stakes world of LLM development, focusing on the economic costs of training state-of-the-art models and the competitive benchmarking of these systems.
+3. **Building a Permanent AI‑Powered Knowledge Base with Karpathy’s LLM Wiki Approach** (by @polydao) — Teaches how to transform a static collection of documents into a self-improving, AI-driven knowledge base using Karpathy's LLM Wiki approach.
+4. **The Atom of LLMs: Understanding Tokens and Tokenization** (by @rohit4verse) — Provides an in-depth exploration of tokens and tokenization, the fundamental building blocks of LLMs.
+5. **Self-Hosting Large Language Models: Running OpenAI Codex Locally with Ollama** (by @intheworldofai) — Explains how developers and practitioners can run powerful, proprietary models like OpenAI's Codex on their local machines using open-source tools like Ollama.
+6. **Machine Learning: Deep Dive into Markov Decision Processes** (by @RohOnChain) — Delves into the mathematical framework of MDPs, their applications, and their significance in machine learning and decision-making.
+7. **Scaling Intelligence: The Architecture and Optimization of Kimi K2** (by @EvanLuthra) — Explores the technical breakthroughs behind Kimi K2, a high-performance open-weight model that achieves frontier-level intelligence in coding at a fraction of the cost of proprietary models.
+8. **This beginner guide to Karpathy's LLM Wiki is one of the most useful AI videos i've shared this year** (by @polydao) — Introduces Karpathy's concept of the LLM wiki, a novel approach to creating a permanent, self-updating knowledge base using AI.

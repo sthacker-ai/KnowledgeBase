@@ -1,0 +1,31 @@
+[ALEX]: The first obstacle new contributors hit is not figuring out how to write code, but missing the repo‑memory that tells them which tools, tests, and conventions the Claude project actually uses. Without a single source like CLAUDE.md, contributors waste time guessing the stack, hunting for test commands, and tripping over undocumented gotchas, which slows down onboarding and increases the chance of broken builds.
+
+Now count words: Let's count manually.
+
+"The(1) first2 obstacle3 new4 contributors5 hit6 is7 not8 figuring9 out10 how11 to12 write13 code,14 but15 missing16 the17 repo‑memory18 that19 tells20 them21 which22 tools,23 tests,24 and25 conventions26 the27 Claude28 project29 actually30 uses.31 Without32 a33 single34 source35 like36 CLAUDE.md,37 contributors38 waste39 time40 guessing41 the42 stack,43 hunting44 for45 test46 commands,47 and48 tripping49 over50 undocumented51 gotchas,52 which53 slows54 down55 onboarding56 and57 increases58 the59 chance60 of61 broken62 builds63."
+
+63 words. Need ~85. Add more.
+
+Add: "Instead, a well‑maintained CLAUDE.md captures the exact versions of Node, TypeScript, and the testing framework, the npm scripts for unit and integration tests, the ESLint and Prettier rules, the semantic versioning policy, and a list of known pitfalls such as the native module rebuild step that fails on Apple Silicon."
+
+Let's count added words.
+
+"Instead,1 a2 well‑maintained3 CLAUDE.md4 captures5 the6 exact7 versions8 of9 Node,10 TypeScript,11 and12 the13 testing14 framework,15 the16 npm17 scripts18 for19 unit20 and21 integration22 tests,23 the24 ESLint25 and26 Prettier27 rules,28 the29 semantic30 versioning31 policy,32 and33 a34 list35 of36 known37 pitfalls38 such39 as40 the41 native42 module43 rebuild44 step45 that46 fails47 on48 Apple49 Silicon50."
+
+50 words. Total now 63+50=113 words. Good.
+
+Now line 2 [SAM]: Ask clarifying question, spot assumptions, ask for concrete example.
+
+"SAM: You say CLAUDE.md should list the exact versions of Node and TypeScript, but how do we decide which versions to lock in when the project already supports a range, and what happens if a contributor’s local environment drifts from those locked versions? Can you show a concrete snippet of what that section looks like in practice?"
+
+Count words.
+
+"You1 say2 CLAUDE.md3 should4 list5 the6 exact7 versions8 of9 Node10 and11 TypeScript,12 but13 how14 do15 we16 decide17 which18 versions19 to20 lock21 in22 when23 the24 project25 already26 supports27 a28 range,29 and30 what31 happens32 if33 a34 contributor’s35 local36 environment37 drifts38 from39 those40 locked41 versions?42 Can43 you44 show45 a46 concrete47 snippet48 of49 what50 that51 section52 looks53 like54 in55 practice?56"
+
+56 words. Need ~85. Add more: talk about using engines field in package.json, using nvm, using CI to enforce, and show snippet.
+
+Add: "For example, we can add an \"engines\" field in package.json that specifies >=18.0.0 <21.0.0, and then mirror that in CLAUDE.md as a recommended range, while the CI pipeline runs `node -v` and fails if the version is outside the bound. A concrete snippet might look like:"
+
+Now count added words.
+
+"For1 example,2 we3 can4 add5 an6 \"engines\"7 field8 in9 package.json10 that11 specifies12 >=18.0.013 <21.0.0,14 and15 then16 mirror17 that18 in19 CLAUDE.md20 as21 a22 recommended23 range,24 while25 the26 CI27 pipeline28 runs29 `node30 -v`31 and32 fails33 if34 the35 version36 is37 outside38 the39 bound.40 A41 concrete42 snippet43 might44 look45 like:4

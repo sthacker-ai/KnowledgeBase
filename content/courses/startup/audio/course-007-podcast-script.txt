@@ -1,0 +1,41 @@
+[ALEX]: Most people think the gold rush in AI is about building the next ChatGPT, but the real passive income is actually in building "boring" tools—things like mortgage calculators or unit converters—and monetizing them via Google AdSense.
+
+[SAM]: Why "boring" tools specifically? It sounds like those are the most competitive niches because everyone thinks of them.
+
+[ALEX]: They are competitive, but they target high-intent, specific keywords. If someone searches for a "mortgage calculator," they aren't just browsing; they are likely in the middle of a major financial decision. That makes the ad space on that page incredibly valuable to banks and lenders, which drives up your earnings per click.
+
+[SAM]: If the goal is just to capture those keywords, does the AI part actually add value, or is it just a wrapper for a basic calculator?
+
+[ALEX]: The AI allows you to scale the creation of these tools. Instead of manually coding fifty different calculators, you use AI to generate the logic and the front-end code for a dozen niche tools in a weekend. The strategy isn't about one "hit" app; it's about a portfolio of small, utility-driven sites that each bring in a trickle of traffic.
+
+[SAM]: Let's talk about the actual monetization. If I have a site, how do I actually get the ads to appear? Is it a manual process of picking which ads go where?
+
+[ALEX]: You start by creating a Google AdSense account and verifying site ownership. You have to paste a verification code snippet between the head tags of your HTML. Once Google verifies you own the domain, you can either use "Auto Ads," where Google's AI decides where the ads fit best, or you can manually create ad units for specific placements.
+
+[SAM]: Manual placement seems risky if it ruins the user experience. If a giant banner blocks the calculator, people will just leave.
+
+[ALEX]: That's the tradeoff. Auto Ads are easier, but manual placement allows you to put ads in the "dead space"—like the sidebar or below the result—so the tool remains usable. The key is choosing formats like display ads or link units that blend into the design without interrupting the user's workflow.
+
+[SAM]: Once the ads are live, how do you know if a specific tool is actually making money, or if you're just wasting server space on a tool nobody uses?
+
+[ALEX]: That's where custom channels come in. Instead of looking at your total account balance, you create a unique channel for each tool. If your "Mortgage Calculator" is earning five dollars a day but your "Currency Converter" is earning five cents, you know exactly where to focus your SEO efforts or which tools to delete.
+
+[SAM]: Does Google just approve any site? I've heard they can be strict about "low-value content" if the site is just a single tool with no other text.
+
+[ALEX]: That is a common failure point. If your site is just a blank page with one input box and an ad, Google might reject it for lacking original content. To get approved, you usually need a bit of supporting content—like a guide on how to use the tool or a blog post explaining the math behind the calculations—to prove the site provides actual value to the user.
+
+[SAM]: So the workflow is: use AI to build the tool, write some supporting content for SEO and approval, verify the site via the HTML head tag, and then track performance through custom channels.
+
+[ALEX]: Exactly. The technical barrier is low, which is why the strategy relies on volume. You aren't building a brand; you're building a network of utility assets.
+
+[SAM]: What about the payment side? Is there a threshold before you actually see any money, or is it instant?
+
+[ALEX]: It's not instant. You have to set up your payment profile, including your tax forms and bank details, in the dashboard. Google has a payment threshold—usually around 100 dollars—that you have to hit before they trigger a payout via direct deposit or wire transfer.
+
+[SAM]: If I'm building these tools with AI, is there a risk that the code is buggy, leading to wrong calculations and users leaving?
+
+[ALEX]: Absolutely. You can't just copy-paste AI code and launch. You have to verify the logic. If a mortgage calculator gives the wrong monthly payment, the user loses trust immediately. The AI does the heavy lifting of the initial build, but the human has to do the quality assurance.
+
+[SAM]: It sounds like the real work isn't the coding, but the keyword research and the AdSense optimization.
+
+[ALEX]: Precisely. The "boring" part is the secret. While everyone else is trying to build a complex AI agent, you're building a simple tool that solves one specific problem for one specific search term, and letting Google's ad network handle the revenue.

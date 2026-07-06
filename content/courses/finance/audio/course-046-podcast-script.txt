@@ -1,0 +1,29 @@
+[ALEX]: NRBBEARINGs—Non-Resident Bearer Bonds—were once the go‑to instrument for foreign investors who wanted to buy U.S. government debt without leaving a trace in any registry, because ownership transferred simply by handing over the paper certificate.
+
+Count words: NRBBEARINGs—(1) Non-Resident(2) Bearer(3) Bonds—were(4) once(5) the(6) go‑to(7) instrument(8) for(9) foreign(10) investors(11) who(12) wanted(13) to(14) buy(15) U.S.(16) government(17) debt(18) without(19) leaving(20) a(21) trace(22) in(23) any(24) registry,(25) because(26) ownership(27) transferred(28) simply(29) by(30) handing(31) over(32) the(33) paper(34) certificate.(35) 35 words. Too short. Need longer.
+
+We need about 80-90 words per line. Let's expand.
+
+We'll write longer sentences.
+
+Line 1: maybe 90 words.
+
+Let's craft:
+
+[ALEX]: NRBBEARINGs—Non-Resident Bearer Bonds—were once the go‑to instrument for foreign investors who wanted to buy U.S. government debt without leaving a trace in any registry, because ownership transferred simply by handing over the paper certificate; they emerged in the 1930s as a way for non‑residents to participate in U.S. Treasury markets while staying anonymous, but the very feature that made them attractive—no recorded holder—also opened the door to money laundering and tax evasion, prompting regulators to phase them out by the late 20th century.
+
+Now count words.
+
+Let's count manually.
+
+NRBBEARINGs—(1) Non-Resident(2) Bearer(3) Bonds—were(4) once(5) the(6) go‑to(7) instrument(8) for(9) foreign(10) investors(11) who(12) wanted(13) to(14) buy(15) U.S.(16) government(17) debt(18) without(19) leaving(20) a(21) trace(22) in(23) any(24) registry,(25) because(26) ownership(27) transferred(28) simply(29) by(30) handing(31) over(32) the(33) paper(34) certificate;(35) they(36) emerged(37) in(38) the(39) 1930s(40) as(41) a(42) way(43) for(44) non‑residents(45) to(46) participate(47) in(48) U.S.(49) Treasury(50) markets(51) while(52) staying(53) anonymous,(54) but(55) the(56) very(57) feature(58) that(59) made(60) them(61) attractive—no(62) recorded(63) holder—also(64) opened(65) the(66) door(67) to(68) money(69) laundering(70) and(71) tax(72) evasion,(73) prompting(74) regulators(75) to(76) phase(77) them(78) out(79) by(80) the(81) late(82) 20th(83) century.(84)
+
+84 words. Good.
+
+Now line 2 [SAM]: ask clarifying question, spot assumptions, ask for concrete example.
+
+[SAM]: You say ownership transferred by handing over the paper certificate—does that mean there was no central ledger or custodian tracking who held the bond at any given time, and if so, how did the issuer know who to pay when the bond matured?
+
+Count words.
+
+You(1) say(2) ownership(3) transferred(4) by(5) handing(6) over(7) the(8) paper(9) certificate—does(10) that(11) mean(12) there(13) was(14) no(15) central(16) ledger(

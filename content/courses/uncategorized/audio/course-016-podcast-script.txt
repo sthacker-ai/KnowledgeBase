@@ -1,0 +1,41 @@
+[ALEX]: Most people treat AI video as a final product—you generate a clip and post it to social media—but the real power comes when you treat that video as a raw texture for a WebGL environment. By using Higsfield to generate cinematic assets and Three.js to map them onto 3D planes, you can turn a linear video into a "scrollytelling" experience where the user's scroll position controls the playback and visibility of the scene.
+
+[SAM]: If the video is just a texture on a 3D plane, how is that different from just embedding a video player that plays as you scroll?
+
+[ALEX]: A standard video player is a flat rectangle on a page. In a WebGL environment via Three.js, that video becomes a material. This means you can wrap it around a sphere, distort it with shaders, or place it in a 3D coordinate system where it can move in Z-space. You aren't just playing a movie; you're placing a moving image inside a virtual world where the user's scrolling acts as the camera movement or the timeline trigger.
+
+[SAM]: That sounds like it would require a massive amount of custom GLSL shader code and complex JavaScript. How does someone who isn't a senior graphics engineer actually build that?
+
+[ALEX]: That's where the "AI Orchestrator" model comes in. Instead of writing the boilerplate from scratch, you use Claude as the lead engineer. You provide Claude with the specific asset URLs from Higsfield and a clear architectural goal, and Claude handles the Three.js implementation. You're shifting from writing syntax to directing logic, telling the LLM exactly how the scroll percentage should map to the video's playback or opacity.
+
+[SAM]: But LLMs often hallucinate when it comes to complex libraries like Three.js. How do you ensure the code actually works without spending hours debugging the coordinate system?
+
+[ALEX]: The trick is providing a structured pipeline. You don't just ask for "a cool website"; you define the assets and the specific trigger points. For example, you tell Claude that at 25% scroll, Video A should fade out while Video B scales up and moves from the background to the foreground. By breaking the request into specific state changes—start, transition, and end—you give the LLM a logical map that reduces errors.
+
+[SAM]: Let's talk about the assets. Higsfield generates MP4s, but high-res video is heavy. If you have multiple cinematic textures loading in a WebGL scene, won't the page lag or crash on mobile devices?
+
+[ALEX]: That is the primary tradeoff. High-fidelity textures demand significant bandwidth and GPU memory. To make this viable, you have to optimize the Higsfield outputs—compressing the files without losing the cinematic quality and potentially using a loading manager in Three.js. You can't just dump ten 4K videos into a scene; you have to be strategic about which assets are active and which are disposed of as the user scrolls.
+
+[SAM]: If the user is controlling the pace, what happens if they scroll too fast? Does the video just jump frantically, or is there a way to smooth that out?
+
+[ALEX]: You use an interpolation library like GSAP. Instead of a direct 1:1 link between the scroll position and the video frame, you create a "smoothed" value. When the user scrolls, the animation "eases" into the new position. This prevents the jittery movement and makes the transition between different Higsfield scenes feel like a cinematic camera move rather than a skipping DVD.
+
+[SAM]: So the workflow is: generate the visual in Higsfield, use Claude to write the Three.js bridge, and GSAP to smooth the interaction. Where does the actual "3D" part come in if the videos are just flat textures?
+
+[ALEX]: The 3D comes from the spatial arrangement. You can place these video planes at different depths. Imagine scrolling down and having one video plane slide past the viewer while another zooms in from the distance. Because it's WebGL, you can manipulate the perspective and the field of view. You're essentially building a 3D stage where the "props" are AI-generated videos.
+
+[SAM]: Does this mean the creator doesn't need to know how to code at all, or is there a point where the AI's output hits a ceiling?
+
+[ALEX]: You still need to understand the architecture. You have to know what a "material" is, how a "scene" is structured, and how "requestAnimationFrame" works. If Claude gives you code that has a memory leak or a rendering bug, you need enough technical literacy to spot the issue and prompt for a fix. The AI removes the friction of writing the code, but it doesn't remove the need for a creative director who understands the technical constraints.
+
+[SAM]: What's a concrete example of a product or story that would actually benefit from this over a traditional landing page?
+
+[ALEX]: Think of a luxury car launch. Instead of a gallery of images, the user scrolls and a Higsfield-generated cinematic of the car's interior fades in, then the camera "dives" through the window into a 3D environment where the exterior of the car rotates. The scroll controls the journey. It transforms a passive viewing experience into an active exploration.
+
+[SAM]: It sounds like the role of the developer is becoming more about "prompting the architecture" than "writing the function."
+
+[ALEX]: Exactly. You're moving from being the person who lays the bricks to the architect who draws the blueprints. The "Generative Pipeline" allows a single creator to produce something that previously would have required a full digital agency with a 3D artist, a motion designer, and a front-end developer.
+
+[SAM]: If I wanted to start this today, what's the first technical hurdle I'd hit?
+
+[ALEX]: Mapping the scroll percentage to the video timeline. Getting a video to play and pause is easy; getting a video to scrub precisely to a specific frame based on a pixel value is where most people get stuck. That's where you'll spend the most time refining your prompts to Claude to ensure the timing is frame-perfect.

@@ -1,0 +1,49 @@
+[ALEX]: ...
+[SAM]: ...
+...
+
+We need to avoid filler phrases like "absolutely!", "great question!". So keep natural but no filler.
+
+Let's craft.
+
+First, ALEX opens with a specific claim: maybe about the weekly review process revealing a stock that moved 8% but had low volume, showing tradeoff.
+
+We'll go through steps: screening, filters, indicators, performance filters, RRR, stop loss.
+
+We'll embed concrete example: e.g., stock XYZ (large cap) with avg daily volume 12 crores, market cap 15B, avg daily % move 4%, last week moved 9% up, RRR potential 2.5:1 if stop loss at 2% below entry, target at 5% above.
+
+We'll discuss tradeoffs: raising market cap filter reduces number of candidates but increases liquidity; lowering volume filter increases candidates but may cause slippage.
+
+We'll discuss using Miners Everage Daily Range indicator to gauge volatility.
+
+We'll discuss setting stop loss based on ATR or recent swing low.
+
+We'll discuss reviewing past week's data to see if stock consistently moves >3.5% when it moves.
+
+We'll ask SAM to ask clarifying questions: e.g., "Why 10 crores volume?" "How do you calculate Miners Everage Daily Range?" "What if a stock gaps?" etc.
+
+We'll keep dialogue sharp.
+
+Now compute approximate word count. Let's draft each line about 85 words.
+
+We'll write 12 lines (6 each). Let's draft.
+
+Line 1 [ALEX]: "Last week I ran a screen on TradingView for stocks with a market cap above ten billion, average daily volume over ten crores, and a minimum average daily percentage move of 3.5%. The list returned only twenty‑two names, but when I looked at the actual price action from Monday to Friday, just three of them had moved more than eight percent in either direction."
+
+Count words: Let's count roughly. "Last(1) week2 I3 ran4 a5 screen6 on7 TradingView8 for9 stocks10 with11 a12 market13 cap14 above15 ten16 billion,17 average18 daily19 volume20 over21 ten22 crores,23 and24 a25 minimum26 average27 daily28 percentage29 move30 of31 3.5%.32 The33 list34 returned35 only36 twenty‑two37 names,38 but39 when40 I41 looked42 at43 the44 actual45 price46 action47 from48 Monday49 to50 Friday,51 just52 three53 of54 them55 had56 moved57 more58 than59 eight60 percent61 in62 either63 direction64." 64 words. Good.
+
+Line 2 [SAM]: "Why did you choose ten crores as the volume cutoff? Wouldn't a lower threshold give you more candidates, even if it means handling slippage on less liquid stocks?"
+
+Count words: "Why1 did2 you3 choose4 ten5 crores6 as7 the8 volume9 cutoff?10 Wouldn't11 a12 lower13 threshold14 give15 you16 more17 candidates,18 even19 if20 it21 means22 handling23 slippage24 on25 less26 liquid27 stocks28?" 28 words.
+
+Line 3 [ALEX]: "The ten‑crore figure comes from the average daily volume needed to execute a standard lot without moving the price more than a tenth of a percent‑point. Below that, bid‑ask spreads widen and you risk eating into your profit target, especially when you aim for a risk‑to‑reward ratio of at least two‑to‑one."
+
+Count: "The1 ten‑crore2 figure3 comes4 from5 the6 average7 daily8 volume9 needed10 to11 execute12 a13 standard14 lot15 without16 moving17 the18 price19 more20 than21 a22 tenth23 of24 a25 percent‑point.26 Below27 that,28 bid‑ask29 spreads30 widen31 and32 you33 risk34 eating35 into36 your37 profit38 target,39 especially40 when41 you42 aim43 for44 a45 risk‑to‑reward46 ratio47 of48 at49 least50 two‑to‑one51." 51 words.
+
+Line 4 [SAM]: "You mentioned the Miners Everage Daily Range indicator. How exactly is that calculated, and why does it matter more than a simple average true range for your weekly filter?"
+
+Count: "You1 mentioned2 the3 Miners4 Everage5 Daily6 Range7 indicator.8 How9 exactly10 is11 that12 calculated,13 and14 why15 does16 it17 matter18 more19 than20 a21 simple22 average23 true24 range25 for26 your27 weekly28 filter29?" 29 words.
+
+Line 5 [ALEX]: "It’s the sum of each day’s high‑low range expressed as a percentage of the opening price, then averaged over the look‑back period—usually twenty days. Because it’s normalized to the open, it shows how much the stock typically swings relative to its starting level each day, which directly feeds into the 3.5% move threshold we set."
+
+Count: "It’s1 the2 sum3 of4 each5 day’s6 high‑low7 range8 expressed9 as

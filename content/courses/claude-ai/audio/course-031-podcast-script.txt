@@ -1,0 +1,41 @@
+[ALEX]: Most people use AI as a search engine or a ghostwriter, but the "teach" skill by Matt Pocock transforms Claude from a passive assistant into a structured tutor that manages your entire learning trajectory.
+
+[SAM]: Most AI tutors just dump a wall of text and ask if you understand. How does this actually differ from just prompting Claude to "teach me about Python"?
+
+[ALEX]: The difference is the underlying architecture. Instead of a single prompt, it uses a set of specific format files—like a GLOSSARY-FORMAT and a LEARNING-RECORD-FORMAT—which forces the AI to maintain a persistent state of what you know and what you still need to master.
+
+[SAM]: So it's not just a conversation; it's a system. If there's a learning record, does that mean the AI is actually tracking my progress across different sessions, or is it just pretending to remember?
+
+[ALEX]: It uses those format files to standardize how progress is documented. By maintaining a LEARNING-RECORD, the AI can reference exactly where you stalled in a previous lesson, meaning you don't have to re-explain your current skill level every time you start a new session.
+
+[SAM]: I see the installation involves a command line—`npx skills add mattpocock/skills --skill teach`. Why go through a CLI installation instead of just pasting a long system prompt into the chat box?
+
+[ALEX]: Because the CLI installation integrates a complex set of instructions and structural templates that would be too cumbersome to paste manually. It sets up the MISSION-FORMAT and RESOURCES-FORMAT, which ensures the AI follows a pedagogical framework rather than just guessing how to teach.
+
+[SAM]: Let's talk about the MISSION-FORMAT. Does that mean the user defines the goal, or does the AI suggest the roadmap?
+
+[ALEX]: It's a collaborative process. You define the objective—say, mastering vocal harmonies—and the MISSION-FORMAT helps the AI break that massive goal into digestible, sequential milestones. It prevents the "information overload" that happens when an AI tries to explain a complex topic all at once.
+
+[SAM]: If I'm using this for something physical, like a Rubik's cube or a guitar, how does a text-based AI handle the tactile nature of those skills?
+
+[ALEX]: It shifts the focus to conceptual frameworks and step-by-step logic. For a Rubik's cube, it wouldn't just give you a list of moves; it would use the GLOSSARY-FORMAT to define the notation first, then provide a structured sequence of assessments to ensure you've mastered one layer before moving to the next.
+
+[SAM]: That sounds like it could get rigid. What happens if I already know half the material? Does the system force me through the basics anyway?
+
+[ALEX]: That's where the interactive assessments come in. Because it's a skill rather than a static script, you can challenge the AI's roadmap. You can prove your proficiency in a specific area, and the AI updates your learning record to skip those sections and accelerate the pace.
+
+[SAM]: I'm curious about the RESOURCES-FORMAT. Is it just providing links to Google, or is it curating specific materials based on the user's struggle points?
+
+[ALEX]: It's designed to be a curated reference list. Instead of generic searches, it links the specific concepts you're struggling with to the most relevant documentation or external guides, keeping the learning loop tight between the AI's explanation and external verification.
+
+[SAM]: What's the biggest risk here? If the AI is managing the "record" of my learning, is there a chance it hallucinates my progress or tells me I've mastered something I actually haven't?
+
+[ALEX]: That's the primary tradeoff. The system is only as good as the assessments it generates. If the AI asks a question that's too easy, you might move forward prematurely. The key is to be honest with the AI and tell it when a concept still feels fuzzy, which triggers the system to pivot the teaching strategy.
+
+[SAM]: So for a developer, the real value isn't just the content, but the fact that this is a reproducible framework. Could someone use this same structure to build their own custom teaching skill for a specific company's internal onboarding?
+
+[ALEX]: Exactly. The "teach" skill serves as a blueprint. By utilizing those same markdown formats—Glossary, Record, Mission, and Resources—you can turn any body of knowledge into a structured, interactive course that maintains state and tracks progress.
+
+[SAM]: If I want to start right now, I run the npx command and then type `/teach`. Once I'm in, what's the first thing I should do to make sure the AI doesn't just start rambling?
+
+[ALEX]: Start by defining your Mission. Be hyper-specific about your end goal and your current level. The more constraints you give the MISSION-FORMAT, the more the AI acts as a disciplined coach rather than a generic encyclopedia.

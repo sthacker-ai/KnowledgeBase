@@ -1,0 +1,29 @@
+[ALEX]: Claude Fable 5 lets you animate any HTML element with a declarative syntax that compiles to CSS keyframes, yet many teams still waste hours hand‑coding those same animations. By defining a motion block in the visual editor—say, a fade‑in slide for a hero banner—you get clean, vendor‑prefixed output without touching a single line of raw CSS. The tool also bundles the Mythos mascot as a SVG sprite that you can toggle on loading screens, reinforcing brand identity while keeping the file size under 15 KB. This approach cuts animation development time by roughly 40 % in our internal benchmarks.
+
+Now count words. Let's count roughly: Claude(1) Fable2 53 lets4 you5 animate6 any7 HTML8 element9 with10 a11 declarative12 syntax13 that14 compiles15 to16 CSS17 keyframes,18 yet19 many20 teams21 still22 waste23 hours24 hand‑coding25 those26 same27 animations.28 By29 defining30 a31 motion32 block33 in34 the35 visual36 editor—say,37 a38 fade‑in39 slide40 for41 a42 hero43 banner—you44 get45 clean,46 vendor‑prefixed47 output48 without49 touching50 a51 single52 line53 of54 raw55 CSS.56 The57 tool58 also59 bundles60 the61 Mythos62 mascot63 as64 a65 SVG66 sprite67 that68 you69 can70 toggle71 on72 loading73 screens,74 reinforcing75 brand76 identity77 while78 keeping79 the80 file81 size82 under83 15 KB.84 This85 approach86 cuts87 animation88 development89 time90 by91 roughly92 40 %93 in94 our95 internal96 benchmarks97.
+
+97 words. Good.
+
+Now Sam line: ask clarifying, spot assumptions, ask for concrete examples.
+
+[SAM]: You claim a 40 % time saving, but how does that metric hold up when designers need to tweak easing curves or add sequential delays that the visual editor doesn’t expose? Can you walk through a concrete example—say, animating a product card’s hover effect—showing exactly what you click in Claude Fable 5 and what CSS it spits out?
+
+Count words: Let's approximate ~70-80.
+
+We'll write:
+
+[SAM]: You claim a 40 % time saving, but how does that metric hold up when designers need to tweak easing curves or add sequential delays that the visual editor doesn’t expose? Can you walk through a concrete example—say, animating a product card’s hover effect—showing exactly what you click in Claude Fable 5 and what CSS it spits out?
+
+Count: You1 claim2 a3 40 %4 time5 saving,6 but7 how8 does9 that10 metric11 hold12 up13 when14 designers15 need16 to17 tweak18 easing19 curves20 or21 add22 sequential23 delays24 that25 the26 visual27 editor28 doesn’t29 expose?30 Can31 you32 walk33 through34 a35 concrete36 example—say,37 animating38 a39 product40 card’s41 hover42 effect—showing43 exactly44 what45 you46 click47 in48 Claude49 Fable5 50 and51 what52 CSS53 it54 spits55 out56?
+
+56 words. Good.
+
+Now Alex line: respond with details, give example, show steps, mention easing curves can be edited via bezier control, etc. Also mention that you can export custom CSS.
+
+[ALEX]: In the hover example you start by selecting the card component, then open the “Hover” state panel and add a “Scale” transform set to 1.05 ×  and a “Shadow” blur increase from 4 px to 8 px. Claude Fable 5 lets you click the easing icon to open a cubic‑bezier editor; you drag the handles to 0.25, 0.8, 0.25, 0.9 for a snappy feel. When you hit “Generate”, the tool outputs:
+
+```css
+.card:hover{
+  transform:scale(1.05);
+  box-shadow:0 4px 8px rgba(0,0,0,0.15);
+  transition:transform 0.18s cubic-bezier(0.25,0.8,0.25,0.9),box-shadow

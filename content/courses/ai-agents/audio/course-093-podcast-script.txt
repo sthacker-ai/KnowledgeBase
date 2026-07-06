@@ -1,0 +1,37 @@
+[ALEX]: Most developers use AI as a single chat interface, but the real shift is moving from a single assistant to a coordinated team of agents that can work in parallel on a single codebase.
+
+[SAM]: When you say "team," are we just talking about opening three different chat windows and giving them different prompts, or is there an actual architectural difference in how they operate?
+
+[ALEX]: It's a structural difference. In a standard setup, you might use sub-agents, which are independent entities that handle a specific task and report back. Agent Teams, specifically in the experimental Claude Code feature, allow these agents to collaborate and divide a large task into smaller, simultaneous workstreams.
+
+[SAM]: If they are collaborating, how does that actually look in a terminal? I assume they aren't just chatting with each other in a hidden loop while the user waits.
+
+[ALEX]: That's where the tooling comes in. To make this visible, you have to use Tmux or iTerm2. This allows Claude Code to use split-pane mode, so you can literally watch different agents working in different terminal windows in real-time. One might be scanning for security vulnerabilities while another is auditing documentation.
+
+[SAM]: That sounds efficient, but if I have three agents running at once, doesn't that exponentially increase the token cost and the risk of the AI getting confused by conflicting changes?
+
+[ALEX]: You've hit the primary trade-off. Agent Teams are significantly more token-heavy because you're maintaining multiple contexts simultaneously. There's also a visibility gap; while you see the output, the internal "negotiation" or collaboration process between agents isn't always transparent, which can make debugging their logic harder.
+
+[SAM]: Let's get practical. If I wanted to set this up for a code review today, what is the actual sequence of events to get it running?
+
+[ALEX]: First, you have to enable the feature by setting the `CLAUDEEXPERIMENTALAGENTTEAMS` environment variable to true. Once that's set and your terminal is configured with Tmux or iTerm2, you simply instruct Claude Code to create a team for your specific goal. For a code review, you'd specify the roles—for example, one agent for security, one for code quality, and one for documentation.
+
+[SAM]: If I assign those roles, does the "lead agent" just act as a project manager, or do the specialized agents have the authority to change the code independently?
+
+[ALEX]: The lead agent coordinates the distribution of work and aggregates the findings, but the specialized agents perform the actual analysis. The lead agent ensures that the security agent's findings don't contradict the quality agent's suggestions before presenting a final set of recommendations to you.
+
+[SAM]: I can see how that works for a review, but what about actually building something? Could I use this to build a complex system, like a compiler, without the agents stepping on each other's toes?
+
+[ALEX]: Yes, and that's where the parallel processing becomes a massive advantage. You could have one agent building the lexer, another working on the parser, and a third handling the code generation. Instead of a linear process where the AI has to remember everything from the start of the project, the workload is distributed.
+
+[SAM]: That sounds like it could lead to a "too many cooks in the kitchen" problem. How do you prevent them from rewriting the same file in three different ways at the same time?
+
+[ALEX]: That's why close monitoring is non-negotiable. You can't just "set it and forget it." You have to interact with the agents—either through the lead agent or by jumping into a specific agent's pane—to provide course corrections and ensure the integration of their work is seamless.
+
+[SAM]: If the token cost is high and the visibility is limited, is there a scenario where sticking to a single agent or simple sub-agents is actually the better choice?
+
+[ALEX]: Absolutely. For small bug fixes or simple refactors, a team is overkill. If the task doesn't have distinct, parallelizable dimensions—like security versus style—the overhead of managing a team outweighs the speed gains. You use teams when the complexity of the task exceeds the context window or the cognitive load of a single agent.
+
+[SAM]: So the decision comes down to whether the task is "linear" or "multidimensional." If it's multidimensional, I pay the token tax for the sake of speed and specialized focus.
+
+[ALEX]: Exactly. It's the difference between hiring one generalist who does everything sequentially and hiring a specialized firm where the experts work in parallel and a partner coordinates the final delivery.

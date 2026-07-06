@@ -1,0 +1,71 @@
+[ALEX]: Sonnet 5 delivers Opus‑level quality on most knowledge‑work tasks while cutting token costs by roughly 40% compared to the flagship model.
+
+[SAM]: How do we measure that 40% saving? Is it based on token pricing or actual usage in a benchmark?
+
+[ALEX]: The saving comes from Sonnet 5’s per‑token price being $0.006 versus Opus’s $0.010, so a straight‑line price drop; in practice you also get comparable accuracy on tasks like summarization and code review, so you spend less for the same output quality.
+
+[SAM]: If the quality is near‑Opus, when would we still need to reach for Opus 4.8 instead of staying with Sonnet 5?
+
+[ALEX]: Opus is reserved for the most challenging reasoning workloads—multi‑step logical proofs, ambiguous legal interpretation, or novel algorithm invention—where Sonnet 5’s occasional drop in depth can affect correctness.
+
+[SAM]: That makes sense. How do we tell the system to use Opus only for those hard cases and Sonnet 5 for everything else?
+
+[ALEX]: We set up model routing in CLAUDE.md: define a rule that sends tasks tagged “high‑reasoning” to opus‑4.8 and all other tasks to sonnet‑5, letting the router pick the right model automatically.
+
+[SAM]: What does the routing rule look like in the file? Can you show a short example?
+
+[ALEX]: Sure. In CLAUDE.md you add something like:
+
+```
+model_routing:
+  - if: task.complexity == "high"
+    then: opus-4.8
+  - else: sonnet-5
+```
+
+The router evaluates the complexity flag you set in the task metadata and forwards the call accordingly.
+
+[SAM]: Besides routing, the course mentions effort control. How does adjusting effort change cost and quality?
+
+[ALEX]: Effort control scales the internal thinking steps Sonnet 5 performs. Low effort uses fewer transformer layers, cutting latency and cost by about 20%; high effort adds extra reflection passes, raising cost up to 30% but improving accuracy on ambiguous prompts.
+
+[SAM]: So we wouldn’t want to run every request at high effort just to be safe?
+
+[ALEX]: Exactly. Running everything at high effort wastes tokens on simple queries like “What’s the capital of France?” where low effort already gives a correct answer, inflating your bill without any quality gain.
+
+[SAM]: Where do we define the effort policy? Is it also in CLAUDE.md?
+
+[ALEX]: Yes. In CLAUDE.md you add an effort_policy block that maps task types to effort levels, for example:
+
+```
+effort_policy:
+  - if: task.type == "summarization"
+    then: low
+  - if: task.type == "code_debug"
+    then: high
+  - else: medium
+```
+
+[SAM]: Let’s talk about the introductory pricing. When does it end and why should we care?
+
+[ALEX]: The introductory price for Sonnet 5 is locked in until August 31, 2026. After that date the per‑token rate will rise to match Opus’s standard tier, eroding the cost advantage.
+
+[SAM]: If we have a large batch job—say, processing a million documents—what’s the best way to use the current pricing window?
+
+[ALEX]: You should schedule the batch to finish before the deadline, enable low‑effort mode for the bulk of the work, and route only the toughest items to Opus. That way you capture the cheap Sonnet 5 rate for the majority of tokens.
+
+[SAM]: Are there any gotchas when setting up the configuration files? I’ve seen teams forget to reload the settings after editing.
+
+[ALEX]: Two common pitfalls: first, editing settings.json or CLAUDE.md without restarting the Claude daemon, so the new effort or routing rules aren’t applied; second, forgetting to version‑control these files, which leads to drift when environments are rebuilt.
+
+[SAM]: For a concrete example, how would a knowledge‑work team configure Sonnet 5 for research summarization?
+
+[ALEX]: They’d set effort_policy to low for summarization tasks, route all research‑summarize jobs to sonnet‑5 via the model_routing rule, and keep settings.json with the default timeout and max_tokens values—no extra tuning needed unless they hit token limits.
+
+[SAM]: And for coding tasks like debugging race conditions?
+
+[ALEX]: They’d mark those jobs as high effort, route them to sonnet‑5 (still cheaper than Opus), and optionally add a fallback to opus‑4.8 if the high‑effort Sonnet 5 still fails after two retries.
+
+[SAM]: Before we wrap up, what’s the quick checklist for someone starting with Sonnet 5 today?
+
+[ALEX]: 1) Copy the sample

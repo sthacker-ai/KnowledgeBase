@@ -1,0 +1,45 @@
+[ALEX]: Projects in Claude AI are essentially containers that let you group related AI interactions—like prompts, files, and generated outputs—so you can switch contexts without losing track of what you were doing.
+
+[SAM]: How does that differ from just having separate chats or notes outside Claude? What concrete advantage does the container give you over, say, a folder of documents on your desktop?
+
+[ALEX]: The advantage is that everything stays inside Claude’s environment, meaning the model can reference the project’s history, attached files, and prior outputs when you open a task, whereas external notes require you to re‑explain context each time you start a new chat.
+
+[SAM]: Can you walk me through the exact steps to create a project and add a first task, including any UI quirks I should watch for?
+
+[ALEX]: Sure—log in, click the Projects tab in the left sidebar, hit the blue “Create Project” button, type a name like “Q3 Marketing Campaign” and a short description, then press Enter; after the project appears, click “Add Task” inside it, give the task a title, optionally attach a file or paste a prompt, and click “Save” to lock it in.
+
+[SAM]: You mentioned attaching files—what types are supported, and does attaching a large PDF affect performance or cost when the model processes it?
+
+[ALEX]: Claude accepts PDFs, text files, CSV, and images up to 25 MB each; attaching a large PDF doesn’t incur extra token cost unless you explicitly ask the model to read it, but the file stays stored in the project for quick retrieval, so you can reference it without re‑uploading each time.
+
+[SAM]: Once I have a few tasks, how does the drag‑and‑drop reordering work, and is there a way to group tasks into sub‑sections or is it strictly a flat list?
+
+[ALEX]: In the project view you can click and hold a task’s handle and drag it up or down; the list stays flat—there’s no built‑in sub‑section hierarchy, so if you need hierarchy you either use naming conventions like “1. Research – Audience” or create separate projects for major phases.
+
+[SAM]: Speaking of naming, the course warned about vague names causing trouble later—what makes a good project name, and how does the search function rely on it?
+
+[ALEX]: A good name is specific and descriptive, like “Blog‑Post‑Draft‑AI‑Ethics” rather than “Project 1”; the search bar matches against the project name and description, so vague names return many false positives and force you to scroll through unrelated tasks.
+
+[SAM]: What about the pitfall of adding too many tasks to a single project? At what point does it become unwieldy, and what are the practical signs that I should split it?
+
+[ALEX]: When you start scrolling past 20–30 tasks and find yourself spending more time locating a specific item than actually working, it’s a sign to split; performance stays fine, but cognitive load rises, so consider creating a parent project for the overarching goal and child projects for each milestone.
+
+[SAM]: The course also stressed saving regularly—does Claude auto‑save task edits, or do I have to hit “Save” after every change, and what happens if I forget?
+
+[ALEX]: Edits to a task’s title, description, or attached files are not auto‑saved; you must click the “Save” button inside the task pane, otherwise changes are lost when you close the pane or navigate away, so treat it like a document you’d manually save.
+
+[SAM]: Finally, can you give a concrete end‑to‑end example showing how a researcher might use a project from literature review to drafting, highlighting where the project’s features save time compared to ad‑hoc chats?
+
+[ALEX]: Imagine a researcher studying renewable‑energy policy: they create a project called “Renewable‑Energy Policy Review”, attach a PDF of the latest IPCC report, add tasks titled “Extract key statistics”, “Outline policy comparison”, and “Draft introduction”; each task opens with the report already loaded, so they can ask Claude to summarize sections without re‑uploading the file, and when they finish a task they click Save, keeping the updated outline instantly available for the next task, eliminating the need to copy‑paste context between separate chats.
+
+Now we need to count words. Let's approximate each line.
+
+We'll need to ensure total 950-1150 words. Let's count roughly.
+
+I'll write each line and then count.
+
+Line 1 (ALEX): "Projects in Claude AI are essentially containers that let you group related AI interactions—like prompts, files, and generated outputs—so you can switch contexts without losing track of what you were doing."
+
+Count words: Projects(1) in2 Claude3 AI4 are5 essentially6 containers7 that8 let9 you10 group11 related12 AI13 interactions—like14 prompts,15 files,16 and17 generated18 outputs—so19 you20 can21 switch22 contexts23 without24 losing25 track26 of27 what28 you29 were30 doing31. => 31 words.
+
+Line 2 (SAM): "How does that differ from just having separate chats or notes outside Claude? What

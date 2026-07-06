@@ -1,0 +1,31 @@
+[ALEX]: Using Claude AI to ingest a company’s latest 10‑K and two years of daily OHLCV data can reduce the time needed to produce a Technofunda signal from a full workday to under fifteen minutes, but only when the prompt explicitly demands step‑by‑step reasoning; otherwise the model tends to hallucinate price targets that lack any grounding in the supplied fundamentals.
+
+[SAM]: What does “step‑by‑step reasoning” look like in a prompt for this kind of analysis? Are we asking Claude to list each calculation it performs, or to justify why it weights certain fundamentals over technical patterns?
+
+[ALEX]: The prompt should instruct Claude to act as a senior hedge‑fund analyst, first extract key fundamental metrics—ROIC, debt‑to‑equity, free cash flow yield—from the 10‑K, then compute technical indicators such as the 50‑day moving average crossover and RSI divergence, and finally explain how each piece of evidence supports or contradicts a bullish thesis before giving a price‑range estimate.
+
+[SAM]: If we skip the chain‑of‑thought and just ask for a target price, what kind of errors typically appear? Can you give a concrete example where the AI’s output diverged from the data we fed it?
+
+[ALEX]: In one test, a prompt that merely said “Give me a target price for XYZ based on the attached 10‑K and price CSV” returned a 42 % upside target, yet the 10‑K showed declining free cash flow and the CSV revealed a death cross; the model ignored those red flags because it was not forced to reconcile them, illustrating a classic hallucination when reasoning is omitted.
+
+[SAM]: So the workflow starts with data gathering. What specific files or formats should we prepare for Claude to ingest efficiently, and are there any size limits we need to watch given its context window?
+
+[ALEX]: For fundamentals, upload the latest 10‑K or 10‑Q as plain text or PDF; Claude can handle up to 200 k tokens, so a typical 150‑page filing fits comfortably. For technicals, provide a CSV with columns Date, Open, High, Low, Close, Volume covering at least two years of daily data—roughly 500 k tokens, still within the window if you compress the file or trim to essential columns.
+
+[SAM]: Once the data is loaded, how do we structure the actual prompt to get Claude to produce that chain‑of‑thought output without making it overly verbose or losing the actionable signal?
+
+[ALEX]: Use a template: “You are a senior equity analyst. Step 1: Summarize the three most important fundamental strengths and three risks from the 10‑K. Step 2: Calculate the 50‑day and 200‑day moving averages, the 14‑day RSI, and note any bullish or bearish divergences. Step 3: Combine the fundamental and technical findings into a concise thesis, stating whether the stock is fundamentally sound and technically poised for a move. Step 4: Provide a target price range with a confidence level, citing the specific metrics that drive each bound.” This keeps the reasoning transparent while limiting fluff.
+
+[SAM]: You mentioned a confidence level—how does Claude quantify that, and should we treat it as a probability or more as a qualitative gauge?
+
+[ALEX]: Claude does not output calibrated probabilities; the confidence level is a qualitative assessment based on the strength of agreement between fundamentals and technicals. Treat it as a heuristic: high confidence when both sides align (e.g., strong ROIC plus a bullish moving‑average crossover), medium when one side is neutral, low when they conflict. You can then apply your own risk‑management rules to translate that into position sizing.
+
+[SAM]: What are the main trade‑offs of relying on this AI‑driven Technofunda process versus a traditional analyst team? Are we gaining speed at the cost of depth, or can the AI actually uncover insights humans miss?
+
+[ALEX]: The AI excels at sifting through massive, structured data quickly—spotting subtle correlations like a rise in R&D expense coinciding with a tightening Bollinger Band that preceded a breakout in past cycles. However, it lacks contextual judgment about management integrity or macro‑shocks, so you still need a human to validate the narrative and to adjust for events outside the data window, such as regulatory changes or geopolitical shifts.
+
+[SAM]: Can you walk through a brief end‑to‑end example, say, applying this to a mid‑cap semiconductor firm, to see how the prompt, data, and output interact in practice?
+
+[ALEX]: Suppose you upload the firm’s 10‑K showing a 28 % ROIC, low debt, and a growing cash‑flow yield, plus a CSV of the last 18 months of daily prices. The prompt instructs Claude to list fundamentals, compute the 50‑day MA crossing above the 200‑day MA and an RSI rise from 45 to 60, note that the crossover occurred on a day of unusually high volume, then synthesize: “Fundamentally strong, technical momentum building, bullish thesis.” Claude returns a target price range of $45‑$52 (current $38) with high confidence, citing the ROIC, cash‑flow yield, and the moving‑average crossover as drivers. You then set a stop‑loss just below the recent swing low and size the position according to your risk rule.
+
+[SAM]: Finally, what safeguards should we put in place

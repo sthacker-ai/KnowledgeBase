@@ -1,0 +1,41 @@
+[ALEX]: Most developers treat AI agents like simple chatbots, but the moment you move them into production, you hit a wall where costs skyrocket and latency makes the user experience feel sluggish because the agent has to re-process the entire conversation history every single time it takes a new action.
+
+[SAM]: Why does the model need to re-process everything? If the previous turns in the conversation haven't changed, shouldn't the system just remember them?
+
+[ALEX]: In a standard LLM architecture, the model is stateless. Every time you send a request, you're sending the entire context window—the system prompt, the tool definitions, and the full chat history—which means you're paying for those same input tokens over and over again during every single loop of a tool-calling sequence.
+
+[SAM]: That sounds incredibly inefficient. Is there a way to stop the model from re-reading the same instructions every time it decides to call a tool?
+
+[ALEX]: That's where prompt caching comes in. Instead of recalculating everything, you pre-compute the KV values for the static parts of the prompt—like your massive system instructions or a large set of tool definitions—and store them. When the agent makes a subsequent call, it skips the first part of the inference process and jumps straight to the new input.
+
+[SAM]: If you're skipping the first part of the inference, does that actually impact the quality of the output, or is it just a speed boost?
+
+[ALEX]: It doesn't affect quality at all because the mathematical representation of those tokens remains the same; it just removes the redundant computation. The real win is the economics: you get a 90% discount on those cached input tokens and a massive reduction in latency.
+
+[SAM]: A 90% discount is significant, but how do you actually decide what gets cached? You can't just cache the whole prompt if the user's input is constantly changing.
+
+[ALEX]: You have to identify the "static" versus "dynamic" elements. Your system prompt and tool declarations are usually static. The user's latest question is dynamic. By caching the static prefix, you only pay the full price for the new tokens added at the end of the prompt. Companies like Cursor and Perplexity have pushed this to the limit, achieving cache hit rates over 90% by carefully structuring their context.
+
+[SAM]: Even with caching, if an agent is running for a long time, the context window still grows. Eventually, the "dynamic" part of the prompt becomes huge. How do you handle that without breaking the bank?
+
+[ALEX]: You use a technique called compaction. You identify "stale turns"—parts of the conversation that are no longer relevant to the current goal—and programmatically remove them. It's essentially a cleanup process that prevents the context window from bloating with useless data that would otherwise slow down the agent.
+
+[SAM]: If you're removing turns, aren't you risking the agent forgetting a critical piece of information from earlier in the session?
+
+[ALEX]: That's the trade-off. Context engineering is a balancing act. You have to decide what is "stale" and what is "essential." If you're too aggressive with compaction, the agent loses its memory; if you're too lenient, your latency climbs. You have to monitor your cache hit rates using a dashboard to see exactly where the bottlenecks are.
+
+[SAM]: You mentioned tool declarations earlier. If I have a hundred different tools available, does listing them all in the prompt every time kill the performance?
+
+[ALEX]: Absolutely. That's why you implement tool search. Instead of stuffing every single tool definition into the prompt, you defer loading them. You use a separate mechanism to identify which tools are actually relevant to the current request and only inject those specific definitions into the prompt.
+
+[SAM]: So you're basically filtering the tools before the LLM even sees them. But what happens if the tool returns a massive amount of data, like a 5,000-line JSON file? Does that just get dumped back into the prompt and bloat the cost again?
+
+[ALEX]: That's a common pitfall. To solve that, you use programmatic tool calling. Instead of the model reading the raw data, you give the model the ability to write Python code. The model writes a script to inspect and extract only the specific data it needs from that large result, rather than trying to "read" the whole file in its context window.
+
+[SAM]: So the agent becomes a programmer that writes a script to filter its own data. That seems more reliable than hoping the LLM doesn't hallucinate while scanning a massive text file.
+
+[ALEX]: Exactly. It shifts the burden from the LLM's attention mechanism to a deterministic piece of code. When you combine programmatic tool calling, tool search, and prompt caching, you move from a prototype that's expensive and slow to a production-ready agent that's lean and responsive.
+
+[SAM]: If I'm starting this today, what's the first metric I should track to know if my agent is actually optimized for production?
+
+[ALEX]: Your cache hit rate. If your hit rate is low, it means your prompt structure is likely shifting too much, or you're placing dynamic content too early in the prompt, which invalidates the cache for everything that follows. You want your most static content at the very top.

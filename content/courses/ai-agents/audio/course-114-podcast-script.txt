@@ -1,0 +1,33 @@
+[ALEX]: In practice, the moment you try to chain more than three LLM calls without an external store, the agent starts to lose track of earlier decisions, and you end up re‑explaining the same constraints over and over—this is context drift in its purest form. The AI God Stack solves it by giving every agent a persistent, queryable notebook that lives outside the model’s context window.
+
+Count words: Let's count roughly.
+
+"In(1) practice,(2) the3 moment4 you5 try6 to7 chain8 more9 than10 three11 LLM12 calls13 without14 an15 external16 store,17 the18 agent19 starts20 to21 lose22 track23 of24 earlier25 decisions,26 and27 you28 end29 up30 re‑explaining31 the32 same33 constraints34 over35 and36 over—this37 is38 context39 drift40 in41 its42 purest43 form.44 The45 AI46 God47 Stack48 solves49 it50 by51 giving52 every53 agent54 a55 persistent,56 queryable57 notebook58 that59 lives60 outside61 the62 model’s63 context64 window65."
+
+65 words. Good.
+
+Line2 SAM: ask clarifying, spot assumptions, ask for concrete example.
+
+[SAM]: You say the notebook lives outside the context window, but how does the agent actually read and write to it without breaking the loop? Does it rely on a file‑system watcher, or does the orchestrator issue a explicit “read memory” tool call each cycle? Give me a concrete example of a single turn where the agent pulls a note, updates it, and then decides the next action.
+
+Count words approximate: Let's count.
+
+"You1 say2 the3 notebook4 lives5 outside6 the7 context8 window,9 but10 how11 does12 the13 agent14 actually15 read16 and17 write18 to19 it20 without21 breaking22 the23 loop?24 Does25 it26 rely27 on28 a29 file‑system30 watcher,31 or32 does33 the34 orchestrator35 issue36 a37 explicit38 “read39 memory”40 tool41 call42 each43 cycle?44 Give45 me46 a47 concrete48 example49 of50 a51 single52 turn53 where54 the55 agent56 pulls57 a58 note,59 updates60 it,61 and62 then63 decides64 the65 next66 action67."
+
+67 words.
+
+Line3 ALEX: answer with Hermes Agent as orchestrator, function calling, tool use, example.
+
+[ALEX]: The Hermes agent treats the Obsidian vault as just another tool. In each loop it issues a function call like `read_file(path="projects/ai_architect/qmd/status.qmd")`, gets the rendered markdown back, parses any TODO blocks, then decides whether to invoke a coding tool, a web search, or to write a new QMD block. For instance, if the note contains “# TODO: refactor auth middleware”, the agent hands off the refactor task to Claude Code.
+
+Count words.
+
+"The1 Hermes2 agent3 treats4 the5 Obsidian6 vault7 as8 just9 another10 tool.11 In12 each13 loop14 it15 issues16 a17 function18 call19 like20 `read_file(path="projects/ai_architect/qmd/status.qmd")`,21 gets22 the23 rendered24 markdown25 back,26 parses27 any28 TODO29 blocks,30 then31 decides32 whether33 to34 invoke35 a36 coding37 tool,38 a39 web40 search,41 or42 to43 write44 a45 new46 QMD47 block.48 For49 instance,50 if51 the52 note53 contains54 “#55 TODO:56 refactor57 auth58 middleware”,59 the60 agent61 hands62 off63 the64 refactor65 task66 to67 Claude68 Code69."
+
+69 words.
+
+Line4 SAM: ask about Claude Code handoffs, specificity, tradeoffs.
+
+[SAM]: You mentioned handing off to Claude Code for the refactor. What makes Claude Code preferable to a generalist Hermes for that snippet, and what are the risks if the handoff contract isn’t strict—say, the agent passes a vague prompt instead of a precise function signature?
+
+Count

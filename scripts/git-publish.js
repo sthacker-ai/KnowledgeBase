@@ -18,16 +18,38 @@
  *   node scripts/git-publish.js
  */
 
+const fs   = require("fs");
+const path = require("path");
 const { execSync } = require("child_process");
 
-const ROOT = process.cwd();
-const PATHS = ["content", "data"];
+const ROOT     = process.cwd();
+const RUNS_DIR = path.join(ROOT, "data", "runs");
+const PATHS    = ["content", "data"];
 
 function run(cmd) {
   return execSync(cmd, { cwd: ROOT, encoding: "utf8" });
 }
 
+// Dated run manifests (data/runs/scheduled-YYYY-MM-DD-manifest.json) are
+// .gitignore'd — that's fine locally, but it means /summary has nothing to
+// read on a hosted deployment. Copy the latest one to a fixed, committed
+// filename so the hosted site always has today's digest, without needing to
+// keep every historical manifest in git.
+function publishLatestManifest() {
+  if (!fs.existsSync(RUNS_DIR)) return;
+  const manifests = fs.readdirSync(RUNS_DIR)
+    .filter((f) => /^scheduled-\d{4}-\d{2}-\d{2}-manifest\.json$/.test(f))
+    .sort()
+    .reverse();
+  if (manifests.length === 0) return;
+  fs.copyFileSync(
+    path.join(RUNS_DIR, manifests[0]),
+    path.join(RUNS_DIR, "latest-manifest.json")
+  );
+}
+
 function main() {
+  publishLatestManifest();
   run(`git add ${PATHS.join(" ")}`);
 
   const staged = run("git diff --cached --name-only").trim();

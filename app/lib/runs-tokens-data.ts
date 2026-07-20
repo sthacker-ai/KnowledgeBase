@@ -272,10 +272,21 @@ export interface DailySummary {
 export function getLatestRunSummary(): DailySummary | null {
   if (!fs.existsSync(RUNS_DIR)) return null;
 
-  const manifests = fs.readdirSync(RUNS_DIR)
+  // Dated manifests (scheduled-YYYY-MM-DD-manifest.json) are .gitignore'd —
+  // they never reach a hosted deployment. git-publish.js additionally copies
+  // the latest one to this fixed, committed filename every day, so the
+  // hosted site always has *something* to show even though it can't keep
+  // every historical file in git.
+  const LATEST_FALLBACK = "latest-manifest.json";
+
+  let manifests = fs.readdirSync(RUNS_DIR)
     .filter((f) => /^scheduled-\d{4}-\d{2}-\d{2}-manifest\.json$/.test(f))
     .sort()
     .reverse();
+
+  if (manifests.length === 0 && fs.existsSync(path.join(RUNS_DIR, LATEST_FALLBACK))) {
+    manifests = [LATEST_FALLBACK];
+  }
 
   if (manifests.length === 0) return null;
 

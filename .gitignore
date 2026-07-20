@@ -11,6 +11,7 @@ graphify-out/
 data/private/*
 !data/private/.gitkeep
 data/runs/*.json
+!data/runs/latest-manifest.json
 data/runs/*.log
 data/raw/tweets/*.json
 data/indexes/*.json

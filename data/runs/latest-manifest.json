@@ -1,0 +1,85 @@
+{
+  "trigger": "scheduled",
+  "date": "2026-07-20",
+  "started_at_ist": "20/07/2026, 12:00:02 IST",
+  "finished_at_ist": "20/07/2026, 13:01:11 IST",
+  "duration_secs": 3669.5,
+  "status": "ok",
+  "steps": [
+    {
+      "name": "Import X Likes",
+      "status": "ok",
+      "duration_secs": 109.5,
+      "detail": "7 new tweet(s) imported"
+    },
+    {
+      "name": "Source extraction",
+      "status": "ok",
+      "duration_secs": 28.2,
+      "detail": "7 source(s) extracted"
+    },
+    {
+      "name": "Video transcripts",
+      "status": "ok",
+      "duration_secs": 529,
+      "detail": "3/3 transcribed, 0 skipped (no audio)"
+    },
+    {
+      "name": "AI classification",
+      "status": "ok",
+      "duration_secs": 109.4,
+      "detail": "7 classified, 1 fallback(s)"
+    },
+    {
+      "name": "Course generation",
+      "status": "ok",
+      "duration_secs": 2138.4,
+      "detail": "6/7 course(s) generated, 1 error(s)"
+    },
+    {
+      "name": "Topic summaries",
+      "status": "ok",
+      "duration_secs": 162,
+      "detail": "4/53 topic summaries updated"
+    },
+    {
+      "name": "Graph build",
+      "status": "ok",
+      "duration_secs": 0.7,
+      "detail": "694 nodes, 1265 edges"
+    },
+    {
+      "name": "Hero images",
+      "status": "ok",
+      "duration_secs": 157.9,
+      "detail": "6 hero image(s) generated"
+    },
+    {
+      "name": "Podcasts",
+      "status": "ok",
+      "duration_secs": 368.8,
+      "detail": "1 podcast(s) generated, 13 error(s)"
+    },
+    {
+      "name": "Obsidian vault export",
+      "status": "ok",
+      "duration_secs": 1.2,
+      "detail": "489 course(s), 0 topic(s), 315 source(s) synced"
+    },
+    {
+      "name": "Prod build",
+      "status": "ok",
+      "duration_secs": 62.2
+    },
+    {
+      "name": "Prod server restart",
+      "status": "ok",
+      "duration_secs": 0
+    }
+  ],
+  "x_session": {
+    "status": "ok",
+    "expiresAt": "2027-07-06T05:33:47.000Z",
+    "daysUntilExpiry": 350
+  }
+}

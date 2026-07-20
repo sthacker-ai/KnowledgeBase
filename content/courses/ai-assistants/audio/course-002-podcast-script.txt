@@ -1,0 +1,25 @@
+[ALEX]: After integrating Codex into my daily workflow, I’ve seen my email triage time drop from roughly two hours a day to under seventy minutes, mainly because the AI surfaces actionable items and drafts replies I can edit in seconds. This isn’t just a vague productivity boost; it’s a measurable shift that lets me allocate the saved time to deeper work like product planning or code reviews. The key is that Codex treats each incoming message as a card, extracting the core request and suggesting a response based on tone and context.
+
+Now count words. Let's count manually.
+
+After(1) integrating2 Codex3 into4 my5 daily6 workflow,7 I’ve8 seen9 my10 email11 triage12 time13 drop14 from15 roughly16 two17 hours18 a19 day20 to21 under22 seventy23 minutes,24 mainly25 because26 the27 AI28 surfaces29 actionable30 items31 and32 drafts33 replies34 I35 can36 edit37 in38 seconds.39 This40 isn’t41 just42 a43 vague44 productivity45 boost;46 it’s47 a48 measurable49 shift50 that51 lets52 me53 allocate54 the55 saved56 time57 to58 deeper59 work60 like61 product62 planning63 or64 code65 reviews.66 The67 key68 is69 that70 Codex71 treats72 each73 incoming74 message75 as76 a77 card,78 extracting79 the80 core81 request82 and83 suggesting84 a85 response86 based87 on88 tone89 and90 context91.
+
+91 words. Good.
+
+Line 2 [SAM]: Ask clarifying question, spot assumptions, ask for concrete example.
+
+[SAM]: You mentioned the AI surfaces actionable items—what exactly does it look for in an email to decide something is actionable, and can you give a recent example where it missed something important because it relied only on keyword matching? Also, how do you verify that the draft reply matches your intended tone before sending?
+
+Count words.
+
+You1 mentioned2 the3 AI4 surfaces5 actionable6 items—what7 exactly8 does9 it10 look11 for12 in13 an14 email15 to16 decide17 something18 is19 actionable,20 and21 can22 you23 give24 a25 recent26 example27 where28 it29 missed30 something31 important32 because33 it34 relied35 only36 on37 keyword38 matching?39 Also,40 how41 do42 you43 verify44 that45 the46 draft47 reply48 matches49 your50 intended51 tone52 before53 sending54?
+
+54 words. Need longer lines to reach target. We need each line ~80-90 words. So we need to expand.
+
+Let's expand SAM's line with more detail.
+
+[SAM]: You said Codex surfaces actionable items—what specific signals does it use, such as explicit request verbs, dates, or attached files, and how does it weigh them against low‑priority newsletters? Can you share a concrete case where it flagged a promotional email as a task because it saw “please review” in the footer, causing you to waste time, and another where it overlooked a genuine request buried in a long thread? Finally, what’s your quick sanity‑check process for tone—do you read the draft aloud, compare it to a saved template, or ask a colleague for a quick glance?
+
+Now count.
+
+You1 said2 Codex3 surfaces4 actionable5 items—what6 specific7 signals8 does9 it10 use,11 such12 as13 explicit14 request15 verbs,16 dates,17 or18 attached19 files,20 and21 how22 does23 it24 weigh25 them26 against27 low‑priority28 newsletters?29 Can30 you31 share32 a33 concrete34 case35 where36 it37 flagged38 a39 promotional40 email41 as42 a43 task44 because45 it46 saw47 “please48 review”49 in50 the51 footer,52 causing53 you54 to55 waste56 time,57 and58 another59 where60 it61 overlooked62 a63 genuine64 request65 buried66 in67 a68 long69 thread?70 Finally,71 what’s72 your73 quick74 sanity‑check75 process76 for77 tone—do78 you79 read80 the81 draft82 aloud,83 compare84 it85 to86 a87 saved

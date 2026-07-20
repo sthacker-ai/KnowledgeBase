@@ -1,0 +1,67 @@
+[ALEX]: When you run Claude Code for every pull request in a busy CI pipeline, each session grabs roughly 386 MB of RAM just to hold the model weights, tokenizer, and inference runtime, which means a modest fleet of 20 concurrent jobs already pushes you past 7.5 GB before any other workloads start.
+
+[SAM]: Why does the model itself take up that much space, and can’t we just compress it further to fit in less memory?
+
+Exchange 2:
+
+[ALEX]: The bulk comes from the full‑precision or even INT8‑quantized transformer that powers code generation; even aggressive quantization leaves you with a few hundred megabytes because the model needs to store attention matrices, feed‑forward layers, and the tokenizer vocab for the language it was trained on.
+
+[SAM]: So if we can’t shrink the model much more, what alternative does jcode use to stay under 30 MB?
+
+Exchange 3:
+
+[ALEX]: jcode sidesteps loading a large neural model altogether; it relies on rule‑based program synthesis, lightweight static analysis, and optionally a tiny shared encoder—think a distilled transformer with under 5 MB of weights—that is loaded once at process start and then reused across all sessions.
+
+[SAM]: How does sharing that tiny encoder actually save memory when each session still needs its own activation buffers?
+
+Exchange 4:
+
+[ALEX]: Because the encoder’s weights are read‑only and placed in a shared memory segment, every session maps the same pages; only the per‑session activation buffers—small tensors for the few layers actually used—are allocated, and those are kept in arena allocators that are reset rather than freed and re‑allocated each time.
+
+[SAM]: Arena allocators sound like a performance trick; what trade‑offs do they introduce compared to the usual malloc/free approach?
+
+Exchange 5:
+
+[ALEX]: With an arena you bump a pointer for each allocation and reset the whole arena at the end of a session, which eliminates per‑allocation overhead and fragmentation, but you must ensure that no object outlives the arena’s reset, otherwise you get dangling references.
+
+[SAM]: Does jcode enforce those lifetimes through Rust’s ownership system, or does it rely on programmer discipline?
+
+Exchange 6:
+
+[ALEX]: Rust’s ownership and borrowing model guarantees at compile time that any reference to an arena‑allocated buffer cannot survive beyond the arena’s lifetime, so the compiler will reject code that tries to hold onto a buffer after the session’s reset.
+
+[SAM]: Besides memory, the course highlighted a 245× speed‑up in boot time; where does that massive gain come from?
+
+Exchange 7:
+
+[ALEX]: Boot time drops because jcode avoids the costly model‑loading step: instead of memory‑mapping hundreds of megabytes of weights and running a tokenizer initialization, it only sets up the Rust runtime, loads the shared 5 MB encoder (if used), and prepares a fresh arena—all of which takes a few milliseconds versus the seconds needed for Claude Code to page in its model from disk or GPU memory.
+
+[SAM]: If the encoder is optional, what happens when you turn it off—does jcode still produce useful code suggestions, or does it fall back to pure rule‑based synthesis?
+
+Exchange 8:
+
+[ALEX]: With the encoder disabled, jcode depends entirely on deterministic heuristics: pattern‑based refactoring, simple AST transformations, and constraint‑guided synthesis; it’s fast and predictable but lacks the ability to infer intent from natural‑language comments the way a neural model can.
+
+[SAM]: Can you give a concrete example where the kind of refactor that jcode handles well without any neural component, and one where the neural encoder adds noticeable value?
+
+Exchange 9:
+
+[ALEX]: For instance, jcode can automatically replace a manual loop that sums an array with a call to the standard library’s `Iterator::sum` by recognizing the pattern; that’s purely syntactic. When a developer writes a comment like “// compute the moving average of the last N values”, the tiny encoder can map that comment to a known template and fill in the correct window size, something the rule‑based side would need a separate hand‑crafted rule for.
+
+[SAM]: Those numbers—27.8 MB vs 386 MB and 245× faster boot—seem almost too good; how were they measured to ensure they’re comparable across the two agents?
+
+Exchange 10:
+
+[ALEX>: The authors spun up each agent in an isolated container, measured resident set size after the agent reported readiness, and timed the interval from process start to the first successful code‑generation request, averaging over dozens of runs to smooth out OS caching effects.
+
+[SAM]: Does the measurement include GPU memory, or is it purely CPU‑side RAM, because Claude Code often offloads the model to a GPU?
+
+Exchange 11:
+
+[ALEX>: The reported 386 MB is the host‑side resident memory; the model weights still reside in GPU memory, but the CPU process still needs to hold the tokenizer, runtime libraries, and a copy of the weights for paging, which is why the RAM figure is already high. jcode stays entirely on the CPU, so its footprint is directly comparable.
+
+[SAM]: In a real‑world multi‑session workflow like a pre‑commit hook that runs on every file, what practical limits would you hit with Claude Code versus jcode, and how would you decide which to use?
+
+Exchange 12:
+
+[ALEX>: With Claude Code, each hook would consume nearly 400 MB, so running ten hooks in parallel could exceed 4 GB just for the agents, quickly triggering swapping or OOM kills on a modest CI runner; jcode keeps each hook under 30 MB, allowing dozens of concurrent hooks without pressure, and the sub‑mill

@@ -1,0 +1,48 @@
+[ALEX]: According to PwC’s 2026 Global AI Jobs Barometer, AI‑skill roles are expanding about eight times faster than the overall labor market—69% growth versus 9% for all jobs.
+[SAM]: That’s a huge divergence. Does the eight‑times figure come from raw job ad counts, or is it adjusted for population growth and sector size?
+
+Exchange 2:
+[ALEX]: It’s based on over a billion ads across six continents, normalized to the total job ads each year, so it reflects relative demand, not just raw counts.
+[SAM]: If AI jobs are that hot, why do many bootcamps still emphasize a CS degree when the data shows degree requirements are falling?
+
+Exchange 3:
+[ALEX]: Because hiring inertia persists; many recruiters still use a degree as a quick filter, even though PwC shows the share of AI‑augmented jobs requiring a degree dropped from 66% in 2019 to 59% in 2024, and for AI‑automated roles from 53% to 44%.
+[SAM]: So a switcher without a degree can still compete, but they need to signal ability another way—what does the course suggest as the most credible signal?
+
+Exchange 4:
+[ALEX]: The course recommends a builder‑first mindset: ship a small, end‑to‑end product every two weeks using existing models, then document the outcome, trade‑offs, and lessons in a public repo.
+[SAM]: Public repo means GitHub? How detailed should the documentation be to convince a hiring manager who’s used to seeing algorithm papers?
+
+Exchange 5:
+[ALEX]: Think of it as a product brief: problem statement, model choice, prompt or fine‑tuning approach, latency/cost metrics, and a short video demo. That mirrors what AI engineers actually discuss in stand‑ups.
+[SAM]: That sounds time‑intensive. The course mentions a “30‑minute rule”—how does that fit into building a product every two weeks?
+
+Exchange 6:
+[ALEX]: The 30‑minute rule is a daily habit: spend exactly thirty minutes experimenting with a new prompt, tool, or dataset, then commit the result to a notebook. Over four months those micro‑experiments accumulate into the material for your bi‑weekly builds.
+[SAM]: So the rule prevents analysis paralysis and ensures steady skill accrual without burning out. What about the technical depth—do switchers need to learn model internals or just how to call APIs?
+
+Exchange 7:
+[ALEX]: AI engineering, as defined in the course, is about building products on top of existing models, not researching new architectures. You need to know how to select a model, craft effective prompts, handle token limits, and evaluate output quality, but you don’t need to derive gradient equations.
+[SAM]: If the focus is on application, why do many job descriptions still list “deep learning” or “PyTorch” as requirements?
+
+Exchange 8:
+[ALEX]: Those listings often reflect legacy hiring templates; the actual work may involve fine‑tuning a pretrained model or chaining APIs, which still benefits from PyTorch familiarity but can be learned on the job. The course advises targeting roles that explicitly mention “LLM integration”, “prompt engineering”, or “AI product developer”.
+[SAM]: Let’s talk salary. The course cites a 62% wage premium and a median of $143.5k. How realistic is it for a switcher to hit that range in four months?
+
+Exchange 9:
+[ALEX]: The premium is based on comparable non‑AI roles; if you come from a $70k admin or support job, adding proven AI‑engineering output can justify a $110k‑$130k offer. The course shows a case study where a former teacher landed a $125k contract after three months of public demos.
+[SAM]: Case studies are helpful, but what concrete steps does the course give for negotiating that salary when you lack traditional credentials?
+
+Exchange 10:
+[ALEX]: It teaches a three‑step negotiation script: (1) quantify the impact of your demo (e.g., reduced processing time by 40%), (2) benchmark that impact against market salary data for AI engineers, (3) frame the ask as a share of the value you’ll deliver. You practice it with a mock recruiter using the provided prompt templates.
+[SAM]: Prompt templates sound useful—can you give an example of one that helps turn a vague idea into a concrete project plan?
+
+Exchange 11:
+[ALEX]: Sure. The “Goal‑to‑Prompt” template: State the business goal, list constraints (budget, latency, data privacy), then ask the model: “Given these constraints, propose a step‑by‑step pipeline, including model choice, prompt strategy, and evaluation metric, that achieves the goal.” The output becomes your project spec.
+[SAM]: That shifts the cognitive load from the engineer to the model, letting you focus on judging the output. Finally, what’s the biggest strategic mistake the course warns newcomers about?
+
+Exchange 12:
+[ALEX]: Treating the transition as a pure learning sprint—spending months watching tutorials without shipping anything. Employers judge you on what you can build and explain, not on how many videos you’ve watched.
+[SAM]: That ties back to the builder‑first mindset and the 30‑minute rule. Thanks for breaking it down; I feel clearer on how to leverage existing judgment while gaining the technical chops employers actually pay for.
+
+Now we need to count words. Let's approximate. Each line maybe ~80-100 words. 12 lines each speaker? Actually we have 12 exchanges meaning 24 lines total (alternating). That might be too many words (~2000). We need 10-14 exchanges total, meaning

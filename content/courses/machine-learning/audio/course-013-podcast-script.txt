@@ -1,0 +1,9 @@
+[ALEX]: The leaked Obsidian vault shows that each note can be treated as a neuron and each bidirectional link as a synapse whose weight reflects how often you travel between those ideas during recall or writing.  
+[SAM]: What do you mean by “weight” in this context? Are we talking about a numeric value we can compute, or just a qualitative sense of importance?  
+[ALEX]: Weight can be derived from observable data: the number of times you click from note A to note B in your graph view, or the frequency of co‑occurrence in daily notes, giving a concrete score you can track with plugins like Link Count or Dataview.  
+[SAM]: If links have weights, how do we define layers in a personal knowledge base? Neural networks have clearly separated input, hidden, and output layers—does a PKB naturally produce something similar?  
+[ALEX]: Layers emerge from traversal depth: notes you create directly from raw sources act as an input layer; notes that are two or three hops away, formed by synthesizing those sources, behave like hidden layers; and the notes you use to produce decisions or final documents function as the output layer.  
+[SAM]: That makes sense structurally, but what about activation? In a neural net a neuron fires when its weighted sum passes a threshold—what’s the analogue for a note “activating” in your PKB?  
+[ALEX]: A note becomes active when the cumulative weight of incoming links from currently accessed notes exceeds a personal recall threshold, meaning it surfaces in your graph or search results because enough related ideas are primed.  
+[SAM]: How does learning happen then? Neural nets adjust weights via back‑propagation; what process updates the strengths of links in a PKB?  
+[ALEX]: Learning occurs through review and use: when you find a link helpful while solving a problem, you reinforce it—perhaps by

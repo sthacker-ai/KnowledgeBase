@@ -1,0 +1,31 @@
+[ALEX]: When I ran a six‑month backtest on EUR/USD using the full 2LYNCH checklist, the setups that satisfied every criterion produced a 62% win rate with an average risk‑to‑reward of 1:2.1, while any setup missing just one element dropped to 38% win rate and 1:1.3 RR. That gap shows why treating the framework as a strict gate, not a loose guide, matters.
+
+[SAM]: What does the “2” actually look like in practice? Are we just checking that the daily and hourly charts point the same way, or is there a specific method for confirming alignment?
+
+[ALEX]: The “2” means you first identify the dominant trend on a higher timeframe—daily or weekly—by looking for higher highs/lows in an uptrend or lower highs/lows in a downtrend. Then you drop to a lower timeframe—four‑hour or hourly—and only consider entries that occur in the direction of that trend, such as a pullback to a moving average or a bullish engulfing candle in an uptrend. If the lower‑timeframe signal contradicts the higher‑timeframe bias, you skip the trade.
+
+[SAM]: So if the daily chart shows a clear uptrend but the hourly chart is making lower lows, you’d stay out even if the hourly gives a bullish pattern?
+
+[ALEX]: Exactly. The higher‑timeframe trend is the filter; the lower‑timeframe chart provides the entry trigger, but only when it aligns. Trading against the higher‑timeframe momentum often results in stops being hit quickly because the larger‑scale pressure is opposite.
+
+[SAM]: Let’s move to liquidity. How do you quantify it for different markets, and what happens if you trade a low‑liquidity asset that still meets the other five criteria?
+
+[ALEX]: For equities I use average daily volume ≥1 million shares and a bid‑ask spread under $0.05; for forex I look at average daily turnover >$10 billion and a spread under 0.5 pips; for crypto I check 24‑hour volume >$50 million and order‑book depth that can absorb at least 2% of the position size without moving price more than 0.3%. If liquidity is thin, even a small order can slip, inflating the effective stop‑loss and eroding the risk‑to‑reward that the framework assumes.
+
+[SAM]: Yield potential is the “Y”. Does that just mean looking at the distance to the next support/resistance, or do you factor in things like expected earnings growth or dividend yield?
+
+[ALEX]: Yield potential combines the projected price move with the risk you’re taking. I measure it as the ratio of the expected target—based on the next structural level, a Fibonacci extension, or a measured move from‑news price target—to the distance from entry to stop‑loss. I also overlay fundamentals: for stocks I add expected EPS growth or dividend yield as a multiplier; for forex I consider interest‑rate differentials; for crypto I look at on‑chain activity metrics. A setup must clear a minimum yield‑to‑risk of 1.5 before I consider it.
+
+[SAM]: News sentiment is the “N”. How do you avoid reacting to every headline and still capture meaningful shifts?
+
+[ALEX]: I use a two‑step filter. First, I scan a curated news feed for the asset and assign a sentiment score (−1 to +1) based on keyword weighting and source credibility. Second, I only accept the sentiment if it aligns with the technical bias from the “2” step—positive news for an uptrend, negative for a downtrend. If sentiment conflicts, I treat the setup as neutral and require a stronger technical signal to compensate.
+
+[SAM]: Catalyst presence is the “C”. Can you give an example of a catalyst that would pass the framework versus one that would fail despite good technicals?
+
+[ALEX]: A passing catalyst could be an FDA approval date for a biotech stock that coincides with a bullish pullback on the four‑hour chart, high liquidity, and a clear uptrend on the daily. A failing catalyst might be a vague “management commentary” with no concrete event date, low trading volume, and a news sentiment that’s neutral; even if the chart looks good, the lack of a timed, material catalyst keeps the probability low.
+
+[SAM]: Finally, the time horizon “H”. How do you decide what horizon to use, and does it interact with the other criteria?
+
+[ALEX]: The horizon is the expected holding period derived from the catalyst’s timeline and the technical target. I match it to the liquidity and yield checks: a short‑term scalp needs intraday liquidity and a tight stop, while a swing trade lasting days to weeks tolerates wider stops but requires sufficient volume to avoid slippage over the holding period. If the horizon is too short for the catalyst’s expected impact, I discard the setup even if the other five criteria are satisfied.
+
+[SAM]: It sounds like the framework forces you to confront trade‑offs explicitly

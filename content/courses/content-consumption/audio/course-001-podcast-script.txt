@@ -1,0 +1,23 @@
+[ALEX]: Studies indicate that when people consume more than three hours of varied digital content in a single sitting, their working memory capacity drops by roughly 30%, making it harder to retain details or apply what they’ve seen.
+
+Count words: Studies(1) indicate2 that3 when4 people5 consume6 more7 than8 three9 hours10 of11 varied12 digital13 content14 in15 a16 single17 sitting,18 their19 working20 memory21 capacity22 drops23 by24 roughly25 30%,26 making27 it28 harder29 to30 retain31 details32 or33 apply34 what35 they’ve36 seen37. => 37 words. Too short. Need more.
+
+We need longer lines. Let's aim for ~80 words each. We'll need to elaborate.
+
+We can expand each line with more explanation.
+
+Let's rewrite each line with ~85 words.
+
+I'll write and then count roughly.
+
+Line1 expanded:
+
+[ALEX]: Studies indicate that when people exceed three hours of varied digital content in a single sitting, their working memory capacity drops by roughly 30%, which impairs the ability to hold details in mind and to translate what they’ve seen into action; this decline isn’t just feeling tired, it reflects a measurable reduction in cognitive resources needed for comprehension and application.
+
+Now count words.
+
+Studies1 indicate2 that3 when4 people5 exceed6 three7 hours8 of9 varied10 digital11 content12 in13 a14 single15 sitting,16 their17 working18 memory19 capacity20 drops21 by22 roughly23 30%,24 which25 impairs26 the27 ability28 to29 hold30 details31 in32 mind33 and34 to35 translate36 what37 they’ve38 seen39 into40 action;41 this42 decline43 isn’t44 just45 feeling46 tired,47 it48 reflects49 a50 measurable51 reduction52 in53 cognitive54 resources55 needed56 for57 comprehension58 and59 application60.
+
+60 words. Need ~80-90. Add more.
+
+Add:

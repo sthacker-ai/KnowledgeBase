@@ -1,0 +1,31 @@
+[ALEX]: The first hurdle in building an LLM from scratch isn’t the model code—it’s deciding how to turn raw text into tokens that the network can actually learn from.  
+[SAM]: Why does tokenization matter so much for the downstream performance of the model?  
+[ALEX]: Because the model predicts the next token; if your token set is too coarse you lose nuance, too fine and you blow up sequence length and memory, both hurting training efficiency.  
+[SAM]: Can you give a concrete example of a tokenization scheme that balances those tradeoffs?  
+[ALEX]: Byte Pair Encoding (BPE) starts with characters, iteratively merges the most frequent pairs, ending with a vocabulary of ~50k subword units that captures common words whole while breaking rare words into meaningful pieces.  
+[SAM]: How does the choice of vocabulary size affect model size and training time?  
+[ALEX]: A larger vocab reduces the number of tokens per document, shortening sequences and lowering compute per step, but it increases the embedding matrix size, which adds parameters and memory overhead.  
+[SAM]: Moving past tokenization, what’s the core building block of the transformer that lets it handle long-range dependencies?  
+[ALEX]: The multi‑head self‑attention layer lets each token attend to every other token, computing weighted sums of value vectors where the weights are derived from query‑key dot products, enabling direct paths across arbitrary distances.  
+[SAM]: Why split attention into multiple heads instead of using a single large head?  
+[ALEX]: Each head learns its own projection matrices, letting the model capture different types of relationships—syntactic, semantic, positional—simultaneously, which a single head would struggle to represent efficiently.  
+[SAM]: After attention, what does the feed‑forward network do, and why is it placed inside each block?  
+[ALEX]: It applies two linear layers with a non‑linearity (usually GELU) to each token independently, allowing the model to mix information gathered by attention and add non‑linear transformations before the next block.  
+[SAM]: You mentioned residual connections and layer normalization—how do they stabilize training?  
+[ALEX]: Residuals let gradients flow unchanged through many layers, mitigating vanishing gradients, while layer norm centers and scales activations per token, keeping the distribution stable across batches and depths.  
+[SAM]: In practice, how many transformer blocks are typical for a model that rivals a small GPT‑2?  
+[ALEX]: Around 12 blocks with 768‑dimensional embeddings and 12 attention heads gives roughly 115 M parameters, a size that fits on a single 24 GB GPU while still showing emergent few‑shot behavior.  
+[SAM]: Speaking of size, what are the three scaling dimensions that drive performance improvements?  
+[ALEX]: Model size (parameter count), dataset size (tokens seen), and compute (training FLOPs); improving any of them tends to lower the loss, but after certain thresholds you see qualitative jumps like chain‑of‑thought reasoning.  
+[SAM]: Can you illustrate a tradeoff where increasing one dimension hurts another?  
+[ALEX]: Doubling the model size quadruples memory for activations, which may force you to cut batch size, reducing the effective dataset seen per step and potentially offsetting the gain unless you use gradient accumulation or model parallelism.  
+[SAM]: What practical tricks does the course suggest for managing that memory pressure during training?  
+[ALEX]: Mixed‑precision training (FP16) cuts activation memory in half, activation checkpointing recomputes intermediate activations during backward pass, and sharding the optimizer states across GPUs reduces per‑device overhead.  
+[SAM]: Once training is done, how do you evaluate whether the model has acquired useful emergent abilities?  
+[ALEX]: You probe with few‑shot prompts—give the model a couple of examples of a task and see if it generalizes—and you test chain‑of‑thought by asking it to solve multi‑step math problems, checking if intermediate reasoning steps appear in the output.  
+[SAM]: Suppose the model struggles on a reasoning benchmark; what’s a concrete next step you’d take rather than just scaling up?  
+[ALEX]: You could improve the training data mixture—adding more code or structured text—or modify the loss, such as using a mixture‑of‑experts layer to increase capacity without a proportional rise in dense compute.  
+[SAM]: Finally, how does the course recommend deploying the trained model for inference in a low‑latency setting?  
+[ALEX]: Convert the model to TorchScript or ONNX, apply dynamic quantization to INT8, and use a KV‑cache to reuse past key‑value vectors, allowing generation to run at a few milliseconds per token on a modest GPU.  
+[SAM]: That gives a clear roadmap from raw text to a usable inference system. Thanks for walking through the layers and tradeoffs.  
+[ALEX]: Happy to clarify—building an LLM from scratch is as much about engineering decisions as it is about the theory behind transformers.

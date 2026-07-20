@@ -1,0 +1,25 @@
+[ALEX]: I ran into a recurring issue where Claude would produce a technically accurate draft but then slip into promotional language, even after I explicitly told it to stay neutral and citation‑heavy.  
+[SAM]: What did you try to correct it each time it drifted?  
+[ALEX]: I kept adding reminders in the next prompt—“avoid marketing tone,” “use IEEE style”—but the model kept ignoring them, which felt like it was fighting my intent rather than following it.  
+[SAM]: Why do you think the reminders weren’t sticking?  
+[ALEX]: Because without a stable system context, Claude treats each prompt as an isolated request and falls back on its generic training patterns, so the corrective instructions get overridden by those defaults.  
+[SAM]: Can you give a concrete example of what a system context looks like for this kind of task?  
+[ALEX]: Sure—I prefixed the conversation with a block that defined Claude as a senior research analyst, required a neutral tone, mandated APA citations, limited length to 800 words, and forbade any promotional phrasing that implies endorsement.  
+[SAM]: How did that change the model’s behavior compared to the ad‑hoc reminders?  
+[ALEX]: The initial output already matched the constraints; I hardly needed any follow‑up prompts, and the back‑and‑forth dropped from five or six iterations to usually just one.  
+[SAM]: You mentioned the Claude.md principle—what does that involve in practice?  
+[ALEX]: It means feeding Claude a structured document—like a markdown file—that contains the system persona, style guide, operational rules, and even examples of desired output, so the model ingests those rules as part of its context before any task is given.  
+[SAM]: Could you show a short excerpt of what such a Claude.md might contain for a technical report?  
+[ALEX]: Something like:  
+```
+# Role: Senior Research Analyst  
+# Tone: Neutral, evidence‑based  
+# Format: Markdown with sections Abstract, Method, Results, References  
+# Citations: APA 7th, inline, no footnotes  
+# Length: 600‑900 words  
+# Prohibited: promotional language, unverified claims, first‑person plurals  
+```  
+[SAM]: What trade‑offs come with investing time to build and maintain that document?  
+[ALEX]: The upfront effort is higher—you have to write, version‑control, and possibly update the Claude.md—but you save far more time later by reducing iterative prompting and increasing output reliability.  
+[SAM]: You said the model “finally stops fighting me.” What’s the underlying mechanism that makes that happen?  
+[ALEX]: By providing rich system context, you shift Claude’s prior probability distribution; the model

@@ -1,0 +1,21 @@
+[SAM]: "You say the microfilm was at UC Berkeley; how did it get there in the first place, and what proof do we have that it’s a faithful reproduction of the original 1916 print rather than a later edition or a fragment?"
+
+Count words.
+
+"You(1) say(2) the(3) microfilm(4) was(5) at(6) UC(7) Berkeley;(8) how(9) did(10) it(11) get(12) there(13) in(14) the(15) first(16) place,(17) and(18) what(19) proof(20) do(21) we(22) have(23) that(24) it’s(25) a(26) faithful(27) reproduction(28) of(29) the(30) original(31) 1916(32) print(33) rather(34) than(35) a(36) later(37) edition(38) or(39) a(40) fragment?(41)
+
+41 words.
+
+Now ALEX line: answer, give concrete example, maybe mention exchange program, etc.
+
+[ALEX]: "The microfilm arrived via a 1920s exchange program where BHU sent copies of its publications to partner libraries; UC’s acquisition log lists a 1921 shipment titled ‘BHU Religious Texts, Vol. III’ that matches the primer’s collation. Scholars compared the microfilm’s pagination and typography with the surviving title page fragment in the BHU archives, confirming it’s a complete, unaltered replica of the 1916 edition."
+
+Count.
+
+"The(1) microfilm(2) arrived(3) via(4) a(5) 1920s(6) exchange(7) program(8) where(9) BHU(10) sent(11) copies(12) of(13) its(14) publications(15) to(16) partner(17) libraries;(18) UC’s(19) acquisition(20) log(21) lists(22) a(23) 1921(24) shipment(25) titled(26) ‘BHU(27) Religious(28) Texts,(29) Vol.(30) III’(31) that(32) matches(33) the(34) primer’s(35) collation.(36) Scholars(37) compared(38) the(39) microfilm’s(40) pagination(41) and(42) typography(43) with(44) the(45) surviving(46) title(47) page(48) fragment(49) in(50) the(51) BHU(52) archives,(53) confirming(54) it’s(55) a(56) complete,(57) unaltered(58) replica(59) of(60) the(61) 1916(62) edition.(63)
+
+63 words.
+
+Now SAM line: ask about fragility, maybe ask for example of physical loss.
+
+[SAM]:

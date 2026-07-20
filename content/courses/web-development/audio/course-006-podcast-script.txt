@@ -1,0 +1,37 @@
+[ALEX]: Most developers waste money buying a custom domain and a hosting plan before they've even written a single line of functional code, but you can actually launch a production-grade, HTTPS-secured site for zero dollars using a specific combination of free-tier services.
+
+[SAM]: If it's free, there's usually a catch. Are we talking about those clunky subdomains like "my-project.netlify.app," or are you talking about actual top-level domains that look professional?
+
+[ALEX]: Both, but the $0 stack specifically targets the psychological barrier of the URL. You can get free top-level domains through providers like Freenom for extensions like .tk or .ml, or via the GitHub Student Developer Pack which gives you a .me domain through Namecheap. The goal is to remove the financial friction of validation; you shouldn't pay for a brand before you've proven the product works.
+
+[SAM]: Using a .tk or .ml domain sounds risky. Do those actually work with standard DNS, or are they limited in how you can route traffic?
+
+[ALEX]: They are fully functional for DNS resolution. The real magic happens when you point those nameservers to Cloudflare. Instead of relying on the domain registrar's slow DNS, you use Cloudflare's global anycast network. This means your DNS queries are handled by the server closest to the user, which reduces latency and gives you a professional management interface for your A and CNAME records.
+
+[SAM]: That handles the address, but what about the security? If I'm using a free domain and a free host, I'm probably missing that padlock icon in the browser, which makes a site look untrustworthy or "not secure."
+
+[ALEX]: That's where the Cloudflare proxy comes in. By enabling the "orange cloud" in the DNS settings, you're routing traffic through Cloudflare's edge. They provide Universal SSL automatically, which handles the issuance and renewal of the TLS certificate. You don't have to manually generate private keys or deal with Let's Encrypt's validation challenges; the encryption is just there.
+
+[SAM]: So Cloudflare acts as a shield between the user and the server. But where is the actual code living? You can't host a full backend for free forever.
+
+[ALEX]: For rapid prototyping, you stick to static site hosting. Platforms like GitHub Pages, Vercel, Netlify, and Cloudflare Pages are the gold standard here. They integrate directly with your GitHub repository. The moment you push a commit to your main branch, a CI/CD pipeline triggers, builds your site, and deploys it to a global CDN.
+
+[SAM]: If I'm using Vercel or Netlify, they already provide their own SSL and subdomains. Why bother with the Cloudflare and free domain setup at all? Why not just use the provided "project.vercel.app" link?
+
+[ALEX]: For a quick internal test, the subdomain is fine. But if you're presenting a portfolio to an employer or testing a landing page for actual users, a custom domain is a signal of intent. More importantly, using Cloudflare DNS gives you control. If you decide to move from Vercel to Netlify, you just change one CNAME record in Cloudflare rather than migrating your entire user base to a new platform-specific URL.
+
+[SAM]: Let's talk about the trade-offs. If I'm using Freenom and Cloudflare, what am I giving up? I assume there's a risk of the domain being reclaimed or the service being less stable than a paid registrar.
+
+[ALEX]: Exactly. Free domains often have shorter renewal periods and lower ownership security. You don't "own" them in the same way you own a .com. However, for a prototype that exists to validate an idea, that risk is negligible. The cost of losing a .tk domain is zero, whereas the cost of paying for a .com for a project that fails is a waste of money.
+
+[SAM]: Walk me through the actual workflow. If I have a repository on GitHub right now, what are the exact steps to get this live in five minutes?
+
+[ALEX]: First, connect your GitHub repo to a host like Vercel or Cloudflare Pages. Second, grab a free domain from Freenom or the Student Pack. Third, change the nameservers at the registrar to point to Cloudflare. Fourth, in Cloudflare, create a CNAME record that points your domain to the host's provided subdomain. Once that "orange cloud" is active, your site is live, globally distributed, and encrypted.
+
+[SAM]: It sounds like the "stack" is essentially a chain: GitHub for version control, a CDN for hosting, and Cloudflare for the DNS and SSL layer. But does this setup handle dynamic content, or is this strictly for HTML, CSS, and JS?
+
+[ALEX]: This specific $0 stack is optimized for static sites. If you need a database or a server, you'd have to add other free tiers, like Supabase for a database or Vercel Functions for serverless logic. But for 90% of prototypes—landing pages, portfolios, and documentation—the static approach is faster and more scalable because there's no server to crash.
+
+[SAM]: So the real value here isn't just saving twenty dollars a year; it's the speed of the feedback loop. You can go from an idea to a public, secure URL without ever opening a credit card.
+
+[ALEX]: Precisely. It turns deployment from a "project milestone" into a non-event. When the infrastructure is invisible and free, you stop worrying about the "where" and start focusing on the "what."

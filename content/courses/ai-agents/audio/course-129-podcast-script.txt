@@ -1,0 +1,25 @@
+[ALEX]: Most solo practitioners waste roughly seventy percent of their AI interaction time on re‑prompting because they start with a vague request and hope the model guesses the intent, skipping the upstream work that defines the problem before any token is generated.
+
+[SAM]: What does that upstream work actually look like in practice? Can you break it down into observable steps rather than just calling it “thinking before prompting”?
+
+[ALEX]: It begins with problem decomposition: you write a one‑sentence goal, list measurable success criteria, then split the goal into independent sub‑tasks that each have a clear input‑output contract, noting any dependencies or shared resources. For example, if you need a launch email sequence, the goal is “drive 500 click‑throughs”; success criteria are open rate >30% and click‑through >5%; sub‑tasks are subject line generation, body copy, CTA button text, and follow‑up reminder, each with its own length, tone, and format constraints.
+
+[SAM]: How do you move from those sub‑tasks to actually shaping the model’s behavior before you type a prompt?
+
+[ALEX]: You apply first‑principles framing to each sub‑task: strip away industry jargon and ask what the fundamental purpose is. For a subject line, the purpose is to capture attention in a crowded inbox, so you identify the core variables—curiosity gap, relevance, length—and reason from how human attention works rather than copying templates. Then you specify the exact output you need: a string of 45‑60 characters, no punctuation beyond a single exclamation, containing a power word and a benefit phrase, which becomes the output specification that guides the prompt.
+
+[SAM]: Can you give a concrete example of output‑first design for a different modality, say an image generator for a product mockup?
+
+[ALEX]: Sure. Before prompting the image model, you decide the mockup must be a 1024×1024 PNG, transparent background, showing the product from a 30° angle, with soft shadow, brand‑color palette #004080 and #FFFFFF, and a placeholder for a QR code in the lower right corner. You write those constraints as a checklist, then craft a prompt that mentions each item explicitly, so the model’s stochastic output is anchored to a precise specification rather than left to interpret “make it look professional”.
+
+[SAM]: What tradeoffs arise when you invest time in this upstream work versus jumping straight into prompting and iterating?
+
+[ALEX]: The tradeoff is effort versus iteration cycles. In our tests, teams that spent ten minutes on decomposition and output definition cut average prompt‑revision cycles from five to 1.5, saving roughly forty percent of compute time and reducing frustration. The initial investment pays off when the task is non‑trivial; for trivial one‑off queries the overhead may not be justified, but for any project requiring more than two prompt attempts the upstream approach yields net time savings.
+
+[SAM]: The course proposes a six‑month roadmap. How would you map the months to these skills, and what milestones should a solo practitioner hit each month?
+
+[ALEX]: Month 1 focuses on mental models of AI capabilities—understanding token limits, temperature, and modality‑specific biases through short readings and hands‑on probes. Month 2 drills structured problem breakdown: weekly exercises where you take a vague project brief and produce a decomposition document with goal, criteria, sub‑tasks, and dependencies. Month 3 teaches first‑principles framing: you rewrite each sub‑task by stripping assumptions and reasoning from basic human or physical principles, logging the insights. Month 4 is output definition practice: you specify exact formats (JSON schemas, character limits, layer specs) before any prompting, using rubrics to score completeness. Month 5 integrates prompt crafting and iteration: you run the full cycle, measure revision counts, and refine your decomposition‑to‑prompt template. Month 6 is a capstone project—choose a real‑world deliverable (e.g., a three‑email nurture sequence or a product‑photo set) and apply the full workflow, delivering a playbook that logs time saved versus a baseline “ask‑and‑hope” approach.
+
+[SAM]: How do you recommend building deliberate practice and feedback loops so these habits become second nature rather than occasional exercises?
+
+[ALEX]: Set a weekly ninety‑minute block: thirty minutes to read or watch a concept, forty minutes to apply it to a live task (like drafting a blog outline), and twenty minutes to reflect using a simple rubric—

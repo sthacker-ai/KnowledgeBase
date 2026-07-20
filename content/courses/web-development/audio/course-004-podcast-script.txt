@@ -1,0 +1,77 @@
+[SAM]: question: "Why does copying code feel like a bottleneck if you already have the template?"
+
+[ALEX]: answer: explain that you still need to adjust classes, fix responsiveness, add JS, etc.
+
+[SAM]: ask for concrete example of a template and what needs tweaking.
+
+[ALEX]: give example: a SaaS hero block with gradient background, need to change CTA text, integrate form endpoint, adjust breakpoints.
+
+[SAM]: ask about how AI changes this.
+
+[ALEX]: explain one-click prompt: you paste a natural language description into Claude Code, it outputs full HTML/CSS/JS ready to drop into project.
+
+[SAM]: ask about quality and customizability tradeoffs.
+
+[ALEX]: discuss that AI can produce clean, semantic code but may miss niche interactions; you can still edit.
+
+[SAM]: ask about the library of prompts—how it's structured.
+
+[ALEX]: describe library: each template has a prompt stored as markdown, tags, etc.
+
+[SAM]: ask about finding the right prompt for a specific use case.
+
+[ALEX]: explain search by industry, style tags, preview images, copy button.
+
+[SAM]: ask about using Claude Code vs Codex differences.
+
+[ALEX]: note Claude Code better at longer context, Codex faster for snippets, both understand the prompts.
+
+[SAM]: ask about deployment workflow after generation.
+
+[ALEX]: explain you can save output as .html, link assets, test locally, then push to Netlify/Vercel.
+
+[SAM]: ask about A/B testing benefits.
+
+[ALEX]: describe rapid variant generation: change one word in prompt to get new color scheme, generate multiple versions quickly.
+
+[SAM]: ask about limitations or pitfalls.
+
+[ALEX]: mention reliance on prompt quality, occasional need to manually fix CSS specificity, licensing check.
+
+[SAM]: final question: advice for beginners.
+
+[ALEX]: give practical steps: start with a simple prompt, iterate, keep a snippet library, version control.
+
+Now count words. Let's write each line with about 80-90 words.
+
+We'll need to count roughly.
+
+I'll write each line and then approximate.
+
+Let's draft.
+
+Line 1 [ALEX]: "The biggest bottleneck...]
+
+I will count later] "The biggest bottleneck in landing‑page creation isn’t design skill—it’s the manual copy‑paste of HTML/CSS after you find a template you like." Count words: The(1) biggest2 bottleneck3 in4 landing‑page5 creation6 isn’t7 design8 skill—it’s9 the10 manual11 copy‑paste12 of13 HTML/CSS14 after15 you16 find17 a18 template19 you20 like21. => 21 words. Too short. Need longer.
+
+We need each line ~80 words. Let's expand.
+
+We'll write longer sentences.
+
+I'll craft each line with about 85 words.
+
+Let's do.
+
+Line1 [ALEX]: "The biggest bottleneck in landing‑page creation isn’t design skill—it’s the manual copy‑paste of HTML/CSS after you find a template you like. Even when you download a free snippet, you still have to hunt down the right class names, adjust breakpoints, wire up form actions, and ensure the JavaScript doesn’t clash with your existing bundle. Those repetitive tweaks eat up hours that could be spent testing copy or running ads."
+
+Now count words roughly. Let's count: The1 biggest2 bottleneck3 in4 landing‑page5 creation6 isn’t7 design8 skill—it’s9 the10 manual11 copy‑paste12 of13 HTML/CSS14 after15 you16 find17 a18 template19 you20 like21. Even22 when23 you24 download25 a26 free27 snippet,28 you29 still30 have31 to32 hunt33 down34 the35 right36 class37 names,38 adjust39 breakpoints,40 wire41 up42 form43 actions,44 and45 ensure46 the47 JavaScript48 doesn’t49 clash50 with51 your52 existing53 bundle.54 Those55 repetitive56 tweaks57 eat58 up59 hours60 that61 could62 be63 spent64 testing65 copy66 or67 running68 ads69. => 69 words. Need ~80-90. Add a bit more: "In practice, that means a designer’s mockup can sit idle while a developer wrestles with CSS specificity, delaying the campaign launch."
+
+Add: In1 practice,2 that3 means4 a5 designer’s6 mockup7 can8 sit9 idle10 while11 a12 developer13 wrestles14 with15 CSS16 specificity,17 delaying18 the19 campaign20 launch21.
+
+Now total 69+21=90 words. Good.
+
+Line2 [SAM]: "Why does copying code feel like a bottleneck if you already have the template? Isn’t the point of a template to give you a ready‑made starting point that you just tweak a little?"
+
+Count words: Why1 does2 copying3 code4 feel5 like6 a7 bottleneck8 if9 you10 already11 have12 the13 template?14 Isn’t15 the16 point17 of18 a19 template20 to21 give22 you23 a24 ready‑made25 starting26 point27 that28 you29 just30 tweak31 a32 little33? => 33 words. Need longer. Expand: "When I look at a free landing‑page repo, the HTML often lacks semantic tags, the CSS uses utility classes that clash with my design system, and any interactive bits are hard‑coded to a specific API endpoint. To make it production‑ready I end up rewriting large chunks, which feels almost as much work as building from scratch."
+
+Count: When1 I2 look3 at4 a5 free6 landing‑page7 repo,8 the9 HTML10 often11 lacks12 semantic13 tags

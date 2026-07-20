@@ -1,0 +1,33 @@
+[ALEX]: The Fable 5 orchestration workflow demonstrates that replacing a monolithic LLM‑driven coding helper with five narrowly‑scoped agents cuts average refactoring time by 22% while reducing introduced bugs by 35% on a benchmark of 500 JavaScript files, because each agent can be unit‑tested in isolation and failures are traced to a single message type rather than a tangled prompt.
+
+[SAM]: How does the workflow actually define those agents in Fable 5? Are they just functions, or is there a specific data structure that enforces the message contract?
+
+[ALEX]: Each agent is a Frecord with two fields: a mutable‑looking but actually immutable state record and a handle function of type Message → State * Message list. The Message type is a discriminated union covering all possible inputs—like GenerateCode, RunLint, UpdateDocs, and Error—so pattern matching in handle guarantees exhaustive coverage and prevents misspelled event names at compile time.
+
+[SAM]: If the state is immutable, how does an agent accumulate knowledge across multiple turns, say when it needs to remember which files it has already linted?
+
+[ALEX]: The handle function returns a new state record that incorporates any updates; the scheduler feeds that returned state back into the agent on the next cycle. Because the state is a plain F# record, you can copy‑and‑modify fields with the { state with … } syntax, giving you a clear audit trail of changes without mutating shared memory.
+
+[SAM]: You mentioned a lightweight scheduler—what does it actually do, and why not just let agents call each other directly?
+
+[ALEX]: The scheduler maintains a queue of incoming messages, dispatches each to the appropriate agent’s handle function based on the Message union tag, collects the outgoing messages, and re‑queues them. This indirection decouples agents: they never know who sent a message or who will receive it, which lets you hot‑swap implementations, add logging, or reroute messages for testing without touching agent code.
+
+[SAM]: What about error handling? If one agent fails, does the whole pipeline crash, or is there a way to isolate faults?
+
+[ALEX]: Errors are modeled as first‑class messages—an Error union case carrying a payload and a traceback. When an agent’s handle throws, the scheduler catches the exception, wraps it in an Error message, and sends it to a dedicated ErrorHandler agent that can log, retry, or escalate. Because errors are messages, they can be inspected, filtered, or replayed just like any other signal.
+
+[SAM]: Can you give a concrete example of how a developer would add a new capability, say, generating unit tests, without rewriting the existing agents?
+
+[ALEX]: You define a new union case, GenerateTests, extend the Message type, and write a TestGen agent whose handle matches that case, produces a list of OutgoingMessage cases like SaveFile or RequestReview, and returns its updated state. Existing agents need no changes; they simply ignore GenerateTests unless they explicitly handle it, and the scheduler will route the new messages automatically.
+
+[SAM]: What trade‑offs appear when you move from a single prompt‑centric agent to this message‑passing style? Are there any downsides in terms of latency or development overhead?
+
+[ALEX]: The primary overhead is the extra indirection: each turn involves a scheduler dispatch and pattern match, which adds sub‑millisecond latency in Node.js—negligible compared to LLM inference time. Development overhead rises slightly because you must design the Message union and keep agents stateless aside from their record, but this pays off in easier debugging, deterministic unit tests, and the ability to scale agents across workers independently on different threads or nodes.
+
+[SAM]: How does persistence work? If the orchestrator restarts, do agents lose their state, or is there a built‑in mechanism to snap‑shot and recover?
+
+[ALEX]: State persistence is handled outside the core loop: after each scheduler tick, the orchestrator serializes every agent’s state record to JSON (or a binary format) using Fable’s JsonProvider, writes it to a durable store, and on startup deserializes to reconstruct the initial state. Because states are immutable records, serialization is straightforward and version‑safe—you can evolve the record shape by adding optional fields without breaking old snapshots.
+
+[SAM]: Finally, what practical steps would you recommend to a team that wants to adopt this workflow for their own AI‑assisted coding toolkit?
+
+[ALEX]: Start by enumerating the discrete skills you currently invoke via prompts—code generation, formatting, linting, documentation, test creation—and model each as a Message case. Implement a minimal agent for each skill as a Frecord with a pure handle function, wire them to the scheduler, and write unit tests that feed specific Message values and assert on outgoing messages and state changes. Once the agents are verified in isolation, integrate the LLM calls as the bodies of the handle functions, and you’ll have a composable, observable, and evolvable AI coding platform.

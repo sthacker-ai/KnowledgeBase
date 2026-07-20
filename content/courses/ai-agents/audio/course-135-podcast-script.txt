@@ -1,0 +1,15 @@
+[ALEX]: The new Gemini 3.5 Flash release integrates computer use as a native tool, which significantly improves performance for long-horizon and enterprise automation tasks.
+[SAM]: Wait, when you say "computer use," what exactly does that mean?
+[ALEX]: It refers to an AI model's ability to control a graphical user interface, read screen content, and issue mouse or keyboard commands.
+[SAM]: So how does this new integration reduce latency compared to using a separate computer-use model?
+[ALEX]: When the model needs to interact with a GUI, it generates a structured command that the underlying runtime executes in a sandboxed environment. This direct interaction reduces the need for an extra model and thus lowers latency.
+[SAM]: How does the Gemini 3.5 Flash model handle the new direct GUI interaction modality without altering its core architecture?
+[ALEX]: The same 3.5 Flash checkpoint that processes text, images, and audio can now also emit computer-use actions. The model's training data includes adversarial examples that teach it how to safely operate computer-use tools, improving reliability on long-horizon tasks.
+[SAM]: I see. But how does this new feature compare to the earlier function-calling and built-in tools like Search and Maps grounding?
+[ALEX]: Computer use, function calling, and built-in tools like Search and Maps grounding are all part of the unified, production-ready agent platform in Gemini 3.5 Flash. This integration addresses the fragmentation problem while preserving the speed and price profile that makes Google's Flash series attractive for large-scale deployments.
+[SAM]: How have early adopters, such as Browserbase, Browser Use, and UiPath, benefited from this integrated approach?
+[ALEX]: Early adopters have reported measurable gains in accuracy, cost-efficiency, and scalability, confirming that the integrated approach solves the fragmentation problem while preserving the speed and price profile that makes Google's Flash series attractive for large-scale deployments.
+[SAM]: That sounds impressive. Can you tell me more about the safety mechanisms Google has built to mitigate prompt-injection risks?
+[ALEX]: Sure. Google has implemented safety mechanisms, such as sandboxed environments for executing runtime commands, to ensure secure computer use. This helps prevent potential prompt-injection attacks and maintains the integrity of the AI agent's decision-making process.
+[SAM]: How can developers get started with building their own AI agents using the Gemini API and the Gemini Enterprise Agent Platform?
+[ALEX]: Developers can start by setting up a development environment and running the provided demo. From there, they can learn to build their own agents using the Gemini API and the Gemini Enterprise Agent Platform, taking full advantage of the new computer-use capabilities in Gemini 3.5 Flash.

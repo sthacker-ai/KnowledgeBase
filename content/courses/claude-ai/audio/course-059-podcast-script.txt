@@ -1,0 +1,14 @@
+[ALEX]: Claude Tag can autonomously run a multi‑step data‑analysis workflow for up to 16 hours without any human prompting.  
+[SAM]: How does it know when to start each step if there’s no explicit trigger?  
+[ALEX]: It uses an internal scheduler that parses the original instruction, estimates runtime for each subtask, and queues the next step as soon as the previous one finishes.  
+[SAM]: What happens if a subtask fails or takes longer than expected?  
+[ALEX]: Claude Tag has a built‑in fallback: it logs the error, attempts a retry with adjusted parameters, and if it still fails, it posts a concise status update to the designated channel for human review.  
+[SAM]: Does it need to be re‑trained for each new workflow, or can it reuse prior knowledge?  
+[ALEX]: Its long‑term memory retains the structure of past workflows and team preferences, so it can reuse patterns—like preferred libraries or output formats—while still adapting to new data schemas.  
+[SAM]: Can you give a concrete example of a team using Claude Tag over several days?  
+[ALEX]: A marketing analytics team instructed Claude Tag to monitor social‑media mentions, aggregate sentiment scores each night, and generate a weekly report; over ten days it ran the collection script each evening, adjusted the sentiment model based on feedback, and delivered the report every Monday morning without further prompts.  
+[SAM]: How does Claude Tag stay aware of team preferences across different channels?  
+[ALEX]: When a user tags Claude Tag in a Slack thread and says “always summarize links in bullet points,” it stores that rule in its context memory and applies it to any future link‑sharing in any channel the team has granted it access to.  
+[SAM]: What are the tradeoffs of giving Claude Tag that much autonomy?  
+[ALEX]: The main tradeoff is reduced immediate oversight—if its internal scheduler misestimates a task, delays can cascade—so teams usually set alert thresholds and review logs daily to catch drift.  
+[SAM]: Finally,

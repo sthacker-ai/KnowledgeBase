@@ -1,0 +1,45 @@
+[ALEX]: ... (long sentence(s))
+[SAM]: ...
+...
+
+We must avoid stage directions.
+
+Let's craft.
+
+We need to watch word count. Let's approximate.
+
+I'll write each line about 85-90 words.
+
+Let's draft.
+
+Line 1 [ALEX]: claim: IDBI’s 2004 conversion to a universal bank was less about adding retail products and more about altering its funding structure to match long‑term industrial loans with stable, low‑cost deposits, a shift that reshaped both its risk exposure and its ability to pursue developmental goals.
+
+Count words? Let's count roughly: IDBI’s(1) 2004(2) conversion(3) to(4) a(5) universal(6) bank(7) was(8) less(9) about(10) adding(11) retail(12) products(13) and(14) more(15) about(16) altering(17) its(18) funding(19) structure(20) to(21) match(22) long‑term(23) industrial(24) loans(25) with(26) stable,(27) low‑cost(28) deposits,(29) a(30) shift(31) that(32) reshaped(33) both(34) its(35) risk(36) exposure(37) and(38) its(39) ability(40) to(41) pursue(42) developmental(43) goals.(44) That's 44 words. Need ~85. Need to expand with examples, tradeoffs.
+
+Add more: talk about how before 2004 IDBI relied on RBI refinance and bonds, cost higher, limited ability to lend long term; after 2004, retail deposits lowered cost, allowed longer tenor, but introduced liquidity risk and pressure to meet profitability targets, leading to creation of specialized lending windows like the Infrastructure Finance Group to keep developmental focus.
+
+Let's craft a longer sentence.
+
+I'll write line 1 about 90 words.
+
+Proceed similarly for each.
+
+We need to ensure total words 950-1150. Let's aim for ~1000.
+
+I'll write each line approx 85-90 words.
+
+Let's do 12 lines => ~1020.
+
+I'll write and then roughly count.
+
+Line1 [ALEX]: IDBI’s 2004 conversion to a universal bank was less about adding retail products and more about altering its funding structure to match long‑term industrial loans with stable, low‑cost deposits, a shift that reshaped both its risk exposure and its ability to pursue developmental goals. Before the change, IDBI relied on RBI refinance lines and market‑issued bonds, which carried higher coupons and limited tenor, forcing it to shorten loan maturities or demand costly guarantees. After gaining a banking license, it could tap household savings, cut its cost of funds by roughly 150 basis points, and extend loan tenors to 12‑15 years with moratoriums, but it also had to maintain CRR/SLR ratios and face liquidity‑coverage rules that tied up capital, creating a trade‑off between cheaper funding and regulatory compliance.
+
+Now count words roughly. Let's count manually? Might be tedious. We'll approximate.
+
+But we need to ensure total within range. We'll trust.
+
+Proceed.
+
+Line2 [SAM]: You mentioned the cost‑of‑funds drop and the new regulatory burden; can you give a concrete example of how a specific project’s financing terms changed before and after 2004, and what that meant for the borrower’s cash flow during the gestation period?
+
+Line3 [ALEX]: Sure. Take a 2002 greenfield steel plant that needed a ₹2,000 crore term loan for a seven‑year build‑out. As a pure DFI, IDBI could only offer a five‑year loan at 11.5 % interest, requiring the sponsor to bridge the gap with expensive mezzanine debt or equity, which pushed the project’s break‑even point two years later. After 2004

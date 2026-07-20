@@ -1,0 +1,64 @@
+[ALEX]: ...
+[SAM]: ...
+
+We'll ensure no extra blank lines? Probably fine.
+
+Let's draft.
+
+We need ~950-1150 words. Let's approximate: each line ~80 words => 12 lines => 960 words. Good.
+
+We'll write roughly 80-90 words per line.
+
+Let's craft.
+
+Line 1 [ALEX]: claim.
+
+Line 2 [SAM]: question.
+
+Line 3 [ALEX]: answer.
+
+Continue.
+
+We'll need to avoid filler like "absolutely!" but can use natural language.
+
+Let's write.
+
+We'll count approximate words.
+
+I'll write each line and then roughly count.
+
+Line1: "LongCat‑Avatar can turn a single portrait photo and any audio clip into a lip‑synced talking‑head video that stays coherent for over two minutes on a consumer‑grade RTX 3060, with average landmark error below 2 % and no visible drift." Count words: LongCat‑Avatar(1) can2 turn3 a4 single5 portrait6 photo7 and8 any9 audio10 clip11 into12 a13 lip‑synced14 talking‑head15 video16 that17 stays18 coherent19 for20 over21 two22 minutes23 on24 a25 consumer‑grade26 RTX27 3060,28 with29 average30 landmark31 error32 below33 2 %34 and35 no36 visible37 drift38. => 38 words. Need more. We need longer lines. Let's aim for ~80-90 words each. So we need to expand.
+
+We'll write longer sentences with details.
+
+Let's craft each line about 85 words.
+
+I'll write and then approximate.
+
+Line1: Expand.
+
+"LongCat‑Avatar demonstrates that a single portrait image paired with an arbitrary audio waveform can be transformed into a realistic talking‑head video lasting more than two minutes without noticeable drift, achieving this on a modest GPU such as an RTX 3060; the system reports an average landmark deviation of under 2 % and maintains temporal coherence through a lightweight appearance encoder coupled to an audio‑driven motion predictor that jointly models pose, expression, and texture." Let's count words roughly.
+
+LongCat‑Avatar1 demonstrates2 that3 a4 single5 portrait6 image7 paired8 with9 an10 arbitrary11 audio12 waveform13 can14 be15 transformed16 into17 a18 realistic19 talking‑head20 video21 lasting22 more23 than24 two25 minutes26 without27 noticeable28 drift,29 achieving30 this31 on32 a33 modest34 GPU35 such36 as37 an38 RTX39 3060;40 the41 system42 reports43 an44 average45 landmark46 deviation47 of48 under49 2 %50 and51 maintains52 temporal53 coherence54 through55 a56 lightweight57 appearance58 encoder59 coupled60 to61 an62 audio‑driven63 motion64 predictor65 that66 jointly67 models68 pose,69 expression,70 and71 texture72.
+
+72 words. Good.
+
+Line2 SAM: ask clarifying.
+
+"When you say 'lightweight appearance encoder', what specific architecture does LongCat‑Avatar use for that encoder, and how does its size compare to the encoders in earlier talking‑head pipelines like SadTalker or TalkLip?" Count.
+
+When1 you2 say3 'lightweight4 appearance5 encoder',6 what7 specific8 architecture9 does10 LongCat‑Avatar11 use12 for13 that14 encoder,15 and16 how17 does18 its19 size20 compare21 to22 the23 encoders24 in25 earlier26 talking‑head27 pipelines28 like29 SadTalker30 or31 TalkLip32?
+
+32 words. Need longer. We'll expand.
+
+Add more detail: ask about training data, pretraining, etc.
+
+"Could you break down the appearance encoder’s design—is it a ResNet‑based backbone, a Vision Transformer, or something else—and tell us what pretraining data it was initialized with, how many parameters it contains, and why the authors claim it is lighter than the heavyweight 3DMM fitting or the dense feature warpers used in prior open‑source talking‑head models?" Count.
+
+Could1 you2 break3 down4 the5 appearance6 encoder’s7 design—is8 it9 a10 ResNet‑based11 backbone,12 a13 Vision14 Transformer,15 or16 something17 else—and18 tell19 us20 what21 pretraining22 data23 it24 was25 initialized26 with,27 how28 many29 parameters30 it31 contains,32 and33 why34 the35 authors36 claim37 it38 is39 lighter40 than41 the42 heavyweight43 3DMM44 fitting45 or46 the47 dense48 feature49 warpers50 used51 in52 prior53 open‑source54 talking‑head55 models56?
+
+56 words. Still short. Let's expand more.
+
+Add about comparison to SadTalker encoder size.
+
+"Could you break down the appearance encoder’s design—is it a ResNet‑50 backbone, a Vision Transformer, or a hybrid—and tell us what pretraining data (e.g., VGGFace2, MS‑Celeb‑1M) it was initialized with

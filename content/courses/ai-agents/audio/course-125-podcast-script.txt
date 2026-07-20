@@ -1,0 +1,54 @@
+[ALEX]: ...
+[SAM]: ...
+[ALEX]: ...
+...
+
+Let's write roughly 90 words per line.
+
+We need to watch word count. Let's approximate.
+
+I'll write each line about 85-95 words.
+
+Let's draft.
+
+Line 1 (ALEX): "Loop engineering flips the usual AI‑agent workflow: instead of waiting for a developer to feed it a prompt, the agent continuously monitors its environment—CI pipelines, issue trackers, or logs—and autonomously decides what work to pick up." That's maybe ~30 words. Need longer. Let's expand.
+
+We need about 85-95 words. Let's craft longer sentences.
+
+I'll write each line with about 90 words.
+
+Let's compute approximate word count manually.
+
+I'll write and then count roughly.
+
+Line1: "Loop engineering flips the usual AI‑agent workflow: instead of waiting for a developer to feed it a prompt, the agent continuously monitors its environment—CI pipelines, issue trackers, or logs—and autonomously decides what work to pick up. This self‑directed discovery reduces latency between failure detection and remediation, turning a reactive process into a proactive loop that can run without human intervention."
+
+Count words: Let's count.
+
+Loop(1) engineering2 flips3 the4 usual5 AI‑agent6 workflow:7 instead8 of9 waiting10 for11 a12 developer13 to14 feed15 it16 a17 prompt,18 the19 agent20 continuously21 monitors22 its23 environment—CI24 pipelines,25 issue26 trackers,27 or28 logs—and29 autonomously30 decides31 what32 work33 to34 pick35 up.36 This37 self‑directed38 discovery39 reduces40 latency41 between42 failure43 detection44 and45 remediation,46 turning47 a48 reactive49 process50 into51 a52 proactive53 loop54 that55 can56 run57 without58 human59 intervention60.
+
+60 words. Need more ~30 words. Add: "In practice, this means the agent can open a pull request, run tests, and merge fixes while developers focus on higher‑level design, effectively scaling the team’s output without adding headcount."
+
+Add words: In1 practice,2 this3 means4 the5 agent6 can7 open8 a9 pull10 request,11 run12 tests,13 and14 merge15 fixes16 while17 developers18 focus19 on20 higher‑level21 design,22 effectively23 scaling24 the25 team’s26 output27 without28 adding29 headcount30.
+
+Now total 60+30=90 words. Good.
+
+Line2 (SAM): Ask clarifying: "You say the agent monitors CI pipelines and issue trackers; what specific signals does it look for to decide a build is failing or an issue needs attention, and how does it avoid false positives that could waste resources?" Count.
+
+You1 say2 the3 agent4 monitors5 CI6 pipelines7 and8 issue9 trackers;10 what11 specific12 signals13 does14 it15 look16 for17 to18 decide19 a20 build21 is22 failing23 or24 an25 issue26 needs27 attention,28 and29 how30 does31 it32 avoid33 false34 positives35 that36 could37 waste38 resources39?
+
+39 words. Need ~90. Expand: "For example, does it rely on non‑zero exit codes, specific error patterns in logs, or labels like 'bug' in issue trackers, and does it apply a confidence threshold or require multiple consecutive failures before triggering a discovery event?" Let's add.
+
+Add words: For1 example,2 does3 it4 rely5 on6 non‑zero7 exit8 codes,9 specific10 error11 patterns12 in13 logs,14 or15 labels16 like17 'bug'18 in19 issue20 trackers,21 and22 does23 it24 apply25 a26 confidence27 threshold28 or29 require30 multiple31 consecutive32 failures33 before34 triggering35 a36 discovery37 event38?
+
+Now count added: Let's count from For to event.
+
+For1 example2 does3 it4 rely5 on6 non‑zero7 exit8 codes,9 specific10 error11 patterns12 in13 logs,14 or15 labels16 like17 'bug'18 in19 issue20 trackers,21 and22 does23 it24 apply25 a26 confidence27 threshold28 or29 require30 multiple31 consecutive32 failures33 before34 triggering35 a36 discovery37 event38?
+
+38 words. Add to previous 39 = 77. Need ~13 more words. Add: "It also checks ownership metadata to ensure it only acts on repos it’s permitted to modify." Let's add.
+
+It1 also2 checks3 ownership4 metadata5 to6 ensure7 it8 only9 acts10 on11 repos12 it’s13 permitted14 to15 modify16.
+
+16 words. Total now 77+16=93 words. Good.
+
+Line3 (ALEX): Explain discover phase details and setup: "The discover phase is implemented as a lightweight daemon that polls the CI

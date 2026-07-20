@@ -181,10 +181,10 @@ marked `critical: true` aborts the whole run. A run's final status is one of
 
 ### Daily Automation (Windows Task Scheduler)
 
-| Task | Schedule | State (as of 2026-07-06) |
+| Task | Schedule | State (as of 2026-07-2x) |
 |---|---|---|
-| `KnowledgeBase Daily Import` (`start-scheduled.bat` → `scheduled-daily.js`) | Daily at 12:00 PM IST | ✅ Enabled |
-| `KnowledgeBase Prod Deploy` (`start-prod.bat` → build + restart `:3006`) | Daily at 1:00 PM IST | ⚠️ Currently **disabled** — re-enable via `register-prod-task.ps1` if the local prod server should auto-refresh with new content |
+| `KnowledgeBase Daily Import` (`start-scheduled.bat` → `scheduled-daily.js`) | Daily at 12:00 PM IST | ✅ Enabled — now includes the R2 upload + git push steps, so the hosted site updates itself with no manual step |
+| `KnowledgeBase Prod Deploy` (`start-prod.bat` → build + restart `:3006`) | Daily at 1:00 PM IST | ⚠️ Currently **disabled**. With Vercel live and auto-redeploying, this local prod server may not be needed anymore — worth deciding whether to re-enable (`register-prod-task.ps1`) or retire it. |
 
 ---
 
@@ -229,17 +229,25 @@ rebuilt from the course files when needed.
 
 ## Deployment
 
+**Live at [kb.thinkbits.in](https://kb.thinkbits.in)**, mirroring this repo's
+`main` branch via Vercel.
+
 The pipeline (imports, AI generation, Playwright scraping) is **local-only** —
 it needs a real Chromium browser, Python, `yt-dlp`, and a local Postgres, none
-of which exist on a serverless host. The public-facing read pages
-(Overview, Courseware, Wiki, Graph, Sources, Filtered, Runs, Tokens), though,
-read from Markdown/JSON files that are committed to git — so they can be
-hosted as a **read-only mirror on Vercel** that updates whenever you `git push`
-after a local pipeline run.
+of which exist on a serverless host. `/admin` and every `/api/admin/*` route
+are locked out on the hosted deployment (`middleware.ts` 404s them whenever
+`process.env.VERCEL` is set) — that surface is for `localhost` only.
 
-See `docs/deployment.md` for the full evaluation (repo size, what works vs.
-what doesn't on Vercel's free tier) and step-by-step setup including a custom
-subdomain via Hostinger DNS.
+Everything else is live and current automatically: Neon Postgres is the
+single database for both the local pipeline and Vercel (no stale snapshot),
+podcasts/hero images are served from Cloudflare R2, and the daily pipeline's
+last two steps (`upload-media-to-r2.js`, `git-publish.js`) push new content
+and media straight to `main`, which triggers Vercel's auto-redeploy — no
+manual step required after a scheduled run.
+
+See `docs/deployment.md` for the full setup reference (repo size, what
+runs where, Cloudflare/Neon/Hostinger configuration) and what to check if
+something stops updating.
 
 ---
 

@@ -167,16 +167,26 @@ looks stale, `scripts/transcribe/generate_audio.py` is the source of truth.)
 
 ## 4. Pipeline Steps
 
-| Step | Script | Input | Output |
-|---|---|---|---|
-| 1. Import likes | `import-x-likes.js` | X/Twitter account | `data/raw/*.json` |
-| 2. Extract sources | `import-x-source.js` | raw JSON | extracted text in raw JSON |
-| 3. Classify | `classify-source.js` | extracted JSON | `topic_slug` added |
-| 4. Compile courses | `compile-course.js` | classified JSON + transcript | `content/courses/` |
-| 5. Summarize topics | `update-topic-summary.js` | courses | `content/wiki/` |
-| 6. Build graph | `build-graph.js` | all content + indexes | `data/indexes/graph.json` |
-| 7. Export Obsidian | `export-obsidian.js` | all content | `data/obsidian-vault/` |
-| 8. Daily schedule | `scheduled-daily.js` | cron trigger | runs steps 1–6 |
+The full, current, 12-step order lives in `scripts/pipeline-steps.js` (the
+single source of truth shared by `scheduled-daily.js` and `run-pipeline.js`)
+— reproduced here for reference, but that file is authoritative if this
+drifts:
+
+| # | Step | Script | Input | Output |
+|---|---|---|---|---|
+| 1 | Import likes | `import-x-likes.js` | X/Twitter account | `data/raw/*.json` |
+| 2 | Extract sources | `import-x-source.js` | raw JSON | extracted text in raw JSON |
+| 3 | Video transcripts | `extract-transcripts.js` | video sources | `data/transcripts/*.txt` |
+| 4 | Classify | `classify-source.js` | extracted JSON | `topic_slug` added |
+| 5 | Compile courses | `compile-course.js` | classified JSON + transcript | `content/courses/` |
+| 6 | Summarize topics | `update-topic-summary.js` | courses | `content/courses/*/summary.md` |
+| 7 | Build graph | `build-graph.js` | all content + indexes | `data/indexes/graph.json` |
+| 8 | Hero images | `generate-course-assets.js` | courses | `public/course-assets/` |
+| 9 | Podcasts | `generate-podcast.js` | courses | `public/course-audio/` |
+| 10 | Export Obsidian | `export-obsidian.js` | all content | `data/obsidian-vault/` |
+| 11 | Upload media to R2 | `upload-media-to-r2.js` | steps 8–9 output | Cloudflare R2 + `data/media-manifest.json` |
+| 12 | Commit & push | `git-publish.js` | steps 1–11 output | `git push origin main` → Vercel auto-redeploys |
+| — | Daily schedule | `scheduled-daily.js` | Task Scheduler, noon IST | runs steps 1–12, continue-on-error |
 
 ---
 
@@ -296,10 +306,12 @@ Full visual identity replacing the earlier light indigo/amber theme. See
 | Phase J | Pipeline resilience: continue-on-error, retries, X-session pre-flight | ✅ Complete (2026-07-06) |
 | Phase K | X-session TTL fix (was self-expiring valid cookies every 30 days) | ✅ Complete (2026-07-06) |
 | Phase L | Dev/prod build directory isolation (`.next-dev` vs `.next`) | ✅ Complete (2026-07-06) |
-| Phase M | Vercel hosting (read-only public mirror) | 🔜 In progress — see `docs/deployment.md` |
+| Phase M | Vercel hosting (read-only public mirror) | ✅ Live (2026-07-2x) — `kb.thinkbits.in`, custom domain verified |
 | Phase P | Fix `/runs`, `/tokens`, `/filtered` self-fetch bug (hardcoded `:3005` fallback made them render empty on prod/hosted) | ✅ Complete (2026-07-17) — see `app/lib/runs-tokens-data.ts` |
-| Phase Q | Cloudflare R2 for hosted podcast audio + hero images (not Vercel Blob — 10GB free vs. ~1GB, zero egress) | ✅ Code complete (2026-07-20) — `scripts/upload-media-to-r2.js`, `app/lib/media.ts`; blocked on R2 bucket creation, see `docs/deployment.md` |
-| Phase O | Neon Postgres as single source of truth for local + hosted (Runs/Tokens/Learning-tracker) | ✅ Migration script complete (2026-07-20) — `scripts/migrate-to-neon.js`; blocked on Neon project creation, see `docs/deployment.md` |
+| Phase Q | Cloudflare R2 for hosted podcast audio + hero images (not Vercel Blob — 10GB free vs. ~1GB, zero egress) | ✅ Live — 436 hero images + 423 podcasts uploaded and serving publicly, verified `200` with correct content-type |
+| Phase O | Neon Postgres as single source of truth for local + hosted (Runs/Tokens/Learning-tracker) | ✅ Live — local pipeline and Vercel both read/write the same Neon instance; migration verified (row counts + JSON integrity) |
+| Phase S | Lock down `/admin` + `/api/admin/*` on the hosted deployment | ✅ Complete (2026-07-2x) — `middleware.ts` returns 404 for the whole admin surface when `process.env.VERCEL` is set; verified 404 with `VERCEL=1` locally, 200 without it |
+| Phase T | Automate R2 upload + git publish as tracked pipeline steps | ✅ Complete (2026-07-2x) — steps 11–12 in `pipeline-steps.js` (`upload-media-to-r2.js`, `git-publish.js`); the daily run now pushes to `main` itself, triggering Vercel's auto-redeploy |
 | Phase H | PDF ingestion, article URL import | Not started |
 | Phase I | Mobile-responsive layout | Not started |
 | Phase N | Pipeline failure notifications (email/push on `completed_with_errors`) | Deferred by user request (2026-07-17) — HTML `/summary` digest built instead, see Section 5 |
@@ -307,21 +319,12 @@ Full visual identity replacing the earlier light indigo/amber theme. See
 
 ### Known Gaps / Deferred to Next Phase
 
-- **Admin console and pipeline-trigger API routes are local-only.** They
-  `spawn()` Node scripts that need Playwright/Chromium, `yt-dlp`, Python,
-  and a local Postgres — none of that exists on a serverless host. These
-  routes are not designed to work on the hosted deployment (see
-  `docs/deployment.md`); treat `/admin` as a localhost-only tool.
 - **`KnowledgeBase Prod Deploy` scheduled task is currently disabled**
   (confirmed via Task Scheduler, 2026-07-06) — the 1 PM daily prod
   rebuild/restart is not running. `KnowledgeBase Daily Import` (noon daily)
-  is active. Re-enable the prod task if the local prod server (port 3006)
-  should track new content automatically.
-- **Generated media (podcast MP3s, hero images) is git-ignored** —
-  `public/course-audio` (~628 MB) and `public/course-assets` (~53 MB) never
-  reach the repo. Code to serve it via Cloudflare R2 instead is complete
-  (Phase Q) — activation just needs the R2 bucket created and
-  `npm run upload:media` run once.
+  is active. With Vercel now live and auto-redeploying on every pipeline
+  push (Phase T), the local prod server on port 3006 may not be needed
+  going forward — worth deciding whether to keep it or retire it.
 - **Vercel MCP connector not authorized** — blocks checking actual account
   usage or provisioning resources directly from a session; needs
   authorization via claude.ai connector settings (can't be done from a
@@ -331,6 +334,12 @@ Full visual identity replacing the earlier light indigo/amber theme. See
   (~175 MB locally as of 2026-07-06) that are correctly `.gitignore`d but
   never cleaned up — safe to delete manually; not wired into any cleanup
   step yet.
+- **Daily automated `git push` to `main` is unattended** (Phase T) — the
+  scheduled pipeline now pushes directly to the branch Vercel deploys from,
+  with no human review step. Acceptable for this personal project as
+  explicitly requested, but worth knowing: a bad AI-generated course or a
+  pipeline bug could reach the live site same-day, auto-deployed. Watch
+  `/summary` and `/runs` after the daily run for `completed_with_errors`.
 - Automated headed X login (`npm run import:x-login`) does not work for
   this account (X bot-detection blocks it) — the manual cookie-copy path
   is the supported method going forward, not a fallback.

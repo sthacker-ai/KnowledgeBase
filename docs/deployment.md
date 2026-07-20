@@ -1,10 +1,10 @@
 # Deployment — Hosting KnowledgeBase on Vercel
 
-**Status:** Evaluated 2026-07-06. R2 media pipeline + Neon migration script
-built 2026-07-20 — code is ready, activation needs your Cloudflare/Neon
-account creation (steps below). Not yet deployed to Vercel. This is a "go do
-it" guide — the steps below are meant to be followed by hand in the Vercel,
-Cloudflare, Neon, and Hostinger dashboards.
+**Status: LIVE.** Deployed at `kb.thinkbits.in`, R2 media serving publicly,
+Neon Postgres connected (local pipeline and Vercel share one database),
+`/admin` locked down on the hosted deployment, and the daily pipeline now
+publishes itself (R2 upload + git push, steps 11–12). This doc is kept as
+the reference for how it's wired and what to check if something breaks.
 
 ## What actually gets hosted
 
@@ -202,23 +202,34 @@ URL immediately — check it loads before touching DNS.
    and Vercel's automatic TLS certificate issuance. Vercel's Domains tab
    shows a ✅ once it's verified.
 
-### 6. Ongoing workflow
-Every time you want the hosted site to reflect new pipeline output:
+### 6. Ongoing workflow — now automated (2026-07-2x)
+
+This used to be a manual step; it isn't anymore. `scheduled-daily.js` runs
+two more steps at the end of every daily pipeline:
+- **Step 11 — Upload Media to R2** (`scripts/upload-media-to-r2.js`): pushes
+  any new hero images/podcasts to Cloudflare, updates
+  `data/media-manifest.json`.
+- **Step 12 — Commit & Push** (`scripts/git-publish.js`): stages `content/`
+  + `data/` (never `app/`/`scripts/`/`docs/` — code changes are never
+  auto-committed), commits if there's anything new, and pushes to
+  `origin/main`. Vercel's GitHub integration picks it up automatically.
+
+Both are continue-on-error with 1 retry (network operations), like every
+other step. If you ever need to run either by hand:
 ```bash
-git add content data
-git commit -m "content: refresh ..."
-git push
+npm run upload:media
+node scripts/git-publish.js
 ```
-Vercel's GitHub integration auto-deploys on push to `main` — no manual
-redeploy step needed after the first time.
 
-## Optional hardening (not required to launch, worth doing eventually)
+**Known tradeoff, accepted deliberately:** this pushes straight to `main`
+unattended, no review step. A bad AI-generated course or a pipeline bug
+reaches the live site same-day. Check `/summary` after the daily run.
 
-- Hide the "Admin" nav link and short-circuit `/admin` + `/api/admin/*` on
-  the hosted deployment (e.g. gate on a `VERCEL` env var Vercel sets
-  automatically) so a visitor can't see a console full of buttons that
-  don't do anything there.
-- If you don't want `/admin` reachable at all publicly, add it to
-  `middleware.ts` with a redirect/404 when `process.env.VERCEL` is set.
+## Admin lockdown (done, 2026-07-2x)
 
-Neither is implemented yet — flagging as a follow-up, not a blocker.
+`middleware.ts` returns a 404 for `/admin` and every `/api/admin/*` route
+whenever `process.env.VERCEL` is set (true for every Vercel deployment,
+never true for local `npm run dev`/`npm start`). Verified: `VERCEL=1 npm
+start` locally → `/admin` returns 404; without it → 200. `KB_ADMIN_TOKEN`
+still gates the API routes underneath as defense-in-depth, but the
+middleware is what actually stops a visitor from seeing the admin UI at all.

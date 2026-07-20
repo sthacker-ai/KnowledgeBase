@@ -57,6 +57,14 @@ const STEP_SUMMARY_PATTERNS = {
     re: /Topics:\s+(\d+)[\s\S]*?Courses:\s+(\d+)[\s\S]*?Sources:\s+(\d+)/,
     fmt: (m) => `${m[2]} course(s), ${m[1]} topic(s), ${m[3]} source(s) synced`,
   },
+  upload_media: {
+    re: /\[r2\] Done\. (\d+) uploaded, (\d+) error\(s\)/,
+    fmt: (m) => `${m[1]} new file(s) uploaded to R2${+m[2] ? `, ${m[2]} error(s)` : ""}`,
+  },
+  git_push: {
+    re: /\[publish\] Done\. (\d+) file\(s\) published\.|\[publish\] Nothing new to commit\./,
+    fmt: (m) => m[1] === undefined ? "nothing new to publish" : `${m[1]} file(s) committed and pushed to GitHub`,
+  },
 };
 
 function summarizeStepOutput(stepId, output) {

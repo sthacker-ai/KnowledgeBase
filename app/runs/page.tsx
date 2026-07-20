@@ -64,9 +64,11 @@ export default async function RunsPage() {
               { n: "8", step: "Hero images",           desc: "AI images for courses" },
               { n: "9", step: "Podcasts",              desc: "2-speaker podcast audio" },
               { n: "10", step: "Obsidian vault export", desc: "Sync to Obsidian vault" },
+              { n: "11", step: "Upload Media to R2",    desc: "Push hero images & podcasts to Cloudflare" },
+              { n: "12", step: "Commit & Push",         desc: "Publish content to GitHub — triggers Vercel redeploy" },
             ].map((s) => (
               <div key={s.n} style={{ display: "flex", gap: "10px", marginBottom: "10px", alignItems: "flex-start" }}>
-                <span style={{ background: "var(--accent, #6366f1)", color: "#fff", borderRadius: "50%", width: "20px", height: "20px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "0.7rem", fontWeight: 700, flexShrink: 0 }}>{s.n}</span>
+                <span style={{ background: "var(--accent-gradient)", color: "#1a1206", borderRadius: "50%", width: "20px", height: "20px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "0.7rem", fontWeight: 700, flexShrink: 0 }}>{s.n}</span>
                 <div>
                   <p style={{ margin: 0, fontWeight: 600, fontSize: "0.8rem" }}>{s.step}</p>
                   <p style={{ margin: 0, fontSize: "0.73rem", color: "var(--muted)" }}>{s.desc}</p>

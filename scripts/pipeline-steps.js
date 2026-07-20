@@ -103,6 +103,20 @@ function getSteps(limit) {
       critical: false,
       retries:  0,
     },
+    {
+      id:    "upload_media",
+      label: "Upload Media to R2",
+      cmd:   "node scripts/upload-media-to-r2.js",
+      critical: false,
+      retries:  1, // network upload — worth one retry on a transient failure
+    },
+    {
+      id:    "git_push",
+      label: "Commit & Push",
+      cmd:   "node scripts/git-publish.js",
+      critical: false,
+      retries:  1, // network push — worth one retry on a transient failure
+    },
   ];
 }
 

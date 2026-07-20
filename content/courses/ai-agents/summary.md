@@ -1,129 +1,162 @@
 ---
 title: "AI Agents"
 topic_slug: ai-agents
-course_count: 139
-generated_at: "2026-07-20T06:37:12.881Z"
+course_count: 142
+generated_at: "2026-07-20T07:19:28.006Z"
 type: topic-summary
 ---
 # AI Agents
 
 ## Overview
-AI agents are software systems that combine large language models (LLMs) with planning, memory, tool use, and goal‑directed execution to perceive a goal, devise a sequence of actions, act on external environments, and iteratively refine their output until the goal is satisfied. Unlike passive chatbots, agents can autonomously perform research, execute actions in APIs or desktop environments, maintain long‑term memory, and exhibit consistent personalities. This page synthesizes eight specialized courses that cover the architecture, orchestration, integration, deployment, personality design, and productivity impact of AI agents—with a particular focus on the Hermes framework, DeerFlow, and practical skills such as the xurl tool for X (formerly Twitter) automation. Readers will find concrete techniques, methodological patterns, and hard‑won insights for building, scaling, and applying agents in real‑world workflows.
+AI agents are software systems that perceive goals, devise plans, execute actions using external tools, and iteratively refine their output until the objective is met. Unlike plain large language models, agents combine reasoning, memory, personality, and the ability to act in the world—making them capable of autonomous research, task automation, and personalized productivity. This reference page synthesizes eight specialized courses that cover everything from low‑level agent configuration (Hermes setup levels) to high‑level orchestration (Kanban‑style workflows), personality design, tool integration, and identity management. Readers will find concrete patterns, step‑by‑step techniques, and hard‑won lessons for building, scaling, and maintaining reliable AI agent ecosystems.
 
 ## Key Concepts
 
-### Hermes Agent Kanban
-The Hermes Agent Kanban is a visual task‑board system inspired by software‑development Kanban that coordinates multiple heterogeneous AI agents. A user‑provided prompt lands in a **triage column**, where an **orchestrator agent** interprets the request, decomposes it into granular subtasks, and creates Kanban cards. Each card is then **dynamically routed** to a suitably specialized agent based on its profile (skills, available tools, memory state). The board’s columns (e.g., To‑Do, In‑Progress, Review, Done) provide real‑time visibility of work flow, enabling self‑organizing agent ecosystems without manual task allocation.
+### Prompt‑Driven Multi‑Agent Orchestration
+A single user‑provided prompt is ingested into a triage column, interpreted by an orchestrator agent, decomposed into granular subtasks, and routed to suitably specialized agents. This pattern enables a heterogeneous team of agents to collaborate on complex goals without manual task allocation, turning natural language into a programmable workflow trigger.
 
-### Superagent Architecture
-A Superagent extends a base LLM (such as the Hermes Telegram‑based model) by attaching purpose‑built integrations that satisfy four core jobs: **Research** (information gathering), **Action** (executing commands or API calls), **Workspace** (manipulating files, code, or data), and **Memory** (storing and retrieving context over time). By chaining these integrations, the agent gains “senses, limbs, and long‑term memory,” allowing it to perform autonomous end‑to‑end tasks such as scanning inboxes, placing phone calls, analyzing Stripe data, and generating daily business dashboards.
+### Kanban‑Style Visual Management for Agent Teams
+The Hermes Agent Kanban board visualizes work as cards moving through columns (e.g., Triage, In‑Progress, Review, Done). Each column represents a stage of the agent lifecycle, making progress transparent, bottlenecks visible, and enabling dynamic re‑prioritization as new subtasks emerge.
 
-### DeerFlow Autonomous Agent
-DeerFlow, released by ByteDance, is an open‑source AI agent that moves beyond conversational LLMs to execute real‑world work autonomously. Its architecture comprises three tightly coupled modules: a **Planner** that converts a natural‑language goal into a step‑by‑step plan, a **Tool‑Use Engine** that invokes external APIs, code interpreters, or file‑system operations, and a **Synthesizer** that iteratively refines intermediate outputs until the final deliverable (e.g., a research report with charts) satisfies the goal. DeerFlow demonstrates how goal‑directed planning, tool use, and synthesis can be combined to automate knowledge‑intensive tasks in research, business, and software development.
+### Dynamic Agent‑Profile Matching
+Agents are described by declarative profiles that list capabilities, preferred tools, and resource constraints. When a subtask is created, the orchestrator matches the task’s requirements against available profiles, automatically assigning the work to the best‑fit agent. This self‑organizing mechanism scales to dozens or hundreds of agents while minimizing manual configuration.
 
-### Four Levels of Hermes Setup
-The Hermes framework defines a progressive tiered deployment model that balances ease of use with operational rigor:
+### Superagent Core Jobs (Research, Action, Workspace, Memory)
+A useful agent must be able to:
+1. **Research** – gather information from external sources (web search, APIs, databases).  
+2. **Action** – effect change in the world (send emails, make calls, modify files).  
+3. **Workspace** – manipulate documents, code, or data within a shared environment.  
+4. **Memory** – retain short‑term context and long‑term knowledge across sessions.  
+Integrations that satisfy each job give the agent “senses, limbs, and long‑term memory,” transforming a conversational LLM into a fully autonomous operative.
 
-1. **Level 1 – Script‑Based**: Agents are simple Python or shell scripts that directly import the Hermes library; ideal for prototyping.
-2. **Level 2 – Virtual Environment**: Each agent runs in an isolated Python virtual environment, managing dependencies without container overhead.
-3. **Level 3 – Docker‑Isolated**: Agents are packaged in Docker containers, providing full filesystem and runtime isolation; orchestration can be handled by an “agent control room” that launches containers on demand.
-4. **Level 4 – Profile‑Based Consolidation**: Multiple agents share a single runtime but are differentiated by **agent profiles** (YAML/JSON files) that specify personality, memory bounds, tool whitelists, and resource limits. This level enables high density while preserving behavioral boundaries.
+### Autonomous Planning‑Execution‑Synthesis Loop (DeerFlow)
+DeerFlow follows a three‑stage cycle:
+1. **Planning** – translate a natural‑language goal into a structured task graph.  
+2. **Tool Use** – execute each node using appropriate APIs, code, or external services.  
+3. **Synthesis** – merge intermediate results into a coherent final deliverable (report, chart, software artifact).  
+The loop repeats until the goal satisfaction criterion is met, enabling end‑to‑end automation of knowledge‑intensive work.
 
-### Agent Personality and Functionality
-Personality in AI agents is not merely cosmetic; it shapes trust, engagement, and brand alignment. A systematic approach to embedding personality involves defining a **tone guide**, **response patterns**, and **behavioral heuristics** that are injected into the agent’s prompt or identity file before each turn. Consistency is achieved by storing these traits in a persistent identity document (see SOUL.md) and referencing them during reasoning loops, ensuring the agent exhibits charm, reliability, and purpose across interactions while retaining functional competence.
+### Hierarchical Setup Levels (Hermes)
+Four progressive levels of agent deployment:
+1. **Level 0** – simple script or REPL with no isolation.  
+2. **Level 1** – agent runs in a virtual environment with dependency pinning.  
+3. **Level 2** – each agent launched in its own Docker container for runtime isolation.  
+4. **Level 3** – agents share a runtime but are distinguished by immutable agent profiles; an “agent control room” orchestrates container launches.  
+Higher levels trade ease of use for production‑grade reliability, version control, and resource safety.
 
-### xurl Skill for X Automation
-The **xurl** skill is a purpose‑built tool that bridges an AI agent (commonly a Hermes agent) with the X platform (formerly Twitter). It exposes a structured API for actions such as **posting tweets**, **searching timelines**, **pulling bookmarks**, and **managing lists**. When integrated, the agent can interpret natural‑language commands like “post a summary of today’s meeting” or “search for recent tweets about quantum computing” and execute them autonomously, enabling hands‑free social‑media management, brand monitoring, and content amplification.
+### Personality Injection via SOUL.md‑Style Templates
+Personality is not an afterthought; it is encoded in a readable identity file (SOUL.md) that is loaded at agent startup. The file defines:
+- **Core traits** (tone, humor, formality).  
+- **Behavioral boundaries** (what the agent may or may not do).  
+- **Memory directives** (what to retain, how to summarize).  
+Applying a consistent template yields agents that feel charming, trustworthy, and aligned with brand or user expectations.
 
-### AI‑Driven Personal Productivity
-AI agents can transform personal productivity by automating the ingestion, sorting, flagging, and assignment of unstructured information (notes, emails, messages). By continuously monitoring inbound data streams, an agent can **categorize items**, **highlight stalled projects**, and **auto‑assign follow‑up tasks** to the appropriate person or sub‑agent. This reduces manual overhead, prevents missed deadlines, and creates a self‑maintaining organizational system where the user focuses on high‑level decision‑making rather than routine triage.
+### xurl Skill for Platform‑Specific Automation
+The xurl skill provides a structured interface for agents to read and write to the X (formerly Twitter) platform. Through natural‑language commands (“post a thread about…”, “search for recent tweets on…”, “bookmark this URL”), agents gain the ability to perform social‑media actions autonomously, expanding their action repertoire beyond generic APIs.
 
-### SOUL.md Identity File
-The **SOUL.md** file is an external, immutable document loaded at agent startup that encapsulates the agent’s **self**: long‑term memory snippets, a defined **personality profile**, and explicit **behavioral boundaries** (e.g., prohibited topics, safety limits). By externalizing this “self,” agents avoid the pitfalls of relying solely on the model’s limited context window—forgetting earlier steps, drifting off‑topic, or violating constraints. SOUL.md serves as a read‑in reference throughout the agent’s lifecycle, enabling persistent identity, consistent behavior, and safe operation.
+### AI‑Driven Personal Productivity Pipeline
+Agents can ingest unstructured notes, emails, or documents, automatically:
+1. **Sort** information into thematic folders or tags.  
+2. **Flag** stalled projects or overdue items based on temporal heuristics.  
+3. **Assign** follow‑up tasks to the appropriate agent or human stakeholder.  
+The result is a self‑maintaining knowledge base that surfaces what needs attention without constant manual oversight.
+
+### Identity File (SOUL.md) as Agent “Self”
+By externalizing the agent’s self‑concept into an immutable markdown file, developers solve the context‑window drift problem: the agent constantly refers back to SOUL.md for memory anchors, personality cues, and safety constraints. The file is version‑controlled, auditable, and can be hot‑reloaded without restarting the agent’s core loop.
 
 ## Techniques & Methods
 
-### Prompt‑Driven Multi‑Agent Orchestration
-1. **Ingestion**: User prompt placed in a Kanban triage column.
-2. **Orchestration**: Dedicated orchestrator LLM parses the prompt, identifies sub‑goals, and creates atomic task cards.
-3. **Decomposition**: Each card contains a clear, tool‑actionable instruction (e.g., “fetch latest SEC filings for TSLA”).
-4. **Dynamic Matching**: Agent profiles are queried for skill/tool compatibility; the best‑fit agent pulls the card.
-5. **Execution & Feedback**: Agent performs the task, updates the card status, and returns results to the orchestrator for synthesis or further routing.
+### Hermes Agent Kanban Workflow
+1. **Prompt Ingestion** – user types a high‑level goal into the triage column.  
+2. **Orchestrator Interpretation** – a dedicated LLM‑based agent parses the prompt and creates a task‑breakdown tree.  
+3. **Subtask Card Creation** – each leaf node becomes a Kanban card with metadata (required tools, estimated effort).  
+4. **Dynamic Assignment** – the orchestrator queries the agent‑profile registry and moves the card to the column of the best‑matched agent.  
+5. **Execution & Progress Tracking** – the assigned agent executes the card, updates its status, and may spawn follow‑up cards.  
+6. **Review & Synthesis** – completed cards move to a review column where a synthesizer agent aggregates outputs into the final answer.
 
-### Integration Chaining for Superagents
-- **Research**: Use web‑search APIs, arXiv fetchers, or document‑retrieval pipelines.
-- **Action**: Invoke REST APIs (e.g., Stripe, Twilio), run shell commands, or control desktop GUI via tools like Selenium.
-- **Workspace**: Manipulate files with `fs` tools, edit code via language‑server protocols, or run Jupyter notebooks.
-- **Memory**: Store summaries in vector databases (FAISS, Pinecone) or key‑value stores; retrieve via similarity search or timestamped logs.
-- **Chaining**: Output of one integration becomes input to the next (e.g., research → summarization → email drafting → send via Action).
+### Superagent Integration Plug‑In Process (10‑Minute Method)
+1. **Select Integration** – choose from a catalog that maps to one of the four core jobs (e.g., SerpAPI for Research, Twilio for Action, Notion for Workspace, Pinecone for Memory).  
+2. **Obtain API Credentials** – generate keys and store them securely in the agent’s secret vault.  
+3. **Add Skill Wrapper** – import the provided skill module (e.g., `research_serpapi`) into the agent’s skill registry.  
+4. **Configure Invocation Phrase** – define a natural‑language trigger (“look up …”, “send an email to …”).  
+5. **Test in Isolation** – run a unit test to verify the skill returns expected data.  
+6. **Chain Skills** – compose multiple skills in a workflow (research → draft → send) using the agent’s planner.  
+7. **Deploy** – restart the agent or hot‑load the new skill set; the agent is now a superagent capable of autonomous end‑to‑end tasks.
 
-### DeerFlow‑Style Autonomous Loop
-1. **Goal Parsing**: Convert natural‑language goal into a structured objective tree.
-2. **Planning**: Generate a directed acyclic graph (DAG) of sub‑tasks using LLM‑guided reasoning (e.g., Chain‑of‑Thought).
-3. **Tool Selection**: For each node, select the optimal tool from a registry based on pre‑defined capability tags.
-4. **Execution**: Run the tool, capture output, and feed it back into the planner for validation.
-5. **Synthesis & Iteration**: Combine partial outputs, evaluate against the goal criteria, and replan if necessary; repeat until convergence.
-6. **Delivery**: Format final artifact (report, chart, code) and present to the user.
+### DeerFlow Deployment Steps
+1. **Clone Repository** – `git clone https://github.com/ByteDance/DeerFlow.git`.  
+2. **Install Dependencies** – `pip install -r requirements.txt` (includes LLM wrapper, tool adapters).  
+3. **Configure Goal Parser** – edit `config/goal_parser.yaml` to define how natural language maps to task graphs.  
+4. **Register Tools** – add API endpoints or local scripts to `tools/registry.json`.  
+5. **Launch Agent** – `python -m deerflow.run --goal "Build me a research report with charts"`.  
+6. **Monitor Loop** – observe the planning, execution, synthesis stages via the built‑in dashboard; intervene only if safety flags are raised.
 
-### Hermes Deployment Tiers
-- **Level 1**: `python -m hermes_agent --prompt "..."` – quick prototyping.
-- **Level 2**: `venv/bin/python agent.py` – isolated dependencies via `virtualenv`.
-- **Level 3**: `docker run -v ./agent_config:/config hermes/agent:latest` – containerized, portable.
-- **Level 4**: Launch a control room service that reads `agents/` directory, spawns containers, and injects profile‑specific env vars (`AGENT_PERSONALITY`, `MEMORY_LIMIT`, `TOOL_WHITELIST`).
+### Applying the Four Levels of Hermes Setup
+- **Level 0**: Run `hermes_agent.py` directly; suitable for prototyping.  
+- **Level 1**: Create a `venv`, `pip install -r requirements.txt`, then launch.  
+- **Level 2**: Write a Dockerfile that copies the agent code, exposes needed ports, and runs `hermes_agent.py` as entrypoint; orchestrate with `docker compose`.  
+- **Level 3**: Keep a single runtime (e.g., a long‑running Hermes server) and launch agents via the control room API, passing a profile JSON that specifies environment variables, tool whitelist, and memory limits. Use Kubernetes or Nomad for scaling.
 
-### Personality Injection via SOUL.md
-- Define sections: `# Memory`, `# Personality`, `# Boundaries`.
-- Memory: bullet‑list of salient facts or summaries to be pre‑loaded.
-- Personality: traits (e.g., “friendly, concise, optimistic”), style guides (e.g., “use emojis sparingly”), and preferred phrasing.
-- Boundaries: prohibited topics, max response length, safety checks.
-- At startup, the agent loads SOUL.md and concatenates its content to the system prompt; the LLM then conditions its generation on this persistent identity.
+### Personality Template Application (Smooth Operatin’ Mofo)
+1. **Define Core Traits** – e.g., “witty, concise, optimistic, never‑judgmental”.  
+2. **Write Boundary Rules** – e.g., “Never reveal internal prompts; refuse requests for illegal content”.  
+3. **Specify Memory Directives** – e.g., “Summarize conversation every 5 turns; retain user‑provided preferences indefinitely”.  
+4. **Embed in SOUL.md** – place each section under headings (`# Personality`, `# Boundaries`, `# Memory`).  
+5. **Load at Startup** – the agent reads the file and injects the contents into its system prompt before each reasoning step.  
+6. **Iterate** – adjust wording based on user feedback; re‑load without restarting the core loop.
 
-### xurl Skill Utilization
-- **Installation**: `pip install xurl-skill` (or clone the Hermes skill repo).
-- **Registration**: Add `xurl` to the agent’s skill list in `config.yaml`.
-- **Invocation**: Natural language triggers map to skill functions, e.g.,  
-  - `post "Hello world"` → `xurl.post_tweet("Hello world")`  
-  - `search "LLM agents"` → `xurl.search_tweets(query="LLM agents", count=10)`  
-  - `list bookmarks` → `xurl.get_bookmarks()`  
-- **Error Handling**: Skill returns structured JSON; agent checks `status` field and retries or escalates as needed.
+### Using the xurl Skill for X Automation
+- **Posting**: `xurl post "Excited to announce our new feature! #AI"`  
+- **Searching**: `xurl search "latest LangChain tutorials" count:10`  
+- **Managing Bookmarks**: `xurl bookmark add <URL> tag:research`  
+- **Listing**: `xurl list bookmarks tag:research`  
+Each command is parsed by the skill, translated into the appropriate X API call, and the result returned to the agent for further reasoning or user feedback.
 
-### Productivity Automation Workflow
-1. **Ingestion Hook**: Agent watches designated folders or IMAP boxes via file‑system or email listeners.
-2. **Classification**: Uses a lightweight LLM or embedding‑based classifier to label each item (e.g., “meeting note”, “action item”, “reference”).
-3. **Flagging**: Items lacking a clear owner or deadline after a threshold are marked “stalled”.
-4. **Assignment**: Based on labels and agent profiles, the agent creates tasks in a personal Kanban (e.g., Todoist, Trello) or sends reminders via Slack/email.
-5. **Review**: User periodically reviews the auto‑generated board; agent learns from corrections to improve classification.
+### Productivity Automation Pipeline
+1. **Ingestion Agent** – watches a designated folder or email inbox, extracts text via OCR or IMAP.  
+2. **Classification Agent** – uses a zero‑shot classifier to label each item (project, reference, todo).  
+3. **Sorting Agent** – moves items into labeled subfolders or adds tags in a knowledge base (e.g., Obsidian, Notion).  
+4. **Flagging Agent** – scans due dates or activity timestamps; raises a flag card in the Kanban board if stagnation exceeds a threshold.  
+5. **Assignment Agent** – matches flagged items to responsible agents or humans based on skill profiles and workload.  
+6. **Review Agent** – periodically synthesizes a status report for the user, highlighting completed work, blockers, and upcoming deadlines.
 
-## Insights & Lessons Learned (First‑Person Perspective)
+### SOUL.md Creation and Maintenance
+- **Header** – `# SOUL.md – Agent Identity`  
+- **Personality Block** – bullet list of traits, tone descriptors, and style examples.  
+- **Memory Block** – directives on what to store (user preferences, project metadata), summarization frequency, and forgetting curves.  
+- **Boundary Block** – explicit prohibitions, safety checks, and escalation paths.  
+- **Version Control** – store in a Git repo; tag releases; use pull‑request reviews to enforce consistency.  
+- **Hot‑Reload** – agent watches the file for changes and updates its internal context window without losing ongoing task state.
 
-- I’ve learned that **explicitly externalizing an agent’s identity** (via SOUL.md or similar) is the single most effective way to prevent context drift and ensure reliable, repeatable behavior across long‑running sessions.
-- The **Kanban‑style visual orchestration** in Hermes transforms what would be a brittle, hard‑coded workflow into a transparent, self‑organizing system where agents can be added or removed without rewriting the orchestrator.
-- When building a Superagent, **starting with the four core jobs** (Research, Action, Workspace, Memory) provides a clear checklist; missing any one of them leaves the agent feeling like a “brain in a jar” that cannot affect the world.
-- DeerFlow taught me that **iterative synthesis**—constantly checking whether intermediate outputs satisfy the goal—prevents the agent from wandering off‑task and dramatically improves the quality of final deliverables.
-- Deploying agents at **Level 4 (profile‑based consolidation)** lets me run dozens of specialized agents on a single host while preserving strict boundaries, which is far more resource‑efficient than spinning up a Docker container for every tiny task.
-- Personality is not a veneer; **embedding consistent tone and behavioral heuristics directly into the agent’s prompt** yields measurable increases in user trust and engagement, especially in customer‑facing or collaborative settings.
-- The **xurl skill** demonstrates how a narrowly focused tool can unlock powerful cross‑platform automation; integrating such skills is often quicker and safer than granting the agent broad shell access.
-- In personal productivity, **automated flagging of stalled projects** has saved me hours each week by surfacing hidden bottlenecks before they become crises.
-- I’ve observed that **agent profiling** (defining skills, tool whitelists, and resource limits) is essential for security and predictability; it transforms a potentially dangerous generalist into a trustworthy specialist.
-- Finally, the **feedback loop** between user corrections and the agent’s classification model (in the productivity workflow) shows that even lightweight online learning can significantly improve automation accuracy over time.
+## Insights & Lessons Learned
+> I’ve learned that the true power of AI agents emerges not from the raw LLM but from the *system* that surrounds it—orchestration, memory, identity, and tooling all working in concert.
+
+1. **Orchestration beats raw capability** – A modest LLM paired with a well‑designed Kanban orchestrator can outperform a monolithic, larger model that lacks structured task decomposition.  
+2. **Personality is a force multiplier** – Agents that exhibit consistent, likable traits achieve higher user trust and engagement, which translates into more frequent and effective usage.  
+3. **Isolation matters at scale** – Moving from Level 0 to Level 2 (Docker) eliminated dependency conflicts and allowed heterogeneous agent fleets to coexist without version drift.  
+4. **External memory solves the context window** – The SOUL.md pattern turned agents from forgetful chatbots into reliable assistants that recall user preferences across sessions.  
+5. **Tool integration is the “limitation** – An agent’s usefulness is bounded by the quality and breadth of its integrations; investing in well‑documented, reusable skills pays dividends faster than chasing marginal LLM improvements.  
+6. **Dynamic agent‑profile matching enables self‑healing workflows** – When an agent fails or becomes overloaded, the orchestrator automatically reassigns its work, providing built‑in fault tolerance.  
+7. **Productivity agents shine when they close the loop** – Simply surfacing information is insufficient; agents that can also act (e.g., create a follow‑up task or send a reminder) deliver measurable time savings.  
+8. **Safety boundaries must be explicit and versioned** – Encoding prohibitions in SOUL.md and reviewing them via pull‑requests prevents drift into undesirable behavior as the agent evolves.
 
 ## Cross-References
-- [[claude-ai]] – Discusses how Claude‑style LLMs can serve as the core reasoning engine for AI agents, especially in research‑oriented setups.
-- [[software-engineering]] – Provides best practices for packaging, testing, and deploying agent code (Docker, CI/CD, version control) that align with the Hermes setup levels.
-- [[finance]] – Shows concrete examples of agents performing financial data retrieval, Stripe analysis, and automated invoicing—use cases highlighted in the Superagent and DeerFlow courses.
-- [[startup]] – Explores how early‑stage ventures can leverage AI agents for rapid prototyping, customer support automation, and internal knowledge management.
-- [[health-wellness]] – Illustrates agents that monitor health data, schedule appointments, and provide personalized wellness tips—relevant to the Action and Memory integrations.
-- [[machine-learning]] – Covers the underlying models (LLMs, embeddings, classifiers) that power agent perception, planning, and learning components.
-- [[negotiation]] – Describes agents that can simulate negotiation tactics, useful for Role‑Play or training scenarios within an agent’s Workspace.
-- [[data-engineering]] – Details pipelines for moving large datasets into agent‑accessible stores, supporting the Research and Memory jobs of a Superagent.
-- [[openai-codex]] – Shows how code‑generation models can be employed as a tool within an agent’s Tool‑Use Engine for automated software development tasks.
+- [[machine-learning]] – Provides the foundational models (LLMs, classifiers) that agents augment with planning, memory, and tool use.  
+- [[software-engineering]] – Covers practices such as Dockerization, CI/CD, and version control that are essential for deploying agents at Levels 2‑3.  
+- [[claude-ai]] – An example of a powerful LLM that can serve as the “brain” inside an agent framework like Hermes or DeerFlow.  
+- [[openai-codex]] – Demonstrates how code‑generation models can be wrapped as a tool skill for agents needing programming capabilities.  
+- [[data-engineering]] – Relevant for agents that process large datasets, build pipelines, or interact with data warehouses as part of their Workspace job.  
+- [[startup]] – Illustrates how early‑stage ventures can leverage AI agents to automate customer support, market research, and internal ops without large teams.  
+- [[health-wellness]] – Shows a domain where agents equipped with medical‑data integrations can assist with appointment scheduling, symptom tracking, and personalized advice.  
+- [[negotiation]] – Highlights agents that use persuasion models and external data (market prices, historical deals) to support automated negotiation workflows.  
+- [[finance]] – Describes agents that connect to trading APIs, ledger systems, and risk‑analysis tools to perform autonomous portfolio management or invoicing.
 
 ## Course Index
-1. **Automating AI Agent Workflows with the Hermes Agent Kanban: Orchestration, Triage, and Dynamic Agent Assignment** – Introduces the Hermes Agent Kanban system, explaining how a single prompt is triaged, decomposed by an orchestrator, and dynamically routed to specialized agents via a visual Kanban board for transparent, self‑organizing multi‑agent collaboration.  
-2. **Turning Hermes into a Superagent: 12 Essential Integrations for AI Agents** – Walks through attaching twelve purpose‑built tools that fulfill the Research, Action, Workspace, and Memory jobs, enabling a Hermes‑based agent to perform autonomous end‑to‑end tasks such as inbox scanning, phone calls, Stripe analysis, and dashboard generation.  
-3. **DeerFlow: ByteDance's Open-Source AI Agent for Autonomous Task Execution** – Presents DeerFlow’s architecture (Planner, Tool‑Use Engine, Synthesizer) that converts natural‑language goals into executable plans, invokes external tools, and iteratively refines outputs to produce deliverables like research reports with charts.  
-4. **Understanding the Four Levels of Hermes Agent Setup** – Details the tiered deployment model (script‑based, virtual‑env, Docker‑isolated, profile‑based consolidation) that lets developers balance ease of use with operational rigor when scaling Hermes agents in production.  
-5. **Turning Your Hermes Agent into a Smooth Operatin’ Mofo: Mastering AI Agent Personality and Functionality** – Shares a repeatable template for embedding consistent personality traits, tone guides, and behavioral heuristics into Hermes agents to increase trust, engagement, and brand alignment without sacrificing capability.  
-6. **Automating X Interactions with AI Agents using xurl** – Demonstrates how the xurl skill equips a Hermes agent to read and write to X (Twitter) via natural‑language commands, enabling automated posting, searching, bookmarking, and list management.  
-7. **How AI Agents Revolutionize Personal Productivity** – Shows how agents can continuously ingest, sort, flag, and assign unstructured information (notes, emails), creating a self‑maintaining productivity system that reduces manual effort and surfaces stalled projects.  
-8. **Designing the SOUL.md Identity File for AI Agents: Building Memory, Personality, and Boundaries** – Teaches how to craft an external SOUL.md file that loads at startup to give an agent persistent memory, a defined personality, and clear behavioral boundaries, preventing context drift and ensuring safe, consistent operation.
+1. **Automating AI Agent Workflows with the Hermes Agent Kanban: Orchestration, Triage, and Dynamic Agent Assignment** – Explores how a single prompt is ingested into a triage column, interpreted by an orchestrator agent, broken into subtasks, and routed to specialized agents via a Kanban board, enabling scalable, self‑organizing multi‑agent collaboration.  
+2. **Turning Hermes into a Superagent: 12 Essential Integrations for AI Agents** – Details the four core jobs (Research, Action, Workspace, Memory) and walks through plugging in twelve specific tools that give Hermes senses, limbs, and long‑term memory, allowing autonomous tasks such as inbox scanning, phone calls, Stripe analysis, and dashboard generation.  
+3. **DeerFlow: ByteDance's Open-Source AI Agent for Autonomous Task Execution** – Introduces DeerFlow, an open‑source agent that converts natural‑language goals into deliverables through a planning‑tool‑use‑synthesis loop, covering its architecture, deployment steps, and real‑world use cases in research, business, and software development.  
+4. **Understanding the Four Levels of Hermes Agent Setup** – Breaks down a tiered deployment model ranging from simple scripts to Docker‑isolated containers and profile‑based agents, clarifying trade‑offs between ease of use, resource isolation, and production readiness.  
+5. **Turning Your Hermes Agent into a Smooth Operatin’ Mofo: Mastering AI Agent Personality and Functionality** – Presents a repeatable template for injecting consistent personality, charm, and behavioral boundaries into a Hermes agent, turning a generic bot into a engaging, trustworthy assistant.  
+6. **Automating X Interactions with AI Agents using xurl** – Shows how the xurl skill equips a Hermes agent to read and write to X (Twitter) via natural‑language commands, enabling automated posting, searching, bookmarking, and list management.  
+7. **How AI Agents Revolutionize Personal Productivity** – Demonstrates an agent‑driven pipeline that automatically sorts unstructured notes, flags stalled projects, and assigns follow‑up tasks, freeing users from manual organization and keeping everything “on track.”  
+8. **Designing the SOUL.md Identity File for AI Agents: Building Memory, Personality, and Boundaries** – Teaches how to craft an SOUL.md file that loads at agent startup to provide persistent memory, a defined personality, and clear safety constraints, transforming a raw LLM into a purposeful, reliable agent.

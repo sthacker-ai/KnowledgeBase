@@ -1,5 +1,12 @@
 # KnowledgeBase Implementation Plan
 
+> **Status (2026-07-06):** This is the original founding plan from May 2026.
+> All 8 phases below are now implemented — the checklists are marked complete
+> for the historical record. For the current state of the product, phase
+> status, and known gaps, see `PRD.md`. For the current design system, see
+> `docs/brandguide.md`. For the most recent session-by-session summary, see
+> the latest `handover-*.md` in the repo root.
+
 ## Current Project Intent
 
 Build a local-first personal knowledge system that imports liked X/Twitter posts,
@@ -269,121 +276,105 @@ keeping this chat session alive.
 
 ## Implementation Phases
 
-### Phase 1: Local Importer
+### Phase 1: Local Importer ✅ Complete
 
-- [ ] Copy/refactor useful Playwright scraping logic from `MyTweets`
-- [ ] Add local env variables to `.env.example`
-- [ ] Add `data/private/` and generated data patterns to `.gitignore`
-- [ ] Implement `scripts/import-x-likes.js`
-- [ ] Save raw tweet JSON to `data/raw/tweets/`
-- [ ] Save source notes to `content/sources/x/`
-- [ ] Maintain `data/indexes/seen-tweets.json`
-- [ ] Test with `--limit 10`
+- [x] Copy/refactor useful Playwright scraping logic from `MyTweets`
+- [x] Add local env variables to `.env.example`
+- [x] Add `data/private/` and generated data patterns to `.gitignore`
+- [x] Implement `scripts/import-x-likes.js`
+- [x] Save raw tweet JSON to `data/raw/tweets/`
+- [x] Save source notes to `content/sources/x/`
+- [x] Maintain `data/indexes/seen-tweets.json`
+- [x] Test with `--limit 10`
 
-### Phase 2: Single Source Extraction
+### Phase 2: Single Source Extraction ✅ Complete
 
-- [ ] Implement `scripts/import-x-source.js`
-- [ ] Test direct source import for sample tweet 1
-- [ ] Test direct source import for sample tweet 2
-- [ ] Extract article text / rich blocks / screenshots where possible
-- [ ] Detect X-hosted video vs YouTube vs article vs plain tweet
+- [x] Implement `scripts/import-x-source.js`
+- [x] Test direct source import for sample tweet 1
+- [x] Test direct source import for sample tweet 2
+- [x] Extract article text / rich blocks / screenshots where possible
+- [x] Detect X-hosted video vs YouTube vs article vs plain tweet
 
-### Phase 3: AI Classification
+### Phase 3: AI Classification ✅ Complete
 
-- [ ] Add Ollama client wrapper
-- [ ] Classify topic/category from tweet/source text
-- [ ] Generate topic slug and label
-- [ ] Save topic index to `data/indexes/topics.json`
-- [ ] Add retry/fallback if model output is malformed
+- [x] Add Ollama client wrapper (superseded by the fuller `ai-client.js`
+      chain: OpenRouter → NVIDIA NIM → Ollama, see `PRD.md` §3.2)
+- [x] Classify topic/category from tweet/source text
+- [x] Generate topic slug and label
+- [x] Save topic index to `data/indexes/topics.json`
+- [x] Add retry/fallback if model output is malformed
 
-### Phase 4: Course Generation
+### Phase 4: Course Generation ✅ Complete
 
-- [ ] Generate source-specific course Markdown
-- [ ] Include original tweet metadata
-- [ ] Include embedded video/tweet/article reference
-- [ ] Include chapters, exercises, key takeaways, and review questions
-- [ ] Save as `content/courses/<topic-slug>/course-XXX.md`
+- [x] Generate source-specific course Markdown
+- [x] Include original tweet metadata
+- [x] Include embedded video/tweet/article reference
+- [x] Include chapters, exercises, key takeaways, and review questions
+- [x] Save as `content/courses/<topic-slug>/course-XXX.md`
 
-### Phase 5: Living Topic Summary
+### Phase 5: Living Topic Summary ✅ Complete
 
-- [ ] Read all courses for a topic
-- [ ] Generate/update `summary.md`
-- [ ] Preserve source references
-- [ ] Add "what changed since last update" section
-- [ ] Add `[[wikilinks]]` to related topics
+- [x] Read all courses for a topic
+- [x] Generate/update `summary.md`
+- [x] Preserve source references
+- [x] Add "what changed since last update" section
+- [x] Add `[[wikilinks]]` to related topics
 
-### Phase 6: Graph
+### Phase 6: Graph ✅ Complete
 
-- [ ] Parse Markdown wikilinks
-- [ ] Parse frontmatter tags/topics
-- [ ] Build `data/indexes/graph.json`
-- [ ] Show real graph data in the Next.js app
-- [ ] Ensure Obsidian can see equivalent links via Markdown
+- [x] Parse Markdown wikilinks
+- [x] Parse frontmatter tags/topics
+- [x] Build `data/indexes/graph.json`
+- [x] Show real graph data in the Next.js app (now theme-aware D3 — see
+      `docs/brandguide.md`)
+- [x] Ensure Obsidian can see equivalent links via Markdown
 
-### Phase 7: Web App Views
+### Phase 7: Web App Views ✅ Complete
 
-- [ ] Source inbox page
-- [ ] Topic page
-- [ ] Course reader page
-- [ ] Summary course page
-- [ ] Graph page
-- [ ] Processing status page
+- [x] Source inbox page (`/sources`, plus `/filtered` for excluded tweets)
+- [x] Topic page (`/courseware/[topic]`, `/wiki/[topic]`)
+- [x] Course reader page (`/courseware/[topic]/[course]`)
+- [x] Summary course page (topic wiki page)
+- [x] Graph page (`/graph`)
+- [x] Processing status page (`/runs`, `/admin` right sidebar)
 
-### Phase 8: Scheduling
+### Phase 8: Scheduling ✅ Complete
 
-- [ ] Add on-demand import command
-- [ ] Add Windows Task Scheduler instructions
-- [ ] Add run logs
-- [ ] Add failure report page or file
+- [x] Add on-demand import command
+- [x] Add Windows Task Scheduler instructions
+- [x] Add run logs
+- [x] Add failure report page or file (`/runs`, plus continue-on-error status
+      `completed_with_errors` — see `docs/architecture.md`)
 
-## Next Session Resume Point
+## Next Session Resume Point (historical — all 8 phases now complete)
 
-Phase 1 has started. Current implementation added:
+This section described the Phase 1 bootstrap in May 2026 and is kept for
+history. It no longer reflects the current resume point. As of 2026-07-06,
+the project is past all 8 phases above and into ongoing maintenance +
+hosting work — see `PRD.md` §11 "Phases & Status" and "Known Gaps" for what's
+actually next, and the latest `handover-*.md` for exactly where a prior
+session left off.
 
-- `scripts/import-x-likes.js`
-- `npm run import:x-login`
-- `npm run import:x-likes`
-- `npm run import:x-likes:backfill`
-- local raw tweet/source note/run log folders
-- local dedupe index path
-- Playwright Chromium setup
+For X session renewal specifically (the one recurring manual step), see
+`docs/x-importer.md` — the manual cookie-copy path replaced
+`npm run import:x-login` as the primary method, since automated login is
+blocked by X bot-detection for this account.
 
-The next manual action is:
+## Open Questions For Later (resolved)
 
-```bash
-npm run import:x-login
-```
-
-After logging into X in the opened Chromium window, return to the terminal and
-press Enter to save `data/private/x-storage-state.json`.
-
-Then run:
-
-```bash
-npm run import:x-likes
-```
-
-Resume implementation here after the first real import:
-
-1. Open this file.
-2. Verify up to 10 liked tweets were saved under `data/raw/tweets/`.
-3. Verify Markdown notes were saved under `content/sources/x/`.
-4. Verify rerunning the import skips duplicate tweet IDs.
-5. Do not start AI course generation yet.
-6. First success condition:
-
-```bash
-npm run import:x-likes
-```
-
-imports up to 10 liked tweets for `@Pond_er_er`, saves raw JSON locally, creates
-source Markdown notes, and skips duplicate tweet IDs on rerun.
-
-## Open Questions For Later
-
-- Should X raw media be downloaded locally or referenced by URL first?
-- Should generated courseware include screenshots by default or only when rich
-  content cannot be represented in Markdown?
-- Should topic matching be conservative, asking for user confirmation when
-  uncertain?
-- Should low-confidence topics go into `content/courses/uncategorized/`?
+- **Should X raw media be downloaded locally or referenced by URL first?** →
+  Referenced by URL for images/tweets; video is downloaded temporarily for
+  transcription (`data/transcripts/tmp/`, git-ignored, not retained) then
+  discarded — the transcript text is what's kept.
+- **Should generated courseware include screenshots by default or only when
+  rich content cannot be represented in Markdown?** → Screenshots were not
+  needed in practice; X article/video content converts to Markdown/transcript
+  text directly. Not implemented, not currently blocking anything.
+- **Should topic matching be conservative, asking for user confirmation when
+  uncertain?** → No — `classify-source.js` assigns a topic automatically
+  (falling back to `uncategorized`); the admin console's relevance filters
+  (`/admin` → Topic Relevance Filters, reviewable at `/filtered`) are the
+  actual quality-control mechanism, applied before classification rather than
+  as a per-tweet confirmation step.
+- **Should low-confidence topics go into `content/courses/uncategorized/`?** →
+  Yes, this is exactly what happens today.

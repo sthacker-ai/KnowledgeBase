@@ -18,8 +18,25 @@ Exit codes:
 
 import sys
 import os
+import shutil
 import subprocess
 import json
+
+# yt-dlp shells out to ffmpeg/ffprobe for audio extraction/postprocessing.
+# When this script is launched from Windows Task Scheduler (as it is for the
+# daily pipeline), the child process's PATH can differ from an interactive
+# shell's PATH — ffmpeg being resolvable when run by hand does NOT guarantee
+# yt-dlp can find it here. Resolve an explicit --ffmpeg-location instead of
+# relying on ambient PATH, so this doesn't silently depend on which context
+# invoked the script.
+def find_ffmpeg_dir():
+    exe = shutil.which("ffmpeg")
+    if exe:
+        return os.path.dirname(exe)
+    for candidate in (r"C:\ffmpeg\bin", r"C:\Program Files\ffmpeg\bin"):
+        if os.path.isfile(os.path.join(candidate, "ffmpeg.exe")):
+            return candidate
+    return None
 
 def main():
     if len(sys.argv) < 3:
@@ -51,6 +68,12 @@ def main():
         url,
     ]
 
+    ffmpeg_dir = find_ffmpeg_dir()
+    if ffmpeg_dir:
+        cmd[1:1] = ["--ffmpeg-location", ffmpeg_dir]
+    else:
+        print("[download] WARNING: ffmpeg not found — audio extraction will likely fail", file=sys.stderr)
+
     try:
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=900)  # 15 min
     except subprocess.TimeoutExpired:
@@ -61,6 +84,14 @@ def main():
         sys.exit(1)
 
     if result.returncode != 0:
+        # yt-dlp always requests --extract-audio, but plenty of liked X clips
+        # (memes/GIFs re-encoded as mp4) have no audio stream at all — that's
+        # not a failure, there's just nothing to transcribe. Distinguish it
+        # with exit code 3 so the caller can mark it "no audio" once instead
+        # of retrying (and re-downloading) the same silent clip every day.
+        if "unable to obtain file audio codec" in (result.stderr or ""):
+            print(f"[download] No audio stream in this video — nothing to transcribe", file=sys.stderr)
+            sys.exit(3)
         print(f"[download] ERROR: yt-dlp exit {result.returncode}", file=sys.stderr)
         print(result.stderr, file=sys.stderr)
         sys.exit(1)

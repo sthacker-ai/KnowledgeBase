@@ -83,7 +83,9 @@ function runPython(scriptPath, args, label) {
   if (result.stderr) process.stderr.write(result.stderr);
 
   if (result.status !== 0) {
-    throw new Error(`[${label}] Python script exited with code ${result.status}`);
+    const err = new Error(`[${label}] Python script exited with code ${result.status}`);
+    err.exitCode = result.status;
+    throw err;
   }
 
   return result.stdout ? result.stdout.trim().split("\n").pop() : "";
@@ -123,9 +125,11 @@ async function main() {
     ["x_video", "youtube", "youtube_video"].includes(ext.extraction_type)
   );
 
-  // Skip already-transcribed unless --reprocess
+  // Skip already-transcribed, and sources already confirmed to have no audio
+  // track (see download_video.py exit code 3), unless --reprocess
   if (!CLI_REPROCESS) {
-    candidates = candidates.filter(({ tweetId }) => {
+    candidates = candidates.filter(({ tweetId, ext }) => {
+      if (ext.has_audio === false) return false;
       const transcriptPath = path.join(TRANSCRIPTS_DIR, `${tweetId}.txt`);
       return !fs.existsSync(transcriptPath);
     });
@@ -182,6 +186,15 @@ async function main() {
       }
       console.log(`[transcripts] Downloaded => ${downloadedFile}`);
     } catch (err) {
+      if (err.exitCode === 3) {
+        // No audio stream — not a failure, just nothing to transcribe. Mark
+        // it permanently so this silent clip isn't re-downloaded every day.
+        console.log(`[transcripts] tweet_id=${tweetId} has no audio track — marking, won't retry`);
+        ext.has_audio = false;
+        fs.writeFileSync(extPath, JSON.stringify(ext, null, 2), "utf8");
+        runLog.results.push({ tweetId, status: "skip", reason: "no_audio" });
+        continue;
+      }
       console.warn(`[transcripts] tweet_id=${tweetId} download failed: ${err.message}`);
       runLog.results.push({ tweetId, status: "error", stage: "download", error: err.message });
       continue;
@@ -234,12 +247,13 @@ async function main() {
   runLog.total   = candidates.length;
   runLog.success = runLog.results.filter((r) => r.status === "ok").length;
   runLog.errors  = runLog.results.filter((r) => r.status === "error").length;
+  runLog.skipped = runLog.results.filter((r) => r.status === "skip").length;
 
   const ts      = new Date().toISOString().replace(/[:.]/g, "-");
   const logPath = path.join(RUNS_DIR, `${ts}-transcripts.json`);
   fs.writeFileSync(logPath, JSON.stringify(runLog, null, 2), "utf8");
 
-  console.log(`\n[transcripts] Done. ${runLog.success}/${runLog.total} transcribed, ${runLog.errors} error(s).`);
+  console.log(`\n[transcripts] Done. ${runLog.success}/${runLog.total} transcribed, ${runLog.skipped} skipped (no audio), ${runLog.errors} error(s).`);
   if (runLog.success > 0) {
     console.log(`[transcripts] Now run: npm run compile:courses  (will use transcripts automatically)`);
   }

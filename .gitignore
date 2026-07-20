@@ -22,3 +22,5 @@ logs/*.log
 logs/**/*.log
 public/course-assets/
 public/course-audio/
+__pycache__/
+*.pyc

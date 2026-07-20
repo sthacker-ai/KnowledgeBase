@@ -28,30 +28,38 @@ flowchart LR
 
 | Feature | Description |
 |---|---|
-| **X/Twitter ingestion** | Pulls liked tweets via Playwright scraper |
+| **X/Twitter ingestion** | Pulls liked tweets via Playwright scraper; excluded tweets reviewable at `/filtered` |
 | **Video transcription** | yt-dlp + Groq API (fast, free) with faster-whisper fallback |
-| **AI courseware** | OpenRouter (nvidia/nemotron-3 primary) generates rich course docs per source |
+| **AI courseware** | OpenRouter → NVIDIA NIM → Ollama fallback chain generates rich course docs per source |
+| **Hero images** | Replicate FLUX Schnell generates a 16:9 header image per course |
+| **Podcasts** | Kokoro 82M (via OpenRouter) turns each course into a 2-host audio dialogue |
 | **Topic category nav** | Browse topics as cards; each topic has its own page with course list + search |
 | **Wiki pages** | Per-topic reference pages with [[wikilinks]] |
-| **Knowledge graph** | Interactive D3 force-directed graph at `/graph` |
-| **Admin console** | Run pipeline steps, edit AI prompts, import URLs |
-| **Run history** | Per-run manifest with step-level status at `/runs` |
+| **Knowledge graph** | Interactive, theme-aware D3 force-directed graph at `/graph` |
+| **Admin console** | Run pipeline steps, edit AI prompts, import URLs — **localhost-only**, see [Deployment](#deployment) |
+| **Run history** | Per-run manifest with step-level status at `/runs`, including partial (`completed_with_errors`) runs |
 | **Token tracking** | Per-call token usage log at `/tokens` |
 | **Learning tracker** | PostgreSQL — track progress, reading sessions, daily streaks |
 | **Obsidian export** | Full vault export with [[wikilinks]], ready to open in Obsidian |
-| **Daily automation** | Windows Task Scheduler runs pipeline at 6:00 AM IST |
+| **Pipeline resilience** | A failed step (e.g. an expired X session) no longer aborts the whole daily run — see [Pipeline Resilience](#pipeline-resilience) |
+| **Daily automation** | Windows Task Scheduler — import runs daily at noon IST, prod rebuild at 1 PM (currently disabled, see below) |
+| **Dark theme ("Nocturne")** | Dark-first UI with a gold/rose accent, glass surfaces, and a light-mode toggle — see `docs/brandguide.md` |
 
 ---
 
 ## Tech Stack
 
 - **Frontend:** Next.js 15 (App Router) + React 19 + TypeScript
-- **Styling:** CSS custom properties (no Tailwind)
+- **Styling:** CSS custom properties (no Tailwind) — "Nocturne" dark-first theme, see `docs/brandguide.md`
+- **Fonts:** Space Grotesk (display/body) + JetBrains Mono (numerals/IDs), self-hosted via `next/font/google`
 - **Scraping:** Playwright (headless Chromium)
 - **Transcription:** yt-dlp + Groq API (`whisper-large-v3-turbo`, free tier) → faster-whisper fallback
-- **AI:** OpenRouter API (`nvidia/nemotron-3-super-120b-a12b:free` primary, `google/gemma-4-31b-it:free` fallback) + Ollama local fallback
-- **Database:** PostgreSQL (learning tracker only; content is file-based)
-- **Graph:** D3.js v7
+- **AI text:** OpenRouter (primary/fallback models set via env) → NVIDIA NIM → Ollama local fallback, with a per-run circuit breaker — see `scripts/lib/ai-client.js`
+- **AI images:** Replicate (`black-forest-labs/flux-schnell`, ~$0.003/image — the one paid step)
+- **AI voice:** Kokoro 82M via OpenRouter, optional Orpheus-FastAPI GPU upgrade
+- **Database:** PostgreSQL (learning tracker, run history, token usage — content stays file-based)
+- **Graph:** D3.js v7 (theme-aware — reads live CSS variables)
+- **Dev/prod isolation:** separate build directories (`.next-dev` / `.next`) via `distDir` in `next.config.mjs`, so a production build can't corrupt a running dev server
 
 ---
 
@@ -73,25 +81,45 @@ pip install yt-dlp faster-whisper groq
 ### 3. Configure `.env`
 
 ```env
-# AI
+# AI text — OpenRouter primary/fallback → NVIDIA NIM → Ollama (see ai-client.js)
 OPENROUTER_API_KEY=sk-or-...
-OPENROUTER_MODEL_PRIMARY=nvidia/nemotron-3-super-120b-a12b:free
-OPENROUTER_MODEL_FALLBACK=google/gemma-4-31b-it:free
+OPENROUTER_MODEL_PRIMARY=meta-llama/llama-3.3-70b-instruct:free
+OPENROUTER_MODEL_FALLBACK=qwen/qwen3-235b-a22b:free
+NVIDIA_API_KEY=nvapi-...
+NVIDIA_MODELS=mistralai/mistral-nemotron,meta/llama-3.1-8b-instruct
+OLLAMA_BASE_URL=http://localhost:11434
+OLLAMA_MODEL=gemma4:e2b
 
 # Groq (fast transcription — free at console.groq.com)
 GROQ_API_KEY=gsk_...
 
-# X/Twitter
+# Hero images — Replicate FLUX Schnell (paid, ~$0.003/image). Note the exact,
+# unconventional casing — this is the literal env var name the code reads.
+Replicate_API-Key=r8_...
+
+# Podcast TTS — Kokoro 82M via OpenRouter (uses OPENROUTER_API_KEY above).
+# Optional GPU upgrade path:
+ORPHEUS_API_URL=
+
+# X/Twitter — see docs/x-importer.md for the full renewal workflow.
+# Automated headed login is blocked by X bot-detection for some accounts;
+# the manual cookie-copy path (X_AUTH_TOKEN/X_CT0 → npm run import:x-cookies)
+# is the primary, supported method.
 X_AUTH_TOKEN=...
 X_CT0=...
+X_STORAGE_STATE_PATH=./data/private/x-storage-state.json
+X_SESSION_TTL_DAYS=365
+SCRAPE_TARGET_HANDLE=your_x_handle
 
-# PostgreSQL (optional — only for learning tracker)
+# PostgreSQL (optional — learning tracker, run history, token usage.
+# /runs and /tokens fall back to local JSON files if unset/unreachable.)
 DATABASE_URL=postgresql://postgres:PASSWORD@localhost:5432/knowledgebase
 
 # Obsidian export
 OBSIDIAN_VAULT_DIR=./data/obsidian-vault
 
-# Optional: require this token for admin mutation APIs
+# Required to protect admin mutation APIs — if unset, those routes are
+# open to anyone who can reach the app. Always set this.
 KB_ADMIN_TOKEN=
 ```
 
@@ -116,6 +144,8 @@ npm run dev
 Run the full pipeline from the **Admin Console** at `/admin`, or via npm scripts:
 
 ```bash
+npm run import:x-login          # Renew X session (headed browser — may be blocked by bot detection)
+npm run import:x-cookies        # Renew X session from X_AUTH_TOKEN/X_CT0 in .env (primary method)
 npm run import:x-likes          # Pull liked tweets
 npm run extract:sources         # Scrape content from tweet URLs
 npm run transcripts:extract     # Download/transcribe X/YouTube video sources
@@ -123,6 +153,8 @@ npm run classify:sources        # AI-classify each source into a topic
 npm run compile:courses         # Generate courseware from classified sources
 npm run summarize:topics        # Build wiki summary pages
 npm run graph:build             # Regenerate knowledge graph JSON
+npm run generate:assets         # Generate hero images (Replicate, paid per call)
+npm run generate:podcasts       # Generate podcast scripts + audio (Kokoro/OpenRouter)
 npm run export:obsidian         # Export Obsidian vault
 ```
 
@@ -136,9 +168,23 @@ The full pipeline runs transcription before course generation. If a transcript
 is added for a source that already has a course, the existing course file is
 regenerated in place instead of creating a duplicate course.
 
-### Daily Automation (Windows)
+### Pipeline Resilience
 
-The `start-scheduled.bat` file is registered with Windows Task Scheduler to run at 6:00 AM daily.
+`scheduled-daily.js` and `run-pipeline.js` are **continue-on-error**: a failed
+step is logged and the run continues with the remaining steps, so (for
+example) an expired X session breaking the import step doesn't stop
+transcript extraction, classification, course generation, or the graph
+rebuild from processing whatever's already in the pipeline. Steps carry
+`critical`/`retries` metadata in `scripts/pipeline-steps.js` — only a step
+marked `critical: true` aborts the whole run. A run's final status is one of
+`ok` / `completed_with_errors` / `aborted`, visible at `/runs`.
+
+### Daily Automation (Windows Task Scheduler)
+
+| Task | Schedule | State (as of 2026-07-06) |
+|---|---|---|
+| `KnowledgeBase Daily Import` (`start-scheduled.bat` → `scheduled-daily.js`) | Daily at 12:00 PM IST | ✅ Enabled |
+| `KnowledgeBase Prod Deploy` (`start-prod.bat` → build + restart `:3006`) | Daily at 1:00 PM IST | ⚠️ Currently **disabled** — re-enable via `register-prod-task.ps1` if the local prod server should auto-refresh with new content |
 
 ---
 
@@ -148,6 +194,7 @@ The `start-scheduled.bat` file is registered with Windows Task Scheduler to run 
 |---|---|
 | `/` | Overview dashboard |
 | `/sources` | Full source inbox |
+| `/filtered` | Tweets excluded by the relevance filter; review and unfilter |
 | `/courseware` | Topic cards — click to browse courses |
 | `/courseware/[topic]` | Topic overview with course list + search |
 | `/courseware/[topic]/[course]` | Individual course reader |
@@ -177,6 +224,22 @@ Generated audio, hero images, token usage, exported Obsidian vault files, and
 runtime logs are kept local and ignored by Git. The canonical knowledge content
 is the source/course/wiki Markdown plus pipeline code; generated media can be
 rebuilt from the course files when needed.
+
+---
+
+## Deployment
+
+The pipeline (imports, AI generation, Playwright scraping) is **local-only** —
+it needs a real Chromium browser, Python, `yt-dlp`, and a local Postgres, none
+of which exist on a serverless host. The public-facing read pages
+(Overview, Courseware, Wiki, Graph, Sources, Filtered, Runs, Tokens), though,
+read from Markdown/JSON files that are committed to git — so they can be
+hosted as a **read-only mirror on Vercel** that updates whenever you `git push`
+after a local pipeline run.
+
+See `docs/deployment.md` for the full evaluation (repo size, what works vs.
+what doesn't on Vercel's free tier) and step-by-step setup including a custom
+subdomain via Hostinger DNS.
 
 ---
 

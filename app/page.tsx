@@ -11,6 +11,7 @@ import CountUp from "./components/CountUp";
 
 const navItems = [
   { label: "Overview",       href: "/",       active: true  },
+  { label: "Daily Summary",   href: "/summary",   active: false },
   { label: "Source Inbox",    href: "/sources",   active: false },
   { label: "Filtered Tweets", href: "/filtered",  active: false },
   { label: "Courseware",      href: "/courseware", active: false },

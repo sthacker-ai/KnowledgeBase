@@ -59,6 +59,42 @@ SQLite or embeddings can be added later as local indexes if search needs grow.
 They should be treated as caches over the Markdown source of truth, not the
 canonical knowledge base.
 
+## Deployment Model (added 2026-07-06)
+
+The write plane (import, extraction, classification, course/asset/podcast
+generation) only ever runs locally, triggered by Windows Task Scheduler or
+the admin console. It needs Playwright/Chromium, Python, `yt-dlp`, and a
+local Postgres — none of which are available on a serverless host.
+
+The read plane (every public page except `/admin`) is pure file reads
+(`fs.readFileSync`/`readdirSync` over `content/` and `data/`, with graceful
+Postgres fallback to local JSON for `/runs` and `/tokens`). Because those
+files are committed to git, they can be deployed as-is to a static/serverless
+host: the deployed function's working directory contains whatever was
+checked in, so no separate CMS or database sync step is needed for the
+read-only mirror.
+
+This makes the natural hosting shape: **run the pipeline locally → commit →
+push → the host rebuilds and serves the new content.** The admin console and
+any `/api/admin/*` write route are treated as local-only tools, not part of
+the hosted surface — see `docs/deployment.md` for the concrete evaluation
+(Vercel) and setup steps.
+
+## Pipeline Resilience (added 2026-07-06)
+
+Originally the daily pipeline was strict stop-on-failure: any step failing
+aborted the whole run. In practice this meant a single bad step (most often
+an expired X login session) blocked every downstream step from processing
+work that was already available — e.g. transcription, classification, or
+course generation for sources imported on a previous day.
+
+The pipeline is now continue-on-error by default. Steps declare `critical`
+and `retries` in `scripts/pipeline-steps.js`; only a `critical: true` step
+still aborts the run. This is intentionally the default (`critical: false`)
+because every step is idempotent and only processes work that's actually
+available — a no-op step costs a couple of seconds, while a wrongly-aborted
+run costs a full day's processing backlog.
+
 ## First Workflows
 
 1. Import raw likes from a Twitter/X archive.

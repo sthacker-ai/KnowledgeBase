@@ -34,7 +34,11 @@ function getSteps(limit) {
       label: "Import X Likes",
       cmd:   `node scripts/import-x-likes.js${lim}`,
       critical: false,
-      retries:  0, // auth failures are deterministic — retrying wastes time
+      // 1 retry: an expired/dead session fails deterministically (retrying
+      // wastes ~6s), but a transient network drop (net::ERR_CONNECTION_RESET
+      // from a flaky connection) can genuinely succeed on retry — worth the
+      // small cost either way.
+      retries:  1,
     },
     {
       id:    "extract",

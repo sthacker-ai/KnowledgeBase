@@ -106,7 +106,7 @@ export default function TokensClient({
     }
     const va = recent.key === "ts" ? a.ts : recent.key === "model" ? a.model : a.label;
     const vb = recent.key === "ts" ? b.ts : recent.key === "model" ? b.model : b.label;
-    const cmp = va.localeCompare(vb);
+    const cmp = String(va ?? "").localeCompare(String(vb ?? ""));
     return recent.dir === "asc" ? cmp : -cmp;
   });
 

@@ -1,22 +1,11 @@
 import Link from "next/link";
 import RunsClient from "./RunsClient";
+import { getRunsData } from "../lib/runs-tokens-data";
 
 export const dynamic = "force-dynamic";
 
-async function getRuns() {
-  try {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3005";
-    const res = await fetch(`${baseUrl}/api/runs`, { cache: "no-store" });
-    if (!res.ok) return [];
-    const data = await res.json();
-    return data.runs ?? [];
-  } catch {
-    return [];
-  }
-}
-
 export default async function RunsPage() {
-  const runs = await getRuns();
+  const runs = await getRunsData();
 
   return (
     <main className="kb-shell">
@@ -31,6 +20,7 @@ export default async function RunsPage() {
         </div>
         <p className="nav-section-label">Menu</p>
         <Link href="/"           className="kb-nav-link"><span className="kb-nav-icon" />Overview</Link>
+        <Link href="/summary"    className="kb-nav-link"><span className="kb-nav-icon" />Daily Summary</Link>
         <Link href="/sources"    className="kb-nav-link"><span className="kb-nav-icon" />Source Inbox</Link>
         <Link href="/filtered"   className="kb-nav-link"><span className="kb-nav-icon" />Filtered Tweets</Link>
         <Link href="/courseware" className="kb-nav-link"><span className="kb-nav-icon" />Courseware</Link>
@@ -88,7 +78,7 @@ export default async function RunsPage() {
         <div style={{ marginTop: "20px" }}>
           <h2 className="kb-right-title">Pipeline Behavior</h2>
           <p className="kb-right-sub" style={{ lineHeight: 1.5 }}>
-            Pipeline stops at first failure. Each step is idempotent — the next scheduled run automatically retries from where it left off.
+            A failed step no longer stops the run — the rest of the pipeline still processes whatever's available, and the run is marked &ldquo;Partial&rdquo; instead of aborted. Each step is idempotent, so the next scheduled run picks up anything that was skipped.
           </p>
         </div>
       </aside>

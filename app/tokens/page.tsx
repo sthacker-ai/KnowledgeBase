@@ -1,43 +1,8 @@
 import Link from "next/link";
 import TokensClient from "./TokensClient";
+import { getTokensData } from "../lib/runs-tokens-data";
 
 export const dynamic = "force-dynamic";
-
-interface TokenRow {
-  model:             string;
-  provider:          string;
-  calls:             number;
-  prompt_tokens:     number;
-  completion_tokens: number;
-  total_tokens:      number;
-}
-
-interface RecentEntry {
-  ts:                string;
-  label:             string;
-  model:             string;
-  provider:          string;
-  prompt_tokens:     number;
-  completion_tokens: number;
-  total_tokens:      number;
-}
-
-interface TokenData {
-  byModel:       TokenRow[];
-  totals:        { calls: number; prompt_tokens: number; completion_tokens: number; total_tokens: number; audio_seconds: number };
-  recentEntries: RecentEntry[];
-}
-
-async function getTokenData(): Promise<TokenData> {
-  try {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3005";
-    const res = await fetch(`${baseUrl}/api/tokens`, { cache: "no-store" });
-    if (!res.ok) return { byModel: [], totals: { calls: 0, prompt_tokens: 0, completion_tokens: 0, total_tokens: 0, audio_seconds: 0 }, recentEntries: [] };
-    return res.json();
-  } catch {
-    return { byModel: [], totals: { calls: 0, prompt_tokens: 0, completion_tokens: 0, total_tokens: 0, audio_seconds: 0 }, recentEntries: [] };
-  }
-}
 
 function fmtNum(n: number) {
   if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1)}M`;
@@ -46,7 +11,7 @@ function fmtNum(n: number) {
 }
 
 export default async function TokensPage() {
-  const { byModel, totals, recentEntries } = await getTokenData();
+  const { byModel, totals, recentEntries } = await getTokensData();
 
   return (
     <main className="kb-shell">
@@ -61,6 +26,7 @@ export default async function TokensPage() {
         </div>
         <p className="nav-section-label">Menu</p>
         <Link href="/"           className="kb-nav-link"><span className="kb-nav-icon" />Overview</Link>
+        <Link href="/summary"    className="kb-nav-link"><span className="kb-nav-icon" />Daily Summary</Link>
         <Link href="/sources"    className="kb-nav-link"><span className="kb-nav-icon" />Source Inbox</Link>
         <Link href="/filtered"   className="kb-nav-link"><span className="kb-nav-icon" />Filtered Tweets</Link>
         <Link href="/courseware" className="kb-nav-link"><span className="kb-nav-icon" />Courseware</Link>

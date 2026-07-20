@@ -1,21 +1,11 @@
 import Link from "next/link";
 import FilteredClient from "./FilteredClient";
+import { getFilteredTweetsData } from "../lib/runs-tokens-data";
 
 export const dynamic = "force-dynamic";
 
-async function getFilteredTweets() {
-  try {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3005";
-    const res = await fetch(`${baseUrl}/api/filtered`, { cache: "no-store" });
-    if (!res.ok) return { tweets: [], total: 0 };
-    return res.json();
-  } catch {
-    return { tweets: [], total: 0 };
-  }
-}
-
 export default async function FilteredPage() {
-  const { tweets, total } = await getFilteredTweets();
+  const { tweets, total } = getFilteredTweetsData();
 
   return (
     <main className="kb-shell">
@@ -30,6 +20,7 @@ export default async function FilteredPage() {
         </div>
         <p className="nav-section-label">Menu</p>
         <Link href="/"           className="kb-nav-link"><span className="kb-nav-icon" />Overview</Link>
+        <Link href="/summary"    className="kb-nav-link"><span className="kb-nav-icon" />Daily Summary</Link>
         <Link href="/sources"    className="kb-nav-link"><span className="kb-nav-icon" />Source Inbox</Link>
         <Link href="/filtered"   className="kb-nav-link active" aria-current="page"><span className="kb-nav-icon" />Filtered Tweets</Link>
         <Link href="/courseware" className="kb-nav-link"><span className="kb-nav-icon" />Courseware</Link>

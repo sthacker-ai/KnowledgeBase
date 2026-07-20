@@ -4,7 +4,7 @@
 /**
  * scripts/scheduled-daily.js
  *
- * Run by Windows Task Scheduler daily at 6:00 AM.
+ * Run by Windows Task Scheduler daily at 12:00 PM IST ("KnowledgeBase Daily Import" task).
  * Runs the full pipeline: import → extract → classify → courses → summary → graph → assets → podcasts.
  *
  * Steps are defined in pipeline-steps.js — the single source of truth shared
@@ -20,6 +20,7 @@ const path = require("path");
 const { spawnSync, spawn } = require("child_process");
 const { getSteps } = require("./pipeline-steps");
 const { getXSessionStatus } = require("./lib/x-session");
+const { summarizeStepOutput } = require("./lib/run-summary");
 
 const ROOT     = process.cwd();
 const RUNS_DIR = path.join(ROOT, "data", "runs");
@@ -142,14 +143,14 @@ function runOnce(cmd) {
 
   if (result.status !== 0 || result.error) {
     const errMsg = result.error ? result.error.message : `exit code ${result.status}`;
-    return { ok: false, elapsed, errMsg };
+    return { ok: false, elapsed, errMsg, output: childOutput };
   }
-  return { ok: true, elapsed };
+  return { ok: true, elapsed, output: childOutput };
 }
 
 // Run a step, with optional retries + backoff for transient failures.
 // Returns true on success, false on failure (after exhausting retries).
-function run(label, cmd, retries = 0) {
+function run(label, cmd, retries = 0, stepId = "") {
   logSep();
   log(`  Step: ${label}`);
   logSep();
@@ -169,7 +170,8 @@ function run(label, cmd, retries = 0) {
       const note = attempt > 1 ? ` (attempt ${attempt})` : "";
       log(`Step "${label}" completed in ${last.elapsed}s${note}`);
       logLine("");
-      runManifest.steps.push({ name: label, status: "ok", duration_secs: parseFloat(last.elapsed) });
+      const detail = summarizeStepOutput(stepId, last.output);
+      runManifest.steps.push({ name: label, status: "ok", duration_secs: parseFloat(last.elapsed), detail });
       return true;
     }
   }
@@ -294,7 +296,7 @@ async function main() {
   const failed = [];
   let aborted  = false;
   for (const step of steps) {
-    if (!run(step.label, step.cmd, step.retries || 0)) {
+    if (!run(step.label, step.cmd, step.retries || 0, step.id)) {
       failed.push(step.label);
       if (step.critical) {
         log(`ABORT: Critical step "${step.label}" failed. Stopping pipeline.`);

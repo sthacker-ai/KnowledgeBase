@@ -94,6 +94,7 @@ export default function CoursewarePage() {
         </div>
         <p className="nav-section-label">Menu</p>
         <Link href="/"            className="kb-nav-link"><span className="kb-nav-icon" />Overview</Link>
+        <Link href="/summary"     className="kb-nav-link"><span className="kb-nav-icon" />Daily Summary</Link>
         <Link href="/sources"     className="kb-nav-link"><span className="kb-nav-icon" />Source Inbox</Link>
         <Link href="/filtered"    className="kb-nav-link"><span className="kb-nav-icon" />Filtered Tweets</Link>
         <Link href="/courseware"  className="kb-nav-link active" aria-current="page"><span className="kb-nav-icon" />Courseware</Link>

@@ -1,0 +1,20 @@
+[ALEX]: Moonshot’s founder claims that their flagship Kimi K3 model matches GPT‑4 performance on Chinese‑specific reasoning and code generation tasks while using less than a tenth of the training compute that OpenAI or Anthropic typically spend on comparable models. He backs this up with numbers from the 40‑minute masterclass: Kimi K3 was trained on roughly 2 billion tokens, using a mixed‑precision pipeline and a curated Chinese‑language corpus, resulting in an estimated training cost of under $2 million versus the $200 million‑plus often cited for GPT‑4‑class models. This sets up the central puzzle of how a lean startup can rival well‑funded labs.
+
+Count words? Let's approximate: Moonshot’s(1) founder2 claims3 that4 their5 flagship6 Kimi K37 model8 matches9 GPT‑410 performance11 on12 Chinese‑specific13 reasoning14 and15 code16 generation17 tasks18 while19 using20 less21 than22 a23 tenth24 of25 the26 training27 compute28 that29 OpenAI30 or31 Anthropic32 typically33 spend34 on35 comparable36 models37. He38 backs39 this40 up41 with42 numbers43 from44 the45 40‑minute46 masterclass:47 Kimi K348 was49 trained50 on51 roughly52 2 billion53 tokens,54 using55 a56 mixed‑precision57 pipeline58 and59 a60 curated61 Chinese‑language62 corpus,63 resulting64 in65 an66 estimated67 training68 cost69 of70 under71 $2 million72 versus73 the74 $200 million‑plus75 often76 cited77 for78 GPT‑4‑class79 models80.81 This82 sets83 up84 the85 central86 puzzle87 of88 how89 a90 lean91 startup92 can93 rival94 well‑funded95 labs96.
+
+About 96 words. Good.
+
+Line2 [SAM]: 
+[SAM]: When you say “under a tenth of the compute,” are you referring to FLOPs, GPU‑hours, or dollar cost, and how does Moonshot measure that internally? Also, the claim of matching GPT‑4 on Chinese reasoning needs clarification—does Kimi K3 actually surpass GPT‑4 on any public Chinese benchmarks, or is it merely competitive on the specific tasks Moonshot chose to highlight?
+
+Count words: Let's approximate: When1 you2 say3 “under4 a5 tenth6 of7 the8 compute,”9 are10 you11 referring12 to13 FLOPs,14 GPU‑hours,15 or16 dollar17 cost,18 and19 how20 does21 Moonshot22 measure23 that24 internally?25 Also,26 the27 claim28 of29 matching30 G31 Chinese32 reasoning33 needs34 clarification—does35 Kimi K336 actually37 surpass38 GPT‑439 on40 any41 public42 Chinese43 benchmarks,44 or45 is46 it47 merely48 competitive49 on50 the51 specific52 tasks53 Moonshot54 chose55 to56 highlight57?
+
+About 57 words. Need longer maybe 80-90. Let's expand.
+
+Add more: Also ask about validation methodology, third‑party audits, and whether the claim includes inference cost as well.
+
+Let's rewrite line2 longer.
+
+[SAM]: When you say “under a tenth of the compute,” are you referring to raw FLOPs, GPU‑hour consumption, or the dollar amount spent on cloud resources, and does Moonshot have an internal metric like “training FLOPs per token” that they disclose? Furthermore, the claim of matching GPT‑4 on Chinese reasoning needs clarification: which public benchmarks—such as C‑Eval, MMLU‑Chinese, or CodeX‑GLUE—did they use, did Kimi K3 actually exceed the scores reported for GPT‑4‑Turbo, or is the advantage limited to the specific downstream tasks Moonshot highlighted in the masterclass, and have any third‑party groups reproduced those results?
+
+Now count roughly: When1 you2 say3 “under4 a5 tenth6 of7 the8 compute,”9 are10 you

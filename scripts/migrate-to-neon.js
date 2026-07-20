@@ -74,7 +74,15 @@ async function main() {
 
     let copied = 0;
     for (const row of rows) {
-      const values = columns.map((c) => row[c]);
+      // pg auto-parses jsonb columns into JS values, then on the way back
+      // out its default parameter serialization treats a plain JS array as
+      // a Postgres native array literal ({...}), not JSON text — which a
+      // jsonb column then rejects. Explicit JSON.stringify sidesteps that
+      // ambiguity for any object/array-typed column (here: pipeline_runs.steps).
+      const values = columns.map((c) => {
+        const v = row[c];
+        return (v !== null && typeof v === "object") ? JSON.stringify(v) : v;
+      });
       try {
         const result = await neonPool.query(sql, values);
         if (result.rowCount > 0) copied++;

@@ -1,9 +1,10 @@
 # Deployment — Hosting KnowledgeBase on Vercel
 
-**Status:** Evaluated 2026-07-06, Blob storage numbers + self-fetch bug fix
-added 2026-07-17. Not yet deployed. This is a "go do it" guide — the steps
-below are meant to be followed by hand in the Vercel and Hostinger
-dashboards.
+**Status:** Evaluated 2026-07-06. R2 media pipeline + Neon migration script
+built 2026-07-20 — code is ready, activation needs your Cloudflare/Neon
+account creation (steps below). Not yet deployed to Vercel. This is a "go do
+it" guide — the steps below are meant to be followed by hand in the Vercel,
+Cloudflare, Neon, and Hostinger dashboards.
 
 ## What actually gets hosted
 
@@ -46,44 +47,53 @@ that needs the Vercel connector authorized (see below) — but check
 Hobby limits are account-wide and shared with your existing `nexuslog`
 project.
 
-## Audio + hero images — yes, there's room (via Vercel Blob)
+## Audio + hero images — via Cloudflare R2 (decided 2026-07-20)
 
-`public/course-audio` (**~495 MB**, podcast MP3s) and `public/course-assets`
-(**~44 MB**, hero images) are `.gitignore`d — never committed, by design
-(binaries don't belong in git history). Total: **~539 MB.**
+`public/course-audio` (**~628 MB**, podcast MP3s) and `public/course-assets`
+(**~53 MB**, hero images) are `.gitignore`d — never committed, by design
+(binaries don't belong in git history). Total: **~681 MB and growing** —
+roughly 130–140 MB every two weeks at the current pipeline pace.
 
-Confirmed against Vercel's current Blob pricing docs (fetched 2026-07-17):
+Vercel Blob's free allowance (the account's real number, not the generic
+docs figure) is around 1 GB — comfortable today but tight within weeks of
+this growth rate. **Decision: use Cloudflare R2 instead** — 10 GB free, zero
+egress fees ever (Blob-style services meter data transfer; R2 doesn't), and
+it's the purpose-built tool for public media at this size. (Google Drive was
+considered and ruled out: technically possible via a service account + a
+proxy API route, but that adds real latency per request and more moving
+parts for *less* free storage than R2 — not the right trade.)
 
-| Vercel Blob — Hobby free allowance | Included | Your usage |
-|---|---|---|
-| Storage | **5 GB** (monthly average) | ~539 MB (~10.5% of the free tier) |
-| Data Transfer | **100 GB/month** | Trivial for a personal-scale site |
-| Simple Operations (reads) | 100,000/month | Trivial |
-| Advanced Operations (`put`/`copy`/`list`) | 10,000/month | One-time upload of ~500-1000 files, well under |
+### Implemented (2026-07-20) — needs your R2 account + bucket to activate
 
-**Yes — 539 MB fits comfortably, with roughly 9x headroom to grow before
-hitting the free ceiling.** One thing to know: Hobby's Blob limits are a
-hard wall, not pay-as-you-go — if you ever did exceed them, Vercel blocks
-further Blob access (no surprise bill) until the next 30-day window. At
-your current size that's not a realistic risk.
+- `scripts/upload-media-to-r2.js` (`npm run upload:media`) — walks
+  `public/course-audio/` and `public/course-assets/`, uploads anything not
+  already recorded, and writes `data/media-manifest.json` (committed to git)
+  listing which `topic/course` pairs have media in R2.
+- `app/lib/media.ts` — course pages resolve hero image / podcast URLs from
+  this manifest + `R2_PUBLIC_URL_BASE` when the local file isn't present
+  (i.e. on the hosted deployment). Falls back to local `/public` files when
+  they exist (dev machine), so nothing changes locally.
+- Required env vars (`.env.example` has the full list): `R2_ACCOUNT_ID`,
+  `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET_NAME`,
+  `R2_PUBLIC_URL_BASE`. Without them set, everything behaves exactly as
+  before (local-only media, hosted deployment shows text/no media) — this
+  is purely additive.
 
-### How this would work
-1. Create a Blob store in the Vercel dashboard (Storage tab) — this gives
-   you a `BLOB_READ_WRITE_TOKEN`.
-2. A local one-time (then incremental) upload script pushes
-   `public/course-audio/**` and `public/course-assets/**` to the store using
-   `put(pathname, file, { access: "public", addRandomSuffix: false })` —
-   `addRandomSuffix: false` keeps the URL deterministic from the file path,
-   so the app can construct Blob URLs without a separate mapping file.
-3. Course pages read the hero image / podcast `src` from the Blob base URL
-   instead of `/course-assets/...` / `/course-audio/...`.
-
-This is real code work (a new upload script + a small change to how course
-pages resolve media URLs) — not done yet. **Blocked on:** either authorizing
-the Vercel connector so I can create/inspect the Blob store directly, or you
-creating it by hand in the dashboard and pasting `BLOB_READ_WRITE_TOKEN`
-into `.env`. Say the word once you've done either and I'll build the upload
-script + wire the app to it.
+### To activate it
+1. Cloudflare Dashboard (free account) → **R2 Object Storage** → **Create bucket**.
+2. Bucket **Settings** → enable **Public Access** (via the R2.dev subdomain,
+   or attach a custom domain) — this becomes `R2_PUBLIC_URL_BASE`.
+3. **Manage API Tokens** → create a token scoped to that bucket (Object
+   Read & Write) → gives you the Account ID, Access Key ID, and Secret
+   Access Key.
+4. Add all five vars to `.env` (local) and to Vercel's Environment Variables
+   (so the hosted deployment can construct the same URLs — Vercel doesn't
+   need write access, only `R2_PUBLIC_URL_BASE` is actually read by the app
+   at request time; the other four are only used by the local upload script).
+5. Run `npm run upload:media` — uploads everything new, commit + push the
+   updated `data/media-manifest.json`.
+6. Re-run `npm run upload:media` after future pipeline runs to pick up new
+   courses' media (not yet wired into the daily automation — manual for now).
 
 ## What won't work on the hosted deployment (by design, not a bug)
 
@@ -138,19 +148,40 @@ Project → **Settings → Environment Variables**:
 | Variable | Value | Why |
 |---|---|---|
 | `KB_ADMIN_TOKEN` | a long random string | Gates `/api/admin/*` — set it even though those routes won't functionally work here; `requireAdmin()` allows everything through if this is empty |
+| `DATABASE_URL` | the Neon connection string (see below) | So `/runs`, `/tokens`, and the learning tracker show live data, not the last-committed JSON snapshot |
+| `R2_PUBLIC_URL_BASE` | your R2 bucket's public URL | Only var the app needs at request time for hero images/podcasts — see the R2 section above |
 
-That's it — **one variable.** Everything else — `OPENROUTER_API_KEY`,
-`NVIDIA_API_KEY`, `GROQ_API_KEY`, `Replicate_API-Key`, `X_AUTH_TOKEN`/`X_CT0`,
-`DATABASE_URL` — is **not needed** for the read-only mirror, since none of
-the hosted pages call an AI provider or the scraper, and the DB-backed
-routes fall back to committed JSON automatically.
+Everything else — `OPENROUTER_API_KEY`, `NVIDIA_API_KEY`, `GROQ_API_KEY`,
+`Replicate_API-Key`, `X_AUTH_TOKEN`/`X_CT0`, `R2_ACCESS_KEY_ID`/`R2_SECRET_ACCESS_KEY`/`R2_ACCOUNT_ID`/`R2_BUCKET_NAME` —
+is **not needed on Vercel**. The AI keys aren't called by any hosted page;
+the R2 write credentials are only used by the local upload script, never by
+the deployed app (which only ever reads the public URL).
 
-*(Optional, later: if you want `/runs`/`/tokens`/learning-progress to show
-live data instead of the last-committed snapshot, point `DATABASE_URL` at a
-cloud Postgres reachable from the internet — e.g. Neon or Supabase's free
-tier, not your local Postgres. This is a "Phase 2" item, not required for
-launch. If you add Vercel Blob for media per the section above, that adds
-`BLOB_READ_WRITE_TOKEN`, auto-injected if provisioned through the dashboard.)*
+### Neon Postgres — one database for local + hosted (decided 2026-07-20)
+
+Rather than Vercel showing a stale snapshot while local Postgres stays the
+real source of truth, point **both** the local pipeline and the Vercel
+deployment at the **same Neon instance** — no sync step, Vercel always
+current.
+
+1. [neon.tech](https://neon.tech) → free account → **New Project** → copy
+   the connection string it gives you.
+2. Add it to local `.env` as `NEON_DATABASE_URL` (temporarily, alongside the
+   existing `DATABASE_URL`), then run:
+   ```bash
+   node scripts/migrate-to-neon.js
+   ```
+   This creates the schema on Neon (reuses `db-setup.js`) and copies every
+   row from your local Postgres over — read-only against local, so nothing
+   there is touched. Safe to re-run (`ON CONFLICT DO NOTHING`).
+3. Once copied, update local `.env`'s `DATABASE_URL` to the Neon connection
+   string (replacing the local one) — the daily pipeline now writes
+   directly to Neon.
+4. Set the same `DATABASE_URL` in Vercel's environment variables (step 3
+   above) — both surfaces now read/write the identical database.
+
+Your current local data (36 pipeline runs, ~1,900 token-usage rows) is
+kilobyte-scale — nowhere near Neon's free-tier storage limit.
 
 ### 4. Deploy
 Click **Deploy**. First build takes a few minutes (fetches the self-hosted

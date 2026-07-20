@@ -186,4 +186,52 @@ preferred.
 
 ---
 
-*Last updated: 17 July 2026*
+## Addendum — 20 July 2026
+
+User reported the actual daily-run error output. Found and fixed several
+real issues while explaining the pipeline behavior:
+
+- **`/tokens` crash (dev + prod)**: Postgres returns `timestamp` columns as
+  JS `Date` objects; the default sort key called `.localeCompare()` on one.
+  Fixed the query (`ts::text`) + added a defensive guard.
+- **"Steps ran despite import failing"** — confirmed via the actual log this
+  is resilience working as intended: transcription/course/assets/podcasts
+  all process a backlog of previously-imported content, independent of
+  today's import result.
+- **24/25 "ffprobe" transcription failures** — not a broken environment.
+  Verified via direct ffprobe that those liked videos have no audio stream
+  at all (silent clips/memes). Added detection + permanent `has_audio: false`
+  marking so these are never retried. Also hardened `download_video.py` with
+  an explicit `--ffmpeg-location`, upgraded yt-dlp 2026.03.17 → 2026.07.04,
+  and gave the import step 1 retry (a connection reset is transient, unlike
+  an expired session).
+- **Built `/summary`** — a plain-language daily digest, added to every
+  page's nav, backed by a new step-output parser
+  (`scripts/lib/run-summary.js`) that turns each step's existing "Done."
+  line into a real sentence.
+- **Added a generated favicon** matching the brand mark.
+- Committed all of the above in two commits (code, then content/data churn)
+  and pushed to `main`.
+
+### Storage architecture decided
+- **Cloudflare R2**, not Vercel Blob, for hosted podcast audio/hero images —
+  the account's real free tier (~1GB) was already 68% full and growing
+  ~130MB/2 weeks; R2 gives 10GB free with zero egress fees. Google Drive was
+  evaluated and ruled out (would need a proxying API route + service
+  account, more complexity for less free space than R2). Built:
+  `scripts/upload-media-to-r2.js` + `app/lib/media.ts` (falls back to local
+  `/public` files when R2 env vars are unset — purely additive, nothing
+  breaks locally). **Needs the user to create the R2 bucket + token** before
+  this activates — see `docs/deployment.md`.
+- **Neon Postgres** as a single source of truth for local pipeline + Vercel
+  (rather than Vercel showing a stale snapshot). Built
+  `scripts/migrate-to-neon.js` — creates the schema on Neon and copies every
+  local row over (read-only against local, safe to re-run). **Needs the
+  user to create the Neon project** and give the connection string before
+  running — not yet executed.
+- Email daily-digest delivery explicitly deferred by the user; `/summary`
+  covers the "what did it do" need for now.
+
+---
+
+*Last updated: 20 July 2026*

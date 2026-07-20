@@ -298,11 +298,12 @@ Full visual identity replacing the earlier light indigo/amber theme. See
 | Phase L | Dev/prod build directory isolation (`.next-dev` vs `.next`) | ✅ Complete (2026-07-06) |
 | Phase M | Vercel hosting (read-only public mirror) | 🔜 In progress — see `docs/deployment.md` |
 | Phase P | Fix `/runs`, `/tokens`, `/filtered` self-fetch bug (hardcoded `:3005` fallback made them render empty on prod/hosted) | ✅ Complete (2026-07-17) — see `app/lib/runs-tokens-data.ts` |
-| Phase Q | Vercel Blob for hosted podcast audio + hero images | 🔜 Evaluated (2026-07-17), not implemented — confirmed 539 MB fits Hobby's 5 GB free tier; blocked on Blob store creation, see `docs/deployment.md` |
+| Phase Q | Cloudflare R2 for hosted podcast audio + hero images (not Vercel Blob — 10GB free vs. ~1GB, zero egress) | ✅ Code complete (2026-07-20) — `scripts/upload-media-to-r2.js`, `app/lib/media.ts`; blocked on R2 bucket creation, see `docs/deployment.md` |
+| Phase O | Neon Postgres as single source of truth for local + hosted (Runs/Tokens/Learning-tracker) | ✅ Migration script complete (2026-07-20) — `scripts/migrate-to-neon.js`; blocked on Neon project creation, see `docs/deployment.md` |
 | Phase H | PDF ingestion, article URL import | Not started |
 | Phase I | Mobile-responsive layout | Not started |
-| Phase N | Pipeline failure notifications (email/push on `completed_with_errors`) | Not started — deferred, see Known Gaps |
-| Phase O | Cloud-reachable Postgres for hosted Runs/Tokens/Learning-tracker parity | Not started — deferred, see Known Gaps |
+| Phase N | Pipeline failure notifications (email/push on `completed_with_errors`) | Deferred by user request (2026-07-17) — HTML `/summary` digest built instead, see Section 5 |
+| Phase R | Podcast generation errors — malformed script + Kokoro TTS HTTP 400s found 2026-07-17 | Not started — flagged, not investigated |
 
 ### Known Gaps / Deferred to Next Phase
 
@@ -317,13 +318,12 @@ Full visual identity replacing the earlier light indigo/amber theme. See
   is active. Re-enable the prod task if the local prod server (port 3006)
   should track new content automatically.
 - **Generated media (podcast MP3s, hero images) is git-ignored** —
-  `public/course-audio` (~495 MB) and `public/course-assets` (~44 MB) never
-  reach the repo, so a Vercel deployment of this repo has no audio players
-  or hero images. Vercel Blob's free tier (5 GB storage, confirmed
-  2026-07-17) comfortably fits this media — see Phase Q — but the upload
-  script and course-page wiring aren't built yet.
+  `public/course-audio` (~628 MB) and `public/course-assets` (~53 MB) never
+  reach the repo. Code to serve it via Cloudflare R2 instead is complete
+  (Phase Q) — activation just needs the R2 bucket created and
+  `npm run upload:media` run once.
 - **Vercel MCP connector not authorized** — blocks checking actual account
-  usage or provisioning a Blob store directly from a session; needs
+  usage or provisioning resources directly from a session; needs
   authorization via claude.ai connector settings (can't be done from a
   non-interactive session). Vercel CLI (`npm i -g vercel && vercel login`)
   is a connector-independent alternative.

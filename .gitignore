@@ -14,6 +14,7 @@ data/runs/*.json
 data/runs/*.log
 data/raw/tweets/*.json
 data/indexes/*.json
+!data/indexes/graph.json
 data/token-usage.json
 data/transcripts/tmp/
 data/tasks/

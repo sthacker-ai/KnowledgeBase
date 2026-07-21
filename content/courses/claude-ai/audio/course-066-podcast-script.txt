@@ -1,0 +1,29 @@
+[ALEX]: Higgsfield has been discontinued because its creators determined that Seedance 2.0 provides a strictly better value proposition—supporting more programming languages, integrating directly with Claude Code and Codex, and charging only for the tokens you actually consume instead of locking users into a $129‑per‑month subscription with a fixed credit allotment that often went unused or ran out mid‑project.
+
+[SAM]: That pricing shift sounds significant; can you break down exactly how Seedance 2.0’s pay‑as‑you‑go model works and what a typical developer might expect to pay for a modest code‑generation task?
+
+[ALEX]: Seedance 2.0 bills $0.04 for every 10,000 tokens generated, where a token roughly corresponds to four characters of English text; if you ask for a 150‑line Python script that totals about 30,000 tokens, the cost would be $0.12, and you only incur that charge when the request is made, with no minimum monthly commitment or wasted credits.
+
+[SAM]: You mentioned direct integration with Claude Code or Codex—how does that integration eliminate the need for a separate subscription, and what does the user experience look like when invoking Seedance 2.0 from those environments?
+
+[ALEX]: When you have Claude Code or Codex enabled, Seedance 2.0 appears as an available model option; you simply select it, write your prompt in the usual chat interface, and the underlying API call is handled automatically, so there’s no extra login, no separate billing portal, and no need to manage a distinct Higgsfield account or credit balance.
+
+[SAM]: Which programming languages does Seedance 2.0 actually support, and could you give a couple of concrete examples where a developer might prefer it over writing the code manually?
+
+[ALEX]: Seedance 2.0 covers Python, Java, C++, JavaScript, TypeScript, and Go; for instance, you could ask it to generate a pandas‑based data‑cleaning pipeline that reads a CSV, drops duplicates and fills missing values, or request a Java class that implements a binary search tree with insert, delete, and traversal methods, saving you the boilerplate and letting you focus on logic tweaks.
+
+[SAM]: Walk me through the exact steps a user would take to generate code with Seedance 2.0, from opening the tool to reviewing the output.
+
+[ALEX]: First, open Claude Code or Codex and ensure the Seedance 2.0 model is selected; second, specify the target language and a clear problem statement, such as “Write a JavaScript function that validates an email address using RFC 5322 rules”; third, submit the prompt and wait for the model to return the code snippet; fourth, examine the output for correctness, add any needed imports or error handling, and run unit tests to confirm behavior before merging.
+
+[SAM]: What are the main pitfalls or safety checks developers should keep in mind when relying on AI‑generated code, especially for production‑critical systems?
+
+[ALEX]: Always verify that the generated code does not introduce unintended side effects—like silent data loss or insecure API calls—check that comments and docstrings accurately reflect the functionality, and treat the output as a starting point rather than a final product, applying thorough code review and testing before any deployment where failure could cause financial or safety harm.
+
+[SAM]: If Higgsfield offered similar language support, why couldn’t its subscription model compete with Seedance 2.0’s approach, especially for teams that might prefer predictable monthly costs?
+
+[ALEX]: Higgsfield’s $129‑per‑month plan came with a fixed credit quota that was difficult to estimate accurately; teams often either overpaid for unused credits or hit the limit mid‑sprint and had to purchase extra packs, creating friction and unpredictable expenses, whereas Seedance 2.0’s token‑based billing aligns cost directly with actual usage, offering both transparency and scalability.
+
+[SAM]: For a developer who’s just heard about Seedance 2.0, what practical advice would you give to start using it effectively without falling into common traps?
+
+[ALEX]: Begin with small, well‑scoped prompts to gauge token consumption and output quality, always run the generated code through your existing test suite, keep a log of prompts

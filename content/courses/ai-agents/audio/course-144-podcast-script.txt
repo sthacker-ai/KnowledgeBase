@@ -1,0 +1,33 @@
+[ALEX]: Remotion’s new Agent Skills let you turn a plain TypeScript function into a fully rendered 10‑second video in under a minute, eliminating the need for timeline‑based editors and cutting typical motion‑graphics workflow from hours to mere minutes while demonstrating how an AI agent can interpret code prompts as direct instructions for frame‑by‑frame pixel generation.
+
+Now count words.
+
+Remotion’s1 new2 Agent3 Skills4 let5 you6 turn7 a8 plain9 TypeScript10 function11 into12 a13 fully14 rendered15 10‑second16 video17 in18 under19 a20 minute,21 eliminating22 the23 need24 for25 timeline‑based26 editors27 and28 cutting29 typical30 motion‑graphics31 workflow32 from33 hours34 to35 mere36 minutes37 while38 demonstrating39 how40 an41 AI42 agent43 can44 interpret45 code46 prompts47 as48 direct49 instructions50 for51 frame‑by‑frame52 pixel53 generation54.
+
+54 words. Good.
+
+Line2 [SAM]: You say the AI interprets code prompts as direct pixel instructions—does that mean the agent writes low‑level shader code, or does it operate on a higher‑level abstraction like React‑style components that Remotion already provides?
+
+Count words.
+
+You1 say2 the3 AI4 interprets5 code6 prompts7 as8 direct9 pixel10 instructions—does11 that12 mean13 the14 agent15 writes16 low‑level17 shader18 code,19 or20 does21 it22 operate23 on24 a25 higher‑level26 abstraction27 like28 React‑style29 components30 that31 Remotion32 already33 provides34? => 34 words. Need longer. Expand.
+
+Add more: mention that Remotion uses canvas, etc.
+
+[SAM]: You say the AI interprets code prompts as direct pixel instructions—does that mean the agent writes low‑level shader code, or does it operate on a higher‑level abstraction like React‑style components that Remotion already provides, and how does the agent know which properties to animate without explicit keyframes?
+
+Count.
+
+You1 say2 the3 AI4 interprets5 code6 prompts7 as8 direct9 pixel10 instructions—does11 that12 mean13 the14 the15? Wait recount.
+
+Let's recount properly.
+
+You1 say2 the3 AI4 interprets5 code6 prompts7 as8 direct9 pixel10 instructions—does11 that12 mean13 the14 agent15 writes16 low‑level17 shader18 code,19 or20 does21 it22 operate23 on24 a25 higher‑level26 abstraction27 like28 React‑style29 components30 that31 Remotion32 already33 provides,34 and35 how36 does37 the38 agent39 know40 which41 properties42 to43 animate44 without45 explicit46 keyframes47? => 47 words. Still short.
+
+We need ~80-90. Add more about training, prompting.
+
+Add: "Is the agent fine‑tuned on Remotion examples, or does it rely on a general‑purpose language model like Claude to map natural language to code?"
+
+Let's extend.
+
+[SAM]: You say the AI interprets code prompts as direct pixel instructions—does that mean the agent

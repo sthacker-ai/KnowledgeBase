@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "built_at": "2026-07-21T08:11:13.658Z",
-  "node_count": 697,
-  "edge_count": 1271,
+  "built_at": "2026-07-22T08:09:22.196Z",
+  "node_count": 716,
+  "edge_count": 1314,
   "nodes": [
     {
       "id": "topic:claude-ai",
@@ -30,7 +30,7 @@
       "type": "topic",
       "slug": "finance",
       "label": "Finance",
-      "source_count": 42
+      "source_count": 43
     },
     {
       "id": "topic:startup",
@@ -373,6 +373,27 @@
       "type": "topic",
       "slug": "chinese-ai-companies",
       "label": "Chinese AI Companies",
+      "source_count": 1
+    },
+    {
+      "id": "topic:open-source-tools",
+      "type": "topic",
+      "slug": "open-source-tools",
+      "label": "Open Source Tools",
+      "source_count": 1
+    },
+    {
+      "id": "topic:voice-ai",
+      "type": "topic",
+      "slug": "voice-ai",
+      "label": "Voice AI",
+      "source_count": 1
+    },
+    {
+      "id": "topic:video-production",
+      "type": "topic",
+      "slug": "video-production",
+      "label": "Video Production",
       "source_count": 1
     },
     {
@@ -3175,6 +3196,42 @@
       "processing_status": "course_generated"
     },
     {
+      "id": "source:2079240965529931927",
+      "type": "source",
+      "tweet_id": "2079240965529931927",
+      "title": "2079240965529931927.md",
+      "author_handle": "rammcodes",
+      "topic_slug": "open-source-tools",
+      "processing_status": "course_generated"
+    },
+    {
+      "id": "source:2079273584959328589",
+      "type": "source",
+      "tweet_id": "2079273584959328589",
+      "title": "2079273584959328589.md",
+      "author_handle": "googlegemma",
+      "topic_slug": "voice-ai",
+      "processing_status": "course_generated"
+    },
+    {
+      "id": "source:2079399049388798160",
+      "type": "source",
+      "tweet_id": "2079399049388798160",
+      "title": "2079399049388798160.md",
+      "author_handle": "PeterLBrandt",
+      "topic_slug": "finance",
+      "processing_status": "course_generated"
+    },
+    {
+      "id": "source:2079459279552286905",
+      "type": "source",
+      "tweet_id": "2079459279552286905",
+      "title": "2079459279552286905.md",
+      "author_handle": "enepty",
+      "topic_slug": "video-production",
+      "processing_status": "course_generated"
+    },
+    {
       "id": "course:2076667968033894883",
       "type": "course",
       "tweet_id": "2076667968033894883",
@@ -3956,7 +4013,7 @@
       "type": "course",
       "tweet_id": "2013626968386765291",
       "topic_slug": "ai-agents",
-      "file": "content/courses/ai-agents/course-143.md"
+      "file": "content/courses/ai-agents/course-144.md"
     },
     {
       "id": "course:2061070268479721483",
@@ -4708,6 +4765,69 @@
       "file": "content/courses/finance/course-057.md"
     },
     {
+      "id": "course:2079399049388798160",
+      "type": "course",
+      "tweet_id": "2079399049388798160",
+      "topic_slug": "finance",
+      "file": "content/courses/finance/course-058.md"
+    },
+    {
+      "id": "topic:premium-pricing-strategies-in-finance-charging-10000-per-person-for-highvalue-offerings",
+      "type": "topic",
+      "slug": "premium-pricing-strategies-in-finance-charging-10000-per-person-for-highvalue-offerings",
+      "label": "Premium Pricing Strategies in Finance: Charging $10,000 Per Person for High‑Value Offerings",
+      "source_count": 0
+    },
+    {
+      "id": "topic:mastering-the-compound-fulcrum-advanced-chart-patterns-and-compounding-in-financial-markets",
+      "type": "topic",
+      "slug": "mastering-the-compound-fulcrum-advanced-chart-patterns-and-compounding-in-financial-markets",
+      "label": "Mastering the Compound Fulcrum: Advanced Chart Patterns and Compounding in Financial Markets",
+      "source_count": 0
+    },
+    {
+      "id": "topic:the-ai-powered-retirement-accelerator-structuring-your-path-to-financial-freedom",
+      "type": "topic",
+      "slug": "the-ai-powered-retirement-accelerator-structuring-your-path-to-financial-freedom",
+      "label": "The AI-Powered Retirement Accelerator: Structuring Your Path to Financial Freedom",
+      "source_count": 0
+    },
+    {
+      "id": "topic:the-failure-of-wall-street-models-an-introduction-to-probabilistic-thinking-and-antifragility",
+      "type": "topic",
+      "slug": "the-failure-of-wall-street-models-an-introduction-to-probabilistic-thinking-and-antifragility",
+      "label": "The Failure of Wall Street Models: An Introduction to Probabilistic Thinking and Antifragility",
+      "source_count": 0
+    },
+    {
+      "id": "topic:permutation-tests-for-validating-trading-strategies-separating-real-edge-from-data-mining",
+      "type": "topic",
+      "slug": "permutation-tests-for-validating-trading-strategies-separating-real-edge-from-data-mining",
+      "label": "Permutation Tests for Validating Trading Strategies: Separating Real Edge from Data Mining",
+      "source_count": 0
+    },
+    {
+      "id": "topic:building-institutional-level-quantitative-trading-systems-strategy-documentation-execution-and-performance-tracking",
+      "type": "topic",
+      "slug": "building-institutional-level-quantitative-trading-systems-strategy-documentation-execution-and-performance-tracking",
+      "label": "Building Institutional-Level Quantitative Trading Systems: Strategy Documentation, Execution, and Performance Tracking",
+      "source_count": 0
+    },
+    {
+      "id": "topic:the-blackscholes-formula-ltcm-collapse-and-modern-quant-edge-lessons-from-a-46-billion-failure",
+      "type": "topic",
+      "slug": "the-blackscholes-formula-ltcm-collapse-and-modern-quant-edge-lessons-from-a-46-billion-failure",
+      "label": "The Black‑Scholes Formula, LTCM Collapse, and Modern Quant Edge: Lessons from a $4.6 Billion Failure",
+      "source_count": 0
+    },
+    {
+      "id": "topic:starting-over-with-150-what-to-avoid-and-what-to-do-instead-in-finance",
+      "type": "topic",
+      "slug": "starting-over-with-150-what-to-avoid-and-what-to-do-instead-in-finance",
+      "label": "Starting Over with $150: What to Avoid and What to Do Instead in Finance",
+      "source_count": 0
+    },
+    {
       "id": "course:2067233860287627359",
       "type": "course",
       "tweet_id": "2067233860287627359",
@@ -4986,6 +5106,13 @@
       "slug": "course-1-open-source-financial-technology",
       "label": "course-1-open-source-financial-technology",
       "source_count": 0
+    },
+    {
+      "id": "course:2079240965529931927",
+      "type": "course",
+      "tweet_id": "2079240965529931927",
+      "topic_slug": "open-source-tools",
+      "file": "content/courses/open-source-tools/course-001.md"
     },
     {
       "id": "course:2054408426328096837",
@@ -5448,6 +5575,20 @@
       "tweet_id": "2076799705124597788",
       "topic_slug": "video-optimization",
       "file": "content/courses/video-optimization/course-002.md"
+    },
+    {
+      "id": "course:2079459279552286905",
+      "type": "course",
+      "tweet_id": "2079459279552286905",
+      "topic_slug": "video-production",
+      "file": "content/courses/video-production/course-001.md"
+    },
+    {
+      "id": "course:2079273584959328589",
+      "type": "course",
+      "tweet_id": "2079273584959328589",
+      "topic_slug": "voice-ai",
+      "file": "content/courses/voice-ai/course-001.md"
     },
     {
       "id": "course:2078111285535764963",
@@ -6933,6 +7074,26 @@
       "type": "belongs_to"
     },
     {
+      "source": "source:2079240965529931927",
+      "target": "topic:open-source-tools",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2079273584959328589",
+      "target": "topic:voice-ai",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2079399049388798160",
+      "target": "topic:finance",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2079459279552286905",
+      "target": "topic:video-production",
+      "type": "belongs_to"
+    },
+    {
       "source": "course:2076667968033894883",
       "target": "topic:ai-adoption",
       "type": "belongs_to"
@@ -8086,56 +8247,6 @@
       "source": "source:2013626968386765291",
       "target": "course:2013626968386765291",
       "type": "has_course"
-    },
-    {
-      "source": "topic:ai-agents",
-      "target": "topic:claude-ai",
-      "type": "related_topic"
-    },
-    {
-      "source": "topic:ai-agents",
-      "target": "topic:software-engineering",
-      "type": "related_topic"
-    },
-    {
-      "source": "topic:ai-agents",
-      "target": "topic:finance",
-      "type": "related_topic"
-    },
-    {
-      "source": "topic:ai-agents",
-      "target": "topic:startup",
-      "type": "related_topic"
-    },
-    {
-      "source": "topic:ai-agents",
-      "target": "topic:health-wellness",
-      "type": "related_topic"
-    },
-    {
-      "source": "topic:ai-agents",
-      "target": "topic:uncategorized",
-      "type": "related_topic"
-    },
-    {
-      "source": "topic:ai-agents",
-      "target": "topic:machine-learning",
-      "type": "related_topic"
-    },
-    {
-      "source": "topic:ai-agents",
-      "target": "topic:negotiation",
-      "type": "related_topic"
-    },
-    {
-      "source": "topic:ai-agents",
-      "target": "topic:data-engineering",
-      "type": "related_topic"
-    },
-    {
-      "source": "topic:ai-agents",
-      "target": "topic:openai-codex",
-      "type": "related_topic"
     },
     {
       "source": "course:2061070268479721483",
@@ -9868,13 +9979,68 @@
       "type": "has_course"
     },
     {
+      "source": "course:2079399049388798160",
+      "target": "topic:finance",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2079399049388798160",
+      "target": "course:2079399049388798160",
+      "type": "has_course"
+    },
+    {
       "source": "topic:finance",
-      "target": "topic:machine-learning",
+      "target": "topic:premium-pricing-strategies-in-finance-charging-10000-per-person-for-highvalue-offerings",
       "type": "related_topic"
     },
     {
       "source": "topic:finance",
-      "target": "topic:data-engineering",
+      "target": "topic:mastering-the-compound-fulcrum-advanced-chart-patterns-and-compounding-in-financial-markets",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:finance",
+      "target": "topic:the-ai-powered-retirement-accelerator-structuring-your-path-to-financial-freedom",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:finance",
+      "target": "topic:the-failure-of-wall-street-models-an-introduction-to-probabilistic-thinking-and-antifragility",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:finance",
+      "target": "topic:permutation-tests-for-validating-trading-strategies-separating-real-edge-from-data-mining",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:finance",
+      "target": "topic:building-institutional-level-quantitative-trading-systems-strategy-documentation-execution-and-performance-tracking",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:finance",
+      "target": "topic:the-blackscholes-formula-ltcm-collapse-and-modern-quant-edge-lessons-from-a-46-billion-failure",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:finance",
+      "target": "topic:starting-over-with-150-what-to-avoid-and-what-to-do-instead-in-finance",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:finance",
+      "target": "topic:claude-ai",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:finance",
+      "target": "topic:ai-agents",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:finance",
+      "target": "topic:software-engineering",
       "type": "related_topic"
     },
     {
@@ -9884,12 +10050,27 @@
     },
     {
       "source": "topic:finance",
+      "target": "topic:health-wellness",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:finance",
+      "target": "topic:uncategorized",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:finance",
+      "target": "topic:machine-learning",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:finance",
       "target": "topic:negotiation",
       "type": "related_topic"
     },
     {
       "source": "topic:finance",
-      "target": "topic:software-engineering",
+      "target": "topic:data-engineering",
       "type": "related_topic"
     },
     {
@@ -10610,6 +10791,66 @@
     {
       "source": "topic:open-source-finance-tools",
       "target": "topic:course-1-open-source-financial-technology",
+      "type": "related_topic"
+    },
+    {
+      "source": "course:2079240965529931927",
+      "target": "topic:open-source-tools",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2079240965529931927",
+      "target": "course:2079240965529931927",
+      "type": "has_course"
+    },
+    {
+      "source": "topic:open-source-tools",
+      "target": "topic:software-engineering",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:open-source-tools",
+      "target": "topic:machine-learning",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:open-source-tools",
+      "target": "topic:data-engineering",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:open-source-tools",
+      "target": "topic:startup",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:open-source-tools",
+      "target": "topic:finance",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:open-source-tools",
+      "target": "topic:ai-agents",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:open-source-tools",
+      "target": "topic:claude-ai",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:open-source-tools",
+      "target": "topic:negotiation",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:open-source-tools",
+      "target": "topic:health-wellness",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:open-source-tools",
+      "target": "topic:uncategorized",
       "type": "related_topic"
     },
     {
@@ -11695,6 +11936,121 @@
     {
       "source": "topic:video-optimization",
       "target": "topic:uncategorized",
+      "type": "related_topic"
+    },
+    {
+      "source": "course:2079459279552286905",
+      "target": "topic:video-production",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2079459279552286905",
+      "target": "course:2079459279552286905",
+      "type": "has_course"
+    },
+    {
+      "source": "topic:video-production",
+      "target": "topic:software-engineering",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:video-production",
+      "target": "topic:machine-learning",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:video-production",
+      "target": "topic:ai-agents",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:video-production",
+      "target": "topic:data-engineering",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:video-production",
+      "target": "topic:finance",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:video-production",
+      "target": "topic:startup",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:video-production",
+      "target": "topic:health-wellness",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:video-production",
+      "target": "topic:negotiation",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:video-production",
+      "target": "topic:claude-ai",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:video-production",
+      "target": "topic:uncategorized",
+      "type": "related_topic"
+    },
+    {
+      "source": "course:2079273584959328589",
+      "target": "topic:voice-ai",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2079273584959328589",
+      "target": "course:2079273584959328589",
+      "type": "has_course"
+    },
+    {
+      "source": "topic:voice-ai",
+      "target": "topic:machine-learning",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:voice-ai",
+      "target": "topic:ai-agents",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:voice-ai",
+      "target": "topic:software-engineering",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:voice-ai",
+      "target": "topic:data-engineering",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:voice-ai",
+      "target": "topic:startup",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:voice-ai",
+      "target": "topic:health-wellness",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:voice-ai",
+      "target": "topic:negotiation",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:voice-ai",
+      "target": "topic:claude-ai",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:voice-ai",
+      "target": "topic:finance",
       "type": "related_topic"
     },
     {

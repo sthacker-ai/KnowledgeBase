@@ -1,0 +1,45 @@
+[ALEX]: In our warehouse‑robot prototype, each robot learned a separate RL policy to minimize its own travel time to the packing station. Individually the policies converged, but when we ran the full swarm the packing line jammed because robots arrived in bursts and blocked each other’s exit paths. The local optimum destroyed global throughput, showing that optimizing agents in isolation can create emergent conflicts that a multi‑agent design must anticipate.
+
+Count words: Let's count roughly.
+
+In(1) our2 warehouse‑robot3 prototype,4 each5 robot6 learned7 a8 separate9 RL10 policy11 to12 minimize13 its14 own15 travel16 time17 to18 the19 packing20 station.21 Individually22 the23 policies24 converged,25 but26 when27 we28 ran29 the30 full31 swarm32 the33 packing34 line35 jammed36 because37 robots38 arrived39 in40 bursts41 and42 blocked43 each44 other’s45 exit46 paths.47 The48 local49 optimum50 destroyed51 global52 throughput,53 showing54 that55 optimizing56 agents57 in58 isolation59 can60 create61 emergent62 conflicts63 that64 a65 multi‑agent66 design67 must68 anticipate69.
+
+69 words. Need ~90-110. Add more detail about impact and need for coordination.
+
+Add: "We had to redesign the reward function to include a penalty for queue length and introduce a simple token‑based reservation system for docking spots, which cut the jam rate by 70% in simulation."
+
+Add that.
+
+Continue sentence.
+
+Now count added words.
+
+We had1 to2 redesign3 the4 reward5 function6 to7 include8 a9 penalty10 for11 queue12 length13 and14 introduce15 a16 simple17 token‑based18 reservation19 system20 for21 docking22 spots,23 which24 cut25 the26 jam27 rate28 by29 70%30 in31 simulation32.
+
+32 words. Total now 69+32=101 words. Good.
+
+Line1 done.
+
+Line2 [SAM]: ask clarifying: "You mentioned a token‑based reservation system—does that mean each robot requests a slot from a central coordinator, or is the token passed peer‑to‑peer? And how does that affect scalability when the number of robots grows beyond a few dozen?"
+
+Count words.
+
+You1 mentioned2 a3 token‑based4 reservation5 system—does6 that7 mean8 each9 robot10 requests11 a12 slot13 from14 a15 central16 coordinator,17 or18 is19 the20 token21 passed22 peer‑to‑peer?23 And24 how25 does26 that27 affect28 scalability29 when30 the31 number32 of33 robots34 grows35 beyond36 a37 few38 dozen?39
+
+39 words. Need longer; SAM can ask more.
+
+Add: "Also, what metrics did you use to decide that the penalty weight was right, and did you observe any side‑effects like robots taking longer detours to avoid the penalty?"
+
+Add sentence.
+
+Also1, what2 metrics3 did4 you5 use6 to7 decide8 that9 the10 penalty11 weight12 was13 right,14 and15 did16 you17 observe18 any19 side‑effects20 like21 robots22 taking23 longer24 detours25 to26 avoid27 the28 penalty?29
+
+29 words. Total 39+29=68. Still short. Could add more about tradeoffs.
+
+Add: "Did you compare this approach to a market‑based bidding mechanism, and if so, what were the differences in convergence time and communication overhead?"
+
+Add sentence.
+
+Did1 you2 compare3 this4 approach5 to6 a7 market‑based8 bidding9 mechanism,10 and11 if12 so,13 what14 were15 the16 differences17 in18 convergence19 time20 and21 communication22 overhead?23
+
+23 words

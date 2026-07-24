@@ -1,0 +1,31 @@
+[ALEX]: In production, a single LLM‑based agent frequently hits a wall when it needs to maintain state across multi‑step workflows because its context window is limited and it cannot reliably invoke external tools without an explicit orchestration layer that tracks progress and handles failures.
+
+[SAM]: So the limitation isn’t just the model’s size but the lack of a structured way to persist information and manage side effects between calls? How does that manifest in a real‑world task?
+
+[ALEX]: Take an automated financial‑reporting pipeline: the agent must pull data from several APIs, run calculations, apply regulatory rules, and generate a narrative. After the first API call, the context window is already filled with raw JSON, leaving little room for the reasoning steps needed later, and any tool call forces a re‑prompt that loses intermediate results unless we store them elsewhere.
+
+[SAM]: If we store intermediate results outside the model, what does that look like architecturally? Are we just writing to a database, or is there a more agent‑centric pattern?
+
+[ALEX]: We treat each persistent piece as a shared memory block that agents can read and write via a well‑defined interface—think of a blackboard where one agent posts extracted data, another posts calculated metrics, and a third reads the board to draft the narrative. The agents themselves remain stateless; the blackboard holds the workflow state.
+
+[SAM]: That sounds like it adds latency because every step now involves a read/write to an external store. How do we balance that against the gains in reliability and scalability?
+
+[ALEX]: The latency cost is usually modest compared to the cost of a failed workflow or a model hallucination. By moving state out of the model, we also gain horizontal scalability: we can run multiple instances of the same agent type in parallel, each working on a different slice of the data while consulting the same blackboard.
+
+[SAM]: Speaking of parallelism, how do we decide which responsibilities go to which agents? Is it purely functional decomposition, or do we consider things like expertise and tool access?
+
+[ALEX]: It’s a mix. We start by breaking the goal into sub‑tasks that have clear inputs and outputs—data collection, validation, analysis, execution. Then we assign each sub‑task to an agent whose toolset and prompt tuning make it naturally suited, like giving a web‑scraping to an agent with browsing APIs and numerical work to one with a code‑execution sandbox.
+
+[SAM]: What happens when an agent’s sub‑task fails? Do we let the whole pipeline abort, or do we build in retry and self‑correction mechanisms at the agent level?
+
+[ALEX]: Each agent monitors its own execution: after a tool call it checks the response for expected shape or error codes, and if something’s off it can retry with altered parameters or escalate to a supervisor agent that re‑plans the remaining steps. This local self‑correction prevents a single mistake from cascading.
+
+[SAM]: You mentioned a supervisor agent—does that imply a hierarchy, or can agents communicate peer‑to‑peer without a central controller?
+
+[ALEX]: Both patterns are useful. Peer‑to‑peer messaging works well for loosely coupled steps where agents only need to exchange results, while a lightweight supervisor or orchestrator shines when we need global view‑based decisions, like reallocating work when an agent becomes overloaded or unavailable.
+
+[SAM]: Building these communication channels sounds like we need to define contracts—what messages look like, versioning, serialization. Is there a recommended approach to keep those contracts from becoming a bottleneck?
+
+[ALEX]: We treat each agent as a microservice with a versioned API (REST, gRPC, or message‑queue topics). By using schema registries and backward‑compatible updates, we can evolve individual agents without breaking the whole system, and we can monitor throughput and latency per channel to spot bottlenecks early.
+
+[SAM]: Finally, how do we verify that the multi

@@ -1,0 +1,17 @@
+[ALEX]: Switching from ElevenLabs to the open-source TTS engine eliminates monthly fees, but it shifts the burden of installing the REST API or Python library. You can pull own voice using publicly available or fine‑tune a pretrained model with a few minutes of recorded audio. The biggest win from swapping ElevenLabs for Voxilica is dropping the subscription to zero, but you inherit the responsibility of model management. Voxilica runs on WaveNet‑style vocoders and lets you host the service yourself, so you pay only for compute. For a small podcast that needs 30 minutes of narration per week, a modest GPU instance can synthesize the audio for under $5 a month, whereas ElevenLabs would charge $22 for the same volume. The trade‑off is you must handle voice cloning or fine‑tuning yourself, and latency can be higher if you don’t optimize the pipeline.
+
+Word count? Let's count roughly: The(1) biggest2 win3 from4 swapping5 ElevenLabs6 for7 Voxilica8 is9 dropping10 the11 subscription12 to13 zero,14 but15 you16 inherit17 the18 responsibility19 of20 model21 management.22 Voxilica23 runs24 on25 WaveNet‑style26 vocoders27 and28 lets29 you30 host31 the32 service33 yourself,34 so35 you36 pay37 only38 for39 compute.40 For41 a42 small43 podcast44 that45 needs46 3047 minutes48 of49 narration50 per51 week,52 a53 modest54 GPU55 instance56 can57 synthesize58 the59 audio60 for61 under62 $563 a64 month,65 whereas66 ElevenLabs67 would68 charge69 $2270 for71 the72 same73 volume.74 The75 trade‑off76 is77 you78 must79 handle80 voice81 cloning82 or83 fine‑tuning84 yourself,85 and86 latency87 can88 be89 higher90 if91 you92 don’t93 optimize94 the95 pipeline96.
+
+96 words. Good.
+
+Turn2 Sam:
+
+[SAM]: That sounds promising, but how steep is the learning curve for someone who’s never trained a TTS model? Can you walk through the exact steps—from installing Voxilica to generating a voice‑over for a YouTube intro—without assuming prior ML experience?
+
+Word count: That1 sounds2 promising,3 but4 how5 steep6 is7 the8 learning9 curve10 for11 someone12 who’s13 never14 trained15 a16 TTS17 model?18 Can19 you20 walk21 through22 the23 exact24 steps—from25 installing26 Voxilica27 to28 generating29 a30 voice‑over31 for32 a33 YouTube34 intro—without35 assuming36 prior37 ML38 experience39?
+
+39 words.
+
+Turn3 Alex:
+
+[ALEX]: Start with a clean Ubuntu 22.04 box, install Python 3.11, then pip install voxilica[torch] which pulls the FastPitch and HiFi‑GAN weights. Grab a public domain dataset like LJSpeech, point the training script at a 10‑minute clip of your own voice, and run fine‑tune for about two epochs; the script outputs a checkpoint you can load in the inference API. A single POST to /tts with JSON {“text”: “Welcome to my channel”, “voice_id”: “my_voice”} returns a wav file you can drop into Premiere. The whole pipeline can be scripted in a Bash file that runs on a cheap VPS with a

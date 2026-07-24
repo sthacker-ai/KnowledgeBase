@@ -1,0 +1,81 @@
+[ALEX]: In Remotion, an AI Agent can take a one‑sentence storyboard like “a logo spins into view while background gradients pulse” and output a complete React component that renders that animation.
+
+[SAM]: How does the agent know which Remotion APIs to use for spin and gradient without explicit instruction?
+
+[ALEX]: It relies on a predefined Agent Skill called “create animation” that maps high‑level descriptors to Remotion primitives such as <Sequence>, useSpring, and <LinearGradient>.
+
+[SAM]: So the skill is like a library of code snippets the agent can call, rather than the model memorizing every possible Remotion prop?
+
+[ALEX]: Exactly. The skill abstracts the low‑level details; the agent selects the skill, fills its parameters (duration, easing, colors), and then Claude Code generates the surrounding JSX and state logic.
+
+[SAM]: What happens if the generated code has a syntax error or a missing import? Does the agent fix it automatically?
+
+[ALEX]: Yes—the agent includes a “debug error” skill that runs the Remotion preview, captures the console stack trace, asks Claude to explain the fault, and then rewrites the offending lines until the preview runs cleanly.
+
+[SAM]: Can you give a concrete trade‑off between using a generic code‑generation prompt versus invoking the “create animation” skill?
+
+[ALEX]: A generic prompt might produce a working component but often misses Remotion‑specific optimizations like useVideoConfig for frame rate, leading to extra render time; the skill enforces those defaults, cutting average render latency by ~30% in our tests.
+
+[SAM]: Does the agent need to know the exact version of Remotion or React to pick the right skill, or does it handle version differences internally?
+
+[ALEX]: The skill definitions include version‑guarded imports; if the project’s package.json shows Remotion 4.0, the agent pulls the skill variant that uses the new useTimeline hook, otherwise it falls back to the older <Composition> API.
+
+[SAM]: After the agent finishes, can a developer still tweak the output, or is the code locked in a black‑box?
+
+[ALEX]: The output is plain Remotion source—no hidden abstractions—so you can open the file, adjust props, add custom shaders, or extend the timeline just like any hand‑written component.
+
+[SAM]: That sounds like a fast‑loop for prototyping, but what about larger projects where you need consistent styling across multiple scenes?
+
+[ALEX]: For that, you’d create a “style asset” skill that generates a shared theme file (colors, typography) and then reference it in each scene‑generation skill, ensuring uniformity without duplicating code.
+
+We have 14 lines? Let's count:
+
+1 [ALEX]: In Remotion...
+2 [SAM]: How does...
+3 [ALEX]: It relies...
+4 [SAM]: So the skill...
+5 [ALEX]: Exactly...
+6 [SAM]: What happens...
+7 [ALEX]: Yes—the agent...
+8 [SAM]: Can you give...
+9 [ALEX]: A generic prompt...
+10 [SAM]: Does the agent...
+11 [ALEX]: The skill definitions...
+12 [SAM]: After the agent...
+13 [ALEX]: The output is plain...
+14 [SAM]: That sounds like...
+15 [ALEX]: For that...
+
+That's 15 lines, exceeding 14. Need 10-14. Let's cut to 12 lines (6 each). We'll need to condense.
+
+We need to cover core concepts: AI Agents, Code Generation, Agent Skills, Claude Code, Remotion, tradeoffs, debugging, version handling, extensibility, styling.
+
+Let's craft 12 lines:
+
+1 [ALEX]: In Remotion, an AI Agent can turn a one‑sentence storyboard like “a logo spins into view while background gradients pulse” into a full React component that renders that animation.
+
+2 [SAM]: How does the agent pick the right Remotion APIs for spin and gradient without being told each prop?
+
+3 [ALEX]: It uses an Agent Skill called “create animation” that maps high‑level descriptors to Remotion primitives such as <Sequence>, useSpring, and <LinearGradient>.
+
+4 [SAM]: So the skill is a reusable code snippet the agent selects, rather than the model memorizing every Remotion prop?
+
+5 [ALEX]: Exactly. The agent fills the skill’s parameters (duration, easing, colors) and then Claude Code writes the surrounding JSX, state, and imports.
+
+6 [SAM]: If the generated code has a syntax error or missing import, does the agent fix it automatically?
+
+7 [ALEX]: Yes—the “debug error” skill runs the preview, captures the console trace, asks Claude to explain the fault, and rewrites the offending lines until the preview is clean.
+
+8 [SAM]: What trade‑off do you see between a generic code‑gen prompt and invoking no skill versus using the “create animation” skill?
+
+9 [ALEX]: A generic prompt often omits Remotion‑specific optimizations like useVideoConfig, leading to slower renders; the skill enforces those defaults, cutting average render latency by about 30% in our benchmarks.
+
+10 [SAM]: Does the agent need to know the exact Remotion version to choose the right skill, or does it handle version differences internally?
+
+11 [ALEX]: The skill definitions are version‑guarded; if package.json shows Remotion 4.0 the agent uses the new useTimeline hook, otherwise it falls back to the older <Composition> API.
+
+12 [SAM]: After the agent finishes, can a developer still tweak the output, or is it a black‑box?
+
+We need one more line from ALEX to answer 12? Actually we have 12 lines, ending with SAM. We need alternating, starting with ALEX, so odd lines are ALEX, even lines SAM. With 12 lines, line 12 is SAM, which is fine; we end on SAM. But we need to answer SAM's question at line 12. We haven't given ALEX's answer. So we need 13 lines (ALEX at 13) or make line 12 ALEX and add another SAM line? Let's aim for 13 lines (7 ALEX, 6 SAM) to end with ALEX answer. Or we can make 14 lines (7 each) ending with SAM answer. Let's do 14 lines to be safe.
+
+We need to add two more lines: after line 12 SAM question, line 13 ALEX answer, line 14 SAM

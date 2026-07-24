@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "built_at": "2026-07-22T08:09:22.196Z",
-  "node_count": 716,
-  "edge_count": 1314,
+  "built_at": "2026-07-24T14:17:19.121Z",
+  "node_count": 727,
+  "edge_count": 1346,
   "nodes": [
     {
       "id": "topic:claude-ai",
@@ -16,7 +16,7 @@
       "type": "topic",
       "slug": "ai-agents",
       "label": "AI Agents",
-      "source_count": 103
+      "source_count": 105
     },
     {
       "id": "topic:software-engineering",
@@ -51,7 +51,7 @@
       "type": "topic",
       "slug": "uncategorized",
       "label": "Uncategorized",
-      "source_count": 27
+      "source_count": 29
     },
     {
       "id": "topic:machine-learning",
@@ -394,6 +394,13 @@
       "type": "topic",
       "slug": "video-production",
       "label": "Video Production",
+      "source_count": 1
+    },
+    {
+      "id": "topic:software-alternatives",
+      "type": "topic",
+      "slug": "software-alternatives",
+      "label": "Software Alternatives",
       "source_count": 1
     },
     {
@@ -3232,6 +3239,51 @@
       "processing_status": "course_generated"
     },
     {
+      "id": "source:2079555200444944811",
+      "type": "source",
+      "tweet_id": "2079555200444944811",
+      "title": "2079555200444944811.md",
+      "author_handle": "gregisenberg",
+      "topic_slug": "ai-agents",
+      "processing_status": "course_generated"
+    },
+    {
+      "id": "source:2079923172774928556",
+      "type": "source",
+      "tweet_id": "2079923172774928556",
+      "title": "2079923172774928556.md",
+      "author_handle": "Freyabuilds",
+      "topic_slug": "software-alternatives",
+      "processing_status": "course_generated"
+    },
+    {
+      "id": "source:2079943830024188105",
+      "type": "source",
+      "tweet_id": "2079943830024188105",
+      "title": "2079943830024188105.md",
+      "author_handle": "petergyang",
+      "topic_slug": "uncategorized",
+      "processing_status": "course_generated"
+    },
+    {
+      "id": "source:2080019730442965502",
+      "type": "source",
+      "tweet_id": "2080019730442965502",
+      "title": "2080019730442965502.md",
+      "author_handle": "shengkun_ye",
+      "topic_slug": "uncategorized",
+      "processing_status": "course_generated"
+    },
+    {
+      "id": "source:2080020055836832052",
+      "type": "source",
+      "tweet_id": "2080020055836832052",
+      "title": "2080020055836832052.md",
+      "author_handle": "MicrosoftLearn",
+      "topic_slug": "ai-agents",
+      "processing_status": "course_generated"
+    },
+    {
       "id": "course:2076667968033894883",
       "type": "course",
       "tweet_id": "2076667968033894883",
@@ -4014,6 +4066,20 @@
       "tweet_id": "2013626968386765291",
       "topic_slug": "ai-agents",
       "file": "content/courses/ai-agents/course-144.md"
+    },
+    {
+      "id": "course:2079555200444944811",
+      "type": "course",
+      "tweet_id": "2079555200444944811",
+      "topic_slug": "ai-agents",
+      "file": "content/courses/ai-agents/course-145.md"
+    },
+    {
+      "id": "course:2080020055836832052",
+      "type": "course",
+      "tweet_id": "2080020055836832052",
+      "topic_slug": "ai-agents",
+      "file": "content/courses/ai-agents/course-147.md"
     },
     {
       "id": "course:2061070268479721483",
@@ -5164,6 +5230,13 @@
       "source_count": 0
     },
     {
+      "id": "course:2079923172774928556",
+      "type": "course",
+      "tweet_id": "2079923172774928556",
+      "topic_slug": "software-alternatives",
+      "file": "content/courses/software-alternatives/course-001.md"
+    },
+    {
       "id": "course:2056837021742604755",
       "type": "course",
       "tweet_id": "2056837021742604755",
@@ -5568,6 +5641,20 @@
       "tweet_id": "2078551452201754980",
       "topic_slug": "uncategorized",
       "file": "content/courses/uncategorized/course-032.md"
+    },
+    {
+      "id": "course:2079943830024188105",
+      "type": "course",
+      "tweet_id": "2079943830024188105",
+      "topic_slug": "uncategorized",
+      "file": "content/courses/uncategorized/course-035.md"
+    },
+    {
+      "id": "course:2080019730442965502",
+      "type": "course",
+      "tweet_id": "2080019730442965502",
+      "topic_slug": "uncategorized",
+      "file": "content/courses/uncategorized/course-034.md"
     },
     {
       "id": "course:2076799705124597788",
@@ -7094,6 +7181,21 @@
       "type": "belongs_to"
     },
     {
+      "source": "source:2079555200444944811",
+      "target": "topic:ai-agents",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2079923172774928556",
+      "target": "topic:software-alternatives",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2080020055836832052",
+      "target": "topic:ai-agents",
+      "type": "belongs_to"
+    },
+    {
       "source": "course:2076667968033894883",
       "target": "topic:ai-adoption",
       "type": "belongs_to"
@@ -8247,6 +8349,76 @@
       "source": "source:2013626968386765291",
       "target": "course:2013626968386765291",
       "type": "has_course"
+    },
+    {
+      "source": "course:2079555200444944811",
+      "target": "topic:ai-agents",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2079555200444944811",
+      "target": "course:2079555200444944811",
+      "type": "has_course"
+    },
+    {
+      "source": "course:2080020055836832052",
+      "target": "topic:ai-agents",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2080020055836832052",
+      "target": "course:2080020055836832052",
+      "type": "has_course"
+    },
+    {
+      "source": "topic:ai-agents",
+      "target": "topic:claude-ai",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:ai-agents",
+      "target": "topic:software-engineering",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:ai-agents",
+      "target": "topic:finance",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:ai-agents",
+      "target": "topic:startup",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:ai-agents",
+      "target": "topic:health-wellness",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:ai-agents",
+      "target": "topic:uncategorized",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:ai-agents",
+      "target": "topic:machine-learning",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:ai-agents",
+      "target": "topic:negotiation",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:ai-agents",
+      "target": "topic:data-engineering",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:ai-agents",
+      "target": "topic:openai-codex",
+      "type": "related_topic"
     },
     {
       "source": "course:2061070268479721483",
@@ -11044,6 +11216,61 @@
       "type": "related_topic"
     },
     {
+      "source": "course:2079923172774928556",
+      "target": "topic:software-alternatives",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2079923172774928556",
+      "target": "course:2079923172774928556",
+      "type": "has_course"
+    },
+    {
+      "source": "topic:software-alternatives",
+      "target": "topic:software-engineering",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:software-alternatives",
+      "target": "topic:startup",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:software-alternatives",
+      "target": "topic:finance",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:software-alternatives",
+      "target": "topic:machine-learning",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:software-alternatives",
+      "target": "topic:data-engineering",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:software-alternatives",
+      "target": "topic:ai-agents",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:software-alternatives",
+      "target": "topic:health-wellness",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:software-alternatives",
+      "target": "topic:negotiation",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:software-alternatives",
+      "target": "topic:uncategorized",
+      "type": "related_topic"
+    },
+    {
       "source": "course:2056837021742604755",
       "target": "topic:software-engineering",
       "type": "belongs_to"
@@ -11826,6 +12053,26 @@
     {
       "source": "source:2078551452201754980",
       "target": "course:2078551452201754980",
+      "type": "has_course"
+    },
+    {
+      "source": "course:2079943830024188105",
+      "target": "topic:uncategorized",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2079943830024188105",
+      "target": "course:2079943830024188105",
+      "type": "has_course"
+    },
+    {
+      "source": "course:2080019730442965502",
+      "target": "topic:uncategorized",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2080019730442965502",
+      "target": "course:2080019730442965502",
       "type": "has_course"
     },
     {

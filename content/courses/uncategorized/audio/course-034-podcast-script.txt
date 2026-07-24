@@ -1,0 +1,29 @@
+[ALEX]: Higgsfield’s flat $129‑per‑month subscription is now irrelevant because Seedance 2.0 4K can be invoked directly from Claude Code or Codex, charging only $0.04 for every 10 K tokens of model usage instead of locking you into a fixed credit bundle.  
+[SAM]: So the shift is from a subscription‑based credit system to a pure pay‑as‑you‑go token model? How does that actually change the cost for a typical developer who only needs occasional video clips?  
+[ALEX]: Exactly. With Higgsfield you paid $129 regardless of whether you used all 30 credits; if you generated just two 10‑second clips you still spent the full fee. Seedance 2.0 4K bills per token, and a rough estimate is that a 10‑second 4K clip at 30 fps consumes about 250 K tokens, which works out to $0.04 × (250 K/10 K) = $1.00 per clip.  
+[SAM]: That’s a dramatic drop from $4.30 per clip under Higgsfield’s effective rate to $1.00. But how do you actually call the model from Claude Code? Do you need to install a separate SDK or can you use a natural‑language command?  
+[ALEX]: You can stay inside the Claude Code chat and type something like “@seedance generate video ‘a cyberpunk cityscape at dusk, flying cars, 4K, 30 fps, 10 seconds’”. The assistant translates that into an API request to the Seedance endpoint, handles authentication via your Monid account, and returns a downloadable MP4 link directly in the chat.  
+[SAM]: And what about Codex? Is the process similar, or does it require writing code snippets instead of a chat command?  
+[ALEX]: In Codex you’d write a short Python block, for example: 
+```python
+import monid
+video = monid.seedance.generate(
+    prompt="a cyberpunk cityscape at dusk, flying cars, 4K, 30 fps, 10 seconds",
+    resolution="3840x2160",
+    fps=30,
+    duration=10
+)
+video.download("cityscape.mp4")
+```
+The monid library handles token billing automatically, so you never leave the editor.  
+[SAM]: I see. So the token usage is the key metric. How do you estimate token consumption before you run a generation to avoid surprise costs?  
+[ALEX]: Monid provides a tokenizer preview tool. You feed it your prompt and desired parameters, and it returns an estimated token count. For instance, the same cyberpunk prompt estimates 240 K tokens, letting you budget $0.96 before you hit “run”.  
+[SAM]: That’s useful for planning. Are there any trade‑offs in video quality or generation speed compared to Higgsfield’s original Higgsfield outputs?  
+[ALEX]: Seedance 2.0 4K uses a newer diffusion‑based video architecture that improves temporal coherence and can produce longer clips—up to 20 seconds—while maintaining the same 3840×2160 resolution. Generation latency is roughly comparable; a 10‑second clip takes about 45 seconds on the backend, which is similar to Higgsfield’s average.  
+[SAM]: What about the billing granularity? If I generate a 5‑second clip, am I charged for a full 10‑second block, or does it scale linearly with token usage?  
+[ALEX]: It scales linearly. Token consumption is proportional to the number of frames generated, so a 5‑second clip uses roughly half the tokens of a 10‑second clip, halving the cost to about $0.50. There’s no minimum chunk size.  
+[SAM]: That makes experimentation far cheaper. Suppose a research team wants to test 50 different prompts for a scene‑generation paper. What would be the expected cost range using Seedance 2.0 4K versus staying with Higgsfield?  
+[ALEX]: With Seedance, assuming an average of 200 K tokens per prompt, the team would spend 50 × 200 K × $0.04/10 K = $400. Higgsfield’s $129/month plan would still charge the full subscription even if they used only a fraction of the credits, and any over‑credit purchases would push the cost well above $400 for the same volume.  
+[SAM]: So the shift not only lowers per‑clip cost but also removes the waste of unused subscription credits. Are there any setup steps required to start using Seedance via Claude Code or Codex today?  
+[ALEX]: You need a Monid account, which you can create at monid.ai, then link it to your Claude Code or Codex workspace through the integrations panel. Once linked, the @seedance command or monid library is immediately available—no separate API keys or dashboard logins.  
+[SAM]: Got it. To recap, the move from Higgsfield’s fixed‑price subscription to Seedance 2.0 4K’s

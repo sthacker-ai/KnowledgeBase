@@ -1,29 +1,29 @@
 {
   "schema_version": 1,
-  "built_at": "2026-07-25T06:31:54.312Z",
-  "node_count": 727,
-  "edge_count": 1346,
+  "built_at": "2026-08-01T15:08:49.638Z",
+  "node_count": 763,
+  "edge_count": 1401,
   "nodes": [
     {
       "id": "topic:claude-ai",
       "type": "topic",
       "slug": "claude-ai",
       "label": "Claude AI",
-      "source_count": 42
+      "source_count": 43
     },
     {
       "id": "topic:ai-agents",
       "type": "topic",
       "slug": "ai-agents",
       "label": "AI Agents",
-      "source_count": 105
+      "source_count": 116
     },
     {
       "id": "topic:software-engineering",
       "type": "topic",
       "slug": "software-engineering",
       "label": "Software Engineering",
-      "source_count": 12
+      "source_count": 14
     },
     {
       "id": "topic:finance",
@@ -44,7 +44,7 @@
       "type": "topic",
       "slug": "health-wellness",
       "label": "Health and Fitness",
-      "source_count": 5
+      "source_count": 6
     },
     {
       "id": "topic:uncategorized",
@@ -107,14 +107,14 @@
       "type": "topic",
       "slug": "web-development",
       "label": "SEO and AI Optimization",
-      "source_count": 7
+      "source_count": 8
     },
     {
       "id": "topic:technology",
       "type": "topic",
       "slug": "technology",
       "label": "Technology",
-      "source_count": 2
+      "source_count": 3
     },
     {
       "id": "topic:trading-strategy",
@@ -387,7 +387,7 @@
       "type": "topic",
       "slug": "voice-ai",
       "label": "Voice AI",
-      "source_count": 1
+      "source_count": 2
     },
     {
       "id": "topic:video-production",
@@ -3284,6 +3284,168 @@
       "processing_status": "course_generated"
     },
     {
+      "id": "source:2080578327786746242",
+      "type": "source",
+      "tweet_id": "2080578327786746242",
+      "title": "2080578327786746242.md",
+      "author_handle": "KanikaBK",
+      "topic_slug": "ai-agents",
+      "processing_status": "course_generated"
+    },
+    {
+      "id": "source:2080629030319980563",
+      "type": "source",
+      "tweet_id": "2080629030319980563",
+      "title": "2080629030319980563.md",
+      "author_handle": "LunarResearcher",
+      "topic_slug": "ai-agents",
+      "processing_status": "course_generated"
+    },
+    {
+      "id": "source:2080639471285162466",
+      "type": "source",
+      "tweet_id": "2080639471285162466",
+      "title": "2080639471285162466.md",
+      "author_handle": "nidhisinghattri",
+      "topic_slug": "ai-agents",
+      "processing_status": "course_generated"
+    },
+    {
+      "id": "source:2080725015012811253",
+      "type": "source",
+      "tweet_id": "2080725015012811253",
+      "title": "2080725015012811253.md",
+      "author_handle": "DealsDhamaka",
+      "topic_slug": "ai-agents",
+      "processing_status": "course_generated"
+    },
+    {
+      "id": "source:2080823780700774542",
+      "type": "source",
+      "tweet_id": "2080823780700774542",
+      "title": "2080823780700774542.md",
+      "author_handle": "yajnshri",
+      "topic_slug": "health-wellness",
+      "processing_status": "course_generated"
+    },
+    {
+      "id": "source:2081005798587535445",
+      "type": "source",
+      "tweet_id": "2081005798587535445",
+      "title": "2081005798587535445.md",
+      "author_handle": "thedarshakrana",
+      "topic_slug": "technology",
+      "processing_status": "course_generated"
+    },
+    {
+      "id": "source:2081614165316440193",
+      "type": "source",
+      "tweet_id": "2081614165316440193",
+      "title": "2081614165316440193.md",
+      "author_handle": "RituWithAI",
+      "topic_slug": "voice-ai",
+      "processing_status": "course_generated"
+    },
+    {
+      "id": "source:2081620717775237573",
+      "type": "source",
+      "tweet_id": "2081620717775237573",
+      "title": "2081620717775237573.md",
+      "author_handle": "Hartdrawss",
+      "topic_slug": "web-development",
+      "processing_status": "course_generated"
+    },
+    {
+      "id": "source:2081680037544427793",
+      "type": "source",
+      "tweet_id": "2081680037544427793",
+      "title": "2081680037544427793.md",
+      "author_handle": "thisguyknowsai",
+      "topic_slug": "ai-agents",
+      "processing_status": "course_generated"
+    },
+    {
+      "id": "source:2081761224241627420",
+      "type": "source",
+      "tweet_id": "2081761224241627420",
+      "title": "2081761224241627420.md",
+      "author_handle": "Suryanshti777",
+      "topic_slug": "claude-ai",
+      "processing_status": "course_generated"
+    },
+    {
+      "id": "source:2081849012815343669",
+      "type": "source",
+      "tweet_id": "2081849012815343669",
+      "title": "2081849012815343669.md",
+      "author_handle": "WiFiMoneyGuy",
+      "topic_slug": "ai-agents",
+      "processing_status": "course_generated"
+    },
+    {
+      "id": "source:2082039763511673129",
+      "type": "source",
+      "tweet_id": "2082039763511673129",
+      "title": "2082039763511673129.md",
+      "author_handle": "Av1dlive",
+      "topic_slug": "ai-agents",
+      "processing_status": "course_generated"
+    },
+    {
+      "id": "source:2082119049765589132",
+      "type": "source",
+      "tweet_id": "2082119049765589132",
+      "title": "2082119049765589132.md",
+      "author_handle": "undefinedKi",
+      "topic_slug": "software-engineering",
+      "processing_status": "course_generated"
+    },
+    {
+      "id": "source:2082240753384779986",
+      "type": "source",
+      "tweet_id": "2082240753384779986",
+      "title": "2082240753384779986.md",
+      "author_handle": "gregisenberg",
+      "topic_slug": "ai-agents",
+      "processing_status": "course_generated"
+    },
+    {
+      "id": "source:2082927228388782105",
+      "type": "source",
+      "tweet_id": "2082927228388782105",
+      "title": "2082927228388782105.md",
+      "author_handle": "franpradasAI",
+      "topic_slug": "ai-agents",
+      "processing_status": "course_generated"
+    },
+    {
+      "id": "source:2083049515104276833",
+      "type": "source",
+      "tweet_id": "2083049515104276833",
+      "title": "2083049515104276833.md",
+      "author_handle": "cyrilXBT",
+      "topic_slug": "software-engineering",
+      "processing_status": "course_generated"
+    },
+    {
+      "id": "source:2083179622737346586",
+      "type": "source",
+      "tweet_id": "2083179622737346586",
+      "title": "2083179622737346586.md",
+      "author_handle": "RoundtableSpace",
+      "topic_slug": "ai-agents",
+      "processing_status": "course_generated"
+    },
+    {
+      "id": "source:2083302569796059271",
+      "type": "source",
+      "tweet_id": "2083302569796059271",
+      "title": "2083302569796059271.md",
+      "author_handle": "GeminiApp",
+      "topic_slug": "ai-agents",
+      "processing_status": "course_generated"
+    },
+    {
       "id": "course:2076667968033894883",
       "type": "course",
       "tweet_id": "2076667968033894883",
@@ -4082,6 +4244,83 @@
       "file": "content/courses/ai-agents/course-147.md"
     },
     {
+      "id": "course:2080578327786746242",
+      "type": "course",
+      "tweet_id": "2080578327786746242",
+      "topic_slug": "ai-agents",
+      "file": "content/courses/ai-agents/course-148.md"
+    },
+    {
+      "id": "course:2080629030319980563",
+      "type": "course",
+      "tweet_id": "2080629030319980563",
+      "topic_slug": "ai-agents",
+      "file": "content/courses/ai-agents/course-149.md"
+    },
+    {
+      "id": "course:2080639471285162466",
+      "type": "course",
+      "tweet_id": "2080639471285162466",
+      "topic_slug": "ai-agents",
+      "file": "content/courses/ai-agents/course-150.md"
+    },
+    {
+      "id": "course:2080725015012811253",
+      "type": "course",
+      "tweet_id": "2080725015012811253",
+      "topic_slug": "ai-agents",
+      "file": "content/courses/ai-agents/course-151.md"
+    },
+    {
+      "id": "course:2081680037544427793",
+      "type": "course",
+      "tweet_id": "2081680037544427793",
+      "topic_slug": "ai-agents",
+      "file": "content/courses/ai-agents/course-152.md"
+    },
+    {
+      "id": "course:2081849012815343669",
+      "type": "course",
+      "tweet_id": "2081849012815343669",
+      "topic_slug": "ai-agents",
+      "file": "content/courses/ai-agents/course-153.md"
+    },
+    {
+      "id": "course:2082039763511673129",
+      "type": "course",
+      "tweet_id": "2082039763511673129",
+      "topic_slug": "ai-agents",
+      "file": "content/courses/ai-agents/course-154.md"
+    },
+    {
+      "id": "course:2082240753384779986",
+      "type": "course",
+      "tweet_id": "2082240753384779986",
+      "topic_slug": "ai-agents",
+      "file": "content/courses/ai-agents/course-155.md"
+    },
+    {
+      "id": "course:2082927228388782105",
+      "type": "course",
+      "tweet_id": "2082927228388782105",
+      "topic_slug": "ai-agents",
+      "file": "content/courses/ai-agents/course-156.md"
+    },
+    {
+      "id": "course:2083179622737346586",
+      "type": "course",
+      "tweet_id": "2083179622737346586",
+      "topic_slug": "ai-agents",
+      "file": "content/courses/ai-agents/course-157.md"
+    },
+    {
+      "id": "course:2083302569796059271",
+      "type": "course",
+      "tweet_id": "2083302569796059271",
+      "topic_slug": "ai-agents",
+      "file": "content/courses/ai-agents/course-158.md"
+    },
+    {
       "id": "course:2061070268479721483",
       "type": "course",
       "tweet_id": "2061070268479721483",
@@ -4500,6 +4739,13 @@
       "tweet_id": "2077854613949276319",
       "topic_slug": "claude-ai",
       "file": "content/courses/claude-ai/course-066.md"
+    },
+    {
+      "id": "course:2081761224241627420",
+      "type": "course",
+      "tweet_id": "2081761224241627420",
+      "topic_slug": "claude-ai",
+      "file": "content/courses/claude-ai/course-067.md"
     },
     {
       "id": "course:2075598961805856908",
@@ -5034,6 +5280,13 @@
       "file": "content/courses/health-wellness/course-005.md"
     },
     {
+      "id": "course:2080823780700774542",
+      "type": "course",
+      "tweet_id": "2080823780700774542",
+      "topic_slug": "health-wellness",
+      "file": "content/courses/health-wellness/course-006.md"
+    },
+    {
       "id": "course:2054245904258142593",
       "type": "course",
       "tweet_id": "2054245904258142593",
@@ -5321,6 +5574,20 @@
       "file": "content/courses/software-engineering/course-016.md"
     },
     {
+      "id": "course:2082119049765589132",
+      "type": "course",
+      "tweet_id": "2082119049765589132",
+      "topic_slug": "software-engineering",
+      "file": "content/courses/software-engineering/course-017.md"
+    },
+    {
+      "id": "course:2083049515104276833",
+      "type": "course",
+      "tweet_id": "2083049515104276833",
+      "topic_slug": "software-engineering",
+      "file": "content/courses/software-engineering/course-018.md"
+    },
+    {
       "id": "course:2057658091831996593",
       "type": "course",
       "tweet_id": "2057658091831996593",
@@ -5396,6 +5663,13 @@
       "tweet_id": "2060410596722458865",
       "topic_slug": "technology",
       "file": "content/courses/technology/course-002.md"
+    },
+    {
+      "id": "course:2081005798587535445",
+      "type": "course",
+      "tweet_id": "2081005798587535445",
+      "topic_slug": "technology",
+      "file": "content/courses/technology/course-003.md"
     },
     {
       "id": "course:2059124167887216817",
@@ -5678,6 +5952,13 @@
       "file": "content/courses/voice-ai/course-001.md"
     },
     {
+      "id": "course:2081614165316440193",
+      "type": "course",
+      "tweet_id": "2081614165316440193",
+      "topic_slug": "voice-ai",
+      "file": "content/courses/voice-ai/course-002.md"
+    },
+    {
       "id": "course:2078111285535764963",
       "type": "course",
       "tweet_id": "2078111285535764963",
@@ -5732,6 +6013,13 @@
       "tweet_id": "2076603705323892815",
       "topic_slug": "web-development",
       "file": "content/courses/web-development/course-008.md"
+    },
+    {
+      "id": "course:2081620717775237573",
+      "type": "course",
+      "tweet_id": "2081620717775237573",
+      "topic_slug": "web-development",
+      "file": "content/courses/web-development/course-009.md"
     }
   ],
   "edges": [
@@ -7196,6 +7484,96 @@
       "type": "belongs_to"
     },
     {
+      "source": "source:2080578327786746242",
+      "target": "topic:ai-agents",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2080629030319980563",
+      "target": "topic:ai-agents",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2080639471285162466",
+      "target": "topic:ai-agents",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2080725015012811253",
+      "target": "topic:ai-agents",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2080823780700774542",
+      "target": "topic:health-wellness",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2081005798587535445",
+      "target": "topic:technology",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2081614165316440193",
+      "target": "topic:voice-ai",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2081620717775237573",
+      "target": "topic:web-development",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2081680037544427793",
+      "target": "topic:ai-agents",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2081761224241627420",
+      "target": "topic:claude-ai",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2081849012815343669",
+      "target": "topic:ai-agents",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2082039763511673129",
+      "target": "topic:ai-agents",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2082119049765589132",
+      "target": "topic:software-engineering",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2082240753384779986",
+      "target": "topic:ai-agents",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2082927228388782105",
+      "target": "topic:ai-agents",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2083049515104276833",
+      "target": "topic:software-engineering",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2083179622737346586",
+      "target": "topic:ai-agents",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2083302569796059271",
+      "target": "topic:ai-agents",
+      "type": "belongs_to"
+    },
+    {
       "source": "course:2076667968033894883",
       "target": "topic:ai-adoption",
       "type": "belongs_to"
@@ -8371,34 +8749,114 @@
       "type": "has_course"
     },
     {
-      "source": "topic:ai-agents",
-      "target": "topic:claude-ai",
-      "type": "related_topic"
+      "source": "course:2080578327786746242",
+      "target": "topic:ai-agents",
+      "type": "belongs_to"
     },
     {
-      "source": "topic:ai-agents",
-      "target": "topic:software-engineering",
-      "type": "related_topic"
+      "source": "source:2080578327786746242",
+      "target": "course:2080578327786746242",
+      "type": "has_course"
     },
     {
-      "source": "topic:ai-agents",
-      "target": "topic:finance",
-      "type": "related_topic"
+      "source": "course:2080629030319980563",
+      "target": "topic:ai-agents",
+      "type": "belongs_to"
     },
     {
-      "source": "topic:ai-agents",
-      "target": "topic:startup",
-      "type": "related_topic"
+      "source": "source:2080629030319980563",
+      "target": "course:2080629030319980563",
+      "type": "has_course"
     },
     {
-      "source": "topic:ai-agents",
-      "target": "topic:health-wellness",
-      "type": "related_topic"
+      "source": "course:2080639471285162466",
+      "target": "topic:ai-agents",
+      "type": "belongs_to"
     },
     {
-      "source": "topic:ai-agents",
-      "target": "topic:uncategorized",
-      "type": "related_topic"
+      "source": "source:2080639471285162466",
+      "target": "course:2080639471285162466",
+      "type": "has_course"
+    },
+    {
+      "source": "course:2080725015012811253",
+      "target": "topic:ai-agents",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2080725015012811253",
+      "target": "course:2080725015012811253",
+      "type": "has_course"
+    },
+    {
+      "source": "course:2081680037544427793",
+      "target": "topic:ai-agents",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2081680037544427793",
+      "target": "course:2081680037544427793",
+      "type": "has_course"
+    },
+    {
+      "source": "course:2081849012815343669",
+      "target": "topic:ai-agents",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2081849012815343669",
+      "target": "course:2081849012815343669",
+      "type": "has_course"
+    },
+    {
+      "source": "course:2082039763511673129",
+      "target": "topic:ai-agents",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2082039763511673129",
+      "target": "course:2082039763511673129",
+      "type": "has_course"
+    },
+    {
+      "source": "course:2082240753384779986",
+      "target": "topic:ai-agents",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2082240753384779986",
+      "target": "course:2082240753384779986",
+      "type": "has_course"
+    },
+    {
+      "source": "course:2082927228388782105",
+      "target": "topic:ai-agents",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2082927228388782105",
+      "target": "course:2082927228388782105",
+      "type": "has_course"
+    },
+    {
+      "source": "course:2083179622737346586",
+      "target": "topic:ai-agents",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2083179622737346586",
+      "target": "course:2083179622737346586",
+      "type": "has_course"
+    },
+    {
+      "source": "course:2083302569796059271",
+      "target": "topic:ai-agents",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2083302569796059271",
+      "target": "course:2083302569796059271",
+      "type": "has_course"
     },
     {
       "source": "topic:ai-agents",
@@ -8407,7 +8865,7 @@
     },
     {
       "source": "topic:ai-agents",
-      "target": "topic:negotiation",
+      "target": "topic:software-engineering",
       "type": "related_topic"
     },
     {
@@ -8418,6 +8876,11 @@
     {
       "source": "topic:ai-agents",
       "target": "topic:openai-codex",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:ai-agents",
+      "target": "topic:claude-ai",
       "type": "related_topic"
     },
     {
@@ -9521,6 +9984,16 @@
       "type": "has_course"
     },
     {
+      "source": "course:2081761224241627420",
+      "target": "topic:claude-ai",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2081761224241627420",
+      "target": "course:2081761224241627420",
+      "type": "has_course"
+    },
+    {
       "source": "topic:claude-ai",
       "target": "topic:ai-agents",
       "type": "related_topic"
@@ -9547,6 +10020,11 @@
     },
     {
       "source": "topic:claude-ai",
+      "target": "topic:negotiation",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:claude-ai",
       "target": "topic:openai-codex",
       "type": "related_topic"
     },
@@ -9562,7 +10040,7 @@
     },
     {
       "source": "topic:claude-ai",
-      "target": "topic:negotiation",
+      "target": "topic:uncategorized",
       "type": "related_topic"
     },
     {
@@ -10556,13 +11034,28 @@
       "type": "has_course"
     },
     {
+      "source": "course:2080823780700774542",
+      "target": "topic:health-wellness",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2080823780700774542",
+      "target": "course:2080823780700774542",
+      "type": "has_course"
+    },
+    {
       "source": "topic:health-wellness",
-      "target": "topic:software-engineering",
+      "target": "topic:claude-ai",
       "type": "related_topic"
     },
     {
       "source": "topic:health-wellness",
-      "target": "topic:machine-learning",
+      "target": "topic:ai-agents",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:health-wellness",
+      "target": "topic:software-engineering",
       "type": "related_topic"
     },
     {
@@ -10573,6 +11066,16 @@
     {
       "source": "topic:health-wellness",
       "target": "topic:startup",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:health-wellness",
+      "target": "topic:uncategorized",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:health-wellness",
+      "target": "topic:machine-learning",
       "type": "related_topic"
     },
     {
@@ -10588,16 +11091,6 @@
     {
       "source": "topic:health-wellness",
       "target": "topic:openai-codex",
-      "type": "related_topic"
-    },
-    {
-      "source": "topic:health-wellness",
-      "target": "topic:claude-ai",
-      "type": "related_topic"
-    },
-    {
-      "source": "topic:health-wellness",
-      "target": "topic:ai-agents",
       "type": "related_topic"
     },
     {
@@ -11391,18 +11884,33 @@
       "type": "has_course"
     },
     {
+      "source": "course:2082119049765589132",
+      "target": "topic:software-engineering",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2082119049765589132",
+      "target": "course:2082119049765589132",
+      "type": "has_course"
+    },
+    {
+      "source": "course:2083049515104276833",
+      "target": "topic:software-engineering",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2083049515104276833",
+      "target": "course:2083049515104276833",
+      "type": "has_course"
+    },
+    {
       "source": "topic:software-engineering",
-      "target": "topic:openai-codex",
+      "target": "topic:claude-ai",
       "type": "related_topic"
     },
     {
       "source": "topic:software-engineering",
-      "target": "topic:machine-learning",
-      "type": "related_topic"
-    },
-    {
-      "source": "topic:software-engineering",
-      "target": "topic:data-engineering",
+      "target": "topic:ai-agents",
       "type": "related_topic"
     },
     {
@@ -11417,12 +11925,17 @@
     },
     {
       "source": "topic:software-engineering",
-      "target": "topic:ai-agents",
+      "target": "topic:health-wellness",
       "type": "related_topic"
     },
     {
       "source": "topic:software-engineering",
-      "target": "topic:claude-ai",
+      "target": "topic:uncategorized",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:software-engineering",
+      "target": "topic:machine-learning",
       "type": "related_topic"
     },
     {
@@ -11432,12 +11945,12 @@
     },
     {
       "source": "topic:software-engineering",
-      "target": "topic:health-wellness",
+      "target": "topic:data-engineering",
       "type": "related_topic"
     },
     {
       "source": "topic:software-engineering",
-      "target": "topic:uncategorized",
+      "target": "topic:openai-codex",
       "type": "related_topic"
     },
     {
@@ -11664,6 +12177,46 @@
       "source": "source:2060410596722458865",
       "target": "course:2060410596722458865",
       "type": "has_course"
+    },
+    {
+      "source": "course:2081005798587535445",
+      "target": "topic:technology",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2081005798587535445",
+      "target": "course:2081005798587535445",
+      "type": "has_course"
+    },
+    {
+      "source": "topic:technology",
+      "target": "topic:claude-ai",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:technology",
+      "target": "topic:ai-agents",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:technology",
+      "target": "topic:software-engineering",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:technology",
+      "target": "topic:machine-learning",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:technology",
+      "target": "topic:data-engineering",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:technology",
+      "target": "topic:health-wellness",
+      "type": "related_topic"
     },
     {
       "source": "course:2059124167887216817",
@@ -12256,6 +12809,16 @@
       "type": "has_course"
     },
     {
+      "source": "course:2081614165316440193",
+      "target": "topic:voice-ai",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2081614165316440193",
+      "target": "course:2081614165316440193",
+      "type": "has_course"
+    },
+    {
       "source": "topic:voice-ai",
       "target": "topic:machine-learning",
       "type": "related_topic"
@@ -12287,17 +12850,17 @@
     },
     {
       "source": "topic:voice-ai",
+      "target": "topic:finance",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:voice-ai",
       "target": "topic:negotiation",
       "type": "related_topic"
     },
     {
       "source": "topic:voice-ai",
       "target": "topic:claude-ai",
-      "type": "related_topic"
-    },
-    {
-      "source": "topic:voice-ai",
-      "target": "topic:finance",
       "type": "related_topic"
     },
     {
@@ -12431,6 +12994,16 @@
       "type": "has_course"
     },
     {
+      "source": "course:2081620717775237573",
+      "target": "topic:web-development",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2081620717775237573",
+      "target": "course:2081620717775237573",
+      "type": "has_course"
+    },
+    {
       "source": "topic:web-development",
       "target": "topic:claude-ai",
       "type": "related_topic"
@@ -12447,17 +13020,7 @@
     },
     {
       "source": "topic:web-development",
-      "target": "topic:finance",
-      "type": "related_topic"
-    },
-    {
-      "source": "topic:web-development",
-      "target": "topic:startup",
-      "type": "related_topic"
-    },
-    {
-      "source": "topic:web-development",
-      "target": "topic:health-wellness",
+      "target": "topic:machine-learning",
       "type": "related_topic"
     },
     {

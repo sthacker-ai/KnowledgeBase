@@ -1,0 +1,13 @@
+[ALEX]: DeerFlow can accept a single high‑level instruction such as “prepare a market analysis report on renewable energy” and, without any further prompting, autonomously gather recent papers, write a Python scraper to collect latest statistics, draft a slide deck with generated graphics, and render a two‑minute narrated video—all executed on a consumer‑grade laptop equipped with an RTX 3060 and 16 GB RAM, eliminating API fees and network latency.
+
+[SAM]: Which models does DeerFlow rely on for each of those modalities, and how does it coordinate calls between the language model, the image generator, and the video synthesizer without external orchestration services?
+
+[ALEX]: The core is a locally hosted LLM—typically a quantized Llama 3‑8B variant—that produces reasoning traces and tool‑selection decisions; for text‑to‑image it launches Stable Diffusion XL via a subprocess, and for video it invokes Stable Video Diffusion, feeding the generated frames and a TTS engine (e.g., Coqui) to assemble the final MP4; a simple Python planner loops, parsing the LLM’s output to decide which tool to invoke next.
+
+[SAM]: Running those models locally can be demanding; what are the realistic hardware trade‑offs when you try to run DeerFlow on a machine with only 8 GB VRAM or without a dedicated GPU?
+
+[ALEX]: With 8 GB VRAM you can still operate by using 4‑bit quantization for the LLM and offloading the diffusion models to CPU, though image generation slows from seconds to minutes per frame; if you lack a GPU entirely, the LLM runs on CPU at roughly 2‑3 tokens per second, making end‑to‑end tasks take tens of minutes, which is acceptable for overnight batch jobs but not for interactive loops.
+
+[SAM]: Besides cost savings, what privacy or security advantages does local execution give you compared to cloud‑based agents like those powered by proprietary APIs?
+
+[ALEX]: All data—research notes, scraped content, generated media, and intermediate prompts—remains on the host’s storage; no information leaves the machine, so sensitive

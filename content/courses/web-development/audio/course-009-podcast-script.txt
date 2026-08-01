@@ -1,0 +1,33 @@
+[ALEX]: When I tried to add a hover animation to a button in my React app, I spent three hours writing CSS keyframes, only to discover the same effect was already baked into a free component I could have imported in one line. That experience showed me how much time we waste reinventing motion that libraries already provide, and it motivated me to explore the library that advertises over 250 ready‑made animations.
+
+[SAM]: You mentioned the library gives you animations “out of the box.” How exactly are those animations packaged with the component? Are they inline styles, imported CSS files, or something like CSS modules?
+
+[ALEX]: Each component ships with its own scoped style sheet that contains the keyframe definitions and the class names that trigger them. When you import the button, the library’s build step injects a <style> tag scoped to that component, so the hover pulse lives alongside the button’s markup and doesn’t leak into global CSS. This means you don’t need to manage separate animation files or worry about naming collisions.
+
+[SAM]: Scoped styles sound convenient, but what about performance? If every button brings its own style tag, won’t we end up with duplicated CSS or a larger bundle size?
+
+[ALEX]: The library uses CSS extraction at build time, so identical keyframes across components are deduplicated into a single chunk. In practice, a page with twenty animated buttons adds roughly 2 KB of gzipped CSS, compared to the 8‑10 KB you’d write manually if you duplicated keyframes for each variant. The trade‑off is a tiny increase in JavaScript import overhead for the component itself, but the net payload is still lower than hand‑crafted solutions.
+
+[SAM]: Let’s talk about the workflow. You said “copy and drop.” Walk me through the exact steps to get a toast notification with a bounce animation into a Next.js project.
+
+[ALEX]: First, install the library via npm: `npm i @freeanim/ui`. Then open the docs, find the `<Toast>` component, copy the JSX snippet `<Toast variant="info" animation="bounceIn">Processing…</Toast>`, paste it into your page file, and import the component at the top: `import { Toast } from '@freeanim/ui';`. The library’s peer dependency on React 18 is already satisfied, so no extra configuration is needed. After saving, the toast appears with the bounce effect on mount and a fade‑out on dismiss, all handled internally.
+
+[SAM]: What if I want to tweak the animation duration or easing? Does the library expose props for that, or do I have to override CSS?
+
+[ALEX]: Most animations expose a `duration` prop accepting milliseconds and an `easing` prop that takes a CSS timing‑function string. For the bounce toast, you could write `<Toast animation="bounceIn" duration={600} easing="cubic-bezier(.25,.8,.25,1)">`. If you need a completely custom curve, you can still provide a `className` prop and override the keyframes in your own CSS module, but the library encourages using the props to keep the animation encapsulated and avoid specificity wars.
+
+[SAM]: You mentioned over 250 animations. Can you give a concrete sense of the categories and how a designer might pick one for a specific UI state?
+
+[ALEX]: The catalog splits into entrance (fade, slide, scale, rotate), attention (pulse, shake, wobble, bounce), exit (fadeOut, slideUp, zoomOut), and complex (staggered list, parallax scroll, modal backdrop). For a modal that appears after a user clicks a button, a designer might choose `scaleIn` with a slight `delay` of 100 ms to feel substantive, whereas a validation error toast could use `shake` to draw immediate attention. The library’s docs include a live playground where you can preview each animation with adjustable speed and see the resulting CSS.
+
+[SAM]: Playground aside, how does the library handle reduced‑motion preferences? Does it respect the `prefers-reduced-motion` media query automatically?
+
+[ALEX]: Yes. Each animated component checks `window.matchMedia('(prefers-reduced-motion: reduce)')` on mount. If the query matches, the component skips the animation prop and renders a static version or a fallback fade with zero duration. Developers can also force animation off by passing `disabled={true}` if they need to override the media query for a specific case.
+
+[SAM]: Let’s discuss pitfalls. What are common mistakes developers make when integrating this library, and how can they avoid them?
+
+[ALEX]: One frequent mistake is importing the component from the wrong path, which leads to missing styles because the side‑effect‑free import doesn’t trigger the CSS injection. The fix is to use the named export from the main entry point, e.g., `import { Button } from '@freeanim/ui';` not a deep import like `import Button from '@freeanim/ui/lib/Button';`. Another pitfall is nesting animated components inside elements with `overflow: hidden` that clips transform‑based animations; the solution is to ensure the container has `overflow: visible` or to use animations that rely on opacity instead of translate. Finally, forgetting to peer‑install React 18 can cause version mismatches, so always run `npm ls react` after installation.
+
+[SAM]: You mentioned bundle size earlier. If a team is concerned about every kilobyte, how would they measure the actual impact of adding this library compared to writing animations manually?
+
+[ALEX]: Use the built‑in webpack bundle analyzer or `next-bundle-analyzer` to view the gzipped size of the `src` folder before and after adding the library. In a benchmark project, the baseline CSS was 4.2 KB; after adding twenty distinct animated components, the CSS grew to 6.1 KB, while the equivalent

@@ -1,0 +1,33 @@
+[ALEX]: The Dorsey AI Agent framework gives you a self‑hostable, modular stack where you can plug in only the services you need—like a search engine, a Git‑backed code repo, and a message channel—so you avoid vendor lock‑in while still getting a fully autonomous agent that can decide and act on its own data.
+
+[SAM]: If the framework is modular, how do you decide which components to enable for a given use case, and what happens if you later need to add something you initially left out?
+
+[ALEX]: You start by defining the agent’s core responsibilities; for a ticket‑triage bot you’d enable the channel service for inbound messages, the search service to pull knowledge‑base articles, and the automation service to run workflow scripts. Adding a new component later is as simple as pulling its Docker image, updating the agent’s manifest, and restarting the service—the framework hot‑loads the new module without downtime.
+
+[SAM]: You mentioned self‑hosting eliminates third‑party dependencies, but what infrastructure do you actually need to run the server, and how does that compare to using a managed offering in terms of ops overhead?
+
+[ALEX]: To self‑host you need a Linux VM or Kubernetes cluster with a PostgreSQL database, a Redis cache for transient state, and a reverse proxy like Nginx to terminate TLS. The framework provides a Helm chart that wires these together, so you spend roughly the same time setting up a baseline stack as you would configuring a managed service, but you retain full control over data residency and can apply your own security patches.
+
+[SAM]: Speaking of security, how does the framework handle secrets such as API keys for external search engines or credential stores when everything is running on your own infrastructure?
+
+[ALEX]: Secrets are injected via environment variables or Kubernetes secrets and are never written to the agent’s code repository; the framework’s config loader reads them at runtime and masks them in logs. Because the agent’s code stays in Git, you can audit changes to secret‑referencing lines without exposing the actual values in the commit history.
+
+[SAM]: Let’s walk through the actual setup steps. After cloning the repo, what does the self‑hosting stage look like in practice, and are there any gotchas when configuring the server for production use?
+
+[ALEX]: You run `docker compose up -d` to bring up the web API, worker, and database containers, then execute the provided migration script to schema‑initialize PostgreSQL. A common gotcha is forgetting to set the `AGENT_ENV` flag to `production`, which leaves debug endpoints exposed; the framework’s health‑check endpoint will warn you if those are still active, prompting you to tighten the firewall rules.
+
+[SAM]: Once the server is up, how do you configure the AI Agent itself—specifically, how do you define its behavior, tie it to the channels, and hook it into the search and automation services?
+
+[ALEX]: You create a YAML manifest under `agents/` that lists the agent’s name, the Docker image for its logic, and a set of bindings: `inbound: slack`, `outbound: email`, `search: elasticsearch`, and `automation: workflows/triage`. The framework’s controller reads this manifest, spawns the container, and wires the declared services via internal RPC, so the agent can receive a Slack message, query Elasticsearch for a matching KB article, and trigger a workflow that posts a reply.
+
+[SAM]: Can you give a concrete example of how this works in a customer‑service scenario, showing the flow from a user query to the agent’s action and any fallback mechanisms?
+
+[ALEX]: A user posts “I can’t reset my password” in the company Slack channel; the channel binding forwards the text to the agent, which calls the search service with that phrase, retrieves the top‑scoring KB article “Password Reset Guide”, and then triggers the automation workflow that sends a direct message with the article link. If the search returns no results above a confidence threshold, the automation branch creates a ticket in Jira and notifies the support lead, ensuring the query isn’t dropped.
+
+[SAM]: The framework advertises over 14k GitHub stars—what does that community activity translate into for someone adopting it today, in terms of plugins, troubleshooting, and extensibility?
+
+[ALEX]: The star count reflects a steady stream of community‑maintained adapters—for example, a Twilio channel plugin, a Pinecone vector‑search add‑on, and a GitHub Actions workflow that automatically runs the agent’s test suite on each push. When you hit an issue, you can search the closed‑issues tag for similar error messages, and because the core is Apache‑licensed you can fork and modify any service without worrying about licensing conflicts.
+
+[SAM]: Finally, what trade‑offs should a team consider before choosing to self‑host this framework versus using a hosted AI‑agent platform, especially regarding scalability and talent requirements?
+
+[ALEX]: Self‑hosting gives you predictable costs and data sovereignty, but you must allocate DevOps time for cluster upgrades, monitoring, and incident response; a hosted platform offloads that labor at the price of vendor lock

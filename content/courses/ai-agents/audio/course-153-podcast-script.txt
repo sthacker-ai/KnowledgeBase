@@ -1,0 +1,19 @@
+[ALEX]: "Sending a single 1024×1024 image to Opus 5 consumes roughly 4,784 tokens, which at $5 per million input tokens equals about $0.02 per frame. If that frame remains in the conversation for twenty turns, the model retransmits the entire history each time, so you end up paying for roughly 20 × 4,784 ≈ 95,680 tokens, or close to $0.48 for just one image."
+
+Count words: Let's count roughly: Sending(1) a2 single3 1024×10244 image5 to6 Opus 57 consumes8 roughly9 4,78410 tokens,11 which12 at13 $514 per15 million16 input17 tokens18 equals19 about20 $0.0221 per22 frame.23 If24 that25 frame26 remains27 in28 the29 conversation30 for31 twenty32 turns,33 the34 model35 retransmits36 the37 entire38 history39 each40 time,41 so42 you43 end44 up45 paying46 for47 roughly48 20 × 4,784 ≈ 95,68049 tokens,50 or51 close52 to53 $0.4854 for55 just56 one57 image58. => 58 words.
+
+Okay.
+
+[SAM]: "So the cost isn’t just the per‑frame price; it’s the multiplication caused by the model resending the whole context each turn. Does that mean every token in the history gets charged again, or only the image tokens?"
+
+Count words: So1 the2 cost3 isn’t4 just5 the6 per‑frame7 price;8 it’s9 the10 multiplication11 caused12 by13 the14 model15 resending16 the17 whole18 context19 each20 turn.21 Does22 that23 mean24 every25 token26 in27 the28 history29 gets30 charged31 again,32 or33 only34 the35 image36 tokens37? => 37 words.
+
+[ALEX]: "Exactly. The API bills you for the total input tokens you send on each request. When you include an image, its token representation is part of that input, so on turn two you resend the image tokens again, on turn three again, and so on. Text tokens behave the same way, but images are far larger, by orders of magnitude, the biggest contributors."
+
+Count: Exactly1. The2 API3 bills4 you5 for6 the7 total8 input9 tokens10 you11 send12 on13 each14 request.15 When16 you17 include18 an19 image,20 its21 token22 representation23 is24 part25 of26 that27 input,28 so29 on30 turn31 two32 you33 resend34 the35 image36 tokens37 again,38 on39 turn40 three41 again,42 and43 so44 on45.46 Text47 tokens48 behave49 the50 same51 way,52 but53 images54 are55,56 by57 orders58 of59 magnitude,60 the61 biggest62 contributors63. => 63 words.
+
+[SAM]: "If I’m building an agent that needs to look at a webpage every few seconds, I could easily hit dozens of frames per minute. How does the hidden cost explode in a realistic scenario, say a ten‑minute browsing session with a frame captured every five seconds?"
+
+Count: If1 I’m2 building3 an4 agent5 that6 needs7 to8 look9 at10 a11 webpage12 every13 few14 seconds,15 I16 could17 easily18 hit19 dozens20 of21 frames22 per23 minute.24 How25 does26 the27 hidden28 cost29 explode30 in31 a32 realistic33 scenario,34 say35 a36 ten‑minute37 browsing38 session39 with40 a41 frame42 captured43 every44 five45 seconds46? => 46 words.
+
+[ALEX]: "Ten minutes at five‑second intervals gives 120 frames. Each frame is ~4,784 tokens, so the raw input for all frames is about 574,080 tokens. Because the conversation history grows, the model will resend all previous frames on each new turn. Approximating the total token cost as frames × average history length, we get roughly 120 × (120+1)/2 ≈ 7,260 frame‑instances, multiplied by 4,784 tokens yields about 34.7 million tokens. At Opus

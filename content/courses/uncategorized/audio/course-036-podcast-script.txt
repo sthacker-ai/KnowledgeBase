@@ -1,0 +1,61 @@
+[SAM]: question.
+
+[ALEX]: answer.
+
+[SAM]: follow-up.
+
+... continue.
+
+We need to ensure each line is not too long but overall word count high. We'll write fairly detailed sentences.
+
+Let's craft.
+
+We'll count approximate words.
+
+I'll write each line with about 80-90 words.
+
+Let's do 12 lines (6 each). Actually 12 exchanges means 12 lines total? No, each exchange is a pair? Usually exchange = one line from each? The prompt says alternate lines, always starting with [ALEX]. So each line is an exchange. So 10-14 lines total. We'll do 12 lines.
+
+Thus 6 from ALEX, 6 from SAM.
+
+Each line ~80-90 words => 12*85 = 1020 words.
+
+Let's craft.
+
+We'll need to watch word count. I'll approximate.
+
+Line 1 [ALEX]: about 85 words.
+
+Line 2 [SAM]: about 85.
+
+... etc.
+
+Let's write.
+
+I'll write each line and then roughly count.
+
+Line1 (ALEX): "One persistent problem in AI‑driven moviemaking is visual drift—characters change hairstyle, clothing, or facial features between shots because each frame is generated independently. Google Flow’s Storyboard Studio attacks this by parsing a script, pulling out every named character, location, and prop, then generating a master asset library that the storyboard reuses for every panel. The result is a locked‑in look that stays consistent from the opening establishing shot to the final close‑up without manual re‑drawing."
+
+Count words: Let's count quickly.
+
+One(1) persistent2 problem3 in4 AI‑driven5 moviemaking6 is7 visual8 drift—characters9 change10 hairstyle,11 clothing,12 or13 facial14 features15 between16 shots17 because18 each19 frame20 is21 generated22 independently.23 Google24 Flow’s25 Storyboard26 Studio27 attacks28 this29 by30 parsing31 a32 script,33 pulling34 out35 every36 named37 character,38 location,39 and40 prop,41 then42 generating43 a44 master45 asset46 library47 that48 the49 storyboard50 reuses51 for52 every53 panel.54 The55 result56 is57 a58 locked‑in59 look60 that61 stays62 consistent63 from64 the65 opening66 establishing67 shot68 to69 the70 final71 close‑up72 without73 manual74 re‑drawing75.
+
+75 words. Good.
+
+Line2 (SAM): "When you say the tool pulls out every named character, location, and prop, does it rely on exact spelling or can it handle synonyms and pronouns? For example, if I refer to 'the detective' in one sentence and later call him 'Jack', will Storyboard Studio recognize they’re the same entity and create a single asset, or will it treat them as separate and cause inconsistency?"
+
+Count words.
+
+When1 you2 say3 the4 tool5 pulls6 out7 every8 named9 character,10 location,11 and12 prop,13 does14 it15 rely16 on17 exact18 spelling19 or20 can21 it22 handle23 synonyms24 and25 pronouns?26 For27 example,28 if29 I30 refer31 to32 'the33 detective'34 in35 one36 sentence37 and38 later39 call40 him41 'Jack',42 will43 Storyboard44 Studio45 recognize46 they’re47 the48 same49 entity50 and51 create52 a53 single54 asset,55 or56 will57 it58 treat59 them60 as61 separate62 and63 cause64 inconsistency?65
+
+65 words.
+
+Line3 (ALEX): "Storyboard Studio uses a lightweight named‑entity recognition layer that groups coreferential mentions based on context, so 'the detective' and 'Jack' resolve to the same ID as long as the script makes the link clear—either by explicit naming or by a preceding introduction. If the reference is ambiguous, the asset panel flags it with a warning icon, prompting you to merge or rename the entry manually before moving to the storyboard canvas."
+
+Count.
+
+Storyboard1 Studio2 uses3 a4 lightweight5 named‑entity6 recognition7 layer8 that9 groups10 coreferential11 mentions12 based13 on14 context,15 so16 'the17 detective'18 and19 'Jack'20 resolve21 to22 the23 same24 ID25 as26 long27 as28 the29 script30 makes31 the32 link33 clear—either34 by35 explicit36 naming37 or38 by39 a40 preceding41 introduction.42 If43 the44 reference45 is46 ambiguous,47 the48 asset49 panel50 flags51 it52 with53 a54 warning55 icon,56 prompting57 you58 to59 merge60 or61 rename62 the63 entry64 manually65 before66 moving67 to68 the69 storyboard70 canvas71.
+
+71 words.
+
+Line4 (SAM): "Assuming the script is clean and the asset list is generated, what happens next in the workflow? Do I have to manually place each asset into every frame, or does the system automatically lay out the

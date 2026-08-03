@@ -1,0 +1,22 @@
+[ALEX]: Buzz positions itself as a Slack killer by treating AI agents as full team members, which means they can draft meeting agendas, summarize threads, and even propose code changes without you having to leave the conversation.  
+[SAM]: How does that differ from just adding a bot to a Slack channel?  
+[ALEX]: In Buzz, agents persist in the same thread as humans, retain full context across model swaps, and can initiate actions like creating a feature branch, whereas Slack bots are stateless add‑ons that lose history when you switch channels or apps.  
+[SAM]: Can you give a concrete example of an agent taking initiative in a thread?  
+[ALEX]: Imagine a product huddle where you say, “Let’s outline the onboarding flow.” The agent instantly posts a bullet‑point outline, tags relevant designers, and suggests a Figma file link—all while the conversation continues uninterrupted.  
+[SAM]: What happens if I want to switch the underlying AI model mid‑conversation to get better code suggestions?  
+[ALEX]: Buzz lets you swap the model powering any agent—say from GPT‑4 for brainstorming to CodeLlama for implementation—while preserving every message, file attachment, and even the agent’s internal state, so the transition feels seamless.  
+[SAM]: Does swapping models introduce latency or risk losing nuanced context from earlier turns?  
+[ALEX]: The platform caches the conversation vector store, so the new model loads the same embeddings; latency is usually under two seconds, and nuance is retained because the context isn’t re‑summarized, just re‑encoded.  
+[SAM]: How do audio huddles fit into this model‑swapping workflow?  
+[ALEX]: Audio huddles let you speak directly to agents in real time; you can ask, “Switch to a model optimized for regex and give me a pattern for email validation,” and the agent responds verbally while still keeping the text thread in sync.  
+[SAM]: If I’m speaking over a noisy connection, does the agent still understand intent accurately?  
+[ALEX]: Buzz uses a streaming ASR pipeline with confidence scoring; if confidence drops below a threshold, it asks for clarification rather than guessing, which reduces misfires during huddles.  
+[SAM]: Tell me about the integrated IDE—what can an agent actually do inside Buzz without touching my local machine?  
+[ALEX]: Agents can spawn a sandboxed workspace, create feature branches, run unit tests, and push commits to a linked Git repo; you review the diff in the thread, approve or request changes, and the agent handles the merge if you give the go‑ahead.  
+[SAM]: Isn’t there a risk of agents pushing insecure code or leaking secrets through those sandboxes?  
+[ALEX]: Each sandbox runs with minimal privileges, network access is restricted to approved endpoints, and secret injection is blocked unless you explicitly mount a vault; audit logs show every command the agent executed.  
+[SAM]: How does Buzz handle the cost of constantly swapping between large models, especially for a small team or solopreneur?  
+[ALEX]: You pay per‑token for the model you’re using, and because context is preserved you avoid re‑prompting overhead; teams often set usage caps per agent and switch to smaller, cheaper models for routine tasks, reserving larger ones for complex reasoning.  
+[SAM]: For a solopreneur starting from an idea, what’s a typical workflow in Buzz from concept to prototype?  
+[ALEX]: You open a huddle, verbally pitch the idea, the agent drafts a one‑pager, you swap to a coding model to scaffold a repo, then use the IDE to iterate on features while the agent writes tests and updates the ticket tracker in real time.  
+[SAM]: How do you prevent the agent from going off‑track when you’re juggling multiple topics in a single huddle?

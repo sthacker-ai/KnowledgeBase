@@ -1,0 +1,11 @@
+[SAM]: You1 claim2 specialization3 avoids4 forgetting,5 but6 how7 do8 you9 measure10 that11 improvement12 empirically?13 Also,14 what15 concrete16 tasks17 would18 you19 assign20 to21 a22 boss23 agent24 versus25 a26 worker27 agent28 in,29 say,30 a31 warehouse32 robot33 swarm34?
+
+34 words. Need ~90. Expand with more detail: ask about metrics, baseline, ablation, etc.
+
+Add: "Could you share results from an ablation study where you compare a monolithic policy to a swarm on the same benchmark, and describe the specific roles—like navigation, object recognition, and manipulation—assigned to workers?"
+
+Let's append.
+
+Continue counting after "swarm34?" then space.
+
+Could35 you36 share37 results38 from39 an40 ablation41 study42 where43 you44 compare45 a46 monolithic47 policy48 to49 a50 swarm51 on52 the53 same54 benchmark,55 and56 describe57

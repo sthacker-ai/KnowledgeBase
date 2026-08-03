@@ -1,0 +1,26 @@
+[ALEX]: The 200‑EMA on a 4H chart tells us whether TSLA’s price is trading above or below the average of the last 200 four‑hour candles, which translates to a bullish or bearish bias rather than a fixed support level.  
+[SAM]: Why choose the 200‑EMA over a simple moving average for that bias?  
+[ALEX]: Because the EMA weights recent price more heavily, it reacts faster to trend changes while still smoothing noise—critical when you need a timely bias on a 4H chart without whipsaws.  
+[SAM]: How does the 20‑EMA fit into the swing‑trade setup on the same timeframe?  
+[ALEX]: The 20‑EMA acts as a dynamic pullback filter; when price retraces to it during an uptrend defined by the 200‑EMA, it offers a low‑risk entry point aligned with the larger trend.  
+[SAM]: Can you give a concrete example using AAPL on a recent 4H chart?  
+[ALEX]: Sure—last month AAPL stayed above its 200‑EMA for three weeks, signaling bullish bias; each time the price dipped to the 20‑EMA and closed back above it, a long entry was triggered.  
+[SAM]: What stops you from entering every time price touches the 20‑EMA?  
+[ALEX]: We add an RSI filter: we only take the long if the 14‑period RSI is above 50 but below 70, confirming upward momentum without being overbought.  
+[SAM]: Why avoid RSI above 70 in this context?  
+[ALEX]: An RSI >70 often indicates exhausted buying pressure; entering then increases the chance of a immediate reversal, reducing the reward‑to‑risk ratio.  
+[SAM]: How do you set the stop‑loss for these swing trades?  
+[ALEX]: Place the stop just below the swing low that formed the pullback, or a fixed ATR‑based distance (e.g., 1.5× the 14‑period ATR) to accommodate overnight gaps.  
+[SAM]: And the profit target?  
+[ALEX]: Aim for a risk‑reward of at least 1:2, using the next resistance level or a trailing stop once the price moves 1× the initial risk in your favor.  
+[SAM]: Does this approach work the same way for bearish swings?  
+[ALEX]: Yes—when price is below the 200‑EMA, we look for rallies to the 20‑EMA, enter short on a close back below it, and require the RSI to be below 50 but above 30 to confirm downward momentum.  
+[SAM]: Give a bearish example with META.  
+[ALEX]: In early October META traded under its 200‑EMA for ten days; each bounce to the 20‑EMA that closed back below it, paired with an RSI between 30 and 50, yielded a short entry with a stop above the recent swing high.  
+[SAM]: How does the 4H timeframe reduce noise compared to, say, a 15‑minute chart?  
+[ALEX]: Each 4H candle aggregates 240 minutes of price action, smoothing out intraday spikes and false breakouts that would trigger premature entries on lower timeframes.  
+[SAM]: Are there any drawbacks to using only the 4H chart for swing trading?  
+[ALEX]: The main trade‑off is fewer signals—typically 2‑4 setups per week per stock—so you need patience and sufficient capital to keep positions active for days to weeks.  
+[SAM]: What role does liquidity play in the stock selection list (TSLA, AAPL, META, MIRM, HIMS)?  
+[ALEX]: High average daily volume ensures tight spreads and minimal slippage, which is essential when stops are placed a few percent away from entry and positions are held overnight.  
+[SAM]: Volatility is also mentioned; why is that

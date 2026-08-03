@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "built_at": "2026-08-02T06:38:17.666Z",
-  "node_count": 769,
-  "edge_count": 1413,
+  "built_at": "2026-08-03T09:02:38.588Z",
+  "node_count": 767,
+  "edge_count": 1414,
   "nodes": [
     {
       "id": "topic:claude-ai",
@@ -30,7 +30,7 @@
       "type": "topic",
       "slug": "finance",
       "label": "Finance",
-      "source_count": 43
+      "source_count": 46
     },
     {
       "id": "topic:startup",
@@ -3464,12 +3464,39 @@
       "processing_status": "course_generated"
     },
     {
+      "id": "source:2083579378173346122",
+      "type": "source",
+      "tweet_id": "2083579378173346122",
+      "title": "2083579378173346122.md",
+      "author_handle": "saketh1998",
+      "topic_slug": "finance",
+      "processing_status": "course_generated"
+    },
+    {
       "id": "source:2083598633832775721",
       "type": "source",
       "tweet_id": "2083598633832775721",
       "title": "2083598633832775721.md",
       "author_handle": "antigravity",
       "topic_slug": "ai-agents",
+      "processing_status": "course_generated"
+    },
+    {
+      "id": "source:2083620062158545220",
+      "type": "source",
+      "tweet_id": "2083620062158545220",
+      "title": "2083620062158545220.md",
+      "author_handle": "RebellioMarket",
+      "topic_slug": "finance",
+      "processing_status": "course_generated"
+    },
+    {
+      "id": "source:2083928843883258295",
+      "type": "source",
+      "tweet_id": "2083928843883258295",
+      "title": "2083928843883258295.md",
+      "author_handle": "JayneshKasliwal",
+      "topic_slug": "finance",
       "processing_status": "course_generated"
     },
     {
@@ -5125,60 +5152,25 @@
       "file": "content/courses/finance/course-058.md"
     },
     {
-      "id": "topic:premium-pricing-strategies-in-finance-charging-10000-per-person-for-highvalue-offerings",
-      "type": "topic",
-      "slug": "premium-pricing-strategies-in-finance-charging-10000-per-person-for-highvalue-offerings",
-      "label": "Premium Pricing Strategies in Finance: Charging $10,000 Per Person for High‑Value Offerings",
-      "source_count": 0
+      "id": "course:2083579378173346122",
+      "type": "course",
+      "tweet_id": "2083579378173346122",
+      "topic_slug": "finance",
+      "file": "content/courses/finance/course-059.md"
     },
     {
-      "id": "topic:mastering-the-compound-fulcrum-advanced-chart-patterns-and-compounding-in-financial-markets",
-      "type": "topic",
-      "slug": "mastering-the-compound-fulcrum-advanced-chart-patterns-and-compounding-in-financial-markets",
-      "label": "Mastering the Compound Fulcrum: Advanced Chart Patterns and Compounding in Financial Markets",
-      "source_count": 0
+      "id": "course:2083620062158545220",
+      "type": "course",
+      "tweet_id": "2083620062158545220",
+      "topic_slug": "finance",
+      "file": "content/courses/finance/course-060.md"
     },
     {
-      "id": "topic:the-ai-powered-retirement-accelerator-structuring-your-path-to-financial-freedom",
-      "type": "topic",
-      "slug": "the-ai-powered-retirement-accelerator-structuring-your-path-to-financial-freedom",
-      "label": "The AI-Powered Retirement Accelerator: Structuring Your Path to Financial Freedom",
-      "source_count": 0
-    },
-    {
-      "id": "topic:the-failure-of-wall-street-models-an-introduction-to-probabilistic-thinking-and-antifragility",
-      "type": "topic",
-      "slug": "the-failure-of-wall-street-models-an-introduction-to-probabilistic-thinking-and-antifragility",
-      "label": "The Failure of Wall Street Models: An Introduction to Probabilistic Thinking and Antifragility",
-      "source_count": 0
-    },
-    {
-      "id": "topic:permutation-tests-for-validating-trading-strategies-separating-real-edge-from-data-mining",
-      "type": "topic",
-      "slug": "permutation-tests-for-validating-trading-strategies-separating-real-edge-from-data-mining",
-      "label": "Permutation Tests for Validating Trading Strategies: Separating Real Edge from Data Mining",
-      "source_count": 0
-    },
-    {
-      "id": "topic:building-institutional-level-quantitative-trading-systems-strategy-documentation-execution-and-performance-tracking",
-      "type": "topic",
-      "slug": "building-institutional-level-quantitative-trading-systems-strategy-documentation-execution-and-performance-tracking",
-      "label": "Building Institutional-Level Quantitative Trading Systems: Strategy Documentation, Execution, and Performance Tracking",
-      "source_count": 0
-    },
-    {
-      "id": "topic:the-blackscholes-formula-ltcm-collapse-and-modern-quant-edge-lessons-from-a-46-billion-failure",
-      "type": "topic",
-      "slug": "the-blackscholes-formula-ltcm-collapse-and-modern-quant-edge-lessons-from-a-46-billion-failure",
-      "label": "The Black‑Scholes Formula, LTCM Collapse, and Modern Quant Edge: Lessons from a $4.6 Billion Failure",
-      "source_count": 0
-    },
-    {
-      "id": "topic:starting-over-with-150-what-to-avoid-and-what-to-do-instead-in-finance",
-      "type": "topic",
-      "slug": "starting-over-with-150-what-to-avoid-and-what-to-do-instead-in-finance",
-      "label": "Starting Over with $150: What to Avoid and What to Do Instead in Finance",
-      "source_count": 0
+      "id": "course:2083928843883258295",
+      "type": "course",
+      "tweet_id": "2083928843883258295",
+      "topic_slug": "finance",
+      "file": "content/courses/finance/course-061.md"
     },
     {
       "id": "course:2067233860287627359",
@@ -7627,8 +7619,23 @@
       "type": "belongs_to"
     },
     {
+      "source": "source:2083579378173346122",
+      "target": "topic:finance",
+      "type": "belongs_to"
+    },
+    {
       "source": "source:2083598633832775721",
       "target": "topic:ai-agents",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2083620062158545220",
+      "target": "topic:finance",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2083928843883258295",
+      "target": "topic:finance",
       "type": "belongs_to"
     },
     {
@@ -10737,44 +10744,34 @@
       "type": "has_course"
     },
     {
-      "source": "topic:finance",
-      "target": "topic:premium-pricing-strategies-in-finance-charging-10000-per-person-for-highvalue-offerings",
-      "type": "related_topic"
+      "source": "course:2083579378173346122",
+      "target": "topic:finance",
+      "type": "belongs_to"
     },
     {
-      "source": "topic:finance",
-      "target": "topic:mastering-the-compound-fulcrum-advanced-chart-patterns-and-compounding-in-financial-markets",
-      "type": "related_topic"
+      "source": "source:2083579378173346122",
+      "target": "course:2083579378173346122",
+      "type": "has_course"
     },
     {
-      "source": "topic:finance",
-      "target": "topic:the-ai-powered-retirement-accelerator-structuring-your-path-to-financial-freedom",
-      "type": "related_topic"
+      "source": "course:2083620062158545220",
+      "target": "topic:finance",
+      "type": "belongs_to"
     },
     {
-      "source": "topic:finance",
-      "target": "topic:the-failure-of-wall-street-models-an-introduction-to-probabilistic-thinking-and-antifragility",
-      "type": "related_topic"
+      "source": "source:2083620062158545220",
+      "target": "course:2083620062158545220",
+      "type": "has_course"
     },
     {
-      "source": "topic:finance",
-      "target": "topic:permutation-tests-for-validating-trading-strategies-separating-real-edge-from-data-mining",
-      "type": "related_topic"
+      "source": "course:2083928843883258295",
+      "target": "topic:finance",
+      "type": "belongs_to"
     },
     {
-      "source": "topic:finance",
-      "target": "topic:building-institutional-level-quantitative-trading-systems-strategy-documentation-execution-and-performance-tracking",
-      "type": "related_topic"
-    },
-    {
-      "source": "topic:finance",
-      "target": "topic:the-blackscholes-formula-ltcm-collapse-and-modern-quant-edge-lessons-from-a-46-billion-failure",
-      "type": "related_topic"
-    },
-    {
-      "source": "topic:finance",
-      "target": "topic:starting-over-with-150-what-to-avoid-and-what-to-do-instead-in-finance",
-      "type": "related_topic"
+      "source": "source:2083928843883258295",
+      "target": "course:2083928843883258295",
+      "type": "has_course"
     },
     {
       "source": "topic:finance",

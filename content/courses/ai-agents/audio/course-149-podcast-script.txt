@@ -1,0 +1,37 @@
+[ALEX]: Let’s start with a concrete example. Imagine you’re building a customer support agent that needs to handle refund requests. If you implement this as a sequential agent, it’ll follow a rigid script: "Step 1: Verify order. Step 2: Check refund policy. Step 3: Process refund." But what if the customer says, "I want my money back because your product is defective"? A reactive agent would see this as a new input and ask, "Should I escalate to a human?" Meanwhile, a planning agent would first generate a plan: "1. Confirm defect. 2. Offer replacement or refund. 3. Document issue for QA."
+
+[SAM]: So the key difference is how they handle unpredictability? Sequential agents are like a flowchart, reactive agents are like a reflex, and planning agents are like a strategist?
+
+[ALEX]: Exactly. Sequential agents are deterministic—they only do what you explicitly program. Reactive agents use conditional logic to adapt, but they lack memory or foresight. Planning agents, however, can generate multi-step strategies on the fly. For instance, if the refund request involves a high-value customer, the planning agent might first check their purchase history and then decide whether to offer a discount instead of a full refund.
+
+[SAM]: How does the ADK help with this? Does it provide templates for these agent types?
+
+[ALEX]: The ADK provides modular components. For a reactive agent, you’d use the `ReactiveAgent` class with predefined triggers and responses. For a planning agent, you’d use the `PlanningAgent` class, which integrates with LLMs to generate and execute plans. The ADK also includes tools for testing agent behavior, like simulating different customer scenarios.
+
+[SAM]: What about workflow agents? How do they fit in?
+
+[ALEX]: Workflow agents manage coordination between multiple agents. For example, in a customer support system, one agent might handle initial inquiries, another might process refunds, and a third might escalate complex issues. The workflow agent ensures these agents pass data correctly and don’t step on each other’s toes.
+
+[SAM]: That sounds like orchestration. But what if the agents disagree? For example, the refund agent says "approve," but the fraud detection agent flags the request as suspicious?
+
+[ALEX]: The ADK includes conflict resolution mechanisms. You can define priority rules—like "fraud detection overrides refunds"—or use voting systems where agents cast weighted votes based on confidence scores. The workflow agent then enforces these rules.
+
+[SAM]: How do you handle edge cases? For example, what if the customer’s request is in a language the agent doesn’t support?
+
+[ALEX]: That’s where custom agents come in. You can build a `LanguageDetectionAgent` that routes requests to the appropriate language-specific agent. The ADK supports multi-agent systems, so you can chain agents together. If no agent can handle the request, the workflow agent can escalate it to a human.
+
+[SAM]: What’s the trade-off between using LLMs for planning versus hardcoding rules?
+
+[ALEX]: LLMs offer flexibility—they can handle novel scenarios without explicit programming. But they’re slower and more expensive to run. Hardcoded rules are faster and cheaper but brittle. The ADK lets you hybridize: use LLMs for complex decisions and rules for routine tasks.
+
+[SAM]: How do you test these agents? Just throw random inputs at them?
+
+[ALEX]: The ADK includes a testing framework. You can define test cases with expected outcomes, like "Input: 'I want a refund.' Expected: Agent asks for order number." For planning agents, you can simulate multi-step interactions. The ADK also logs agent actions, so you can debug issues like infinite loops or incorrect decisions.
+
+[SAM]: What’s the hardest part of building these agents?
+
+[ALEX]: Defining the right scope. Agents that try to do too much become unwieldy. Start with a narrow task, like handling refunds, then expand. Also, monitoring is key—agents can drift over time as user behavior changes. The ADK provides tools for logging and retraining agents based on real-world performance.
+
+[SAM]: So the ADK is like a toolbox for building, testing, and maintaining agents?
+
+[ALEX]: Yes, but it’s not magic. You still need to design the agent’s behavior, handle edge cases, and iterate based on feedback. The ADK just makes the process smoother by providing reusable components and best practices.

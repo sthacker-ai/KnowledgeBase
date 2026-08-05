@@ -1,0 +1,29 @@
+[ALEX]: The 2020 market crash was a brutal test for momentum strategies—many funds saw double-digit drawdowns in a matter of days. Yet, by mid-2021, the same strategies had recovered and outperformed buy-and-hold. This isn’t just luck; it’s the dual nature of momentum: it thrives in trending markets but falters in reversals. The key is understanding when to trust the signal and when to cut losses.
+
+[SAM]: So, momentum is strong until it isn’t? How do you know when the trend is breaking?
+
+[ALEX]: Exactly. The challenge is distinguishing between noise and a genuine regime shift. One practical approach is to combine momentum with volatility scaling—reducing position sizes when market volatility spikes. For example, if the VIX jumps 20% in a week, you might halve your exposure. This isn’t about predicting the crash but about limiting damage when the trend reverses.
+
+[SAM]: That makes sense, but how do you avoid overfitting? If you tweak the model after every crash, aren’t you just curve-fitting to past data?
+
+[ALEX]: You’re right to be skeptical. The solution is out-of-sample testing. Before deploying a model, backtest it on a dataset it’s never seen—say, 2000-2010—and validate it on 2011-2020. If it works in both periods, it’s likely robust. Also, focus on simple rules. A 12-month momentum filter with a 6-month lookback period is more reliable than a complex machine-learning model trained on 100 features.
+
+[SAM]: What about transaction costs? High turnover can eat into profits, right?
+
+[ALEX]: Absolutely. Momentum strategies often trade frequently, so you need to optimize execution. For example, instead of rebalancing daily, do it weekly or monthly. Also, use limit orders to avoid slippage. A good rule of thumb is to ensure your expected return is at least 3-4 times your round-trip trading costs.
+
+[SAM]: You mentioned AI earlier. How does that fit into momentum trading?
+
+[ALEX]: AI can enhance momentum in three key ways: signal generation, execution, and risk management. For signal generation, you can use natural language processing to scan news headlines and earnings calls for sentiment shifts that might precede price moves. For execution, reinforcement learning can optimize order placement to minimize market impact. And for risk management, AI can detect anomalies—like sudden volume spikes—that might signal a trend break.
+
+[SAM]: That sounds powerful, but isn’t AI a black box? How do you trust it?
+
+[ALEX]: Trust comes from interpretability. Instead of using deep learning, start with simpler models like gradient-boosted trees, which provide feature importance scores. For example, if your model is 80% driven by price trends and 20% by sentiment, you know where the edge comes from. Also, always stress-test your AI models against extreme scenarios—like 2008 or 2020—to see how they behave under duress.
+
+[SAM]: What’s the biggest mistake you see traders make with momentum?
+
+[ALEX]: Overleveraging. Momentum can deliver strong returns, but it’s highly volatile. A 10x leveraged momentum portfolio might look great in a backtest, but in reality, it’s likely to blow up during a drawdown. A better approach is to size positions based on volatility—like Kelly criterion—and keep leverage under 2x.
+
+[SAM]: So, momentum isn’t a magic bullet, but it’s a tool that can be sharpened with discipline and AI.
+
+[ALEX]: Precisely. The goal isn’t to outsmart the market but to ride the waves when they’re strong and cut losses when they’re not. The best traders combine momentum with risk management, execution discipline, and a dash of AI to stay ahead.

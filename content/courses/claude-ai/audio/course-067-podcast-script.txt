@@ -1,0 +1,93 @@
+[SAM]: question clarifying.
+
+[ALEX]: answer with example.
+
+[SAM]: follow-up about tradeoffs.
+
+[ALEX]: talk about GitHub repos.
+
+[SAM]: ask about how to find/repo.
+
+[ALEX]: give example repo and how to integrate.
+
+[SAM]: ask about planning vs debugging.
+
+[ALEX]: explain BUILD category with concrete workflow.
+
+[SAM]: ask about execution and monitoring.
+
+[ALEX]: give step-by-step example of using Claude AI with a repo for CI.
+
+[SAM]: ask about learning resources and staying updated.
+
+[ALEX]: wrap up with advice on 22 skills and final tip.
+
+Make sure each line is not too short; need enough words.
+
+Let's draft.
+
+We need to count words roughly. Let's aim for ~90 words per line.
+
+I'll write each line with about 90 words.
+
+Line 1 (ALEX): claim about installing Claude Code alone insufficient; need GitHub repos for planning/debugging; mention 22 skills.
+
+Let's craft ~90 words.
+
+Count manually? We'll approximate.
+
+Line1: "[ALEX]: Installing Claude Code gets you a functional assistant, but stopping there leaves you with only a fraction of the productivity boost the course promises; the real leverage comes from weaving in specific GitHub repositories that supply ready‑made planning templates, debugging scripts, and execution hooks, which together unlock the 22 grouped skills that turn Claude from a chatbot into a workflow engine."
+
+Now count words: Installing(1) Claude2 Code3 gets4 you5 a6 functional7 assistant,8 but9 stopping10 there11 leaves12 you13 with14 only15 a16 fraction17 of18 the19 productivity20 boost21 the22 course23 promises;24 the25 real26 leverage27 comes28 from29 weaving30 in31 specific32 GitHub33 repositories34 that35 supply36 ready‑made37 planning38 templates,39 debugging40 scripts,41 and42 execution43 hooks,44 which45 together46 unlock47 the48 2249 grouped50 skills51 that52 turn53 Claude54 from55 a56 chatbot57 into58 a59 workflow60 engine61.
+
+61 words. Need ~90. Add more.
+
+Add: "These repositories range from lightweight utility scripts that auto‑generate task boards to full‑featured CI pipelines that trigger Claude‑driven test runs, letting you swap out manual steps for automated, auditable actions."
+
+Add words.
+
+Now continue sentence.
+
+Let's add after engine.
+
+"These repositories range from lightweight utility scripts that auto‑generate task boards to full‑featured CI pipelines that trigger Claude‑driven test runs, letting you swap out manual steps for automated, auditable actions."
+
+Count added words.
+
+These1 repositories2 range3 from4 lightweight5 utility6 scripts7 that8 auto‑generate9 task10 boards11 to12 full‑featured13 CI14 pipelines15 that16 trigger17 Claude‑driven18 test19 runs,20 letting21 you22 swap23 out24 manual25 steps26 for27 automated,28 auditable29 actions30.
+
+30 words. Total now 61+30=91 words. Good.
+
+Line1 done.
+
+Line2 SAM: ask clarifying question about what specific repos and how they integrate.
+
+Need ~90 words.
+
+Write: "[SAM]: You mentioned specific GitHub repositories that supply planning templates and debugging scripts; could you name a couple of representative repos, explain what each contains, and show the exact steps to hook them into Claude Code so that the AI actually uses those files when it plans or debugs a project?"
+
+Count words.
+
+You1 mentioned2 specific3 GitHub4 repositories5 that6 supply7 planning8 templates9 and10 debugging11 scripts;12 could13 you14 name15 a16 couple17 of18 representative19 repos,20 explain21 what22 each23 contains,24 and25 show26 the27 exact28 steps29 to30 hook31 them32 into33 Claude34 Code35 so36 that37 the38 AI39 actually40 uses41 those42 files43 when44 it45 plans46 or47 debugs48 a49 project50?
+
+50 words. Need ~90. Add more detail: ask about installation, configuration, environment variables.
+
+Add: "Also, do these repos require any additional dependencies, or are they designed to work out‑of‑the‑box with the standard Claude Code installation, and how do you version‑control your own customizations without breaking upstream updates?"
+
+Count added words.
+
+Also1, do2 these3 repos4 require5 any6 additional7 dependencies,8 or9 are10 they11 designed12 to13 work14 out‑of‑the‑box15 with16 the17 standard18 Claude19 Code20 installation,21 and22 how23 do24 you25 version‑control26 your27 own28 customizations29 without30 breaking31 upstream32 updates33?
+
+33 words. Total 50+33=83. Need ~90, add a bit more: "What about licensing considerations when you redistribute a project that includes these scripts?"
+
+Add: "What about licensing considerations when you redistribute a project that includes these scripts?"
+
+Count: What1 about2 licensing3 considerations4 when5 you6 redistribute7 a8 project9 that10 includes11 these12 scripts13? 13 words.
+
+Total now 83+13=96 words. Good.
+
+Line3 ALEX: answer with example repos, steps.
+
+Need ~90 words.
+
+Write: "[ALEX

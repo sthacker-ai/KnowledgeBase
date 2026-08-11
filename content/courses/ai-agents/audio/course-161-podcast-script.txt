@@ -1,0 +1,67 @@
+[ALEX]: ...
+[SAM]: ...
+...
+
+Make sure each line is a single paragraph (no line breaks inside?). Probably okay to have line breaks but better to keep as one block.
+
+We need to ensure total words 950-1150. Let's approximate.
+
+We'll write 12 lines, each about 85 words => 1020 words.
+
+Let's craft.
+
+Line 1 (ALEX): Claim about agent decoding.
+
+Line 2 (SAM): Question about how it differs from prompting.
+
+Line 3 (ALEX): Explain agent decoding details, mention Claude Code, Boris Cherny.
+
+Line 4 (SAM): Ask about limitations, error handling.
+
+Line 5 (ALEX): Discuss tradeoffs, need for verification, testing.
+
+Line 6 (SAM): Ask about agentic systems and coordination.
+
+Line 7 (ALEX): Define agentic systems, give example of frontend/backend agents.
+
+Line 8 (SAM): Question about communication protocols, graph engineering.
+
+Line 9 (ALEX): Explain graph engineering, nodes as agents, edges as dependencies, scaling.
+
+Line 10 (SAM): Ask about building new agents dynamically.
+
+Line 11 (ALEX): Talk about self‑modifying graphs, meta‑agents, implications for software engineering.
+
+Line 12 (SAM): Closing question about future risks, governance.
+
+We need to ensure each line is substantive.
+
+Let's draft each line with about 85 words.
+
+We'll count roughly.
+
+I'll write each line and then approximate word count.
+
+Line1: "Agent decoding flips the script on traditional code assistants: instead of suggesting the next token while you type, the model takes a full natural‑language description of a program’s behavior and emits every line of code—functions, classes, imports, even configuration files—so the user never writes a single line of source themselves." Count words? Let's approximate: Agent(1) decoding2 flips3 the4 script5 on6 traditional7 code8 assistants:9 instead10 of11 suggesting12 the13 next14 token15 while16 you17 type,18 the19 model20 takes21 a22 full23 natural‑language24 description25 of26 a27 program’s28 behavior29 and30 emits31 every32 line33 of34 code—functions,35 classes,36 imports,37 even38 configuration39 files—so40 the41 user42 never43 writes44 a45 single46 line47 of48 source49 themselves50. That's 50 words. Need ~85. Add more detail: mention Boris Cherny, Claude Code, Anthropic.
+
+Continue: "This approach, pioneered by Boris Cherny’s team at Anthropic in Claude Code, treats the LLM as a compiler that translates intent into executable artifacts, which means debugging shifts from syntax errors to logical mismatches between spec and output." Add words.
+
+Let's count added: This1 approach2,3 pioneered4 by5 Boris6 Cherny’s7 team8 at9 Anthropic10 in11 Claude12 Code,13 treats14 the15 LLM16 as17 a18 compiler19 that20 translates21 intent22 into23 executable24 artifacts,25 which26 means27 debugging28 shifts29 from30 syntax31 errors32 to33 logical34 mismatches35 between36 spec37 and38 output39. That's 39 words. Total now 50+39=89. Good.
+
+Line1 done.
+
+Line2 SAM: ask clarifying: "How does that differ from the usual prompting workflow where you iterate on snippets, and what concrete advantages does getting a full program up front give you in terms of integration testing and dependency management?" Need ~85 words.
+
+Let's craft ~85.
+
+Count roughly: How1 does2 that3 differ4 from5 the6 usual7 prompting8 workflow9 where10 you11 iterate12 on13 snippets,14 and15 what16 concrete17 advantages18 does19 getting20 a21 full22 program23 up24 front25 give26 you27 in28 terms29 of30 integration31 testing32 and33 dependency34 management35? That's 35 words. Need more. Add: "For example, when the agent generates a REST API server, you receive the router, handlers, data models, and Dockerfile in one go, which lets you run a single end‑to‑end test suite instead of stitching together pieces generated over multiple prompts." Count.
+
+For1 example,2 when3 the4 agent5 generates6 a7 REST8 API9 server,10 you11 receive12 the13 router,14 handlers,15 data16 models,17 and18 Dockerfile19 in20 one21 go,22 which23 lets24 you25 run26 a27 single28 end‑to‑end29 test30 suite31 instead32 of33 stitching34 together35 pieces36 generated37 over38 multiple39 prompts40. That's 40 words. Total 35+40=75. Need ~10 more words: "and reduces merge conflicts in collaborative repos." Add: and1 reduces2 merge3 conflicts4 in5 collaborative6 repos7. That's 7 words. Total 82. Good.
+
+Line2 done (~82 words).
+
+Line3 ALEX: explain agent decoding details, mention Claude Code, Boris Cherny, maybe mention token limits, need for spec clarity.
+
+Let's craft ~85 words.
+
+Sentence: "In practice, Claude Code receives a prompt like “build a React‑Redux dashboard that pulls live stock prices from Alpha Vantage, shows a candlestick chart, and lets users set alerts.” The model then expands that intent into a project scaffold: creates package.json, writes Redux slices, configures Axios, builds the chart component with Chart.js, and outputs a README with run instructions—all

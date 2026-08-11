@@ -1,15 +1,15 @@
 {
   "trigger": "scheduled",
-  "date": "2026-08-07",
-  "started_at_ist": "07/08/2026, 12:00:01 IST",
-  "finished_at_ist": "07/08/2026, 12:05:35 IST",
-  "duration_secs": 334.2,
+  "date": "2026-08-08",
+  "started_at_ist": "08/08/2026, 12:00:01 IST",
+  "finished_at_ist": "08/08/2026, 12:04:48 IST",
+  "duration_secs": 286.3,
   "status": "ok",
   "steps": [
     {
       "name": "Import X Likes",
       "status": "ok",
-      "duration_secs": 105.2,
+      "duration_secs": 104.8,
       "detail": "0 new tweet(s) imported"
     },
     {
@@ -27,7 +27,7 @@
     {
       "name": "AI classification",
       "status": "ok",
-      "duration_secs": 0.6,
+      "duration_secs": 2,
       "detail": "0 classified"
     },
     {
@@ -39,7 +39,7 @@
     {
       "name": "Topic summaries",
       "status": "ok",
-      "duration_secs": 0.8,
+      "duration_secs": 0.7,
       "detail": "0/57 topic summaries updated"
     },
     {
@@ -51,37 +51,37 @@
     {
       "name": "Hero images",
       "status": "ok",
-      "duration_secs": 0.6,
+      "duration_secs": 0.5,
       "detail": "0 hero image(s) generated"
     },
     {
       "name": "Podcasts",
       "status": "ok",
-      "duration_secs": 171.5,
+      "duration_secs": 96.1,
       "detail": "0 podcast(s) generated, 4 error(s)"
     },
     {
       "name": "Obsidian vault export",
       "status": "ok",
-      "duration_secs": 1.4,
+      "duration_secs": 1.2,
       "detail": "531 course(s), 0 topic(s), 349 source(s) synced"
     },
     {
       "name": "Upload Media to R2",
       "status": "ok",
-      "duration_secs": 0.5,
+      "duration_secs": 1.4,
       "detail": "0 new file(s) uploaded to R2"
     },
     {
       "name": "Commit & Push",
       "status": "ok",
-      "duration_secs": 4.3,
+      "duration_secs": 5.1,
       "detail": "2 file(s) committed and pushed to GitHub"
     },
     {
       "name": "Prod build",
       "status": "ok",
-      "duration_secs": 46.7
+      "duration_secs": 71.6
     },
     {
       "name": "Prod server restart",
@@ -92,6 +92,6 @@
   "x_session": {
     "status": "ok",
     "expiresAt": "2027-07-06T05:33:47.000Z",
-    "daysUntilExpiry": 332
+    "daysUntilExpiry": 331
   }
 }

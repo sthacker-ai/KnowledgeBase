@@ -1,0 +1,29 @@
+[ALEX]: Garry Tan argues that the most powerful AI isn't the model itself, but the context it operates within. Imagine two identical LLMs—one running on your private server with access to your entire digital life, the other as a generic chatbot. Which would be more useful?
+
+[SAM]: The private one, obviously. But isn't that just a fancy version of what companies like Google already do with our data?
+
+[ALEX]: That's the key difference. Corporate AI uses your data to serve their interests—ads, engagement metrics. Personal AGI uses it to serve yours. Your emails, notes, and projects become part of its memory, compounding over time. It's not just about access; it's about ownership.
+
+[SAM]: So how do you actually build this? Is it just prompting an LLM with your personal data?
+
+[ALEX]: Not quite. You need a harness—a system that connects the model to your context. Think of it like a brainstem for your AGI. OpenClaw, for example, lets you write procedures in Python that the model executes. It's not just about feeding data; it's about giving the AI agency to act on your behalf.
+
+[SAM]: But isn’t that risky? If it can act on my behalf, what stops it from doing something I don’t want?
+
+[ALEX]: That’s where the feedback loop comes in. Your personal AGI improves with use, but only if you’re actively curating its actions. It’s not autonomous—it’s an extension of your will. You review its outputs, correct mistakes, and refine its procedures. Over time, it becomes a better version of you.
+
+[SAM]: What about the cost? Running a model like this privately seems expensive.
+
+[ALEX]: It’s a tradeoff. Corporate AI is cheap upfront but extracts value from you over time. Personal AGI has higher initial costs—compute, storage, setup—but the long-term payoff is ownership. You’re not renting intelligence; you’re building an asset.
+
+[SAM]: Can you give a concrete example of how this works in practice?
+
+[ALEX]: Sure. Let’s say you’re a researcher. Your personal AGI could read your papers, annotate them, and generate summaries. But more than that, it could identify gaps in your research, suggest experiments, and even draft grant applications. It’s not just a tool—it’s a collaborator that knows your work better than anyone else.
+
+[SAM]: That sounds powerful, but isn’t this just for tech-savvy people? What about the average user?
+
+[ALEX]: That’s the challenge. Right now, building a personal AGI requires some technical skill. But the goal is to make it as accessible as a spreadsheet. The tools are improving—think of Hermes Agent or Claude Code as early steps toward democratizing this. The question is: do you want to wait for someone else to build it for you, or do you want to own it?
+
+[SAM]: So, is this the future of AI? Everyone with their own personal intelligence amplifier?
+
+[ALEX]: It’s one possible future. The alternative is a world where corporations own our cognitive augmentation. Personal AGI shifts the balance of power. It’s not about replacing human intelligence—it’s about amplifying it on your terms.

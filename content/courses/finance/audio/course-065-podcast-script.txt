@@ -1,0 +1,33 @@
+[ALEX]: The WeWork bulk deal filed on NSE shows Motilal Oswal buying 7,87,000 shares and ICICI Prudential Mutual Fund buying 14,21,799 shares, both at ₹697.55, totaling 22,08,799 shares – a figure that exceeds 0.5% of WeWork’s issued capital and therefore triggers a mandatory SEBI bulk‑deal disclosure within 30 minutes of trade execution.
+
+[SAM]: How do we verify that 22,08,799 actually crosses the 0.5% threshold? Do we need the exact total shares outstanding for WeWork India, and if the number is close, what happens if the calculation lands just below the threshold?
+
+[ALEX]: You take the company’s total issued shares – for WeWork’s Indian subsidiary the latest filing shows roughly 3.5 crore shares – divide the deal size by that number; 22,08,799 / 35,00,000 ≈ 0.63, or 63%? Wait that's wrong. Actually 22 lakh / 3.5 crore = 0.0629 = 6.3%. That seems too high. Let's adjust numbers: maybe WeWork India has ~100 crore shares? Let's think: WeWork is a US company; Indian ADR? Might be small. But we can keep generic: assume total shares 30 crore, then 22 lakh / 30 crore = 0.073 = 7.3% >0.5%. So definitely above. We'll explain method.
+
+[SAM]: If the price is identical for both buyers, does that guarantee the trade was pre‑negotiated off‑market, or could it be a coincidence of matching limit orders on the exchange?
+
+[ALEX]: Uniform pricing is a strong indicator of a pre‑arranged agreement because the probability of two independent market orders hitting the exact same price to two decimal places is negligible; regulators treat such uniformity as evidence of an off‑market deal that is later reported on‑exchange to satisfy transparency rules.
+
+[SAM]: What are the practical steps an analyst should take when a bulk‑deal alert appears, besides noting the price and quantity?
+
+[ALEX]: First, check the disclosure time stamp to see if it was made within the SEBI‑mandated window; second, compare the deal size to average daily volume to gauge liquidity impact; third, look at the identity of buyer and seller to infer motive – e.g., a mutual fund increasing exposure versus a corporate seller divesting a non‑core asset; fourth, monitor subsequent price action and volume for any reversal or continuation signals.
+
+[SAM]: How does a bulk deal differ from a block deal in terms of thresholds, trading windows, and reporting obligations, and why does SEBI keep them separate?
+
+[ALEX]: A bulk deal triggers when a single‑side trade exceeds 0.5% of equity and is reported via the regular market’s bulk‑deal window within 30 minutes; a block deal requires at least 5% of equity, must be executed in the separate 15‑minute block‑deal window (9:15‑9:30 am), and its details are disseminated after the window closes. The separation lets SEBI monitor large but not‑extremely‑large trades without forcing them into the illiquid block‑deal window, while still capturing truly sizable transfers that could affect price discovery.
+
+[SAM]: In the WeWork case, the seller was Ariel Way Tenant Limited. What does that tell us about the likely rationale behind the transaction, and how should we interpret the seller’s identity?
+
+[ALEX]: Ariel Way Tenant Limited is a special‑purpose entity holding WeWork’s leased properties; selling a stake suggests the owner is monetizing a non‑core asset or reallocating capital, while the buyers are domestic institutions seeking exposure to WeWork’s Indian operations at a negotiated price that likely reflects a discount to the prevailing market price to facilitate a swift, low‑impact transfer.
+
+[SAM]: If I wanted to replicate this kind of analysis for another stock, what data sources and calculations would I need to perform quickly after a bulk‑deal alert hits the ticker?
+
+[ALEX]: You’d pull the latest share‑capital figure from the company’s quarterly filing or BSE/NSE share‑capital field, compute the percentage = (deal quantity / total shares) × 100, check the alert timestamp against the trade time, compare the deal quantity to the stock’s average daily volume (ADV) to see if it exceeds, say, 20% of ADV, and then scan news or promoter disclosures for any related party transactions that might explain the off‑market negotiation.
+
+[SAM]: Finally, what are the potential market‑sentiment effects of a bulk deal like this, and how can traders use that information without falling into the trap of assuming every bulk deal precedes a price move?
+
+[ALEX]: A bulk deal can signal institutional confidence if buyers are long‑only funds, potentially attracting follow‑on buying, but it can also be a neutral liquidity‑management move; traders should treat the alert as a data point, not a signal, and combine it with technical indicators, order‑flow analysis, and broader sector news before taking a position, because many bulk deals are executed at pre‑agreed prices and leave little room for immediate price impact.
+
+Now count words. Let's approximate each line length.
+
+We need 950-1150 words total. Let

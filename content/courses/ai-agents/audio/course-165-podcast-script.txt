@@ -1,0 +1,46 @@
+[ALEX]: Our analytics reveal that 38 % of new sign‑ups abandon the flow right after they reach the “Connect Your First Data Source” screen, and the median time they spend idle before leaving is about twelve minutes. This stall point is where we can insert an onboarding rescue agent to nudge users back toward activation.
+
+[SAM]: Why twelve minutes? How did you decide that’s the stall threshold instead of, say, five or twenty minutes, and what data did you look at to set it?
+
+Exchange 2:
+[ALEX]: We examined the distribution of inter‑event gaps for users who eventually completed the step versus those who churned. The 90th percentile gap for successful users was around eight minutes, while churned users showed a long tail beyond ten minutes; picking ten minutes as a heuristic captures most genuine pauses but flags the tail where abandonment spikes.
+
+[SAM]: So you’re using PostHog to timestamp the last event on that step, then compare the current time to that timestamp. How does the agent actually get notified in real time without polling the database constantly?
+
+Exchange 3:
+[ALEX]: PostHog provides a real‑time webhook that fires whenever an event arrives. We attach a lightweight listener that updates each user’s “lastSeenAt” for the target step; a separate cron‑like process checks every thirty seconds for any user whose lastSeenAt is older than ten minutes and emits a stall event to our agent queue.
+
+[SAM]: Thirty seconds seems like a trade‑off between latency and cost. What happens if a user stalls for nine minutes fifty‑seconds, then does something else—does the agent still trigger, or could we miss the window?
+
+Exchange 4:
+[ALEX]: The check is inclusive: if the elapsed time is greater than or equal to ten minutes, we fire. So a user who stalls nine minutes fifty‑seconds won’t trigger, but once they cross the ten‑minute mark—even if they’re idle—the next thirty‑second sweep will catch them, giving a worst‑case latency of up to thirty seconds plus the processing time.
+
+[SAM]: Once a stall is detected, how does the agent decide whether to send a Loom‑style video or a CustomerIO email, and what factors influence that choice?
+
+Exchange 5:
+[ALEX]: The decision rule looks at two signals: the user’s recent engagement with in‑app tutorials (if they’ve watched a help video in the last hour, we favor email to avoid overload) and their subscription tier (paid plans get a personalized video because we have higher willingness to invest in production). Free‑tier users receive a concise, templated email with a link to a generic demo.
+
+[SAM]: How do you personalize the video content at scale without recording a new clip for each user? Are you using AI avatars, dynamic text overlays, or something else?
+
+Exchange 6:
+[ALEX]: We generate a base Loom‑style screen‑capture that walks through connecting a data source, then splice in dynamic overlays—user name, the specific connector they attempted, and a short AI‑generated voiceover that mentions their plan name. The voiceover comes from a text‑to‑speech model fine‑tuned on our brand tone, so each video feels unique while reusing the same visual core.
+
+[SAM]: That sounds efficient, but what about users who disable video autoplay or have bandwidth constraints? Do you fall back to email automatically, or do you let them choose?
+
+Exchange 7:
+[ALEX]: The agent first attempts to deliver the video via an in‑app notification that respects the user’s preferred media settings; if the device reports low bandwidth or the user has disabled autoplay, the agent switches to a CustomerIO email that contains a thumbnail linking to the same video hosted on a CDN with adaptive bitrate.
+
+[SAM]: Let’s talk about measurement. How do you know whether the rescue agent actually lifts activation and revenue, and what metrics do you track beyond simple click‑through rates?
+
+Exchange 8:
+[ALEX]: We run a staggered rollout: half of the stalled users receive the agent’s intervention, the other half serve as a control. The primary metric is the lift in “core action completion” within twenty‑four hours of the stall—specifically, whether they finish the data‑source connection and trigger the first “value event.” Secondary metrics include day‑7 retention and upsell conversion, which we attribute to the agent using a difference‑in‑differences model.
+
+[SAM]: Difference‑in‑differences assumes parallel trends between groups. How do you validate that assumption, especially when the stall detection itself might correlate with user motivation?
+
+Exchange 9:
+[ALEX]: We check pre‑treatment trends by looking at the twenty‑four‑hour window before the stall for both groups; their completion rates are statistically indistinguishable. Additionally, we run a placebo test using a fake stall threshold of fifty minutes—where no real intervention should occur—and confirm no lift appears, which supports the parallel‑trend assumption.
+
+[SAM]: Suppose the agent misfires and sends a video to a user who wasn’t actually stuck but was just reading documentation. What’s the cost of a false positive, and how do you keep it low?
+
+Exchange 10:
+[ALEX]: A false positive can annoy users and increase support tickets, so we weight the cost higher than a missed true positive. To keep it low, we require two consecutive conditions: the elapsed time must exceed ten minutes **and** the user must have performed zero interaction events anywhere in the product during that window, reducing false triggers from users who

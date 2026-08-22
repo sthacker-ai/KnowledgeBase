@@ -1,0 +1,17 @@
+[ALEX]: Teams waste an average of two hours per week per skill because each member maintains a personal copy and the moment anyone edits it, versions drift apart, creating inconsistent agent output and duplicated effort across the group.  
+[SAM]: When you say “skill,” what exactly does that look like in practice? Is it just a checklist or something more formal?  
+[ALEX]: A skill is a markdown file that acts as a standard operating procedure for an AI agent; it includes a name, a brief description, and a step‑by‑step guide that tells Claude or Codex exactly how to perform a task, such as formatting a proposal with specific logo placement, tone, and color scheme.  
+[SAM]: So if everyone is saving their own markdown file, where does the version problem actually show up?  
+[ALEX]: The problem appears when Alice updates her copy to add a new header style, Bob still has the old version, and when they both invoke the skill the agent produces different outputs—one with the new header, one without—forcing re‑work and eroding trust in the agent’s reliability.  
+[SAM]: How does turning a GitHub repository into a plugin solve that drift issue?  
+[ALEX]: By storing every skill in a single repo under a designated folder like .claude/skills, the repository becomes the single source of truth; any commit updates the file for everyone who has the plugin installed, eliminating private copies and ensuring all teammates reference the exact same markdown.  
+[SAM]: What does the plugin structure look like inside the repo, and is there any metadata needed for the agent to recognize it?  
+[ALEX]: The plugin repo contains a folder—commonly .claude/skills—where each skill markdown lives; optionally a plugin.json manifest lists skill names, versions, authors, and update frequency, letting Claude or Codex index the folder and treat the repo as a library of skills.  
+[SAM]: You mentioned auto‑update; how does the agent know to pull the latest version without the user manually doing a git pull?  
+[ALEX]: When a user loads a skill, the agent checks the plugin’s repository for new commits; if the HEAD has moved since the last load, it fetches the latest commit automatically, so the next invocation always runs the most recent markdown.  
+[SAM]: Can you walk me through a concrete example of invoking a skill once the plugin is set up?  
+[ALEX]: Sure—if the repo contains a skill called “Notion formatting” in .claude/skills/notion_formatting.md, a user types in Claude, “use the Notion formatting skill,” the agent loads that markdown, applies the prescribed heading style, bullet indentation, and tone, and produces the formatted note in one shot.  
+[SAM]: What kind of time savings are we talking about when a team adopts this workflow instead of sharing .skill files via Slack or email?  
+[ALEX]: Because the agent executes the task correctly on the first try, teams avoid the typical revision loop; measurements show roughly two hours saved per week per skill, which adds up to significant productivity gains when multiple skills are in use.  
+[SAM]: Are there any gotchas when rolling this out, like permissions or repo size limits that teams should watch for?  
+[ALEX]: The main consideration is ensuring the plugin repo is accessible to all members—either public or with appropriate GitHub token access—and keeping the skill folder focused; large binary files don’t belong there, but pure markdown stays lightweight and fast to update.

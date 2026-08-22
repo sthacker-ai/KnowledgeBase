@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "built_at": "2026-08-21T07:23:46.767Z",
-  "node_count": 807,
-  "edge_count": 1470,
+  "built_at": "2026-08-22T14:33:10.854Z",
+  "node_count": 828,
+  "edge_count": 1511,
   "nodes": [
     {
       "id": "topic:claude-ai",
@@ -16,7 +16,7 @@
       "type": "topic",
       "slug": "ai-agents",
       "label": "AI Agents",
-      "source_count": 124
+      "source_count": 127
     },
     {
       "id": "topic:software-engineering",
@@ -30,7 +30,7 @@
       "type": "topic",
       "slug": "finance",
       "label": "Finance",
-      "source_count": 53
+      "source_count": 55
     },
     {
       "id": "topic:startup",
@@ -51,7 +51,7 @@
       "type": "topic",
       "slug": "uncategorized",
       "label": "Uncategorized",
-      "source_count": 31
+      "source_count": 32
     },
     {
       "id": "topic:machine-learning",
@@ -401,6 +401,27 @@
       "type": "topic",
       "slug": "software-alternatives",
       "label": "Software Alternatives",
+      "source_count": 1
+    },
+    {
+      "id": "topic:seo",
+      "type": "topic",
+      "slug": "seo",
+      "label": "Search Engine Optimization",
+      "source_count": 1
+    },
+    {
+      "id": "topic:artificial-intelligence",
+      "type": "topic",
+      "slug": "artificial-intelligence",
+      "label": "Artificial Intelligence",
+      "source_count": 1
+    },
+    {
+      "id": "topic:trading-strategies",
+      "type": "topic",
+      "slug": "trading-strategies",
+      "label": "Trading Strategies",
       "source_count": 1
     },
     {
@@ -3662,6 +3683,15 @@
       "processing_status": "course_generated"
     },
     {
+      "id": "source:2090071557590900974",
+      "type": "source",
+      "tweet_id": "2090071557590900974",
+      "title": "2090071557590900974.md",
+      "author_handle": "bloggersarvesh",
+      "topic_slug": "seo",
+      "processing_status": "course_generated"
+    },
+    {
       "id": "source:2090171022720799107",
       "type": "source",
       "tweet_id": "2090171022720799107",
@@ -3676,6 +3706,78 @@
       "tweet_id": "2090176521335959721",
       "title": "2090176521335959721.md",
       "author_handle": "gregisenberg",
+      "topic_slug": "ai-agents",
+      "processing_status": "course_generated"
+    },
+    {
+      "id": "source:2090305920857264219",
+      "type": "source",
+      "tweet_id": "2090305920857264219",
+      "title": "2090305920857264219.md",
+      "author_handle": "amisha_explains",
+      "topic_slug": "artificial-intelligence",
+      "processing_status": "course_generated"
+    },
+    {
+      "id": "source:2090349881911357748",
+      "type": "source",
+      "tweet_id": "2090349881911357748",
+      "title": "2090349881911357748.md",
+      "author_handle": "JayneshKasliwal",
+      "topic_slug": "trading-strategies",
+      "processing_status": "course_generated"
+    },
+    {
+      "id": "source:2090407144105402699",
+      "type": "source",
+      "tweet_id": "2090407144105402699",
+      "title": "2090407144105402699.md",
+      "author_handle": "marcusyul",
+      "topic_slug": "uncategorized",
+      "processing_status": "course_generated"
+    },
+    {
+      "id": "source:2090583188326187464",
+      "type": "source",
+      "tweet_id": "2090583188326187464",
+      "title": "2090583188326187464.md",
+      "author_handle": "code",
+      "topic_slug": "ai-agents",
+      "processing_status": "course_generated"
+    },
+    {
+      "id": "source:2090657655358619739",
+      "type": "source",
+      "tweet_id": "2090657655358619739",
+      "title": "2090657655358619739.md",
+      "author_handle": "hb_stocks",
+      "topic_slug": "finance",
+      "processing_status": "course_generated"
+    },
+    {
+      "id": "source:2090679762989850859",
+      "type": "source",
+      "tweet_id": "2090679762989850859",
+      "title": "2090679762989850859.md",
+      "author_handle": "JayneshKasliwal",
+      "topic_slug": "finance",
+      "processing_status": "course_generated"
+    },
+    {
+      "id": "source:2090804619626860811",
+      "type": "source",
+      "tweet_id": "2090804619626860811",
+      "title": "2090804619626860811.md",
+      "author_handle": "askOkara",
+      "topic_slug": "ai-agents",
+      "processing_status": "course_generated"
+    },
+    {
+      "id": "source:2090873268169302097",
+      "type": "source",
+      "tweet_id": "2090873268169302097",
+      "title": "2090873268169302097.md",
+      "author_handle": "mattpocockuk",
       "topic_slug": "ai-agents",
       "processing_status": "course_generated"
     },
@@ -4611,6 +4713,27 @@
       "file": "content/courses/ai-agents/course-166.md"
     },
     {
+      "id": "course:2090583188326187464",
+      "type": "course",
+      "tweet_id": "2090583188326187464",
+      "topic_slug": "ai-agents",
+      "file": "content/courses/ai-agents/course-167.md"
+    },
+    {
+      "id": "course:2090804619626860811",
+      "type": "course",
+      "tweet_id": "2090804619626860811",
+      "topic_slug": "ai-agents",
+      "file": "content/courses/ai-agents/course-168.md"
+    },
+    {
+      "id": "course:2090873268169302097",
+      "type": "course",
+      "tweet_id": "2090873268169302097",
+      "topic_slug": "ai-agents",
+      "file": "content/courses/ai-agents/course-169.md"
+    },
+    {
       "id": "course:2061070268479721483",
       "type": "course",
       "tweet_id": "2061070268479721483",
@@ -4707,6 +4830,13 @@
       "tweet_id": "2060799012148850908",
       "topic_slug": "algo-trading",
       "file": "content/courses/algo-trading/course-001.md"
+    },
+    {
+      "id": "course:2090305920857264219",
+      "type": "course",
+      "tweet_id": "2090305920857264219",
+      "topic_slug": "artificial-intelligence",
+      "file": "content/courses/artificial-intelligence/course-001.md"
     },
     {
       "id": "course:2070807730148045041",
@@ -5472,6 +5602,20 @@
       "file": "content/courses/finance/course-068.md"
     },
     {
+      "id": "course:2090657655358619739",
+      "type": "course",
+      "tweet_id": "2090657655358619739",
+      "topic_slug": "finance",
+      "file": "content/courses/finance/course-069.md"
+    },
+    {
+      "id": "course:2090679762989850859",
+      "type": "course",
+      "tweet_id": "2090679762989850859",
+      "topic_slug": "finance",
+      "file": "content/courses/finance/course-070.md"
+    },
+    {
       "id": "course:2067233860287627359",
       "type": "course",
       "tweet_id": "2067233860287627359",
@@ -5808,6 +5952,13 @@
       "file": "content/courses/self-improvement/course-002.md"
     },
     {
+      "id": "course:2090071557590900974",
+      "type": "course",
+      "tweet_id": "2090071557590900974",
+      "topic_slug": "seo",
+      "file": "content/courses/seo/course-001.md"
+    },
+    {
       "id": "course:2061059065451786375",
       "type": "course",
       "tweet_id": "2061059065451786375",
@@ -6016,6 +6167,13 @@
       "tweet_id": "2059124167887216817",
       "topic_slug": "trading-journal-automation",
       "file": "content/courses/trading-journal-automation/course-003.md"
+    },
+    {
+      "id": "course:2090349881911357748",
+      "type": "course",
+      "tweet_id": "2090349881911357748",
+      "topic_slug": "trading-strategies",
+      "file": "content/courses/trading-strategies/course-001.md"
     },
     {
       "id": "course:2061290233015202086",
@@ -6282,6 +6440,13 @@
       "tweet_id": "2086094088059994384",
       "topic_slug": "uncategorized",
       "file": "content/courses/uncategorized/course-037.md"
+    },
+    {
+      "id": "course:2090407144105402699",
+      "type": "course",
+      "tweet_id": "2090407144105402699",
+      "topic_slug": "uncategorized",
+      "file": "content/courses/uncategorized/course-038.md"
     },
     {
       "id": "course:2076799705124597788",
@@ -8044,12 +8209,52 @@
       "type": "belongs_to"
     },
     {
+      "source": "source:2090071557590900974",
+      "target": "topic:seo",
+      "type": "belongs_to"
+    },
+    {
       "source": "source:2090171022720799107",
       "target": "topic:claude-ai",
       "type": "belongs_to"
     },
     {
       "source": "source:2090176521335959721",
+      "target": "topic:ai-agents",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2090305920857264219",
+      "target": "topic:artificial-intelligence",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2090349881911357748",
+      "target": "topic:trading-strategies",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2090583188326187464",
+      "target": "topic:ai-agents",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2090657655358619739",
+      "target": "topic:finance",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2090679762989850859",
+      "target": "topic:finance",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2090804619626860811",
+      "target": "topic:ai-agents",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2090873268169302097",
       "target": "topic:ai-agents",
       "type": "belongs_to"
     },
@@ -9419,8 +9624,38 @@
       "type": "has_course"
     },
     {
+      "source": "course:2090583188326187464",
+      "target": "topic:ai-agents",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2090583188326187464",
+      "target": "course:2090583188326187464",
+      "type": "has_course"
+    },
+    {
+      "source": "course:2090804619626860811",
+      "target": "topic:ai-agents",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2090804619626860811",
+      "target": "course:2090804619626860811",
+      "type": "has_course"
+    },
+    {
+      "source": "course:2090873268169302097",
+      "target": "topic:ai-agents",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2090873268169302097",
+      "target": "course:2090873268169302097",
+      "type": "has_course"
+    },
+    {
       "source": "topic:ai-agents",
-      "target": "topic:machine-learning",
+      "target": "topic:claude-ai",
       "type": "related_topic"
     },
     {
@@ -9430,12 +9665,7 @@
     },
     {
       "source": "topic:ai-agents",
-      "target": "topic:claude-ai",
-      "type": "related_topic"
-    },
-    {
-      "source": "topic:ai-agents",
-      "target": "topic:openai-codex",
+      "target": "topic:machine-learning",
       "type": "related_topic"
     },
     {
@@ -9445,22 +9675,7 @@
     },
     {
       "source": "topic:ai-agents",
-      "target": "topic:startup",
-      "type": "related_topic"
-    },
-    {
-      "source": "topic:ai-agents",
-      "target": "topic:finance",
-      "type": "related_topic"
-    },
-    {
-      "source": "topic:ai-agents",
-      "target": "topic:health-wellness",
-      "type": "related_topic"
-    },
-    {
-      "source": "topic:ai-agents",
-      "target": "topic:negotiation",
+      "target": "topic:openai-codex",
       "type": "related_topic"
     },
     {
@@ -9936,6 +10151,41 @@
     {
       "source": "topic:algo-trading",
       "target": "topic:startup",
+      "type": "related_topic"
+    },
+    {
+      "source": "course:2090305920857264219",
+      "target": "topic:artificial-intelligence",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2090305920857264219",
+      "target": "course:2090305920857264219",
+      "type": "has_course"
+    },
+    {
+      "source": "topic:artificial-intelligence",
+      "target": "topic:machine-learning",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:artificial-intelligence",
+      "target": "topic:data-engineering",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:artificial-intelligence",
+      "target": "topic:software-engineering",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:artificial-intelligence",
+      "target": "topic:claude-ai",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:artificial-intelligence",
+      "target": "topic:ai-agents",
       "type": "related_topic"
     },
     {
@@ -11314,6 +11564,26 @@
       "type": "has_course"
     },
     {
+      "source": "course:2090657655358619739",
+      "target": "topic:finance",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2090657655358619739",
+      "target": "course:2090657655358619739",
+      "type": "has_course"
+    },
+    {
+      "source": "course:2090679762989850859",
+      "target": "topic:finance",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2090679762989850859",
+      "target": "course:2090679762989850859",
+      "type": "has_course"
+    },
+    {
       "source": "topic:finance",
       "target": "topic:machine-learning",
       "type": "related_topic"
@@ -11330,22 +11600,7 @@
     },
     {
       "source": "topic:finance",
-      "target": "topic:startup",
-      "type": "related_topic"
-    },
-    {
-      "source": "topic:finance",
       "target": "topic:negotiation",
-      "type": "related_topic"
-    },
-    {
-      "source": "topic:finance",
-      "target": "topic:claude-ai",
-      "type": "related_topic"
-    },
-    {
-      "source": "topic:finance",
-      "target": "topic:openai-codex",
       "type": "related_topic"
     },
     {
@@ -12309,6 +12564,56 @@
       "type": "related_topic"
     },
     {
+      "source": "course:2090071557590900974",
+      "target": "topic:seo",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2090071557590900974",
+      "target": "course:2090071557590900974",
+      "type": "has_course"
+    },
+    {
+      "source": "topic:seo",
+      "target": "topic:ai-agents",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:seo",
+      "target": "topic:machine-learning",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:seo",
+      "target": "topic:software-engineering",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:seo",
+      "target": "topic:startup",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:seo",
+      "target": "topic:finance",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:seo",
+      "target": "topic:health-wellness",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:seo",
+      "target": "topic:data-engineering",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:seo",
+      "target": "topic:negotiation",
+      "type": "related_topic"
+    },
+    {
       "source": "course:2061059065451786375",
       "target": "topic:social-media-commentary",
       "type": "belongs_to"
@@ -12914,6 +13219,61 @@
       "type": "related_topic"
     },
     {
+      "source": "course:2090349881911357748",
+      "target": "topic:trading-strategies",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2090349881911357748",
+      "target": "course:2090349881911357748",
+      "type": "has_course"
+    },
+    {
+      "source": "topic:trading-strategies",
+      "target": "topic:finance",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:trading-strategies",
+      "target": "topic:machine-learning",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:trading-strategies",
+      "target": "topic:data-engineering",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:trading-strategies",
+      "target": "topic:software-engineering",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:trading-strategies",
+      "target": "topic:ai-agents",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:trading-strategies",
+      "target": "topic:claude-ai",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:trading-strategies",
+      "target": "topic:negotiation",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:trading-strategies",
+      "target": "topic:startup",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:trading-strategies",
+      "target": "topic:health-wellness",
+      "type": "related_topic"
+    },
+    {
       "source": "course:2061290233015202086",
       "target": "topic:trading-strategy",
       "type": "belongs_to"
@@ -13301,6 +13661,16 @@
     {
       "source": "source:2086094088059994384",
       "target": "course:2086094088059994384",
+      "type": "has_course"
+    },
+    {
+      "source": "course:2090407144105402699",
+      "target": "topic:uncategorized",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2090407144105402699",
+      "target": "course:2090407144105402699",
       "type": "has_course"
     },
     {

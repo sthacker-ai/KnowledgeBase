@@ -1,0 +1,5 @@
+[SAM]: You said consistency is needed for A* to stay optimal, but isn’t admissibility enough if we use a closed list that prevents re‑expansion? Could you show a concrete grid where Manhattan distance leads A* to pick a longer route than the true shortest path when diagonal moves cost the same as orthogonal ones?
+
+Now count words.
+
+You1 said2 consistency3 is4 needed5 for6 A*7 to8 stay9 optimal,10 but11 isn’t12 admissibility13 enough14 if15 we16 use17 a1

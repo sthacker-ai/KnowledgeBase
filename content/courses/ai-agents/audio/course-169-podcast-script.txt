@@ -1,0 +1,4 @@
+[ALEX]: When your AI coding agent starts giving you the same boilerplate suggestion three times in a row, it’s not being stubborn—it’s a clear sign its context window has overflowed and it’s slipped into the dumb zone, where reasoning degrades because irrelevant or redundant data crowds out the useful signals.
+[SAM]: What exactly do you mean by “context window,” and how can we tell it’s overflowed rather than the model just being confused by a vague prompt?
+[ALEX]: The context window is the agent’s working memory, measured in tokens, that holds everything you’ve sent: code snippets, instructions, file references, and the conversation history. When the token count nears the model’s limit, older relevant details get pushed out, causing the agent to lose track of intent and produce repetitive or off‑target outputs.
+[SAM

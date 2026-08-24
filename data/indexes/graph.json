@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "built_at": "2026-08-23T06:31:54.554Z",
-  "node_count": 828,
-  "edge_count": 1511,
+  "built_at": "2026-08-24T06:37:11.153Z",
+  "node_count": 830,
+  "edge_count": 1516,
   "nodes": [
     {
       "id": "topic:claude-ai",
@@ -30,7 +30,7 @@
       "type": "topic",
       "slug": "finance",
       "label": "Finance",
-      "source_count": 55
+      "source_count": 56
     },
     {
       "id": "topic:startup",
@@ -3782,6 +3782,15 @@
       "processing_status": "course_generated"
     },
     {
+      "id": "source:2091467956379341265",
+      "type": "source",
+      "tweet_id": "2091467956379341265",
+      "title": "2091467956379341265.md",
+      "author_handle": "ChartistEdge",
+      "topic_slug": "finance",
+      "processing_status": "course_generated"
+    },
+    {
       "id": "course:2076667968033894883",
       "type": "course",
       "tweet_id": "2076667968033894883",
@@ -5614,6 +5623,13 @@
       "tweet_id": "2090679762989850859",
       "topic_slug": "finance",
       "file": "content/courses/finance/course-070.md"
+    },
+    {
+      "id": "course:2091467956379341265",
+      "type": "course",
+      "tweet_id": "2091467956379341265",
+      "topic_slug": "finance",
+      "file": "content/courses/finance/course-071.md"
     },
     {
       "id": "course:2067233860287627359",
@@ -8256,6 +8272,11 @@
     {
       "source": "source:2090873268169302097",
       "target": "topic:ai-agents",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2091467956379341265",
+      "target": "topic:finance",
       "type": "belongs_to"
     },
     {
@@ -11584,13 +11605,23 @@
       "type": "has_course"
     },
     {
+      "source": "course:2091467956379341265",
+      "target": "topic:finance",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2091467956379341265",
+      "target": "course:2091467956379341265",
+      "type": "has_course"
+    },
+    {
       "source": "topic:finance",
       "target": "topic:machine-learning",
       "type": "related_topic"
     },
     {
       "source": "topic:finance",
-      "target": "topic:data-engineering",
+      "target": "topic:ai-agents",
       "type": "related_topic"
     },
     {
@@ -11600,12 +11631,22 @@
     },
     {
       "source": "topic:finance",
+      "target": "topic:startup",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:finance",
       "target": "topic:negotiation",
       "type": "related_topic"
     },
     {
       "source": "topic:finance",
-      "target": "topic:health-wellness",
+      "target": "topic:data-engineering",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:finance",
+      "target": "topic:openai-codex",
       "type": "related_topic"
     },
     {

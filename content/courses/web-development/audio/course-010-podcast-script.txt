@@ -1,0 +1,47 @@
+[ALEX]: Gemini 3.7 Flash can produce a complete, interactive website—including navigation, a contact form, and a responsive grid—within two seconds of typing a simple prompt like “portfolio for a freelance photographer,” but the speed comes at the cost of opaque styling that resists manual overrides unless you dive into the generated CSS variables.
+
+Now count words. Let's count manually.
+
+Gemini(1) 3.7(2) Flash(3) can(4) produce(5) a(6) complete,(7) interactive(8) website—including(9) navigation,(10) a(11) contact(12) form,(13) and(14) a(15) responsive(16) grid—within(17) two(18) seconds(19) of(20) typing(21) a(22) simple(23) prompt(24) like(25) “portfolio(26) for(27) a(28) freelance(29) photographer,”(30) but(31) the(32) speed(33) comes(34) at(35) the(36) cost(37) of(38) opaque(39) styling(40) that(41) resists(42) manual(43) overrides(44) unless(45) you(46) dive(47) into(48) the(49) generated(50) CSS(51) variables.(52)
+
+52 words. Need ~90. Let's add more detail.
+
+Add: "You can still inject custom classes, but the AI‑generated selectors have higher specificity, so you must use !important or edit the base template to avoid conflicts."
+
+Add that sentence.
+
+Now continue counting.
+
+You(53) can(54) still(55) inject(56) custom(57) classes,(58) but(59) the(60) AI‑generated(61) selectors(62) have(63) higher(64) specificity,(65) so(66) you(67) must(68) use(69) !important(70) or(71) edit(72) the(73) base(74) template(75) to(76) avoid(77) conflicts.(78)
+
+Now total 78 words. Need ~90. Add a bit more: "In practice, developers often keep a small stylesheet override file that the tool respects, letting them tweak colors and spacing without breaking the AI layout."
+
+Add sentence.
+
+In(79) practice,(80) developers(81) often(82) keep(83) a(84) small(85) stylesheet(86) override(87) file(88) that(89) the(90) tool(91) respects,(92) letting(93) them(94) tweak(95) colors(96) and(97) spacing(98) without(99) breaking(100) the(101) AI(102) layout.(103)
+
+Now 103 words. Good.
+
+Line 1 done.
+
+Line 2 [SAM]: ask clarifying question, spot assumption, ask for concrete example.
+
+Write:
+
+[SAM]: When you say the tool generates a “complete website” in two seconds, does that include setting up a domain, hosting, or just delivering the HTML/CSS/JS files to the browser? And can you give a concrete example of a prompt that yields a functional e‑commerce checkout flow, not just a static page?
+
+Count words.
+
+When1 you2 say3 the4 tool5 generates6 a7 “complete8 website”9 in10 two11 seconds,12 does13 that14 include15 setting16 up17 a18 domain,19 hosting,20 or21 just22 delivering23 the24 HTML/CSS/JS25 files26 to27 the28 browser?29 And30 can31 you32 give33 a34 concrete35 example36 of37 a38 prompt39 that40 yields41 a42 functional43 e‑commerce44 checkout45 flow,46 not47 just48 a49 static50 page?51
+
+51 words. Need longer. Add more detail: ask about limitations, ask for example of customizing.
+
+Add: "Also, how does the AI decide which UI components to include—does it infer intent from keywords, or does it rely on a predefined component library, and what happens if the prompt is ambiguous?"
+
+Let's add.
+
+Also,(52) how53 does54 the55 AI56 decide57 which58 UI59 components60 to61 include—does62 it63 infer64 intent65 from66 keywords,67 or68 does69 it70 rely71 on72 a73 predefined74 component75 library,76 and77 what78 happens79 if80 the81 prompt82 is83 ambiguous?84
+
+Now total words: previous 51 + added 33 = 84? Let's recount added words.
+
+Also(52) how53 does54 the55 AI56 decide57 which58 UI59 components60 to61 include—does62 it63 infer64 intent65 from66 keywords,67 or68 does69 it70 rely71

@@ -1,15 +1,15 @@
 {
   "trigger": "scheduled",
-  "date": "2026-08-26",
-  "started_at_ist": "26/08/2026, 12:00:02 IST",
-  "finished_at_ist": "26/08/2026, 12:06:04 IST",
-  "duration_secs": 362.1,
+  "date": "2026-08-27",
+  "started_at_ist": "27/08/2026, 12:00:02 IST",
+  "finished_at_ist": "27/08/2026, 12:04:53 IST",
+  "duration_secs": 291.1,
   "status": "ok",
   "steps": [
     {
       "name": "Import X Likes",
       "status": "ok",
-      "duration_secs": 113.1,
+      "duration_secs": 99.9,
       "detail": "0 new tweet(s) imported"
     },
     {
@@ -39,7 +39,7 @@
     {
       "name": "Topic summaries",
       "status": "ok",
-      "duration_secs": 1,
+      "duration_secs": 0.9,
       "detail": "0/60 topic summaries updated"
     },
     {
@@ -57,31 +57,31 @@
     {
       "name": "Podcasts",
       "status": "ok",
-      "duration_secs": 154.7,
-      "detail": "1 podcast(s) generated, 4 error(s)"
+      "duration_secs": 91.9,
+      "detail": "0 podcast(s) generated, 4 error(s)"
     },
     {
       "name": "Obsidian vault export",
       "status": "ok",
-      "duration_secs": 1.3,
+      "duration_secs": 1.4,
       "detail": "564 course(s), 0 topic(s), 379 source(s) synced"
     },
     {
       "name": "Upload Media to R2",
       "status": "ok",
-      "duration_secs": 2.3,
-      "detail": "1 new file(s) uploaded to R2"
+      "duration_secs": 1.6,
+      "detail": "0 new file(s) uploaded to R2"
     },
     {
       "name": "Commit & Push",
       "status": "ok",
-      "duration_secs": 3.3,
-      "detail": "4 file(s) committed and pushed to GitHub"
+      "duration_secs": 3.8,
+      "detail": "2 file(s) committed and pushed to GitHub"
     },
     {
       "name": "Prod build",
       "status": "ok",
-      "duration_secs": 81
+      "duration_secs": 86
     },
     {
       "name": "Prod server restart",
@@ -92,6 +92,6 @@
   "x_session": {
     "status": "ok",
     "expiresAt": "2027-07-06T05:33:47.000Z",
-    "daysUntilExpiry": 313
+    "daysUntilExpiry": 312
   }
 }

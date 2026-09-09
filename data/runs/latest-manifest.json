@@ -1,87 +1,87 @@
 {
   "trigger": "scheduled",
-  "date": "2026-09-07",
-  "started_at_ist": "07/09/2026, 12:00:02 IST",
-  "finished_at_ist": "07/09/2026, 12:10:39 IST",
-  "duration_secs": 637.2,
+  "date": "2026-09-08",
+  "started_at_ist": "08/09/2026, 13:54:30 IST",
+  "finished_at_ist": "09/09/2026, 10:24:06 IST",
+  "duration_secs": 73775.8,
   "status": "ok",
   "steps": [
     {
       "name": "Import X Likes",
       "status": "ok",
-      "duration_secs": 102.8,
+      "duration_secs": 27151.6,
       "detail": "0 new tweet(s) imported"
     },
     {
       "name": "Source extraction",
       "status": "ok",
-      "duration_secs": 1.1,
+      "duration_secs": 2,
       "detail": "nothing new to extract"
     },
     {
       "name": "Video transcripts",
       "status": "ok",
-      "duration_secs": 0.7,
+      "duration_secs": 2.2,
       "detail": null
     },
     {
       "name": "AI classification",
       "status": "ok",
-      "duration_secs": 1.4,
+      "duration_secs": 2,
       "detail": "0 classified"
     },
     {
       "name": "Course generation",
       "status": "ok",
-      "duration_secs": 0.3,
+      "duration_secs": 0.5,
       "detail": "0/0 course(s) generated"
     },
     {
       "name": "Topic summaries",
       "status": "ok",
-      "duration_secs": 1,
+      "duration_secs": 4.8,
       "detail": "0/60 topic summaries updated"
     },
     {
       "name": "Graph build",
       "status": "ok",
-      "duration_secs": 1,
+      "duration_secs": 3.5,
       "detail": "830 nodes, 1516 edges"
     },
     {
       "name": "Hero images",
       "status": "ok",
-      "duration_secs": 0.7,
+      "duration_secs": 2,
       "detail": "0 hero image(s) generated"
     },
     {
       "name": "Podcasts",
       "status": "ok",
-      "duration_secs": 338.3,
-      "detail": "1 podcast(s) generated, 3 error(s)"
+      "duration_secs": 34921.9,
+      "detail": "0 podcast(s) generated, 3 error(s)"
     },
     {
       "name": "Obsidian vault export",
       "status": "ok",
-      "duration_secs": 20.2,
+      "duration_secs": 11476.6,
       "detail": "564 course(s), 0 topic(s), 379 source(s) synced"
     },
     {
       "name": "Upload Media to R2",
       "status": "ok",
-      "duration_secs": 4,
-      "detail": "1 new file(s) uploaded to R2"
+      "duration_secs": 1.6,
+      "detail": "0 new file(s) uploaded to R2"
     },
     {
       "name": "Commit & Push",
       "status": "ok",
-      "duration_secs": 5,
-      "detail": "4 file(s) committed and pushed to GitHub"
+      "duration_secs": 5.2,
+      "detail": "2 file(s) committed and pushed to GitHub"
     },
     {
       "name": "Prod build",
       "status": "ok",
-      "duration_secs": 160
+      "duration_secs": 196.6
     },
     {
       "name": "Prod server restart",
@@ -92,6 +92,6 @@
   "x_session": {
     "status": "ok",
     "expiresAt": "2027-07-06T05:33:47.000Z",
-    "daysUntilExpiry": 301
+    "daysUntilExpiry": 300
   }
 }

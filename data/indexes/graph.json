@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "built_at": "2026-09-09T06:31:55.333Z",
-  "node_count": 830,
-  "edge_count": 1516,
+  "built_at": "2026-09-10T06:40:11.055Z",
+  "node_count": 833,
+  "edge_count": 1529,
   "nodes": [
     {
       "id": "topic:claude-ai",
@@ -422,6 +422,13 @@
       "type": "topic",
       "slug": "trading-strategies",
       "label": "Trading Strategies",
+      "source_count": 1
+    },
+    {
+      "id": "topic:prompt-engineering",
+      "type": "topic",
+      "slug": "prompt-engineering",
+      "label": "Prompt Engineering",
       "source_count": 1
     },
     {
@@ -3791,6 +3798,15 @@
       "processing_status": "course_generated"
     },
     {
+      "id": "source:2097059598960132110",
+      "type": "source",
+      "tweet_id": "2097059598960132110",
+      "title": "2097059598960132110.md",
+      "author_handle": "omarsar0",
+      "topic_slug": "prompt-engineering",
+      "processing_status": "course_generated"
+    },
+    {
       "id": "course:2076667968033894883",
       "type": "course",
       "tweet_id": "2076667968033894883",
@@ -5945,6 +5961,13 @@
       "tweet_id": "2088639990926278764",
       "topic_slug": "product-management",
       "file": "content/courses/product-management/course-002.md"
+    },
+    {
+      "id": "course:2097059598960132110",
+      "type": "course",
+      "tweet_id": "2097059598960132110",
+      "topic_slug": "prompt-engineering",
+      "file": "content/courses/prompt-engineering/course-001.md"
     },
     {
       "id": "course:2059707097583906917",
@@ -8277,6 +8300,11 @@
     {
       "source": "source:2091467956379341265",
       "target": "topic:finance",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2097059598960132110",
+      "target": "topic:prompt-engineering",
       "type": "belongs_to"
     },
     {
@@ -12542,6 +12570,66 @@
     {
       "source": "topic:product-management",
       "target": "topic:data-engineering",
+      "type": "related_topic"
+    },
+    {
+      "source": "course:2097059598960132110",
+      "target": "topic:prompt-engineering",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2097059598960132110",
+      "target": "course:2097059598960132110",
+      "type": "has_course"
+    },
+    {
+      "source": "topic:prompt-engineering",
+      "target": "topic:claude-ai",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:prompt-engineering",
+      "target": "topic:ai-agents",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:prompt-engineering",
+      "target": "topic:software-engineering",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:prompt-engineering",
+      "target": "topic:machine-learning",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:prompt-engineering",
+      "target": "topic:data-engineering",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:prompt-engineering",
+      "target": "topic:finance",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:prompt-engineering",
+      "target": "topic:startup",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:prompt-engineering",
+      "target": "topic:health-wellness",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:prompt-engineering",
+      "target": "topic:negotiation",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:prompt-engineering",
+      "target": "topic:uncategorized",
       "type": "related_topic"
     },
     {

@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "built_at": "2026-09-10T06:40:11.055Z",
-  "node_count": 833,
-  "edge_count": 1529,
+  "built_at": "2026-09-11T06:38:40.022Z",
+  "node_count": 836,
+  "edge_count": 1541,
   "nodes": [
     {
       "id": "topic:claude-ai",
@@ -429,6 +429,13 @@
       "type": "topic",
       "slug": "prompt-engineering",
       "label": "Prompt Engineering",
+      "source_count": 1
+    },
+    {
+      "id": "topic:gemini-api",
+      "type": "topic",
+      "slug": "gemini-api",
+      "label": "Gemini API",
       "source_count": 1
     },
     {
@@ -3807,6 +3814,15 @@
       "processing_status": "course_generated"
     },
     {
+      "id": "source:2098032824813080714",
+      "type": "source",
+      "tweet_id": "2098032824813080714",
+      "title": "2098032824813080714.md",
+      "author_handle": "patloeber",
+      "topic_slug": "gemini-api",
+      "processing_status": "course_generated"
+    },
+    {
       "id": "course:2076667968033894883",
       "type": "course",
       "tweet_id": "2076667968033894883",
@@ -5653,6 +5669,13 @@
       "tweet_id": "2067233860287627359",
       "topic_slug": "gemini-ai",
       "file": "content/courses/gemini-ai/course-001.md"
+    },
+    {
+      "id": "course:2098032824813080714",
+      "type": "course",
+      "tweet_id": "2098032824813080714",
+      "topic_slug": "gemini-api",
+      "file": "content/courses/gemini-api/course-001.md"
     },
     {
       "id": "course:2053566155571560868",
@@ -8305,6 +8328,11 @@
     {
       "source": "source:2097059598960132110",
       "target": "topic:prompt-engineering",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2098032824813080714",
+      "target": "topic:gemini-api",
       "type": "belongs_to"
     },
     {
@@ -11720,6 +11748,61 @@
     {
       "source": "topic:gemini-ai",
       "target": "topic:health-wellness",
+      "type": "related_topic"
+    },
+    {
+      "source": "course:2098032824813080714",
+      "target": "topic:gemini-api",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2098032824813080714",
+      "target": "course:2098032824813080714",
+      "type": "has_course"
+    },
+    {
+      "source": "topic:gemini-api",
+      "target": "topic:claude-ai",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:gemini-api",
+      "target": "topic:ai-agents",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:gemini-api",
+      "target": "topic:software-engineering",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:gemini-api",
+      "target": "topic:machine-learning",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:gemini-api",
+      "target": "topic:data-engineering",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:gemini-api",
+      "target": "topic:startup",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:gemini-api",
+      "target": "topic:finance",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:gemini-api",
+      "target": "topic:health-wellness",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:gemini-api",
+      "target": "topic:negotiation",
       "type": "related_topic"
     },
     {

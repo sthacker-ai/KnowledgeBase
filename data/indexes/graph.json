@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "built_at": "2026-09-11T06:38:40.022Z",
-  "node_count": 836,
-  "edge_count": 1541,
+  "built_at": "2026-09-14T09:07:35.845Z",
+  "node_count": 838,
+  "edge_count": 1537,
   "nodes": [
     {
       "id": "topic:claude-ai",
@@ -30,7 +30,7 @@
       "type": "topic",
       "slug": "finance",
       "label": "Finance",
-      "source_count": 56
+      "source_count": 57
     },
     {
       "id": "topic:startup",
@@ -3823,6 +3823,15 @@
       "processing_status": "course_generated"
     },
     {
+      "id": "source:2098421234841288788",
+      "type": "source",
+      "tweet_id": "2098421234841288788",
+      "title": "2098421234841288788.md",
+      "author_handle": "swing_ka_sultan",
+      "topic_slug": "finance",
+      "processing_status": "course_generated"
+    },
+    {
       "id": "course:2076667968033894883",
       "type": "course",
       "tweet_id": "2076667968033894883",
@@ -5662,6 +5671,13 @@
       "tweet_id": "2091467956379341265",
       "topic_slug": "finance",
       "file": "content/courses/finance/course-071.md"
+    },
+    {
+      "id": "course:2098421234841288788",
+      "type": "course",
+      "tweet_id": "2098421234841288788",
+      "topic_slug": "finance",
+      "file": "content/courses/finance/course-072.md"
     },
     {
       "id": "course:2067233860287627359",
@@ -8333,6 +8349,11 @@
     {
       "source": "source:2098032824813080714",
       "target": "topic:gemini-api",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2098421234841288788",
+      "target": "topic:finance",
       "type": "belongs_to"
     },
     {
@@ -11671,39 +11692,14 @@
       "type": "has_course"
     },
     {
-      "source": "topic:finance",
-      "target": "topic:machine-learning",
-      "type": "related_topic"
+      "source": "course:2098421234841288788",
+      "target": "topic:finance",
+      "type": "belongs_to"
     },
     {
-      "source": "topic:finance",
-      "target": "topic:ai-agents",
-      "type": "related_topic"
-    },
-    {
-      "source": "topic:finance",
-      "target": "topic:software-engineering",
-      "type": "related_topic"
-    },
-    {
-      "source": "topic:finance",
-      "target": "topic:startup",
-      "type": "related_topic"
-    },
-    {
-      "source": "topic:finance",
-      "target": "topic:negotiation",
-      "type": "related_topic"
-    },
-    {
-      "source": "topic:finance",
-      "target": "topic:data-engineering",
-      "type": "related_topic"
-    },
-    {
-      "source": "topic:finance",
-      "target": "topic:openai-codex",
-      "type": "related_topic"
+      "source": "source:2098421234841288788",
+      "target": "course:2098421234841288788",
+      "type": "has_course"
     },
     {
       "source": "course:2067233860287627359",

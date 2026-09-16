@@ -1,0 +1,33 @@
+[ALEX]: Let’s say you’ve just run your daily momentum scan and have 50 stocks that meet your criteria. How do you narrow that down to just 2 or 3 for actual trading?
+
+[SAM]: Why not trade all 50? If they all passed the scan, shouldn’t they all be good opportunities?
+
+[ALEX]: Because trading isn’t about finding as many opportunities as possible—it’s about finding the *right* ones. Each trade consumes capital, attention, and emotional bandwidth. The goal isn’t to maximize the number of trades; it’s to maximize the probability of success per trade.
+
+[SAM]: Okay, but how do you decide which ones are the *right* ones?
+
+[ALEX]: You start by filtering for liquidity and volatility. A stock might meet your momentum criteria, but if it has low volume, you’ll struggle with execution. Similarly, if it’s too volatile, your risk management becomes unpredictable. So, first, eliminate anything with average daily volume below 500K shares or a beta greater than 2.5.
+
+[SAM]: That makes sense. But what if two stocks are equally liquid and volatile—how do you choose between them?
+
+[ALEX]: You look at the *quality* of the setup. Are they both breaking out of a clear consolidation pattern, or is one just bouncing off support? Is one forming a bullish flag while the other is just drifting sideways? The cleaner the pattern, the higher the probability.
+
+[SAM]: But isn’t that subjective? How do you avoid bias?
+
+[ALEX]: That’s where predefined rules come in. For example, you might require a stock to have at least three consecutive higher lows before considering it. Or you might only trade stocks where the breakout volume is at least 20% above the 20-day average. These rules remove guesswork.
+
+[SAM]: What if the market suddenly shifts—like a sector rotation? Do you adjust your criteria?
+
+[ALEX]: Yes, but not reactively. If you notice a sector starting to outperform, you might add a sector-specific scan to your workflow. The key is to adjust *before* the shift fully materializes, not after. For example, if energy stocks start showing relative strength, you might add an energy-specific momentum scan to your routine.
+
+[SAM]: How often should you review and update your scans?
+
+[ALEX]: At least monthly. Markets evolve, and what worked last quarter might not work this quarter. For example, if you’ve been scanning for low-volatility stocks but the market enters a high-volatility phase, you might need to adjust your volatility thresholds.
+
+[SAM]: What’s the biggest mistake traders make with their watchlists?
+
+[ALEX]: Overloading them with too many stocks. A watchlist should be a shortlist—no more than 10-15 stocks at a time. If it’s too long, you’ll spend all your time monitoring instead of trading. The best traders have a tight watchlist and know each stock’s setup intimately.
+
+[SAM]: So, the workflow is about filtering, refining, and staying disciplined?
+
+[ALEX]: Exactly. The workflow isn’t just about finding trades—it’s about *excluding* the ones that don’t meet your standards. The more disciplined you are in filtering, the higher your success rate will be.

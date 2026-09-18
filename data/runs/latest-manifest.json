@@ -1,16 +1,16 @@
 {
   "trigger": "scheduled",
-  "date": "2026-09-16",
-  "started_at_ist": "16/09/2026, 12:00:02 IST",
-  "finished_at_ist": "16/09/2026, 12:20:39 IST",
-  "duration_secs": 1237.6,
-  "status": "completed_with_errors",
+  "date": "2026-09-17",
+  "started_at_ist": "17/09/2026, 12:00:02 IST",
+  "finished_at_ist": "17/09/2026, 12:04:46 IST",
+  "duration_secs": 284.2,
+  "status": "ok",
   "steps": [
     {
       "name": "Import X Likes",
-      "status": "failed",
-      "duration_secs": 30.7,
-      "error": "exit code 1"
+      "status": "ok",
+      "duration_secs": 105.6,
+      "detail": "0 new tweet(s) imported"
     },
     {
       "name": "Source extraction",
@@ -21,13 +21,13 @@
     {
       "name": "Video transcripts",
       "status": "ok",
-      "duration_secs": 0.7,
+      "duration_secs": 0.6,
       "detail": null
     },
     {
       "name": "AI classification",
       "status": "ok",
-      "duration_secs": 1.6,
+      "duration_secs": 1.5,
       "detail": "0 classified"
     },
     {
@@ -51,37 +51,37 @@
     {
       "name": "Hero images",
       "status": "ok",
-      "duration_secs": 0.5,
+      "duration_secs": 0.6,
       "detail": "0 hero image(s) generated"
     },
     {
       "name": "Podcasts",
       "status": "ok",
-      "duration_secs": 1018.6,
-      "detail": "2 podcast(s) generated, 4 error(s)"
+      "duration_secs": 92.1,
+      "detail": "0 podcast(s) generated, 4 error(s)"
     },
     {
       "name": "Obsidian vault export",
       "status": "ok",
-      "duration_secs": 1.2,
+      "duration_secs": 1.4,
       "detail": "569 course(s), 0 topic(s), 382 source(s) synced"
     },
     {
       "name": "Upload Media to R2",
       "status": "ok",
-      "duration_secs": 36,
-      "detail": "2 new file(s) uploaded to R2"
+      "duration_secs": 1.4,
+      "detail": "0 new file(s) uploaded to R2"
     },
     {
       "name": "Commit & Push",
       "status": "ok",
-      "duration_secs": 17.2,
-      "detail": "4 file(s) committed and pushed to GitHub"
+      "duration_secs": 3.2,
+      "detail": "2 file(s) committed and pushed to GitHub"
     },
     {
       "name": "Prod build",
       "status": "ok",
-      "duration_secs": 93.9
+      "duration_secs": 74.7
     },
     {
       "name": "Prod server restart",
@@ -92,6 +92,6 @@
   "x_session": {
     "status": "ok",
     "expiresAt": "2027-07-06T05:33:47.000Z",
-    "daysUntilExpiry": 292
+    "daysUntilExpiry": 291
   }
 }

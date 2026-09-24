@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "built_at": "2026-09-23T06:30:15.446Z",
-  "node_count": 838,
-  "edge_count": 1537,
+  "built_at": "2026-09-24T07:48:17.896Z",
+  "node_count": 840,
+  "edge_count": 1550,
   "nodes": [
     {
       "id": "topic:claude-ai",
@@ -30,7 +30,7 @@
       "type": "topic",
       "slug": "finance",
       "label": "Finance",
-      "source_count": 57
+      "source_count": 58
     },
     {
       "id": "topic:startup",
@@ -3832,6 +3832,15 @@
       "processing_status": "course_generated"
     },
     {
+      "id": "source:2102228709470261493",
+      "type": "source",
+      "tweet_id": "2102228709470261493",
+      "title": "2102228709470261493.md",
+      "author_handle": "AlphaWizarDD",
+      "topic_slug": "finance",
+      "processing_status": "course_generated"
+    },
+    {
       "id": "course:2076667968033894883",
       "type": "course",
       "tweet_id": "2076667968033894883",
@@ -5678,6 +5687,13 @@
       "tweet_id": "2098421234841288788",
       "topic_slug": "finance",
       "file": "content/courses/finance/course-072.md"
+    },
+    {
+      "id": "course:2102228709470261493",
+      "type": "course",
+      "tweet_id": "2102228709470261493",
+      "topic_slug": "finance",
+      "file": "content/courses/finance/course-073.md"
     },
     {
       "id": "course:2067233860287627359",
@@ -8353,6 +8369,11 @@
     },
     {
       "source": "source:2098421234841288788",
+      "target": "topic:finance",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2102228709470261493",
       "target": "topic:finance",
       "type": "belongs_to"
     },
@@ -11700,6 +11721,66 @@
       "source": "source:2098421234841288788",
       "target": "course:2098421234841288788",
       "type": "has_course"
+    },
+    {
+      "source": "course:2102228709470261493",
+      "target": "topic:finance",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2102228709470261493",
+      "target": "course:2102228709470261493",
+      "type": "has_course"
+    },
+    {
+      "source": "topic:finance",
+      "target": "topic:ai-agents",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:finance",
+      "target": "topic:machine-learning",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:finance",
+      "target": "topic:data-engineering",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:finance",
+      "target": "topic:startup",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:finance",
+      "target": "topic:negotiation",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:finance",
+      "target": "topic:software-engineering",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:finance",
+      "target": "topic:openai-codex",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:finance",
+      "target": "topic:claude-ai",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:finance",
+      "target": "topic:health-wellness",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:finance",
+      "target": "topic:uncategorized",
+      "type": "related_topic"
     },
     {
       "source": "course:2067233860287627359",

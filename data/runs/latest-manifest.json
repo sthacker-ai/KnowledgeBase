@@ -1,33 +1,33 @@
 {
   "trigger": "scheduled",
-  "date": "2026-09-22",
-  "started_at_ist": "22/09/2026, 12:00:02 IST",
-  "finished_at_ist": "22/09/2026, 12:03:09 IST",
-  "duration_secs": 187,
-  "status": "ok",
+  "date": "2026-09-23",
+  "started_at_ist": "23/09/2026, 12:00:02 IST",
+  "finished_at_ist": "23/09/2026, 12:02:12 IST",
+  "duration_secs": 130,
+  "status": "completed_with_errors",
   "steps": [
     {
       "name": "Import X Likes",
-      "status": "ok",
-      "duration_secs": 58.6,
-      "detail": "0 new tweet(s) imported"
+      "status": "failed",
+      "duration_secs": 0.6,
+      "error": "exit code 1"
     },
     {
       "name": "Source extraction",
       "status": "ok",
-      "duration_secs": 0.8,
+      "duration_secs": 0.7,
       "detail": "nothing new to extract"
     },
     {
       "name": "Video transcripts",
       "status": "ok",
-      "duration_secs": 0.8,
+      "duration_secs": 0.6,
       "detail": null
     },
     {
       "name": "AI classification",
       "status": "ok",
-      "duration_secs": 1.5,
+      "duration_secs": 1.7,
       "detail": "0 classified"
     },
     {
@@ -39,13 +39,13 @@
     {
       "name": "Topic summaries",
       "status": "ok",
-      "duration_secs": 1.1,
+      "duration_secs": 0.7,
       "detail": "0/62 topic summaries updated"
     },
     {
       "name": "Graph build",
       "status": "ok",
-      "duration_secs": 0.8,
+      "duration_secs": 0.9,
       "detail": "838 nodes, 1537 edges"
     },
     {
@@ -57,7 +57,7 @@
     {
       "name": "Podcasts",
       "status": "ok",
-      "duration_secs": 50.2,
+      "duration_secs": 47.7,
       "detail": "0 podcast(s) generated, 3 error(s)"
     },
     {
@@ -69,19 +69,19 @@
     {
       "name": "Upload Media to R2",
       "status": "ok",
-      "duration_secs": 1.2,
+      "duration_secs": 1.4,
       "detail": "0 new file(s) uploaded to R2"
     },
     {
       "name": "Commit & Push",
       "status": "ok",
-      "duration_secs": 3.8,
+      "duration_secs": 3.6,
       "detail": "2 file(s) committed and pushed to GitHub"
     },
     {
       "name": "Prod build",
       "status": "ok",
-      "duration_secs": 66
+      "duration_secs": 62
     },
     {
       "name": "Prod server restart",
@@ -92,6 +92,6 @@
   "x_session": {
     "status": "ok",
     "expiresAt": "2027-07-06T05:33:47.000Z",
-    "daysUntilExpiry": 286
+    "daysUntilExpiry": 285
   }
 }

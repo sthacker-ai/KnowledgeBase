@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "built_at": "2026-09-24T07:48:17.896Z",
-  "node_count": 840,
-  "edge_count": 1550,
+  "built_at": "2026-09-25T06:47:21.532Z",
+  "node_count": 842,
+  "edge_count": 1558,
   "nodes": [
     {
       "id": "topic:claude-ai",
@@ -16,7 +16,7 @@
       "type": "topic",
       "slug": "ai-agents",
       "label": "AI Agents",
-      "source_count": 127
+      "source_count": 128
     },
     {
       "id": "topic:software-engineering",
@@ -3841,6 +3841,15 @@
       "processing_status": "course_generated"
     },
     {
+      "id": "source:2103267284001382676",
+      "type": "source",
+      "tweet_id": "2103267284001382676",
+      "title": "2103267284001382676.md",
+      "author_handle": "elonmusk",
+      "topic_slug": "ai-agents",
+      "processing_status": "course_generated"
+    },
+    {
       "id": "course:2076667968033894883",
       "type": "course",
       "tweet_id": "2076667968033894883",
@@ -4791,6 +4800,13 @@
       "tweet_id": "2090873268169302097",
       "topic_slug": "ai-agents",
       "file": "content/courses/ai-agents/course-169.md"
+    },
+    {
+      "id": "course:2103267284001382676",
+      "type": "course",
+      "tweet_id": "2103267284001382676",
+      "topic_slug": "ai-agents",
+      "file": "content/courses/ai-agents/course-170.md"
     },
     {
       "id": "course:2061070268479721483",
@@ -8378,6 +8394,11 @@
       "type": "belongs_to"
     },
     {
+      "source": "source:2103267284001382676",
+      "target": "topic:ai-agents",
+      "type": "belongs_to"
+    },
+    {
       "source": "course:2076667968033894883",
       "target": "topic:ai-adoption",
       "type": "belongs_to"
@@ -9773,8 +9794,18 @@
       "type": "has_course"
     },
     {
+      "source": "course:2103267284001382676",
+      "target": "topic:ai-agents",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2103267284001382676",
+      "target": "course:2103267284001382676",
+      "type": "has_course"
+    },
+    {
       "source": "topic:ai-agents",
-      "target": "topic:claude-ai",
+      "target": "topic:machine-learning",
       "type": "related_topic"
     },
     {
@@ -9784,7 +9815,12 @@
     },
     {
       "source": "topic:ai-agents",
-      "target": "topic:machine-learning",
+      "target": "topic:openai-codex",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:ai-agents",
+      "target": "topic:claude-ai",
       "type": "related_topic"
     },
     {
@@ -9794,7 +9830,27 @@
     },
     {
       "source": "topic:ai-agents",
-      "target": "topic:openai-codex",
+      "target": "topic:startup",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:ai-agents",
+      "target": "topic:health-wellness",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:ai-agents",
+      "target": "topic:finance",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:ai-agents",
+      "target": "topic:negotiation",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:ai-agents",
+      "target": "topic:uncategorized",
       "type": "related_topic"
     },
     {

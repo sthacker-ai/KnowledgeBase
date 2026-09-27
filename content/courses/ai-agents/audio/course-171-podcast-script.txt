@@ -1,0 +1,63 @@
+[ALEX]: Lauren at SpaceX AI went from manually debugging performance issues to shipping 2,000 pull requests a month by building trust in her AI agents through verification, skill maps, and architectural tweaks.
+
+[SAM]: How did she move from needing to babysit each agent to letting them work autonomously? What changed in the workflow?
+
+[ALEX]: The shift happened when agents gained verification skills—starting with the Control Glass protocol that lets them reproducibly run the app, collect traces, and spot bottlenecks without human intervention.
+
+[SAM]: So Control Glass is like a built‑in debugger that agents can invoke on their own code? What does it actually produce that they can trust?
+
+[ALEX]: It produces empirical evidence: performance traces, heap snapshots, and a diff of resource usage before and after a change. Agents compare those metrics against predefined thresholds; if they pass, they consider the change verified.
+
+[SAM]: That sounds useful for performance, but what about correctness of business logic? Do agents have anything beyond tracing?
+
+[ALEX]: For correctness they layer on formal verification skills—using languages like Lean or TLA+ to prove invariants, or automated property‑based tests that check business rules across many inputs.
+
+[SAM]: Formal methods can be heavyweight. How do agents decide when to use a quick trace versus a full proof, and who sets those policies?
+
+[ALEX]: Agents follow a verification skill hierarchy: they first run cheap checks (unit tests, Control Glass). If those fail, they escalate to more expensive proofs. The policy is encoded in a verification orchestrator that maps risk levels to required skill depth.
+
+[SAM]: Besides verification, the course mentions feature maps. How do those help agents navigate a large codebase without constantly asking humans for context?
+
+[ALEX]: Feature maps are materialized indexes that link high‑level features—like “user login flow” or “payment validation”—to the exact files, functions, and data structures that implement them. Agents query the map to locate relevant code before making changes.
+
+[SAM]: So if an agent needs to adjust the login flow, it consults the feature map, finds the responsible modules, and then applies its verification skills to those specific files?
+
+[ALEX]: Exactly. The map reduces search time and gives agents a shared mental model, letting them work in parallel on different features without stepping on each other's toes.
+
+[SAM]: With verification and maps in place, what architectural changes make a codebase more agent‑friendly, and why are they necessary?
+
+[ALEX]: Three key changes: (1) decoupling services so agents can own a bounded context, (2) exposing deterministic APIs that agents can call and verify, and (3) storing all configuration as code so agents can reproduce environments reliably.
+
+[SAM]: Lauren’s Michelin kitchen analogy suggests developers still play a crucial role. How does that translate to day‑to‑day responsibilities when agents are autonomous?
+
+[ALEX]: Developers become the chefs: they design the verification orchestrator, curate feature maps, set the quality thresholds, and intervene only when agents hit a verification gap or need a new skill—much like a chef oversees stations but trusts the line cooks.
+
+[SAM]: Finally, what metrics would you watch to know that trust is actually scaling, not just that agents are producing more code?
+
+[ALEX]: Look at the ratio of agent‑generated PRs that pass verification on first try, the mean time to recover from a verification failure, and the number of distinct features agents can handle without human escalation—those indicate genuine trust growth.
+
+Now we need to count words. Let's approximate each line length.
+
+We'll need to ensure total 950-1150 words. Let's count roughly.
+
+I'll write each line and then count.
+
+Line 1 [ALEX]: "Lauren at SpaceX AI went from manually debugging performance issues to shipping 2,000 pull requests a month by building trust in her AI agents through verification, skill maps, and architectural tweaks."
+
+Count words: Lauren(1) at2 SpaceX3 AI4 went5 from6 manually7 debugging8 performance9 issues10 to11 shipping12 2,00013 pull14 requests15 a16 month17 by18 building19 trust20 in21 her22 AI23 agents24 through25 verification,26 skill27 maps,28 and29 architectural30 tweaks31. => 31 words.
+
+Line 2 [SAM]: "How did she move from needing to babysit each agent to letting them work autonomously? What changed in the workflow?"
+
+Count: How1 did2 she3 move4 from5 needing6 to7 babysit8 each9 agent10 to11 letting12 them13 work14 autonomously?15 What16 changed17 in18 the19 workflow?20 => 20 words.
+
+Line 3 [ALEX]: "The shift happened when agents gained verification skills—starting with the Control Glass protocol that lets them reproducibly run the app, collect traces, and spot bottlenecks without human intervention."
+
+Count: The1 shift2 happened3 when4 agents5 gained6 verification7 skills—starting8 with9 the10 Control11 Glass12 protocol13 that14 lets15 them16 reproducibly17 run18 the19 app,20 collect21 traces,22 and23 spot24 bottlenecks25 without26 human27 intervention28. => 28 words.
+
+Line 4 [SAM]: "So Control Glass is like a built‑in debugger that agents can invoke on their own code? What does it actually produce that they can trust?"
+
+Count: So1 Control2 Glass3 is4 like5 a6 built‑in7 debugger8 that9 agents10 can11 invoke12 on13 their14 own15 code?16 What17 does18 it19 actually20 produce21 that22 they23 can24 trust?25 => 25 words.
+
+Line 5 [ALEX]: "It produces empirical evidence: performance traces, heap snapshots, and a diff of resource usage before and after a change. Agents compare those metrics against predefined thresholds; if they pass, they consider the change verified."
+
+Count: It1 produces2 empirical3 evidence:4 performance5 traces,6 heap7 snapshots,8 and9 a10 diff11 of12 resource13 usage1

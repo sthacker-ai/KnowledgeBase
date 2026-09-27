@@ -1,0 +1,31 @@
+[ALEX]: When Lauren first let Cursor agents generate code without any verification step, the defect rate in pull requests rose from a baseline of 2 % to over 18 %, turning the agents into a liability rather than an asset. That spike showed that raw LLM output, even when prompted well, cannot be trusted to meet correctness, performance, or security standards on its own. The problem wasn’t the model’s capability; it was the missing feedback loop that would let the agent know whether its code actually works in the target environment.
+
+Exchange 2:
+[SAM]: So the jump from 2 % to 18 % defects is the concrete symptom you’re pointing to. What exactly was missing in the agents’ workflow that caused that failure? Are you saying they had no way to test the code they produced, or was it something else like a lack of context about the codebase?
+
+Exchange 3:
+[ALEX]: The missing piece was an automated, self‑contained verification skill that could run the agent’s generated code against a suite of checks—unit tests, performance benchmarks, security scans—before the code ever reached a human reviewer. Without that, the agent had no signal to tell it whether its output satisfied the project’s correctness criteria, so it kept producing plausible‑looking but flawed code. Control Glass was built to fill that gap: it’s a deterministic verification harness that agents can invoke as a CLI command inside each skill, giving them immediate, observable evidence of success or failure.
+
+Exchange 4:
+[SAM]: Control Glass sounds like a test runner wrapped in a skill. How does it differ from simply having the agent call existing test scripts? And what does the CLI inside each skill look like in practice—does the agent need to parse JSON output, or does it get a simple pass/fail signal?
+
+Exchange 5:
+[ALEX]: Unlike a generic test runner, Control Glass is designed to be agent‑friendly: it returns a structured, machine‑readable result (a small JSON blob with fields like “passed”, “failed_reason”, “metrics”) that the agent’s reasoning loop can consume directly. The agent doesn’t need to scrape logs; it can branch on the JSON to decide whether to retry, refine, or submit the code. Moreover, Control Glass bundles the test harness, dependency isolation, and environment snapshots so the same verification runs identically whether invoked locally by a human or remotely by an agent in the CI pipeline.
+
+Exchange 6:
+[SAM]: That makes sense for verification, but verification alone doesn’t guarantee the agent understands *what* it’s supposed to build. How does a feature map fit into this picture? Is it just documentation, or does it actively shape the agent’s behavior?
+
+Exchange 7:
+[ALEX]: A feature map is a living, queryable graph that encodes the relationships between high‑level product features, the modules that implement them, and the contracts (APIs, data schemas, performance SLAs) those modules must honor. When an agent receives a task, it first consults the feature map to retrieve the relevant context—what other components it must interact with, which invariants must hold, and where to find existing examples. This contextual grounding reduces hallucinations and keeps the agent’s output aligned with the architecture, turning raw code generation into a guided, constraint‑satisfying process.
+
+Exchange 8:
+[SAM]: So the feature map supplies the “why” and the “where” of a change. But agents also need to know *how* to perform common engineering steps—like writing a migration, adding a logger, or refactoring a component. That’s where skill libraries come in, right? How does PSAC fit, and what makes a skill “agent‑friendly” beyond just having a CLI?
+
+Exchange 9:
+[ALEX]: PSAC stands for the “Plugin Skill Agent Collection,” a library of reusable, version‑controlled skills each encapsulating a well‑defined workflow: e.g., “Add unit test for a new function”, “Generate Dockerfile from a base image”, “Run performance regression analysis”. Each skill exposes a standardized CLI interface (input JSON → output JSON) and includes its own verification step—often a thin wrapper around Control Glass—so the agent can self‑validate the skill’s outcome. Agent‑friendliness means the skill’s side effects are isolated, its dependencies are declared, and its documentation is machine‑parsable, allowing the agent to compose skills safely without stepping outside a sandbox.
+
+Exchange 10:
+[SAM]: You’ve mentioned verification, feature maps, and skill libraries. The course also talks about architectural refactors that make codebases more amenable to agents. What kind of refactors are we talking about, and how do they interact with the other pieces? Is it just about making the code cleaner, or does it change how trust is established?
+
+Exchange 11:
+[ALEX]: The refactors target three properties: (1) clear, versioned interfaces between modules so agents can invoke them without guessing internal details; (2) deterministic build and test pipelines that produce the same artifacts regardless of who triggers them; and (3) observable invariants—like lint rules, type contracts, and performance thresholds—encoded as code that Control Glass can check. When a codebase satisfies these, an agent can rely on the feature map to

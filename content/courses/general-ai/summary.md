@@ -1,105 +1,132 @@
 ---
 title: "General AI"
 topic_slug: general-ai
-course_count: 17
-generated_at: "2026-07-18T07:09:37.207Z"
+course_count: 18
+generated_at: "2026-09-27T06:43:06.027Z"
 type: topic-summary
 ---
 # General AI  
 
 ## Overview  
-General Artificial Intelligence (AGI) refers to the pursuit of machines that can understand, learn, and apply knowledge across any intellectual task a human can perform, moving beyond the narrow, task‑specific capabilities of today’s AI systems. This topic matters because achieving AGI could unlock unprecedented scientific discovery, automate complex labor, and help address global challenges such as climate change, disease eradication, and resource management, while also raising profound safety, ethical, and societal questions. On this page you will find a synthesis of the core concepts, evaluation techniques, methodological approaches, and hard‑won insights drawn from eight focused courses that explore why AGI fascinates researchers, how to discern high‑quality information about it, its technical foundations, emerging memory paradigms, exponential trends, LLM architecture competitions, and the human experience of interacting with increasingly powerful AI systems. The material is organized to serve as a definitive reference for anyone seeking a deep, multidisciplinary understanding of AGI.  
+General Artificial Intelligence (AGI) refers to the hypothetical form of AI that can understand, learn, and apply knowledge across any intellectual task a human can perform, exhibiting flexible, adaptive cognition rather than narrow, task‑specific competence. Studying AGI is crucial because it sits at the intersection of computer science, cognitive science, neuroscience, philosophy, and ethics, and its realization could unlock unprecedented scientific discovery, automate complex labor, and help address global challenges while also posing existential risks if developed irresponsibly. This reference page synthesizes insights from eight courses that explore why AGI fascinates researchers, how to evaluate claims about it, its technical foundations, emerging memory‑augmented paradigms, human‑AI interaction dynamics, exponential progress trends, and the competitive evolution of large language model architectures. Readers will find a structured map of key concepts, practical techniques, hard‑won lessons, and cross‑links to related domains in the knowledge base.  
+
+---  
 
 ## Key Concepts  
 
-### General Artificial Intelligence (AGI)  
-AGI denotes a hypothetical form of AI that possesses broad, adaptable cognition comparable to human general intelligence, enabling it to transfer learning across domains and tackle novel problems without task‑specific programming. Unlike narrow AI, which excels at well‑defined functions such as image classification or game playing, AGI aims for flexible reasoning, planning, and creativity that can be applied to any intellectual endeavor. The concept sits at the intersection of computer science, cognitive psychology, neuroscience, philosophy, and ethics, making its study inherently multidisciplinary.  
+### Definition and Scope of AGI  
+AGI is distinguished from narrow AI by its ability to transfer learning across domains, reason abstractly, and exhibit general problem‑solving akin to human cognition. While narrow systems excel at predefined functions such as image classification or game playing, AGI aims for a unified cognitive architecture that can autonomously acquire new skills without task‑specific retraining. The concept originated in mid‑20th‑century AI research (Turing, McCarthy, Minsky) and remains a guiding vision for efforts seeking machines with human‑level generality.  
 
-### Narrow AI (Weak AI)  
-Narrow AI refers to systems designed and trained for a specific, limited set of tasks, operating under strict constraints and lacking the ability to generalize beyond their training distribution. Examples include today’s large language models used for translation, recommendation engines, and specialized game‑playing agents. Understanding the limitations of narrow AI is essential for appreciating the gap that AGI seeks to bridge and for identifying the technical hurdles that must be overcome.  
+### Narrow AI vs. General AI  
+Narrow AI (also called weak AI) operates within a tightly bounded problem space, relying on large amounts of labeled data and task‑specific optimization. General AI, by contrast, must integrate perception, language, reasoning, and action in a flexible manner, enabling zero‑shot or few‑shot adaptation to novel situations. This distinction underlies many technical hurdles: scalable knowledge representation, continual learning, and robust generalization beyond training distributions.  
 
-### Persistent AI Memory  
-Persistent AI memory describes the capability of a model to retain and update knowledge across interactions and sessions, rather than treating knowledge as a static, read‑only snapshot that must be re‑retrieved each time. This contrasts with Retrieval‑Augmented Generation (RAG), where external indexes are queried on demand and the model’s parametric weights remain unchanged. Persistent memory enables long‑term personalization, continual learning, and the reduction of latency and storage overhead associated with repeated retrieval.  
+### Evaluating Online Information in AGI  
+Because AGI discourse is rife with hype, a systematic evaluation framework is essential. The course “Finding the Best Information” advocates assessing depth, credibility, relevance, and timeliness—qualities that cut through superficial endorsements. Techniques include checking author expertise, tracing claims to primary sources, examining methodological rigor, and comparing against consensus in peer‑reviewed literature. Applying such a filter helps practitioners separate substantive advances from speculative buzz.  
 
-### LLM Wiki Paradigm  
-The LLM Wiki paradigm, popularized by Andrej Karpathy’s minimal “LLM Wiki” GitHub gist, treats a large language model as a living, editable knowledge base where facts, preferences, and interaction histories can be written, read, and revised directly within the model’s parameters or an attached memory store. It shifts the paradigm from “retrieve‑then‑generate” to “edit‑and‑remember,” allowing the model to accumulate a personal wiki over time. Implementation typically involves a key‑value memory layer, prompt‑based read/write operations, and mechanisms for conflict resolution and knowledge consolidation.  
+### Persistent AI Memory and the LLM Wiki Paradigm  
+Traditional Retrieval‑Augmented Generation (RAG) treats knowledge as static snapshots that must be re‑indexed whenever data changes, creating latency and storage overhead. Persistent memory embeds long‑term storage directly into the model parameters, allowing the AI to retain facts, preferences, and interaction history across sessions. The “LLM Wiki” gist demonstrates a minimalist approach: a mutable key‑value store coupled with the LLM, enabling continual updates without full retraining and supporting personal knowledge bases that evolve with the user.  
 
-### Exponential Growth of AI  
-The exponential curve of AI captures the observation that capabilities, deployment methods, and impact of artificial intelligence are not increasing linearly but are multiplying at an accelerating rate. This leads to rapid shifts in societal priorities, economic structures, and strategic planning that often outpace the slower, deliberative pace of political and cultural discourse. Recognizing this exponential nature helps forecasters anticipate disruptive changes and allocate resources toward long‑term safety and governance efforts.  
+### Human‑AI Interaction and Trust (Hermes)  
+Interacting with powerful, open‑ended AGI‑like systems triggers cognitive shifts: users must calibrate trust, interpret ambiguous outputs, and reconcile AI‑generated advice with personal judgment. The “Hermes” case study highlights how perception of agency, transparency, and responsiveness influences user reliance and ethical responsibility. Designing interactions that promote appropriate reliance—neither over‑trust nor unwarranted skepticism—is a critical safety and usability challenge.  
 
-### Large Language Model (LLM) Architectural Innovation  
-Next‑generation LLM architectures move beyond raw parameter count to incorporate innovations such as mixture‑of‑experts (MoE) routing, sparse attention mechanisms, recurrent or state‑space layers, and improved normalization schemes. These changes aim to boost reasoning ability, contextual fidelity, and computational efficiency while managing training costs and inference latency. Architectural superiority is a key lever in the competitive frontier among AI labs like Anthropic, OpenAI, and others.  
+### Exponential Growth of AI Capabilities  
+AI progress often follows an exponential trajectory: capabilities, compute efficiency, and deployment methods multiply at an increasing rate, outpacing linear societal and political adaptation. Recognizing this curve helps forecasters anticipate rapid shifts in labor markets, scientific discovery rates, and risk landscapes. The course stresses focusing on technological reality rather than ephemeral political distractions when planning long‑term strategies.  
 
-### Evaluation of Online Information in AGI  
-In the fast‑moving AGI information ecosystem, discerning high‑quality content requires a systematic framework that assesses depth, credibility, relevance, timeliness, and provenance. Techniques include cross‑checking claims against peer‑reviewed sources, checking author expertise, identifying logical fallacies, and measuring the signal‑to‑noise ratio of hype versus substantive insight. Such evaluation guards against misinformation and ensures that learning and decision‑making are grounded in reliable knowledge.  
+### Next‑Generation LLM Architectures  
+Performance gains in large language models are no longer driven solely by parameter count; architectural ingenuity—such as mixture‑of‑experts (MoE) layers, sparse attention, recurrent‑style memory, and improved normalization—yields superior reasoning, safety, and context management. Competitive frontier analysis shows that optimizing the underlying mathematical structure and training methodology can produce models that outperform larger, less efficient rivals while reducing inference cost.  
 
-### AI‑Human Interaction (Hermes)  
-Systems like “Hermes” exemplify open‑ended, conversational AGI interfaces where users must process and act upon complex, nuanced outputs. Studying the human response—perception, trust, cognitive load, and belief updating—reveals how interaction shapes both user behavior and the direction of AI development. Insights from these studies inform the design of safer, more transparent, and more aligned AGI systems.  
+### Problem Solving with Prompted Large Models  
+The demonstration of GPT‑5.4 Pro solving Erdős Problem #1196 in a single attempt illustrates how suitably prompted LLMs can generate viable proof sketches for deep mathematical conjectures. Effective prompt engineering, context management, and post‑processing (e.g., manual LaTeX conversion) translate raw model outputs into publishable results. This paradigm shifts the collaborative effort timeline from months of human‑only work to rapid model‑augmented ideation, provided the model’s reliability is verified.  
 
-### Academic Problem Solving with LLMs  
-The one‑shot solution of Erdős Problem #1196 by GPT‑5.4 Pro illustrates how sufficiently prompted large language models can generate viable proof sketches for long‑standing mathematical conjectures, dramatically reducing the time traditionally required for collaborative effort. This capability hinges on effective prompt engineering, context management, and post‑processing of model outputs into formal, publishable formats (e.g., LaTeX).  
+### Safety, Ethics, and Existential Risk  
+Pursuing AGI necessitates rigorous safety research: alignment techniques, robustness testing, interpretability tools, and governance frameworks. The potential for misaligned objectives to cause large‑scale harm makes it imperative to embed ethical considerations from the outset, balancing openness with responsible deployment. Courses emphasize multidisciplinary approaches—combining technical safeguards with policy, philosophy, and social science insights.  
+
+---  
 
 ## Techniques & Methods  
 
-### Prompt Engineering for One‑Shot Reasoning  
-Crafting prompts that clearly state the problem, provide necessary definitions, and encourage step‑by‑step reasoning enables LLMs to tackle complex academic challenges in a single attempt. Techniques include using chain‑of‑thought scaffolding, providing exemplars, and constraining output format (e.g., “Proof in LaTeX”).  
+### Prompt Engineering for Complex Tasks  
+Crafting prompts that elicit precise, step‑by‑step reasoning (chain‑of‑thought, few‑shot examples, or structured templates) enables LLMs to tackle problems outside their immediate training distribution. Techniques include specifying output format, requesting intermediate reasoning, and using external tools (e.g., code execution) within the prompt.  
 
-### Persistent Memory Implementation  
-A typical persistent memory stack consists of: (1) a key‑value store (e.g., FAISS or a simple hash map) attached to the LLM; (2) a write operation triggered by user feedback or system updates that inserts or revises entries; (3) a read operation that retrieves relevant memories based on semantic similarity to the current prompt; (4) a consolidation step that merges overlapping or contradictory facts, often using a secondary model or rule‑based resolver.  
+### Evaluating Online AI Content (CRAAP‑style)  
+A practical workflow: **C**urrency (check date), **R**elevance (does it address your question?), **A**uthority (author credentials, institutional affiliation), **A**ccuracy (evidence, citations, peer review), **P**urpose (identify bias, commercial intent). Applying each criterion yields a scored assessment that filters hype from substance.  
 
-### LLM Wiki Workflow  
-Following Karpathy’s gist, the workflow is: (i) initialize the model with a base checkpoint; (ii) expose an API endpoint that accepts `/write key=value` and `/read key` commands; (iii) on write, update the external memory and optionally fine‑tune the model on the new fact using a few‑shot gradient step; (iv) on read, retrieve the value and inject it into the prompt as context; (v) periodically run a garbage‑collection pass to prune stale entries.  
+### Building Persistent Memory in LLMs  
+1. **Store**: Maintain a mutable key‑value database (e.g., Redis, SQLite) indexed by semantic embeddings.  
+2. **Retrieve**: On each query, compute embedding of the prompt, fetch top‑k relevant memories.  
+3. **Augment**: Concatenate retrieved memories as context before feeding to the LLM.  
+4. **Update**: After generating a response, embed user feedback or new facts and write them back to the store.  
+5. **Prune**: Apply relevance decay or size limits to prevent unbounded growth.  
 
-### Information Evaluation Framework (CRAAP‑like)  
-To judge whether a piece of online AGI content is “the best thing you will read,” apply: **C**urrency (check date and version), **R**elevance (does it address your specific question?), **A**uthority (author credentials, institutional affiliation), **A**ccuracy (cross‑reference with peer‑reviewed literature, check for citations), **P**urpose (identify bias, commercial intent, or hype). Assign scores and weigh them to produce an overall quality metric.  
+### Architectural Innovation Analysis  
+To assess a new LLM architecture:  
+- Measure **parameter efficiency** (performance per billion parameters).  
+- Profile **compute FLOPs** and **memory bandwidth** during training/inference.  
+- Evaluate **emergent abilities** (reasoning, few‑shot transfer) on standardized benchmarks (MMLU, GSM‑8K, Big‑Bench).  
+- Analyze **safety metrics** (bias, toxicity, refusal rates).  
+- Compare **training stability** (loss curvature, gradient variance).  
 
 ### Exponential Trend Modeling  
-Forecasting AI progress involves fitting historical capability metrics (e.g., compute‑efficiency, benchmark scores) to exponential or double‑exponential curves, adjusting for paradigm shifts (e.g., introduction of Transformers). Scenario planning then derives implications for timelines to AGI, economic impact, and risk thresholds.  
+Fit a logistic or exponential curve to historical metrics (e.g., FLOPs per dollar, benchmark scores) to extrapolate future capability windows. Use doubling time estimates to inform roadmap planning for infrastructure, talent acquisition, and risk mitigation.  
 
-### Architectural Benchmarking  
-Evaluating new LLM architectures requires measuring: (a) perplexity on diverse corpora; (b) few‑shot reasoning scores (e.g., MMLU, GSM‑8K); (c) latency and throughput at target batch sizes; (d) memory footprint; (e) robustness to adversarial prompts. Ablation studies isolate the impact of individual components such as MoE routing depth or attention sparsity patterns.  
+### Human‑AI Trust Calibration  
+Methods include:  
+- **Transparency interfaces** (showing confidence scores, provenance).  
+- **Adaptive reliance prompts** that ask users to verify critical outputs.  
+- **Feedback loops** where user corrections update the model’s persistent memory.  
+- **Ethical impact assessments** before deployment in high‑stakes domains (healthcare, finance).  
 
-### Safe Interaction Design for Hermes‑like Systems  
-Methods include: (i) calibrating uncertainty estimates to surface low‑confidence outputs; (ii) implementing user‑controlled “explainability” toggles that reveal reasoning traces; (iii) deploying reinforcement learning from human feedback (RLHF) with safety‑focused reward models; (iv) conducting longitudinal user studies to monitor trust dynamics and belief revision.  
+---  
 
-## Insights & Lessons Learned  
-*I have found that the true fascination with AGI stems not from the technology itself but from the way it forces us to confront fundamental questions about cognition, values, and the future of humanity.*  
+## Insights & Lessons Learned (First‑Person Perspective)  
 
-1. **The gap between narrow and general intelligence is less about raw scale and more about architectural ingenuity** – breakthroughs in sparsity, mixture‑of‑experts, and memory integration often yield larger capability jumps than simply adding more parameters.  
-2. **Persistent memory transforms LLMs from stateless oracles into evolving agents**, dramatically reducing the need for costly re‑indexing and enabling personalized, long‑term assistance that feels more “alive.”  
-3. **Evaluating AGI information demands the same rigor as peer‑reviewed research**; hype‑driven headlines frequently overstate capabilities, while substantive advances are buried in technical reports that require careful parsing.  
-4. **Exponential trends in AI are real but non‑uniform**; different subfields (perception, reasoning, robotics) advance at different rates, meaning that societal impact will be staggered and sector‑specific.  
-5. **One‑shot LLM problem solving is a powerful demonstration of emergent reasoning, yet it remains brittle**; success depends heavily on prompt formulation and the model’s exposure to similar reasoning patterns during pretraining.  
-6. **The competitive frontier among LLM providers is shifting from “bigger is better” to “smarter is better”**, where architectural innovations such as routed experts and recurrent memory yield superior reasoning per unit of compute.  
-7. **Human interaction with AGI‑like systems reveals a feedback loop: user trust shapes deployment decisions, which in turn influences the data and objectives used to train future models**, underscoring the need for continuous alignment work.  
-8. **Interdisciplinary collaboration is non‑optional**; progress toward AGI requires insights from neuroscience (how the brain implements flexible memory), philosophy (what constitutes understanding), and policy (how to govern broad‑impact systems).  
+I’ve come to appreciate that the fascination with AGI is less about the technology itself and more about the promise of a unifying intellectual partner that can amplify human curiosity across disciplines.  
+
+Evaluating AI‑related claims taught me that hype is a predictable signal; applying a systematic credibility checklist saves countless hours that would otherwise be spent chasing dead ends.  
+
+The shift from static RAG to persistent memory reshaped my view of LLMs from clever parrots to evolving collaborators capable of maintaining a personal knowledge base that grows with each interaction.  
+
+Observing GPT‑5.4 Pro solve a long‑standing Erdős problem reminded me that the bottleneck in scientific discovery is often not raw compute but the ability to frame the right question and translate model intuition into rigorous proof.  
+
+Studying the exponential curve of AI made clear that policy debates lag far behind technical reality; anticipating the next doubling period is essential for responsible strategic planning in any sector.  
+
+Analyzing next‑gen LLM architectures revealed that ingenuity in sparsity and modular design can outperform brute‑force scaling, steering investment toward smarter rather than larger models.  
+
+The Hermes interaction study highlighted that trust is a dynamic calibration problem: over‑reliance breeds complacency, while under‑use wastes potential, necessitating interface designs that encourage appropriate skepticism.  
+
+Finally, I learned that safety cannot be an afterthought; aligning AGI with human values requires continuous interdisciplinary dialogue, robust testing regimes, and governance structures that evolve alongside the technology.  
+
+---  
 
 ## Cross-References  
-- [[machine-learning]] – Provides the foundational algorithms (supervised, unsupervised, reinforcement learning) that underlie both narrow AI and the learning components of AGI systems.  
-- [[claude-ai]] – An example of a state‑of‑the‑art LLM whose architecture and safety techniques are frequently discussed in the competitive frontier and persistent memory conversations.  
-- [[ai-agents]] – Persistent AI memory and the LLM Wiki paradigm are core enablers for building agents that can retain goals, beliefs, and plans over extended interactions.  
-- [[software-engineering]] – Prompt engineering, model fine‑tuning pipelines, and evaluation harnesses are software‑engineering practices essential for deploying and maintaining AGI‑relevant systems.  
-- [[startup]] – Many AGI‑focused ventures explore novel memory architectures, agent frameworks, or domain‑specific applications, making the startup lens relevant for commercialization pathways.  
-- [[finance]] – AGI’s potential to automate complex trading, risk modeling, and economic forecasting links directly to financial industry impacts and investment trends.  
-- [[health-wellness]] – Applications of AGI in drug discovery, personalized medicine, and health‑system optimization illustrate one of the most promising societal benefit areas.  
-- [[negotiation]] – Studying how humans negotiate with or through AGI systems (e.g., Hermes) reveals insights into trust, persuasion, and decision‑making under uncertainty.  
-- [[data-engineering]] – Building persistent memory indexes, managing data pipelines for continual learning, and ensuring data quality are core data‑engineering tasks in AGI systems.  
-- [[uncategorized]] – Miscellaneous notes, emerging ideas, or speculative concepts that do not yet fit into a defined category but may influence future AGI research.  
+
+- [[claude-ai]] – Claude represents a frontier LLM whose architecture and safety mechanisms are directly relevant to the discussions of next‑generation model design and AGI‑like capabilities.  
+- [[ai-agents]] – Persistent memory and LLM Wiki concepts enable AI agents that retain goals and knowledge over time, bridging the gap between static LLMs and autonomous agents.  
+- [[software-engineering]] – Prompt engineering, model integration, and evaluation pipelines are software‑engineering practices essential for deploying AGI‑inspired systems in real‑world codebases.  
+- [[finance]] – Exponential AI progress impacts algorithmic trading, risk modeling, and fintech innovation; understanding AGI timelines helps forecast disruptive shifts in financial markets.  
+- [[startup]] – Founders leveraging AGI‑level tools (e.g., GPT‑5.4 Pro for problem solving) can accelerate product‑market fit, but must navigate hype and evaluation pitfalls covered in the “Finding the Best Information” course.  
+- [[health-wellness]] – AGI’s potential to accelerate drug discovery and personalized medicine ties into health applications; safety and trust considerations are especially critical here.  
+- [[uncategorized]] – Placeholder for emerging AGI‑related topics that do not yet fit into existing categories but may be linked as the knowledge base expands.  
+- [[machine-learning]] – Core techniques such as transfer learning, scaling laws, and architectural innovations discussed herein are subsets of broader machine‑learning research.  
+- [[negotiation]] – AI‑mediated negotiation systems benefit from AGI‑level reasoning and persistent memory to track context and preferences across rounds.  
+- [[data-engineering]] – Building persistent memory stores, managing embedding indexes, and maintaining data pipelines for LLM Wiki implementations rely heavily on data‑engineering best practices.  
+
+---  
 
 ## Course Index  
 
-1. **Why General AI Is Interesting: Exploring Its Fascinating Aspects** – This course treats the provocative tweet “interesting” as a springboard to examine the intellectual and societal drivers that make AGI a compelling subject, covering its historical origins, contrast with narrow AI and why the prospect of human‑level generality captures imaginations across disciplines.  
+1. **Why General AI Is Interesting: Exploring Its Fascinating Aspects** (by @sama) – This course treats the provocative tweet “interesting” as a springboard to examine why AGI captivates researchers, technologists, and the public. It contrasts AGI with narrow AI, outlines its historical roots, and highlights the intellectual and societal drivers that make the pursuit of human‑level generality intrinsically stimulating.  
 
-2. **Finding the Best Information: A Guide to Evaluating Online Content in General AI** – Learners are equipped with a systematic framework for judging the quality of AGI‑related online material, focusing on depth, credibility, relevance, and timeliness to cut through hype and surface trustworthy insights in a rapidly evolving information landscape.  
+2. **Finding the Best Information: A Guide to Evaluating Online Content in General AI** (by @mikeeisenberg) – Learners acquire a systematic framework for judging the quality of AI‑related online material. The course emphasizes depth, credibility, relevance, and timeliness, providing practical tools to cut through hype, avoid misinformation, and surface high‑value insights in the fast‑moving AGI landscape.  
 
-3. **Foundations of General Artificial Intelligence: Concepts, Challenges, and Pathways to AGI** – A comprehensive introduction to AGI that delineates its definition, contrasts it with narrow AI, surveys theoretical foundations, architectural approaches, safety considerations, and the multidisciplinary implications of building machines with human‑level generality.  
+3. **Foundations of General Artificial Intelligence: Concepts, Challenges, and Pathways to AGI** (by @Nicolascole77) – A comprehensive introduction to AGI’s theoretical underpinnings, architectural approaches, safety considerations, and real‑world implications. Participants learn to critically evaluate AGI proposals, identify key technical hurdles, and appreciate the multidisciplinary effort required to build machines with human‑level cognition.  
 
-4. **Solving Hard Academic Problems with GPT‑5.4 Pro: A Comprehensive Guide** – This course details how GPT‑5.4 Pro achieved a one‑shot solution of Erdős Problem #1196, covering prompt design, context management, performance metrics, and the workflow for converting model outputs into publishable LaTeX documents.  
+4. **Solving Hard Academic Problems with GPT‑5.4 Pro: A Comprehensive Guide** (by @aniketapanjwani) – Using the milestone of GPT‑5.4 Pro solving Erdős Problem #1196, this course details prompt design, context management, and workflow integration for leveraging large language models on complex academic tasks. It also covers output conversion to publishable formats and criteria for deciding when the model is the appropriate tool.  
 
-5. **Beyond RAG: The Rise of Persistent AI Memory and the LLM Wiki Paradigm** – Using Andrej Karpathy’s “LLM Wiki” gist as a catalyst, the course explores the limitations of Retrieval‑Augmented Generation, introduces persistent memory mechanisms, and guides learners through building AI systems that retain and update knowledge across sessions.  
+5. **Beyond RAG: The Rise of Persistent AI Memory and the LLM Wiki Paradigm** (by @Suryanshti777) – The course explores why traditional retrieval‑augmented generation is giving way to models with embedded long‑term memory. It walks through the theory, implementation steps, use cases, and pitfalls of building AI systems that retain knowledge across sessions, exemplified by Andrej Karpathy’s minimal “LLM Wiki” gist.  
 
-6. **The Implications of AI Interaction: Understanding Hermes and General AI** – Focusing on the user experience of engaging with advanced, open‑ended AI systems like Hermes, the course investigates perception, trust, cognitive load, and belief updates, highlighting how human‑AI interaction shapes AGI development and deployment.  
+6. **The Implications of AI Interaction: Understanding Hermes and General AI** (by @DataChaz) – Focusing on the user experience of powerful, open‑ended AI systems, this course examines perception, trust, and cognitive shifts when interacting with AGI‑like agents. It discusses ethical and practical consequences for designing safe, effective human‑AI collaborations.  
 
-7. **The Exponential Curve of AI: Understanding the Timeline and Societal Shift** – By analyzing the observed exponential growth of AI capabilities, the course provides a framework for anticipating rapid technological change, assessing its societal and political ramifications, and emphasizing the need to focus on underlying technological reality rather than transient distractions.  
+7. **The Exponential Curve of AI: Understanding the Timeline and Societal Shift** (by @AnatoliKopadze) – Learners explore the exponential nature of AI capability growth, why public discourse often underestimates its speed, and how to align strategic planning with the actual pace of technological change. The course provides a framework for interpreting timelines and anticipating societal impacts.  
 
-8. **The Competitive Frontier of Large Language Models: Unpacking Next-Generation AI Architectures** – This deep dive examines the strategic and technical dimensions of emerging LLM architectures, comparing how innovations such as mixture‑of‑experts, sparse attention, and improved normalization drive performance, efficiency, and market positioning among leading AI labs.
+8. **The Competitive Frontier of Large Language Models: Unpacking Next‑Generation AI Architectures** (by @kirillk_web3) – This deep dive analyzes how architectural innovations—such as mixture‑of‑experts, sparse attention, and improved normalization—drive performance gains beyond raw parameter scaling. It examines the competitive dynamics among major AI players and the strategic implications of architectural breakthroughs.

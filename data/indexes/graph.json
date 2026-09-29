@@ -1,22 +1,22 @@
 {
   "schema_version": 1,
-  "built_at": "2026-09-27T06:44:56.084Z",
-  "node_count": 852,
-  "edge_count": 1572,
+  "built_at": "2026-09-29T07:05:53.297Z",
+  "node_count": 860,
+  "edge_count": 1578,
   "nodes": [
     {
       "id": "topic:claude-ai",
       "type": "topic",
       "slug": "claude-ai",
       "label": "Claude AI",
-      "source_count": 46
+      "source_count": 47
     },
     {
       "id": "topic:ai-agents",
       "type": "topic",
       "slug": "ai-agents",
       "label": "AI Agents",
-      "source_count": 130
+      "source_count": 132
     },
     {
       "id": "topic:software-engineering",
@@ -51,7 +51,7 @@
       "type": "topic",
       "slug": "uncategorized",
       "label": "Uncategorized",
-      "source_count": 33
+      "source_count": 34
     },
     {
       "id": "topic:machine-learning",
@@ -2500,6 +2500,15 @@
       "processing_status": "course_generated"
     },
     {
+      "id": "source:2069050669487809004",
+      "type": "source",
+      "tweet_id": "2069050669487809004",
+      "title": "2069050669487809004.md",
+      "author_handle": "Harry_The_Nerd",
+      "topic_slug": "claude-ai",
+      "processing_status": "course_generated"
+    },
+    {
       "id": "source:2069064659613958348",
       "type": "source",
       "tweet_id": "2069064659613958348",
@@ -3895,6 +3904,33 @@
       "processing_status": "course_generated"
     },
     {
+      "id": "source:2104168233309974779",
+      "type": "source",
+      "tweet_id": "2104168233309974779",
+      "title": "2104168233309974779.md",
+      "author_handle": "_avichawla",
+      "topic_slug": "ai-agents",
+      "processing_status": "course_generated"
+    },
+    {
+      "id": "source:2104309865162412123",
+      "type": "source",
+      "tweet_id": "2104309865162412123",
+      "title": "2104309865162412123.md",
+      "author_handle": "swapnakpanda",
+      "topic_slug": "ai-agents",
+      "processing_status": "course_generated"
+    },
+    {
+      "id": "source:2104602707675718102",
+      "type": "source",
+      "tweet_id": "2104602707675718102",
+      "title": "2104602707675718102.md",
+      "author_handle": "rvaniaaaa",
+      "topic_slug": "uncategorized",
+      "processing_status": "course_generated"
+    },
+    {
       "id": "course:2076667968033894883",
       "type": "course",
       "tweet_id": "2076667968033894883",
@@ -4868,6 +4904,20 @@
       "file": "content/courses/ai-agents/course-172.md"
     },
     {
+      "id": "course:2104168233309974779",
+      "type": "course",
+      "tweet_id": "2104168233309974779",
+      "topic_slug": "ai-agents",
+      "file": "content/courses/ai-agents/course-173.md"
+    },
+    {
+      "id": "course:2104309865162412123",
+      "type": "course",
+      "tweet_id": "2104309865162412123",
+      "topic_slug": "ai-agents",
+      "file": "content/courses/ai-agents/course-174.md"
+    },
+    {
       "id": "course:2061070268479721483",
       "type": "course",
       "tweet_id": "2061070268479721483",
@@ -5335,6 +5385,13 @@
       "tweet_id": "2090171022720799107",
       "topic_slug": "claude-ai",
       "file": "content/courses/claude-ai/course-070.md"
+    },
+    {
+      "id": "course:2069050669487809004",
+      "type": "course",
+      "tweet_id": "2069050669487809004",
+      "topic_slug": "claude-ai",
+      "file": "content/courses/claude-ai/course-071.md"
     },
     {
       "id": "course:2075598961805856908",
@@ -6639,6 +6696,13 @@
       "file": "content/courses/uncategorized/course-039.md"
     },
     {
+      "id": "course:2104602707675718102",
+      "type": "course",
+      "tweet_id": "2104602707675718102",
+      "topic_slug": "uncategorized",
+      "file": "content/courses/uncategorized/course-040.md"
+    },
+    {
       "id": "course:2076799705124597788",
       "type": "course",
       "tweet_id": "2076799705124597788",
@@ -7809,6 +7873,11 @@
       "type": "belongs_to"
     },
     {
+      "source": "source:2069050669487809004",
+      "target": "topic:claude-ai",
+      "type": "belongs_to"
+    },
+    {
       "source": "source:2069064659613958348",
       "target": "topic:ai-agents",
       "type": "belongs_to"
@@ -8495,6 +8564,16 @@
     },
     {
       "source": "source:2103722987832717407",
+      "target": "topic:ai-agents",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2104168233309974779",
+      "target": "topic:ai-agents",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2104309865162412123",
       "target": "topic:ai-agents",
       "type": "belongs_to"
     },
@@ -9924,6 +10003,26 @@
       "type": "has_course"
     },
     {
+      "source": "course:2104168233309974779",
+      "target": "topic:ai-agents",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2104168233309974779",
+      "target": "course:2104168233309974779",
+      "type": "has_course"
+    },
+    {
+      "source": "course:2104309865162412123",
+      "target": "topic:ai-agents",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2104309865162412123",
+      "target": "course:2104309865162412123",
+      "type": "has_course"
+    },
+    {
       "source": "topic:ai-agents",
       "target": "topic:machine-learning",
       "type": "related_topic"
@@ -9966,11 +10065,6 @@
     {
       "source": "topic:ai-agents",
       "target": "topic:openai-codex",
-      "type": "related_topic"
-    },
-    {
-      "source": "topic:ai-agents",
-      "target": "topic:uncategorized",
       "type": "related_topic"
     },
     {
@@ -11169,6 +11263,16 @@
       "type": "has_course"
     },
     {
+      "source": "course:2069050669487809004",
+      "target": "topic:claude-ai",
+      "type": "belongs_to"
+    },
+    {
+      "source": "source:2069050669487809004",
+      "target": "course:2069050669487809004",
+      "type": "has_course"
+    },
+    {
       "source": "topic:claude-ai",
       "target": "topic:ai-agents",
       "type": "related_topic"
@@ -11191,6 +11295,11 @@
     {
       "source": "topic:claude-ai",
       "target": "topic:data-engineering",
+      "type": "related_topic"
+    },
+    {
+      "source": "topic:claude-ai",
+      "target": "topic:negotiation",
       "type": "related_topic"
     },
     {
@@ -14194,29 +14303,14 @@
       "type": "has_course"
     },
     {
-      "source": "topic:uncategorized",
-      "target": "topic:software-engineering",
-      "type": "related_topic"
+      "source": "course:2104602707675718102",
+      "target": "topic:uncategorized",
+      "type": "belongs_to"
     },
     {
-      "source": "topic:uncategorized",
-      "target": "topic:ai-agents",
-      "type": "related_topic"
-    },
-    {
-      "source": "topic:uncategorized",
-      "target": "topic:machine-learning",
-      "type": "related_topic"
-    },
-    {
-      "source": "topic:uncategorized",
-      "target": "topic:claude-ai",
-      "type": "related_topic"
-    },
-    {
-      "source": "topic:uncategorized",
-      "target": "topic:data-engineering",
-      "type": "related_topic"
+      "source": "source:2104602707675718102",
+      "target": "course:2104602707675718102",
+      "type": "has_course"
     },
     {
       "source": "course:2076799705124597788",

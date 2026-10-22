@@ -1,21 +1,21 @@
 {
   "trigger": "scheduled",
-  "date": "2026-10-20",
-  "started_at_ist": "20/10/2026, 12:00:02 IST",
-  "finished_at_ist": "20/10/2026, 12:06:55 IST",
-  "duration_secs": 413.6,
+  "date": "2026-10-21",
+  "started_at_ist": "21/10/2026, 12:00:02 IST",
+  "finished_at_ist": "21/10/2026, 12:05:30 IST",
+  "duration_secs": 327.5,
   "status": "ok",
   "steps": [
     {
       "name": "Import X Likes",
       "status": "ok",
-      "duration_secs": 97.1,
+      "duration_secs": 29.6,
       "detail": "0 new tweet(s) imported"
     },
     {
       "name": "Source extraction",
       "status": "ok",
-      "duration_secs": 0.7,
+      "duration_secs": 0.8,
       "detail": "nothing new to extract"
     },
     {
@@ -27,13 +27,13 @@
     {
       "name": "AI classification",
       "status": "ok",
-      "duration_secs": 0.3,
+      "duration_secs": 2.3,
       "detail": "0 classified"
     },
     {
       "name": "Course generation",
       "status": "ok",
-      "duration_secs": 187.2,
+      "duration_secs": 147.2,
       "detail": "0/1 course(s) generated, 1 error(s)"
     },
     {
@@ -45,19 +45,19 @@
     {
       "name": "Graph build",
       "status": "ok",
-      "duration_secs": 1.1,
+      "duration_secs": 1.3,
       "detail": "869 nodes, 1576 edges"
     },
     {
       "name": "Hero images",
       "status": "ok",
-      "duration_secs": 0.7,
+      "duration_secs": 0.8,
       "detail": "0 hero image(s) generated"
     },
     {
       "name": "Podcasts",
       "status": "ok",
-      "duration_secs": 46.3,
+      "duration_secs": 51.3,
       "detail": "0 podcast(s) generated, 3 error(s)"
     },
     {
@@ -69,19 +69,19 @@
     {
       "name": "Upload Media to R2",
       "status": "ok",
-      "duration_secs": 1.3,
+      "duration_secs": 1.6,
       "detail": "0 new file(s) uploaded to R2"
     },
     {
       "name": "Commit & Push",
       "status": "ok",
-      "duration_secs": 3.6,
+      "duration_secs": 4,
       "detail": "2 file(s) committed and pushed to GitHub"
     },
     {
       "name": "Prod build",
       "status": "ok",
-      "duration_secs": 71.4
+      "duration_secs": 85.1
     },
     {
       "name": "Prod server restart",
@@ -92,6 +92,6 @@
   "x_session": {
     "status": "ok",
     "expiresAt": "2027-07-06T05:33:47.000Z",
-    "daysUntilExpiry": 258
+    "daysUntilExpiry": 257
   }
 }

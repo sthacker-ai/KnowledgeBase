@@ -1,15 +1,15 @@
 {
   "trigger": "scheduled",
-  "date": "2026-10-21",
-  "started_at_ist": "21/10/2026, 12:00:02 IST",
-  "finished_at_ist": "21/10/2026, 12:05:30 IST",
-  "duration_secs": 327.5,
+  "date": "2026-10-22",
+  "started_at_ist": "22/10/2026, 12:00:02 IST",
+  "finished_at_ist": "22/10/2026, 12:07:08 IST",
+  "duration_secs": 425.7,
   "status": "ok",
   "steps": [
     {
       "name": "Import X Likes",
       "status": "ok",
-      "duration_secs": 29.6,
+      "duration_secs": 95.9,
       "detail": "0 new tweet(s) imported"
     },
     {
@@ -21,19 +21,19 @@
     {
       "name": "Video transcripts",
       "status": "ok",
-      "duration_secs": 0.6,
+      "duration_secs": 0.7,
       "detail": null
     },
     {
       "name": "AI classification",
       "status": "ok",
-      "duration_secs": 2.3,
+      "duration_secs": 2.4,
       "detail": "0 classified"
     },
     {
       "name": "Course generation",
       "status": "ok",
-      "duration_secs": 147.2,
+      "duration_secs": 151.5,
       "detail": "0/1 course(s) generated, 1 error(s)"
     },
     {
@@ -45,19 +45,19 @@
     {
       "name": "Graph build",
       "status": "ok",
-      "duration_secs": 1.3,
+      "duration_secs": 1.2,
       "detail": "869 nodes, 1576 edges"
     },
     {
       "name": "Hero images",
       "status": "ok",
-      "duration_secs": 0.8,
+      "duration_secs": 0.7,
       "detail": "0 hero image(s) generated"
     },
     {
       "name": "Podcasts",
       "status": "ok",
-      "duration_secs": 51.3,
+      "duration_secs": 77.8,
       "detail": "0 podcast(s) generated, 3 error(s)"
     },
     {
@@ -75,13 +75,13 @@
     {
       "name": "Commit & Push",
       "status": "ok",
-      "duration_secs": 4,
+      "duration_secs": 3.7,
       "detail": "2 file(s) committed and pushed to GitHub"
     },
     {
       "name": "Prod build",
       "status": "ok",
-      "duration_secs": 85.1
+      "duration_secs": 86.5
     },
     {
       "name": "Prod server restart",
@@ -92,6 +92,6 @@
   "x_session": {
     "status": "ok",
     "expiresAt": "2027-07-06T05:33:47.000Z",
-    "daysUntilExpiry": 257
+    "daysUntilExpiry": 256
   }
 }

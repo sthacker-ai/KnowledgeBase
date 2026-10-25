@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "built_at": "2026-10-24T07:03:25.564Z",
-  "node_count": 869,
+  "built_at": "2026-10-25T06:32:04.418Z",
+  "node_count": 871,
   "edge_count": 1576,
   "nodes": [
     {
@@ -51,7 +51,7 @@
       "type": "topic",
       "slug": "uncategorized",
       "label": "Uncategorized",
-      "source_count": 34
+      "source_count": 36
     },
     {
       "id": "topic:machine-learning",
@@ -3974,6 +3974,24 @@
       "author_handle": "JayneshKasliwal",
       "topic_slug": "finance",
       "processing_status": "course_generated"
+    },
+    {
+      "id": "source:2113144261055258808",
+      "type": "source",
+      "tweet_id": "2113144261055258808",
+      "title": "2113144261055258808.md",
+      "author_handle": "swing_ka_sultan",
+      "topic_slug": "uncategorized",
+      "processing_status": "classified"
+    },
+    {
+      "id": "source:2113721373482987970",
+      "type": "source",
+      "tweet_id": "2113721373482987970",
+      "title": "2113721373482987970.md",
+      "author_handle": "gregisenberg",
+      "topic_slug": "uncategorized",
+      "processing_status": "classified"
     },
     {
       "id": "course:2076667968033894883",
